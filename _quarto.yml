@@ -1,0 +1,104 @@
+authorname: "Yingxiao Yan"
+draft: false
+
+project:
+  type: website
+  output-dir: public
+  
+  resources:
+    - "img/**"
+    - "icon/**"
+    - "pdf/**"
+    - "_extensions/**"
+  preview: 
+    port: 22223
+    browser: true
+    watch-inputs: true
+    navigate: true
+    
+title-meta: "Yingxiao Yan"
+description-meta: "Epidemiologist | PhD researcher | Machine learning, computational metabolomics"
+   
+    
+name: "Yingxiao Yan"
+website:
+  title: "Yingxiao Yan {{< fa brands gitlab >}}"
+  description: "Epidemiologist | PhD researcher | Machine learning, computational metabolomics"
+  image: img/archery.jpg
+  favicon: img/archery.jpg
+  site-url: "https://gitlab.com/YingxiaoYangobacktothe same site mainpage"
+  
+  repo-url: "https://gitlab.com/YingxiaoYan/web_demo"
+  repo-branch: main
+  
+  search: 
+    location: navbar
+    type: textbox
+  
+  navbar:
+    logo: /img/fun.png
+    pinned: true
+    foreground: yellow
+    background: black   # It seems title block banner background color change with it 
+    left:
+      - href: about.qmd
+        text: About me
+      - text: Projects
+        href: project.qmd
+      - href: pub_ho.qmd
+        text: Publications/Honors  
+      - text: CV
+        href: CV.qmd
+
+        
+    right:
+      - icon: folder-symlink
+        href: https://gitlab.com/YingxiaoYan/
+      - icon: "github"
+        href: https://gitlab.com/YingxiaoYan/
+      - icon: linkedin
+        href: https://www.linkedin.com/in/yingxiao-yan
+      - icon: envelope
+        aria-label: email
+        href: "mailto:yingxiao.yan.007@gmail.com"  
+      - text: get in touch!
+      #How to chaneg the color of menu, pain in the ass
+        menu: 
+          - icon: linkedin
+            text: Linkedin
+            href: https://www.linkedin.com/in/yingxiao-yan/
+            target: _blank
+          - icon: envelope
+            text: email
+            href: mailto:yingxiao.yan.007@gmail.com
+  page-footer: 
+    background: light
+    left: |
+      <span class="faux-block">&#169; 2024 Yingxiao Yan CC BY-SA 4.0</span>
+    center: |
+      <span class="faux-block"><a href="https://gitlab.com/YingxiaoYan/web_demo">My gitlab</a></span>
+    right: |
+      <span class="faux-block cyan"><a href="https://gitlab.com/YingxiaoYan/web_demo">View source on GitLab</a></span>
+
+execute:
+  freeze: true
+
+
+format:
+  html:
+    page-layout: full
+    fontsize: 1.1em
+    theme: 
+      - solar
+      - styles.scss
+    mainfont: Nunito
+    css: styles.scss
+    toc: true
+    code-link: true
+    anchor-sections: true
+    fig-cap-location: margin
+    reference-location: margin
+    footnotes-hover: true
+
+
+editor: visual

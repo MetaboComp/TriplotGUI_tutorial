@@ -1,0 +1,155 @@
+---
+title: "Yingxiao Yan"
+subtitle: "An awesome person"
+title-block-banner: true
+title-block-banner-color: white
+title-block-categories: false
+
+page-layout: full
+format:
+  html: 
+    margin-top: 0em
+    margin-bottom: 0em
+    padding-top: 0em
+    padding-bottom: 0em
+    minimal: true
+    smooth-scroll: true
+    fig-responsive: true
+    toc-location: right
+    toc-depth: 5
+    toc-title: Awesome me
+
+image: img/archery.jpg
+about: 
+  template: solana
+  image-shape: round
+  image-width: 15em
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/yingxiao-yan
+      target: _blank
+    - icon: git
+      text: GitLab
+      href: https://gitlab.com/YingxiaoYan/
+      target: _blank
+    - icon: envelope
+      text: Email
+      href: mailto:yingxiao.yan.007@gmail.com
+---
+
+This content appears above the formatted about page content.
+
+::: small-text
+Hi there! I'm Yan (which is my last name, my first name is Yingxiao). Professionally, I love programming in R. Outside of work, I do kickboxing, archery and shotting Poke around my website to learn more!
+:::
+
+### Key skills
+
+I'm Sam (and my last name is pronounced "chick"). I'm the Data Training Coordinator at the [National Center for Ecological Analysis & Synthesis](https://www.nceas.ucsb.edu/) (NCEAS) located at UC Santa Barbara, where I'm working to develop and teach data science training curricula for the [Master of Environmental Data Science](https://bren.ucsb.edu/masters-programs/master-environmental-data-science) (MEDS) program and other data science initiatives across NCEAS and UCSB. I am also a co-organizer of [R-Ladies Santa Barbara](https://www.meetup.com/rladies-santa-barbara/), a local data science group which works to promote gender diversity in the R community. In my spare time, you'll typically find me hiking with my pup or cooking family dinners with friends.
+
+### Education
+
+::: topbr
+<p class="custom-subtitle">
+
+{{< fa graduation-cap title="A graduation cap" >}} **MS in Ecology, Evolution & Marine Biology, 2020**
+
+</p>
+
+<p class="custom-subtitle2">
+
+University of California, Santa Barbara
+
+</p>
+
+<p>University of California, Santa Barbara</p>
+
+<p class="custom-subtitle">
+
+{{< fa graduation-cap title="A graduation cap" >}} **BS in Marine Biology, 2016**
+
+</p>
+
+<p class="custom-subtitle2">
+
+Northeastern University
+
+</p>
+
+<p>University of California, Santa Barbara</p>
+
+<p class="custom-subtitle">
+
+{{< fa graduation-cap title="A graduation cap" >}} **BS in Marine Biology, 2016**
+
+</p>
+
+<p class="custom-subtitle2">
+
+Northeastern University
+
+</p>
+
+<p>University of California, Santa Barbara</p>
+
+<p class="custom-subtitle">
+
+{{< fa graduation-cap title="A graduation cap" >}} **BS in Marine Biology, 2016**
+
+</p>
+
+<p class="custom-subtitle2">
+
+Northeastern University
+
+</p>
+
+<p>University of California, Santa Barbara</p>
+:::
+
+### Professional Experience
+
+::: topbr
+<p class="custom-subtitle">
+
+{{< fa chalkboard-teacher title="A teacher at a chalkboard" >}} **Data Training Coordinator, 2021-present**
+
+</p>
+
+<p class="custom-subtitle2">
+
+National Center for Ecological Analysis & Synthesis
+
+</p>
+
+<p>University of California, Santa Barbara</p>
+
+<p class="custom-subtitle">
+
+{{< fa chalkboard-teacher title="A teacher at a chalkboard" >}} **Data Training Coordinator, 2021-present**
+
+</p>
+
+<p class="custom-subtitle2">
+
+National Center for Ecological Analysis & Synthesis
+
+</p>
+
+<p>University of California, Santa Barbara</p>
+
+<p class="custom-subtitle">
+
+{{< fa chart-bar title="A bar chart" >}} **Data Science Fellow, 2020-2021**
+
+</p>
+
+<p class="custom-subtitle2">
+
+National Center for Ecological Analysis & Synthesis
+
+</p>
+
+<p>University of California, Santa Barbara</p>
+:::

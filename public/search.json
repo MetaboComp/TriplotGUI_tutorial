@@ -1,0 +1,177 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About me",
+    "section": "",
+    "text": "I’m the Data Training Coordinator at the National Center for Ecological Analysis & Synthesis (NCEAS) located at UC Santa Barbara, where I’m working to develop and teach data science training curricula for the Master of Environmental Data Science (MEDS) program and other data science initiatives across NCEAS and UCSB. I am also a co-organizer of R-Ladies Santa Barbara, a local data science group which works to promote gender diversity in the R community.\nMy background is in marine ecology / ecophysiology – I was afforded opportunities to study coral disease in Panama and the Florida Keys as an undergrad, then temperature effects on spiny lobster metabolism and foraging behavior in Santa Barbara for my Masters degree. Since the beginning of my time in STEM, I was totally terrified of all things data / coding / data science, but thanks to a super supportive community and some really rad colleagues / instructors, I found my new path in data science education and I absolutely love it.\n\n\n\n\n\n\n\n\nTeaching MEDS students how to build their own personal websites using Quarto! This was especially fun for me, since Quarto was still such a new tool when I first gave this workshop – it meant a lot of discovery and learning on-the-fly alongside our students.\n\nI’m afforded a lot of flexibility in how I teach and what I teach. My focus is on developing and delivering workshop-style classes that supplement the MEDS core curriculum. I teach primarily via live-coding (where my computer is hooked up to a screen for workshop participants to see and hear me talk through code in real time as they follow along on their own computers) – this teaching style was invaluable in my own development as a data scientist, and I really believe that, when done well, live-coding can be a game-changing experience for early-career coders and data scientists. I am always looking for new ways to make my teaching style and materials more approachable and inclusive for all learners – I try to build my materials to be stand-alone resources both for participants to refer back to and also for those learning on their own time. Feel free to check out / reuse / recycle any of my workshop and course materials."
+  },
+  {
+    "objectID": "about.html#fa-chalkboard-user-titleacademic-academic-route",
+    "href": "about.html#fa-chalkboard-user-titleacademic-academic-route",
+    "title": "About me",
+    "section": "",
+    "text": "I’m the Data Training Coordinator at the National Center for Ecological Analysis & Synthesis (NCEAS) located at UC Santa Barbara, where I’m working to develop and teach data science training curricula for the Master of Environmental Data Science (MEDS) program and other data science initiatives across NCEAS and UCSB. I am also a co-organizer of R-Ladies Santa Barbara, a local data science group which works to promote gender diversity in the R community.\nMy background is in marine ecology / ecophysiology – I was afforded opportunities to study coral disease in Panama and the Florida Keys as an undergrad, then temperature effects on spiny lobster metabolism and foraging behavior in Santa Barbara for my Masters degree. Since the beginning of my time in STEM, I was totally terrified of all things data / coding / data science, but thanks to a super supportive community and some really rad colleagues / instructors, I found my new path in data science education and I absolutely love it.\n\n\n\n\n\n\n\n\nTeaching MEDS students how to build their own personal websites using Quarto! This was especially fun for me, since Quarto was still such a new tool when I first gave this workshop – it meant a lot of discovery and learning on-the-fly alongside our students.\n\nI’m afforded a lot of flexibility in how I teach and what I teach. My focus is on developing and delivering workshop-style classes that supplement the MEDS core curriculum. I teach primarily via live-coding (where my computer is hooked up to a screen for workshop participants to see and hear me talk through code in real time as they follow along on their own computers) – this teaching style was invaluable in my own development as a data scientist, and I really believe that, when done well, live-coding can be a game-changing experience for early-career coders and data scientists. I am always looking for new ways to make my teaching style and materials more approachable and inclusive for all learners – I try to build my materials to be stand-alone resources both for participants to refer back to and also for those learning on their own time. Feel free to check out / reuse / recycle any of my workshop and course materials."
+  },
+  {
+    "objectID": "about.html#fa-industry-titlea-person-with-a-backpack-and-trekking-work-outside-academics",
+    "href": "about.html#fa-industry-titlea-person-with-a-backpack-and-trekking-work-outside-academics",
+    "title": "About me",
+    "section": " Work outside academics",
+    "text": "Work outside academics"
+  },
+  {
+    "objectID": "about.html#fa-people-group-titlea-person-with-a-backpack-and-trekking-pol-leadership",
+    "href": "about.html#fa-people-group-titlea-person-with-a-backpack-and-trekking-pol-leadership",
+    "title": "About me",
+    "section": " Leadership",
+    "text": "Leadership"
+  },
+  {
+    "objectID": "about.html#fa-seedling-titlea-person-with-a-backpack-and-trekking-pole-self-development",
+    "href": "about.html#fa-seedling-titlea-person-with-a-backpack-and-trekking-pole-self-development",
+    "title": "About me",
+    "section": " Self development",
+    "text": "Self development\nI feel very fortunate to be doing so many of things that I love a lot right now. That includes my job, but also spending lots of time outdoors. Living in Santa Barbara is a massive privilege and being here means that we have access to both the mountains and the sea, each a few minutes in either direction. It was the ocean that brought me here originally, but most of my free time is now spent on the trails.\n\n\n\n\n\n\n\n\nMy right-hand hiking gal, Tallie (aka Bean aka TunaB aka SweetCheeks).\n\n\n\n\nI started recording my hikes (and eventually some other activities) on Strava in late 2020 and finally got around to retrieving my activity data using the {rStrava} package. Below is a heatmap of all my recorded activities made using leaflet. It’s challenging to see individual markers at my most frequented trail heads/starting points, so I’ve recently began building out my own Strava Dashboard (using {shinydashboard}) to make it a bit more interactive and filterable – it’s a work in progress, but a fun side project that I’m excited to continue iterating upon. Huge shout out to Daniel Cullen (who also happens to be a Santa Barbara resident!) for his awesome blog post that got me started with my own map.\n\nMap last updated: December 27, 2023\n\n\n\n For a more interactive experience, click around my Strava dashboard  Source code available on GitHub"
+  },
+  {
+    "objectID": "about.html#fa-person-running-titlean-egg-fa-person-rifle-titlean-egg-fa-bullseye-titlean-egg-hobbies",
+    "href": "about.html#fa-person-running-titlean-egg-fa-person-rifle-titlean-egg-fa-bullseye-titlean-egg-hobbies",
+    "title": "About me",
+    "section": " Hobbies",
+    "text": "Hobbies\nI’m a proud Csik (pronounced “chick” – Hungarian, for the curious), though I spent many of my younger years embarrassed when people (understandably) got it wrong (variations include “sea-sick,” “sick,” “ca-sick,” to name a few) – and many of us know how brutal little kid peers can be when there’s a funny way to mispronounce a name. At some point, I learned to embrace the weird and it became very much a part of my everyday identity. My track coaches and teammates would shout “LET’S GO CSIK” during my events at meets, I signed year books as “Sam [drawing of a chick]” and every handmade card received my “The Csik Press” identifying mark on the back. As I’ve grown older, I’ve taken more care to help colleagues, peers, and strangers learn the correct pronunciation – because if I’m being totally honest, I think my name is pretty darn cool Face Smile Wink\n. So my first ever real logo is an homage to my earliest attempts at claiming my Csik identity. It may evolve a bit, but for now, it makes me pretty happy. Made using the (free!) Adobe Express logo maker.\n\n\n\n\n\n\n\n\nThe back of a handmade birthday card by yours truly (aka ‘The Csik Press’). Thanks, Mom, for sending me pics of these decade+ old treasures whenever you come across them. Artist: Sam Csik. Medium: construction paper, Elmer’s glue. Date: 2010 (apparently).\n\nAbout me\n\n\nExpert in R/shiny programming\n\n\nProficient at data analysis and biostatistical modeling (R studio) using large datasets\n\n\nData visualizarion\n\n\nSpecialized in metabolomics and epidemiological research\n\n\nProficient at data cleaning, manipulation, and visualization\n\n\nExperienced in chemical and biological research and laboratory work\n\n\nExperienced in project management and leadership position\n\nEducation\n\nPhD in Computational Metabolomics and Exposomics  Jun 2021-now Food and Nutrition Science division, Department of Life Sciences, Chalmers University of Technology Research project: Impact of combined Exposures on Metabolic Health (ICE) Master’s in Public Health  Sep 2019 – Jun 2021 Faculty of Medicine, Lund University (LU), Sweden Relevant Courses: Applied Research Methods; Epidemiology; Biostatistics; Qualitative Methods; Cost-effectiveness and Impact Evaluation of Health Interventions; Public Health Nutrition; Health Policy; Leadership and Professional Perspectives on Public Health Thesis: The association between plasma metabolites’ levels measured earlier in life and the future risk of all-cause mortality in Malmö’s population \nLudwig-Maximilians-Universität München, Germany  Feb 2021 – Mar 2020 Course: Environmental Epidemiology University of Szeged, Hungary  Jul 2020 – Jul 2020 Course: Biomedical Data processing and Global Aspects of COVID-19 Grade: 94/100 \nBachelor’s in Chemistry, Minor in Life Science  GPA: 4.49/5.00 (3.61/4.00) School of Chemistry and Chemical engineering, Nanjing University (NJU), China Relevant courses: Biostatistics; Biochemistry; Genetics; Cell Biology; Molecular biology; Evolutional Biology; Environmentology; Pharmaceutics Experiments; Physiology; Immunology Thesis: The Preparation of PMP Hollow Fiber Membrane and Surface Modification Applying in Artificial Lung\nResearch projects\n\nJun 2021 - present  Food and Nutrition Science division, Department of Life Sciences, Chalmers University of Technology TriplotGUI - An advanced visualization tool for molecular epidemiology (lead, ongoing)  This project aims to design a visualization tool (an R package) with shiny’s graphical user interface to explain the complex relationship between environmental exposures, human metabolic profiles, and disease outcomes. I designed the tool and wrote all the code for the UI and server and most of the code for the statistical models behind the interface. (https://gitlab.com/YingxiaoYan/triplotgui) MUVR 2.0, a multivariate analysis tool for variable selection and prediction that minimizes overfitting across modeling strategies. (lead)  Combining machine learning and epidemiology modeling, this project aims to design a multivariate data analysis tool (an R package), MUVR 2.0, for unbiased variable selection while allowing confounding adjustment. Current MUVR 2.0 is in a branch of the original MUVR package. I wrote code for all the new functionalities in MUVR 2.0. ( https://gitlab.com/CarlBrunius/MUVR/-/tree/MUVR2) StatTools, an R package of handy tools for random statistics(lead)  This package aims to develop handy tools for random statistics, which will aid data analysis and visualization in other research projects. My version of StatTools is originally forked from StatTools’ older version. I wrote all the new functions in the package since 2022 (https://gitlab.com/YingxiaoYan/StatTools) OMICs signatures linking persistent organic pollutants to cardiovascular disease in the Swedish Mammography Cohort  This project aims to investigate the underlying mechanisms that link persistent organic pollutants; genetic, proteomics, and metabolomics profiles to cardiovascular diseases. I performed the data analysis (RStudio) and feature identification in this project. \nJun 2020 – Oct 2020  Association between targeted metabolites and longevity Cardiovascular Research – Hypertension, Department of Clinical Science, Lund University \n\n\nFormulated research questions and designed the study\n\n\nCleaned and manipulated data from Cilento on Aging Outcome study (CIAO) and Malmö Diet and Cancer study (MDC)\n\n\nBuilt biostatistical models by R studio to analyze and compare the metabolites data (logistic regression) between CIAO and MDC.\n\n\nIdentified metabolites that are related to aging and longevity respectively in data analysis\n\n\nVisualized the data analysis results (tables, volcano plots and forest plots) and wrote a scientific report for the findings\n\n\nSep 2016 – Jan 2018  Radiometric Near-Infrared Fluorescent Nano-probe for Hydrogen Sulfide Imaging Deju Ye Lab, School of Chemistry and Chemical Engineering, Nanjing University\n\n\nFormulated research questions and designed the study\n\n\nSynthesized a near-infrared fluorescent nano-probe that could detect endogenous hydrogen sulfide\n\n\nBuilt biostatistical models by R studio to analyze and compare the metabolites data (logistic regression) between CIAO and MDC.\n\n\nDesigned and conducted experiments to test the sensitivity and selectivity of the nano-probe toward hydrogen sulfide in vitro\n\n\nDesigned and conducted experiments to test the nano-probe in living cells’ radiometric fluorescence imaging of hydrogen sulfide\n\nProfessional experience\n\nChair - PhD council in the Department of Life Sciences, Chalmers Board Member - Chalmers Doctoral Student Guild (Doktorandsektionen)  Sep 2022 – present \n\n\nContinuous improvement for Chalmer’s PhD students’ working and living environment\n\n\nPlanned and held introduction day for new PhD students at Chalmers\n\n\nResearch Intern - Nanjing Center for Disease Prevention and Control Sep 2018 – Oct 2018 Nanjing, China  \n\n\nConducted data analysis and visualization by R studio to investigate the association between outdoor activities and the progression of myopia among teenagers in Nanjing\n\n\nAssisted to collect water samples in the countryside for the later detection of pathogens of infectious diseases\n\n\nConducted interviews with residents in Nanjing regarding their access to local public health service\n\n\nData manager  - Stories to Action (part-time) Aug 2020 – June 2021 Malmö, Sweden\n\n\nReviewed relevant literature and designed a questionnaire to investigate the global impact of Covid-19 on the Sexual and Reproductive Health and Rights of young people\n\n\nDesigned data management and analysis plan for the results of the questionnaire\n\n\nHeld team meetings regarding data collection, analysis, and reporting\n\n\nHealth economic intern  - Medow AB  Oct 2020 – Nov 2020   Lund, Sweden\n\n\nReviewed literature regarding the existing securement devices for peripheral venous catheter (PVC)\n\n\nCollaborated with clinical experts and statisticians to design a clinical trial protocol to evaluate the effect of Medow’s product (a securement device for PVC) on decreasing PVC failure in hospitalized adult patients\n\n\nDesigned a health economic evaluation plan to evaluate the cost-effectiveness of Medow’s product"
+  },
+  {
+    "objectID": "CV.html",
+    "href": "CV.html",
+    "title": "Curriculum vitae",
+    "section": "",
+    "text": "Download current CV"
+  },
+  {
+    "objectID": "explnation.html",
+    "href": "explnation.html",
+    "title": "explanation",
+    "section": "",
+    "text": "Scss rule explain\nThe index main page\nCV page\n.embed-container iframe\n.embed-container:\nThis is a class selector targeting an HTML element with the class name embed-container. It is likely used as a container for embedding various types of content.\niframe: This is an HTML element selector targeting the iframe element.\nCombined: .embed-container iframe: This selector targets any iframe element that is a descendant (child, grandchild, etc.) of an element with the class embed-container.\nThe  element in HTML is used to embed external resources, such as images, audio, videos, or other multimedia content, into a web page. It provides a generic container that allows you to include various types of content within your HTML document.\n&lt;object data=\"example.pdf\" type=\"application/pdf\" width=\"500\" height=\"600\"&gt; Your browser does not support embedded PDF files. &lt;a href=\"example.pdf\"&gt;Download the PDF&lt;/a&gt; instead. &lt;/object&gt;\nThe &lt;iframe&gt; element in HTML (Inline Frame) is used to embed another HTML document within the current document. It allows you to display content from another source, such as a different webpage, in a specified rectangular area on your page. The content inside the &lt;iframe&gt; is essentially a separate document with its own HTML, CSS, and JavaScript.\n&lt;iframe src=\"https://www.example.com\" width=\"600\" height=\"400\" frameborder=\"0\" allowfullscreen&gt;&lt;/iframe&gt;\nThe &lt;embeded&gt;Used to embed external applications or plugins.\n&lt;embed src=\"example.swf\" type=\"application/x-shockwave-flash\" width=\"400\" height=\"300\"&gt;\n#toolbar=0 This fragment is typically used with PDFs to control the visibility of the PDF viewer’s toolbar. Setting it to 0 generally means hiding the toolbar. The toolbar in a PDF viewer often contains options for navigation, zooming, and other related actions.\nThe height: 0; CSS property is used to set the height of an element to zero pixels. When applied to an element, this property essentially makes the element invisible in terms of its vertical dimension. The content inside the element, if any, will still exist but will be collapsed or hidden.\nHere’s a common use case for height: 0; along with other properties:\nThe CSS property overflow: hidden; is used to control how content that overflows the content area of an element should be handled. When applied to an element, it hides any content that exceeds the specified dimensions of the element’s box.\n\n\n\n \n\n \n\n  \n    © 2024 Yingxiao Yan CC BY-SA 4.0   \n    My gitlab\n    View source on GitLab"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Yingxiao Yan",
+    "section": "",
+    "text": "This content appears above the formatted about page content.\n\nHi there! I’m Yan (which is my last name, my first name is Yingxiao). Professionally, I love programming in R. Outside of work, I do kickboxing, archery and shotting Poke around my website to learn more!\n\n\nKey skills\nI’m Sam (and my last name is pronounced “chick”). I’m the Data Training Coordinator at the National Center for Ecological Analysis & Synthesis (NCEAS) located at UC Santa Barbara, where I’m working to develop and teach data science training curricula for the Master of Environmental Data Science (MEDS) program and other data science initiatives across NCEAS and UCSB. I am also a co-organizer of R-Ladies Santa Barbara, a local data science group which works to promote gender diversity in the R community. In my spare time, you’ll typically find me hiking with my pup or cooking family dinners with friends.\n\n\nEducation\n\n\n MS in Ecology, Evolution & Marine Biology, 2020\n\n\nUniversity of California, Santa Barbara\n\n\nUniversity of California, Santa Barbara\n\n\n BS in Marine Biology, 2016\n\n\nNortheastern University\n\n\nUniversity of California, Santa Barbara\n\n\n BS in Marine Biology, 2016\n\n\nNortheastern University\n\n\nUniversity of California, Santa Barbara\n\n\n BS in Marine Biology, 2016\n\n\nNortheastern University\n\n\nUniversity of California, Santa Barbara\n\n\n\n\nProfessional Experience\n\n\n Data Training Coordinator, 2021-present\n\n\nNational Center for Ecological Analysis & Synthesis\n\n\nUniversity of California, Santa Barbara\n\n\n Data Training Coordinator, 2021-present\n\n\nNational Center for Ecological Analysis & Synthesis\n\n\nUniversity of California, Santa Barbara\n\n\n Data Science Fellow, 2020-2021\n\n\nNational Center for Ecological Analysis & Synthesis\n\n\nUniversity of California, Santa Barbara"
+  },
+  {
+    "objectID": "project.html",
+    "href": "project.html",
+    "title": "Projects",
+    "section": "",
+    "text": "This page contains a brief overview of projects that I significantly shaped throughout the entire project life cycle. In academic terms, this mostly corresponds to first-author publications (single and shared). If you’re interested in a full list of projects I have been involved in, please check out my CV."
+  },
+  {
+    "objectID": "project.html#cmpe",
+    "href": "project.html#cmpe",
+    "title": "Projects",
+    "section": "\n1 Consistency Model Posterior Estimation",
+    "text": "1 Consistency Model Posterior Estimation\n\nPreprint (arXiv)\nConsistency models for neural posterior estimation (CMPE) is a new free-form conditional sampler for scalable, fast, and amortized simulation-based inference with generative neural networks. CMPE combines the advantages of normalizing flows and flow matching methods into a single generative architecture: It essentially distills a continuous probability flow and enables rapid few-shot inference with an unconstrained architecture that can be tailored to the structure of the estimation problem."
+  },
+  {
+    "objectID": "project.html#multinpe",
+    "href": "project.html#multinpe",
+    "title": "Projects",
+    "section": "\n2 Deep Fusion for Multimodal Simulation-Based Inference",
+    "text": "2 Deep Fusion for Multimodal Simulation-Based Inference\n\nPreprint (arXiv)\nWe present multimodal neural posterior estimation (MultiNPE), a method to integrate heterogeneous data from different sources in simulation-based inference with neural networks. Inspired by advances in attention-based deep fusion learning, it empowers researchers to analyze data from different domains and infer the parameters of complex mathematical models with increased accuracy and better performance under partially missing data."
+  },
+  {
+    "objectID": "project.html#data-efficient-amortized-bayesian-inference-via-self-consistency-losses",
+    "href": "project.html#data-efficient-amortized-bayesian-inference-via-self-consistency-losses",
+    "title": "Projects",
+    "section": "\n3 Data-Efficient Amortized Bayesian Inference via Self-Consistency Losses",
+    "text": "3 Data-Efficient Amortized Bayesian Inference via Self-Consistency Losses\n\nShort Paper (NeurIPS UniReps 2023)\nWe propose a method to improve the efficiency and accuracy of amortized Bayesian inference by leveraging universal symmetries in the probabilistic joint model \\(p(\\theta,y)\\). In a nutshell, we invert Bayes’ theorem and estimate the marginal likelihood based on approximate representations of the joint model. Upon perfect approximation, the marginal likelihood is constant across all parameter values by definition. However, approximation error leads to undesirable variance in the marginal likelihood estimates across different parameter values. We formulate violations of this symmetry as a loss function to accelerate the learning dynamics of conditional neural density estimators."
+  },
+  {
+    "objectID": "project.html#meta-uncertainty-BMC",
+    "href": "project.html#meta-uncertainty-BMC",
+    "title": "Projects",
+    "section": "\n4 Meta-Uncertainty in Bayesian Model Comparison",
+    "text": "4 Meta-Uncertainty in Bayesian Model Comparison\n\nPaper (AISTATS 2023) | Code | ’Project website | Poster | Presentation (15min)\nMeta-Uncertainty represents a fully probabilistic framework for quantifying the uncertainty over Bayesian posterior model probabilities (PMPs) using meta-models. Meta-models integrate simulated and observed data into a predictive distribution for new PMPs and help reduce overconfidence and estimate the PMPs in future replication studies."
+  },
+  {
+    "objectID": "project.html#bayesflow-amortized-bayesian-workflows-with-neural-networks",
+    "href": "project.html#bayesflow-amortized-bayesian-workflows-with-neural-networks",
+    "title": "Projects",
+    "section": "\n5 BayesFlow: Amortized Bayesian Workflows With Neural Networks",
+    "text": "5 BayesFlow: Amortized Bayesian Workflows With Neural Networks\n\nSoftware Paper | Documentation | BayesFlow Forums (new!)\nBayesFlow is a Python library for simulation-based training of established neural network architectures for amortized data compression and inference. Amortized Bayesian inference, as implemented in BayesFlow, enables users to train custom neural networks on model simulations and re-use these networks for any subsequent application of the models. Since the trained networks can perform inference almost instantaneously, the upfront neural network training is quickly amortized."
+  },
+  {
+    "objectID": "project.html#jana-jointly-amortized-neural-approximation-of-complex-bayesian-models",
+    "href": "project.html#jana-jointly-amortized-neural-approximation-of-complex-bayesian-models",
+    "title": "Projects",
+    "section": "\n6 JANA: Jointly Amortized Neural Approximation of Complex Bayesian Models",
+    "text": "6 JANA: Jointly Amortized Neural Approximation of Complex Bayesian Models\n\nPaper (UAI 2023) | Python library\nJANA is a new amortized solution for intractable likelihood functions and posterior densities in Bayesian modeling. It trains three networks to learn both an approximate posterior and a surrogate model for the likelihood, enabling amortized marginal likelihood and posterior predictive estimation."
+  },
+  {
+    "objectID": "project.html#sbi-model-misspecification",
+    "href": "project.html#sbi-model-misspecification",
+    "title": "Projects",
+    "section": "\n7 Detecting Model Misspecification in Amortized Bayesian Inference with Neural Networks",
+    "text": "7 Detecting Model Misspecification in Amortized Bayesian Inference with Neural Networks\n\nPaper (GCPR 2023, Best Paper Honorable Mention) | Code | Poster Novel neural network based architectures enable amortized Bayesian inference in settings where the likelihood function is only implicitly defined by a simulation program. But how faithful is such inference when simulations represent reality somewhat inaccurately? This paper illustrates how imposing a probabilistic structure on the latent data summary space can help to detect potentially catastrophic domain shifts during inference.\n\nCode#don't run code, but show code\n3\n\n\n\nCode#run code, and show code, don't show output\n4\n\n\n\n\n[1] 2\n\n\n[1] 3\n\n\n\nCode#run code, and show code, and show output\n5\n\n[1] 5\n\nCodes&lt;-function(x){x+1}\ns(23)\n\n[1] 24\n\n\nFOR REFERENCE: Graduation Cap\n # stopped working 5/1/2023?"
+  },
+  {
+    "objectID": "pub_ho.html",
+    "href": "pub_ho.html",
+    "title": "Publication & honor",
+    "section": "",
+    "text": "Luyan Wu, Wenhui Zeng, Liandong Feng, Yuxuan Hu, Yidan Sun, Yingxiao Yan, HongYuan Chen & Deju Ye. An activatable radiometric near-inflared fluorescent probe for hydrogen sulfide imaging in vivo. Science China Chemistry. 2020;63(5):741-750 Yan Y, Smith E, Melander O, Ottosson F. The association between plasma metabolites and future risk of all‐cause mortality. Journal of Internal Medicine. 2022;292(5):804-815.  Schillemans T, Yan Y, Ribbenstedt A, Donat-Vargas C, Lindh C, Kivirante H, Wolk A, et al.OMICs signatures linking persistent organic pollutants to cardiovascular disease in the Swedish Mammography Cohort [Submitted]"
+  },
+  {
+    "objectID": "pub_ho.html#publications",
+    "href": "pub_ho.html#publications",
+    "title": "Publication & honor",
+    "section": "",
+    "text": "Luyan Wu, Wenhui Zeng, Liandong Feng, Yuxuan Hu, Yidan Sun, Yingxiao Yan, HongYuan Chen & Deju Ye. An activatable radiometric near-inflared fluorescent probe for hydrogen sulfide imaging in vivo. Science China Chemistry. 2020;63(5):741-750 Yan Y, Smith E, Melander O, Ottosson F. The association between plasma metabolites and future risk of all‐cause mortality. Journal of Internal Medicine. 2022;292(5):804-815.  Schillemans T, Yan Y, Ribbenstedt A, Donat-Vargas C, Lindh C, Kivirante H, Wolk A, et al.OMICs signatures linking persistent organic pollutants to cardiovascular disease in the Swedish Mammography Cohort [Submitted]"
+  },
+  {
+    "objectID": "pub_ho.html#conference-and-awards",
+    "href": "pub_ho.html#conference-and-awards",
+    "title": "Publication & honor",
+    "section": "\n2 Conference and awards",
+    "text": "2 Conference and awards\n\n\nMetabolomics 2022, Valencia, Spain. - Speaker, with award\n\n\nSwedish Bioinformatics workshop 2022,Umeå, Sweden. - Speaker\n\n\nNordic rye forum 2022, Stockholm, Sweden - Speaker"
+  },
+  {
+    "objectID": "pub_ho.html#key-competence",
+    "href": "pub_ho.html#key-competence",
+    "title": "Publication & honor",
+    "section": "\n3 Key competence",
+    "text": "3 Key competence\n\n\nR/shiny (data cleaning, manipulation, analysis, and visualization) - Expert\n\n\nBiostatistics and epidemiological research - Expert\n\n\nSPSS, Excel & Microsoft Office suite - Expert\n\n\npython - Intermediate"
+  },
+  {
+    "objectID": "pub_ho.html#languages",
+    "href": "pub_ho.html#languages",
+    "title": "Publication & honor",
+    "section": "\n4 Languages",
+    "text": "4 Languages\n\n\nMandarin (Native speaker)\n\n\nEnglish (Native level)\n\n\nSwedish (Intermediate/B1 level, SAS certificated)"
+  },
+  {
+    "objectID": "pub_ho.html#references",
+    "href": "pub_ho.html#references",
+    "title": "Publication & honor",
+    "section": "\n5 References",
+    "text": "5 References\nFilip Ottoson Postdoctoral Researcher – Lund University Email: filip.ottoson@med.lu.se Tel: +46739699000 Carl Brunius Associate Professor – Chalmers University of Technology Email: calbrunius@chalmers.se Tel:\n\n© 2023 Yingxiao Yan ★★★★★. All rights reserved"
+  },
+  {
+    "objectID": "pub_ho.html#news",
+    "href": "pub_ho.html#news",
+    "title": "Publication & honor",
+    "section": "\n6 News",
+    "text": "6 News\n\nJanuary 23, 2024: I will be at Bayes on the Beach 2024 in February. I will give a talk about reliable amortized Bayesian inference with neural networks and co-lead a workshop on amortized Bayesian workflows.\nDecember 2023: We launched the BayesFlow Forums! The BayesFlow Forums provide a community for asking and answering questions about all aspects of BayesFlow and amortized Bayesian workflows in general. Hop over and join the discussion!\nOctober 11, 2023: In our recent preprint, we make simulation-based inference more data-efficient by leveraging self-consistency properties of the Bayesian joint model. You find the preprint on arXiv. Update: Published in the NeurIPS UniReps workshop.\nSeptember 22, 2023: Our paper “Detecting Model Misspecification in Amortized Bayesian Inference with Neural Networks” has been awarded the DAGM GCPR Honorable Mention at this year’s German Conference on Pattern Recognition. Huge thanks to my great co-authors!\nSeptember 6, 2023: Our paper “Detecting Model Misspecification in Amortized Bayesian Inference with Neural Networks” has been accepted with oral presentation at the German Conference for Pattern Recognition 2023. Learn more at the project website.\nJune 21, 2023: I will be at the ELLIS Doctoral Symposium 2023 in Helsinki from August 28 to September 1, 2023. Absolutely thrilled to meet other PhD students and researchers and talk about machine learning research in beautiful Helsinki!\nMay 9, 2023: Our paper “JANA: Jointly Amortized Neural Approximation of Complex Bayesian Models” has been accepted to UAI 2023 (Uncertainty in AI). Check out the project page to find out more!\nMarch 29, 2023: I’ll be presenting our paper on Meta-Uncertainty in Bayesian Model Comparison at AISTATS 2023 from April 25-27 in Valencia, Spain. You find links to the paper and code on my Projects page or on the dedicated paper website. If you see me around at AISTATS, let’s chat!"
+  },
+  {
+    "objectID": "pub_ho.html#featured-blog-posts",
+    "href": "pub_ho.html#featured-blog-posts",
+    "title": "Publication & honor",
+    "section": "\n7 Featured Blog Posts",
+    "text": "7 Featured Blog Posts\n\n\n\n\nCode#don't run code, but show code\n3\n\n\n\nCode#run code, and show code, don't show output\n4\n\n\n\n\n[1] 2\n\n\n\nCode#run code, and show code, and show output\n5\n\n[1] 5"
+  }
+]
