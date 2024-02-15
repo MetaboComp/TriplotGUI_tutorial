@@ -1,0 +1,14 @@
+{
+  "hash": "ff62a8ce38074ea5ca9a3174717f591e",
+  "result": {
+    "markdown": "---\ntitle: \"Tutorial(simple)\"\nsubtitle: \"Simple demo of using user Interface in TriplotGUI\"\ntitle-block-banner: true\ntitle-block-banner-color: white\ntitle-block-categories: false\n\npage-layout: full\nformat:\n  html: \n    margin-top: 0em\n    margin-bottom: 0em\n    padding-top: 0em\n    padding-bottom: 0em\n    minimal: true\n    smooth-scroll: true\n    fig-responsive: true\n    toc-location: right\n    toc-depth: 5\n    toc-title: Tutorial\n---\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

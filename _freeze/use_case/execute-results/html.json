@@ -1,0 +1,14 @@
+{
+  "hash": "28ad8180c3c19ecc4343265af1125165",
+  "result": {
+    "markdown": "---\ntitle: \"Use case\"\nsubtitle: \"A use case example user interface in TriplotGUI\"\ntitle-block-banner: true\ntitle-block-banner-color: white\ntitle-block-categories: false\n\npage-layout: full\nformat:\n  html: \n    margin-top: 0em\n    margin-bottom: 0em\n    padding-top: 0em\n    padding-bottom: 0em\n    minimal: true\n    smooth-scroll: true\n    fig-responsive: true\n    toc-location: right\n    toc-depth: 5\n    toc-title: Use case\n---\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

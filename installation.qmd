@@ -1,0 +1,97 @@
+---
+title: "Installation"
+subtitle: "Steps to install the package and gointo user interface"
+title-block-banner: true
+title-block-banner-color: white
+title-block-categories: false
+
+page-layout: full
+format:
+  html: 
+    margin-top: 0em
+    margin-bottom: 0em
+    padding-top: 0em
+    padding-bottom: 0em
+    minimal: true
+    smooth-scroll: true
+    fig-responsive: true
+    toc-location: right
+    toc-depth: 5
+    toc-title: Installation
+    code-fold: show
+    code-summary: "Show the code"
+    code-overflow: wrap
+    code-tools: true
+    code-copy: true
+    highlight: tango
+    df-print: paged  ## kable is another option How the dataframe looks like 
+    standalone: false  ### specifies if all assets and libraries must be integrated into the output html file as a standalone document.
+    fig-align: right
+    theme:  solar
+geometry: margin=lin  
+---
+
+### Install packages
+
+Please run the following code to install the packages needed. This needs to be run in your R console.
+
+```{r }
+#| eval: false
+#| echo: true
+#| warning: false
+#| error: true
+#| classes: styled-output
+
+### I may need mix Omics and impute not sure
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("mixOmics")
+BiocManager::install("impute")
+BiocManager::install("preprocessCore")
+BiocManager::install("GO.db")
+
+install.packages("remotes")
+remotes::install_gitlab("YingxiaoYan/TriplotGUI")
+```
+
+Sometimes it pops up in your console to ask you *which package you would like to update*. We recommened you to chose **3.None**
+
+Sometimes it pops up in your console to ask *Do you want to install from soutce packages which need compliation* . We recommended you to chose **no** 
+
+### Load libraries 
+
+Run the following code in your R console.
+
+```{r }
+#| eval: false
+#| echo: true
+#| warning: false
+#| error: true
+#| classes: styled-output
+
+library(TriplotGUI)
+```
+
+### Download the example data for user interface
+
+Go to my [git repository](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Example_data.rar?ref_type=heads){target="_blank"}.
+Click the download icon at the right side and download the Exampledata.rar. Unzip it and you will find the data that will be used as example in the tutorial.
+
+
+### Activate the user interface
+
+Run the following code in your R console.
+
+```{r }
+#| eval: false
+#| echo: true
+#| warning: false
+#| error: true
+#| classes: styled-output
+
+options(shiny.maxRequestSize=100*1024^2)
+TriplotGUI_shiny_tryout()
+
+```
+
+

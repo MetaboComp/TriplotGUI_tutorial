@@ -1,1 +1,1 @@
-Sitemap: https://gitlab.com/YingxiaoYangobacktothe same site mainpage/sitemap.xml
+Sitemap: https://yingxiaoyan.gitlab.io/triplotgui_tutorial/sitemap.xml

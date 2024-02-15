@@ -1,6 +1,6 @@
 ---
-title: "Yingxiao Yan"
-subtitle: "An awesome person"
+title: "TriplotGUI"
+subtitle: "A graphical user interface to interpret associations between multiple exposures, Omics and disease outcomes"
 title-block-banner: true
 title-block-banner-color: white
 title-block-categories: false
@@ -17,139 +17,46 @@ format:
     fig-responsive: true
     toc-location: right
     toc-depth: 5
-    toc-title: Awesome me
+    toc-title: Guide of this website
 
-image: img/archery.jpg
+image: img/TriplotGUI_logo_white.png
 about: 
   template: solana
-  image-shape: round
+  image-shape: rectangle
   image-width: 15em
-  links:
-    - icon: linkedin
-      text: LinkedIn
-      href: https://www.linkedin.com/in/yingxiao-yan
-      target: _blank
-    - icon: git
-      text: GitLab
-      href: https://gitlab.com/YingxiaoYan/
-      target: _blank
-    - icon: envelope
-      text: Email
-      href: mailto:yingxiao.yan.007@gmail.com
 ---
 
-This content appears above the formatted about page content.
-
 ::: small-text
-Hi there! I'm Yan (which is my last name, my first name is Yingxiao). Professionally, I love programming in R. Outside of work, I do kickboxing, archery and shotting Poke around my website to learn more!
+<strong>This page gives a brief explanation of what the items in the navigation bar mean.</strong>
 :::
 
-### Key skills
+### Introduction
+This section explains why we develop the TriplotGUI package: The research background, previous work of triplot and our aim.
 
-I'm Sam (and my last name is pronounced "chick"). I'm the Data Training Coordinator at the [National Center for Ecological Analysis & Synthesis](https://www.nceas.ucsb.edu/) (NCEAS) located at UC Santa Barbara, where I'm working to develop and teach data science training curricula for the [Master of Environmental Data Science](https://bren.ucsb.edu/masters-programs/master-environmental-data-science) (MEDS) program and other data science initiatives across NCEAS and UCSB. I am also a co-organizer of [R-Ladies Santa Barbara](https://www.meetup.com/rladies-santa-barbara/), a local data science group which works to promote gender diversity in the R community. In my spare time, you'll typically find me hiking with my pup or cooking family dinners with friends.
+### Installation
+This section gives instructions on how to install the packages needed, load library and activate the user interface.
 
-### Education
+### Tutorial(simple)
+This section provides a simple example of how to use the TriplotGUI package. The users can either use code or the user interface to achieve the similar purpose. The code tutorial suits for users that is at beginner R level. The user interface tutorial suits for user that has limited epidemiology knowledge and limited experience in dealing with high dimensional data.
 
-::: topbr
-<p class="custom-subtitle">
+The dataset used is CAMP_2
 
-{{< fa graduation-cap title="A graduation cap" >}} **MS in Ecology, Evolution & Marine Biology, 2020**
+### Tutorial(complex)
+This section provides a simple example of how to use the TriplotGUI package. The users can either use code or the user interface to achieve the similar purpose. The code tutorial suits for users that is at intermediate or advanced R level. The user interface tutorial suits for user that has epidemiology knowledge and experience in dealing with high dimensional data.
 
-</p>
+The dataset used is HealthyNordicDiet_2.
 
-<p class="custom-subtitle2">
+### Use Case
+This section shows a smoother example of how to use the interface to perform data analysis and interpretation, omiting the detailed explanation in the tutorial.
 
-University of California, Santa Barbara
+The dataset used is ExposomeChallenge.
 
-</p>
+### Paper
+This sections covers relevant papers of our TriplotGUI package
 
-<p>University of California, Santa Barbara</p>
+### About us
+This sections give brief introduction of the contributors to this package.
 
-<p class="custom-subtitle">
+### Contact us
+If you have questions in the package, tutorial and this website, or would like to seek collaboration, please contact <a href="mailto:yingxiao@chalmers.se">yingxiao\@chalmers.se </a>
 
-{{< fa graduation-cap title="A graduation cap" >}} **BS in Marine Biology, 2016**
-
-</p>
-
-<p class="custom-subtitle2">
-
-Northeastern University
-
-</p>
-
-<p>University of California, Santa Barbara</p>
-
-<p class="custom-subtitle">
-
-{{< fa graduation-cap title="A graduation cap" >}} **BS in Marine Biology, 2016**
-
-</p>
-
-<p class="custom-subtitle2">
-
-Northeastern University
-
-</p>
-
-<p>University of California, Santa Barbara</p>
-
-<p class="custom-subtitle">
-
-{{< fa graduation-cap title="A graduation cap" >}} **BS in Marine Biology, 2016**
-
-</p>
-
-<p class="custom-subtitle2">
-
-Northeastern University
-
-</p>
-
-<p>University of California, Santa Barbara</p>
-:::
-
-### Professional Experience
-
-::: topbr
-<p class="custom-subtitle">
-
-{{< fa chalkboard-teacher title="A teacher at a chalkboard" >}} **Data Training Coordinator, 2021-present**
-
-</p>
-
-<p class="custom-subtitle2">
-
-National Center for Ecological Analysis & Synthesis
-
-</p>
-
-<p>University of California, Santa Barbara</p>
-
-<p class="custom-subtitle">
-
-{{< fa chalkboard-teacher title="A teacher at a chalkboard" >}} **Data Training Coordinator, 2021-present**
-
-</p>
-
-<p class="custom-subtitle2">
-
-National Center for Ecological Analysis & Synthesis
-
-</p>
-
-<p>University of California, Santa Barbara</p>
-
-<p class="custom-subtitle">
-
-{{< fa chart-bar title="A bar chart" >}} **Data Science Fellow, 2020-2021**
-
-</p>
-
-<p class="custom-subtitle2">
-
-National Center for Ecological Analysis & Synthesis
-
-</p>
-
-<p>University of California, Santa Barbara</p>
-:::

@@ -60,7 +60,7 @@ $toc-active-border:$green;
 
 //$headings-color: $black;
 //Have not figure out how to change toc tiltle and content font size separately;
-#TOC {                      
+#TOC {
   color:$black;    //color for the whole toc
 }
 h1 {
@@ -71,7 +71,7 @@ h1 {
 h2{                 //toc title is h2 title
   letter-spacing: 3px;
   font-weight: 700;  //Bold font weight;
-  color: $yellow;
+  color: $black;
 }
 h3{
   letter-spacing: 3px;
@@ -109,9 +109,9 @@ body{
     overscroll-behavior: none;
 }
 // Links
-$link-color: $blue !default;      
+$link-color: $blue !default;
 $link-decoration: none !default;    //When there is not hovering;
-$link-hover-color: $blue !default;      
+$link-hover-color: $blue !default;
 $link-hover-decoration: underline !default;  //When there is hovering;
 
 
@@ -122,7 +122,7 @@ $footer-fg: $yellow !default;
 footer{  a {
     text-decoration: none; /* Remove underline for links */
     transition: color 0.1s; /* Smooth transition for color change */
-    
+
     &:hover {
       color: $blue; /* Change link color on hover */
       text-decoration: underline;
@@ -132,8 +132,8 @@ footer{  a {
 
 
 // Inline code
-$code-bg: $purple !default;
-$code-color: $teal !default;
+$code-bg: $cream !default;
+$code-color: $green !default;
 //code chunk
 $code-block-bg: $cream !default;
 $code-block-bg-alpha: -1em;
@@ -193,7 +193,7 @@ $dropdown-link-hover-bg:  $yellow;
 }
 
 .extra-small-text{
-  font-size: 14px;  
+  font-size: 14px;
 }
 
 .dark-gray-text{
@@ -238,7 +238,7 @@ $dropdown-link-hover-bg:  $yellow;
 
 
 
-    // In the default Quarto template, .nav-footer-center has position: absolute 
+    // In the default Quarto template, .nav-footer-center has position: absolute
     // turned on, which makes the div not be a flex item
     // This changes that so that it *is* a flex item
     .nav-footer-center {
@@ -252,7 +252,7 @@ $dropdown-link-hover-bg:  $yellow;
         }
     }
 
-    // When the screen is medium or smaller, make each footer chunk be 100% width 
+    // When the screen is medium or smaller, make each footer chunk be 100% width
     // and centered; otherwise make them be 33% width and left/right/centerd
     .nav-footer-left,
     .nav-footer-right,
@@ -292,7 +292,7 @@ $dropdown-link-hover-bg:  $yellow;
     .section_padding {
         padding: 1rem 2rem 0rem 2rem;
     }
-    
+
     .hero {
       padding-top: 2rem;
     }
@@ -306,7 +306,7 @@ $dropdown-link-hover-bg:  $yellow;
     .section_padding {
         padding: 1rem 2rem 0rem 2rem;
     }
-    
+
     .hero {
       padding-top: 2rem;
     }
@@ -366,10 +366,10 @@ $dropdown-link-hover-bg:  $yellow;
     min-height: 53px;
     max-height: 53px;
     padding: 0 0rem;
-    margin: 0 !important; 
-    padding:0 !important; 
-    border-radius: 0px !important; 
-    background-color: transparent; 
+    margin: 0 !important;
+    padding:0 !important;
+    border-radius: 0px !important;
+    background-color: transparent;
     width: 100%;
 }
 
@@ -400,11 +400,11 @@ $dropdown-link-hover-bg:  $yellow;
     max-width: 350px;
     min-width: 250px;
     border-radius: 50%;
-    box-shadow: 
-    rgba(0, 0, 0, 0.25) 0px 54px 55px, 
-    rgba(0, 0, 0, 0.12) 0px -12px 30px, 
-    rgba(0, 0, 0, 0.12) 0px 4px 6px, 
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, 
+    box-shadow:
+    rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px,
+    rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px,
     rgba(0, 0, 0, 0.09) 0px -3px 5px;
     border: 3px solid white;
 }
@@ -430,7 +430,7 @@ $dropdown-link-hover-bg:  $yellow;
         font-size: 16px;
         line-height: 24px;
     }
-    
+
     .hero_content_below_button span{
       font-size: 11px;
     }
@@ -460,7 +460,7 @@ $dropdown-link-hover-bg:  $yellow;
         font-size: 12px;
         line-height: 16px;
     }
-    
+
     .hero_content_below_button span{
       font-size: 10px;
     }

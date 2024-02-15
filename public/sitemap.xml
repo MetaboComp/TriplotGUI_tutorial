@@ -1,27 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://gitlab.com/YingxiaoYangobacktothe same site mainpage/about.html</loc>
-    <lastmod>2024-02-14T09:53:48.941Z</lastmod>
+    <loc>https://yingxiaoyan.gitlab.io/triplotgui_tutorial/about.html</loc>
+    <lastmod>2024-02-15T08:30:09.591Z</lastmod>
   </url>
   <url>
-    <loc>https://gitlab.com/YingxiaoYangobacktothe same site mainpage/CV.html</loc>
-    <lastmod>2024-02-14T09:53:54.317Z</lastmod>
+    <loc>https://yingxiaoyan.gitlab.io/triplotgui_tutorial/complex.html</loc>
+    <lastmod>2024-02-15T08:30:12.633Z</lastmod>
   </url>
   <url>
-    <loc>https://gitlab.com/YingxiaoYangobacktothe same site mainpage/explnation.html</loc>
-    <lastmod>2024-02-14T09:53:54.964Z</lastmod>
+    <loc>https://yingxiaoyan.gitlab.io/triplotgui_tutorial/complex_code.html</loc>
+    <lastmod>2024-02-15T08:30:16.398Z</lastmod>
   </url>
   <url>
-    <loc>https://gitlab.com/YingxiaoYangobacktothe same site mainpage/index.html</loc>
-    <lastmod>2024-02-14T09:53:56.594Z</lastmod>
+    <loc>https://yingxiaoyan.gitlab.io/triplotgui_tutorial/explnation.html</loc>
+    <lastmod>2024-02-15T08:30:18.559Z</lastmod>
   </url>
   <url>
-    <loc>https://gitlab.com/YingxiaoYangobacktothe same site mainpage/project.html</loc>
-    <lastmod>2024-02-14T09:54:03.937Z</lastmod>
+    <loc>https://yingxiaoyan.gitlab.io/triplotgui_tutorial/index.html</loc>
+    <lastmod>2024-02-15T08:30:20.798Z</lastmod>
   </url>
   <url>
-    <loc>https://gitlab.com/YingxiaoYangobacktothe same site mainpage/pub_ho.html</loc>
-    <lastmod>2024-02-14T09:54:11.351Z</lastmod>
+    <loc>https://yingxiaoyan.gitlab.io/triplotgui_tutorial/installation.html</loc>
+    <lastmod>2024-02-15T08:34:19.864Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yingxiaoyan.gitlab.io/triplotgui_tutorial/introduction.html</loc>
+    <lastmod>2024-02-15T08:30:28.412Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yingxiaoyan.gitlab.io/triplotgui_tutorial/papers.html</loc>
+    <lastmod>2024-02-15T08:30:32.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yingxiaoyan.gitlab.io/triplotgui_tutorial/project.html</loc>
+    <lastmod>2024-02-15T08:30:36.021Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yingxiaoyan.gitlab.io/triplotgui_tutorial/pub_ho.html</loc>
+    <lastmod>2024-02-15T08:30:40.095Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yingxiaoyan.gitlab.io/triplotgui_tutorial/simple.html</loc>
+    <lastmod>2024-02-15T08:30:43.618Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yingxiaoyan.gitlab.io/triplotgui_tutorial/simple_code.html</loc>
+    <lastmod>2024-02-15T08:30:47.375Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yingxiaoyan.gitlab.io/triplotgui_tutorial/use_case.html</loc>
+    <lastmod>2024-02-15T08:30:50.490Z</lastmod>
   </url>
 </urlset>

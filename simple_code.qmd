@@ -1,0 +1,103 @@
+---
+title: "Tutorial(simple) - Code"
+subtitle: "Simple demo of using code in TriplotGUI"
+title-block-banner: true
+title-block-banner-color: white
+title-block-categories: false
+
+page-layout: full
+format:
+  html: 
+    margin-top: 0em
+    margin-bottom: 0em
+    padding-top: 0em
+    padding-bottom: 0em
+    minimal: true
+    smooth-scroll: true
+    fig-responsive: true
+    toc-location: right
+    toc-depth: 5
+    toc-title: Tutorial
+    number-sections: true  ## add number in the session or not
+    number-depth: 4
+    code-fold: show
+    code-summary: "Show the code"
+    code-overflow: wrap
+    code-tools: true
+    code-copy: true
+    highlight: tango
+    df-print: paged  ## kable is another option How the dataframe looks like 
+    standalone: false  ### specifies if all assets and libraries must be integrated into the output html file as a standalone document.
+    fig-align: right
+    theme:  solar
+geometry: margin=lin  
+---
+
+```{r, include=FALSE}
+##This is a function that combines html and rmarkdown. It aims to generate a button that could hide output or plot (fold.output=T or fold.plot=T).
+hooks = knitr::knit_hooks$get()
+hook_foldable = function(type) {
+  force(type)
+  function(x, options) {
+    res = hooks[[type]](x, options)
+    
+    if (!isTRUE(options[[paste0("fold.", type)]])) return(res)
+    
+    paste0(
+      "<details><summary>", type, "</summary>\n\n",
+      res,
+      "\n\n</details>"
+    )
+  }
+}
+knitr::knit_hooks$set(
+  output = hook_foldable("output"),
+  plot = hook_foldable("plot")
+)
+```
+
+
+`code`
+
+```{r }
+#| eval: false
+#| echo: true
+#| warning: false
+#| error: true
+#| classes: styled-output
+#don't run code, but show code
+3
+```
+
+```{r}
+#| eval: true
+#| echo: true
+#| output: false
+#| classes: styled-output
+#run code, and show code, don't show output
+4
+```
+
+```{r}
+#| eval: true
+#| echo: false
+#| output: true
+#| classes: styled-output
+#run code, not show code, but show output
+1+1
+s<-function(x){x+1}
+s(2)
+```
+
+```{r}
+#| eval: true
+#| echo: true
+#| output: true
+#run code, and show code, and show output
+5
+s<-function(x){x+1}
+s(23)
+```
+
+FOR REFERENCE: `r fontawesome::fa("graduation-cap", fill = "#98A08D", a11y = "sem")` \# stopped working 5/1/2023?
+
