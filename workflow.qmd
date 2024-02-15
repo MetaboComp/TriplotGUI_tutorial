@@ -5,6 +5,7 @@ title-block-banner: true
 title-block-banner-color: white
 title-block-categories: false
 page-layout: full
+
 format:
   html: 
     margin-top: 0em
