@@ -4,7 +4,6 @@ subtitle: "The details of statistics and epidemiology"
 title-block-banner: true
 title-block-banner-color: white
 title-block-categories: false
-
 page-layout: full
 format:
   html: 
@@ -32,22 +31,7 @@ format:
 ### Mediation analysis
 
 ### Interpreation of the triplot of mediation
-Most observational epidemiology research studies associations between single exposure and outcome. Emerging exposure- and outcome-wide studies aim to more broadly identify potential risk factors and their health effects. Although omics technologies have permitted linking exposures to outcomes via molecular data, large-scale exploration of mediating mechanisms is frequently lacking. Likely because Omics data are often high dimensional and there is a lack of effective tools for direct interpretation of complex relationships between multiple exposures, Omics and outcomes. We therefore developed the TriplotGUI tool to advance exposome-risk assessment and facilitate the interpretation of such complex associations via metabolic regulation.
 
-Step1: PCA/WGCNA plot
-Step2: Exposures' correlations
-Step2: Outcomes' associations
-Step3: Triplot
-Step4: Triplot with mediation
-Step4: Mediations
-Step5: Check and compare
-Step6: Download data
-
-To get started, upload your dataset and navigate through the dashboard's steps to access the different functionalities. Each page provides specific tools and visualizations to guide you through the data analysis & visualization process.
-
-
-
-### Aim
 
 
 ```{=html}

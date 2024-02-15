@@ -1,122 +1,10 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About us",
+    "objectID": "workflow.html",
+    "href": "workflow.html",
+    "title": "Workflow",
     "section": "",
-    "text": "A great person indeed\n\n\n Role: Main contributor of the package and manuscript, slayer of dragon\n Title: PhD candidate\n Affiliation: Food and nutrition science division, department of Life science, Chalmers University of Technology\n Brief:\n Email:  yingxiao@chalmers.se"
-  },
-  {
-    "objectID": "about.html#fa-person-rifle-titleshooter-fa-bullseye-titlearchery-yingxiao-yan",
-    "href": "about.html#fa-person-rifle-titleshooter-fa-bullseye-titlearchery-yingxiao-yan",
-    "title": "About us",
-    "section": "",
-    "text": "A great person indeed\n\n\n Role: Main contributor of the package and manuscript, slayer of dragon\n Title: PhD candidate\n Affiliation: Food and nutrition science division, department of Life science, Chalmers University of Technology\n Brief:\n Email:  yingxiao@chalmers.se"
-  },
-  {
-    "objectID": "about.html#fa-chalkboard-user-titleacademic-fa-people-group-titlea-person-with-a-backpack-and-trekking-pol-carl-brunius",
-    "href": "about.html#fa-chalkboard-user-titleacademic-fa-people-group-titlea-person-with-a-backpack-and-trekking-pol-carl-brunius",
-    "title": "About us",
-    "section": "\n  Carl Brunius",
-    "text": "Carl Brunius\n\n\n\n\nKnivsta inhabitor\n\n\n Role: Supervisor of Yan\n Title: Associate professor\n Affiliation: Food and nutrition science division, department of Life science, Chalmers University of Technology\n Brief:\n Email:  carl.brunius@chalmers.se"
-  },
-  {
-    "objectID": "about.html#fa-floppy-disk-titleacademic-anton-ribbenstedt",
-    "href": "about.html#fa-floppy-disk-titleacademic-anton-ribbenstedt",
-    "title": "About us",
-    "section": "\n Anton Ribbenstedt",
-    "text": "Anton Ribbenstedt\n\n\n\n\nhair length changes all the time\n\n\n Role: code helper and guider\n Title: Research engineer\n Affiliation: Chalmers Mass Spectrometry Infrastructure, Department of Life science, Chalmers university of Technology\n Brief:\n Email:  anton.ribbenstedt@chalmers.se"
-  },
-  {
-    "objectID": "explnation.html",
-    "href": "explnation.html",
-    "title": "explanation",
-    "section": "",
-    "text": "Scss rule explain\nThe index main page\nCV page\n.embed-container iframe\n.embed-container:\nThis is a class selector targeting an HTML element with the class name embed-container. It is likely used as a container for embedding various types of content.\niframe: This is an HTML element selector targeting the iframe element.\nCombined: .embed-container iframe: This selector targets any iframe element that is a descendant (child, grandchild, etc.) of an element with the class embed-container.\nThe  element in HTML is used to embed external resources, such as images, audio, videos, or other multimedia content, into a web page. It provides a generic container that allows you to include various types of content within your HTML document.\n&lt;object data=\"example.pdf\" type=\"application/pdf\" width=\"500\" height=\"600\"&gt; Your browser does not support embedded PDF files. &lt;a href=\"example.pdf\"&gt;Download the PDF&lt;/a&gt; instead. &lt;/object&gt;\nThe &lt;iframe&gt; element in HTML (Inline Frame) is used to embed another HTML document within the current document. It allows you to display content from another source, such as a different webpage, in a specified rectangular area on your page. The content inside the &lt;iframe&gt; is essentially a separate document with its own HTML, CSS, and JavaScript.\n&lt;iframe src=\"https://www.example.com\" width=\"600\" height=\"400\" frameborder=\"0\" allowfullscreen&gt;&lt;/iframe&gt;\nThe &lt;embeded&gt;Used to embed external applications or plugins.\n&lt;embed src=\"example.swf\" type=\"application/x-shockwave-flash\" width=\"400\" height=\"300\"&gt;\n#toolbar=0 This fragment is typically used with PDFs to control the visibility of the PDF viewer’s toolbar. Setting it to 0 generally means hiding the toolbar. The toolbar in a PDF viewer often contains options for navigation, zooming, and other related actions.\nThe height: 0; CSS property is used to set the height of an element to zero pixels. When applied to an element, this property essentially makes the element invisible in terms of its vertical dimension. The content inside the element, if any, will still exist but will be collapsed or hidden.\nHere’s a common use case for height: 0; along with other properties:\nThe CSS property overflow: hidden; is used to control how content that overflows the content area of an element should be handled. When applied to an element, it hides any content that exceeds the specified dimensions of the element’s box.\n\n\n\n \n\n \n\n  \n    © 2024 Yingxiao Yan CC BY-SA 4.0   \n    TriplotGUI gitlab\n    View source of this site on GitLab"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "TriplotGUI",
-    "section": "",
-    "text": "This page gives a brief explanation of what the items in the navigation bar mean.\n\n\nIntroduction\nThis section explains why we develop the TriplotGUI package: The research background, previous work of triplot and our aim.\n\n\nInstallation\nThis section gives instructions on how to install the packages needed, load library and activate the user interface.\n\n\nTutorial(simple)\nThis section provides a simple example of how to use the TriplotGUI package. The users can either use code or the user interface to achieve the similar purpose. The code tutorial suits for users that is at beginner R level. The user interface tutorial suits for user that has limited epidemiology knowledge and limited experience in dealing with high dimensional data.\nThe dataset used is CAMP_2\n\n\nTutorial(complex)\nThis section provides a simple example of how to use the TriplotGUI package. The users can either use code or the user interface to achieve the similar purpose. The code tutorial suits for users that is at intermediate or advanced R level. The user interface tutorial suits for user that has epidemiology knowledge and experience in dealing with high dimensional data.\nThe dataset used is HealthyNordicDiet_2.\n\n\nUse Case\nThis section shows a smoother example of how to use the interface to perform data analysis and interpretation, omiting the detailed explanation in the tutorial.\nThe dataset used is ExposomeChallenge.\n\n\nPaper\nThis sections covers relevant papers of our TriplotGUI package\n\n\nAbout us\nThis sections give brief introduction of the contributors to this package.\n\n\nContact us\nIf you have questions in the package, tutorial and this website, or would like to seek collaboration, please contact yingxiao@chalmers.se"
-  },
-  {
-    "objectID": "installation.html",
-    "href": "installation.html",
-    "title": "Installation",
-    "section": "",
-    "text": "Install packages\nPlease run the following code to install the packages needed. This needs to be run in your R console.\n\nCode### I may need mix Omics and impute not sure\nif (!require(\"BiocManager\", quietly = TRUE))\n    install.packages(\"BiocManager\")\nBiocManager::install(\"mixOmics\")\nBiocManager::install(\"impute\")\nBiocManager::install(\"preprocessCore\")\nBiocManager::install(\"GO.db\")\n\ninstall.packages(\"remotes\")\nremotes::install_gitlab(\"YingxiaoYan/TriplotGUI\")\n\n\nSometimes it pops up in your console to ask you which package you would like to update. We recommened you to chose 3.None\nSometimes it pops up in your console to ask Do you want to install from soutce packages which need compliation . We recommended you to chose no\nLoad libraries\nRun the following code in your R console.\n\nCodelibrary(TriplotGUI)\n\n\nDownload the example data for user interface\nGo to my git repository. Click the download icon at the right side and download the Exampledata.rar. Unzip it and you will find the data that will be used as example in the tutorial.\nActivate the user interface\nRun the following code in your R console.\n\nCodeoptions(shiny.maxRequestSize=100*1024^2)\nTriplotGUI_shiny_tryout()\n\n\nMaximum uploaded size exceed when break down what should you do"
-  },
-  {
-    "objectID": "introduction.html",
-    "href": "introduction.html",
-    "title": "Introduction",
-    "section": "",
-    "text": "Background\nMost observational epidemiology research studies associations between single exposure and outcome. Emerging exposure- and outcome-wide studies aim to more broadly identify potential risk factors and their health effects. Although omics technologies have permitted linking exposures to outcomes via molecular data, large-scale exploration of mediating mechanisms is frequently lacking. Likely because Omics data are often high dimensional and there is a lack of effective tools for direct interpretation of complex relationships between multiple exposures, Omics and outcomes. We therefore developed the TriplotGUI tool to advance exposome-risk assessment and facilitate the interpretation of such complex associations via metabolic regulation.\nStep1: PCA/WGCNA plot Step2: Exposures’ correlations Step2: Outcomes’ associations Step3: Triplot Step4: Triplot with mediation Step4: Mediations Step5: Check and compare Step6: Download data\nTo get started, upload your dataset and navigate through the dashboard’s steps to access the different functionalities. Each page provides specific tools and visualizations to guide you through the data analysis & visualization process.\n\n\nPrevious research\n\n\nAim\n\n\n\nReference\n\nSchillemans T, Shi L, Liu X, Åkesson A, Landberg R, Brunius C. Visualization and Interpretation of Multivariate Associations with Disease Risk Markers and Disease Risk-The Triplot. Metabolites. 2019 Jul 6;9(7):133. doi: 10.3390/metabo9070133"
-  },
-  {
-    "objectID": "papers.html",
-    "href": "papers.html",
-    "title": "Relevant papers",
-    "section": "",
-    "text": "Download main paper \n\n\n\n\nMain paper\n\n\n\n\n\n\n\nOther paperxs\n\n\nBodén S, Zheng R, Ribbenstedt A, Landberg R, Harlid S, Vidman L, Gunter MJ, Winkvist A, Johansson I, Van Guelpen B, Brunius C. Dietary patterns, untargeted metabolite profiles and their association with colorectal cancer risk. Sci Rep. 2024 Jan 26;14(1):2244. doi: 10.1038/s41598-023-50567-6\nSchillemans T, Yan Y, Ribbenstedt A, Donat-Vargas C, Lindh CH, Kiviranta H, Rantakokko P, Wolk A, Landberg R, Åkesson A, Brunius C. OMICs Signatures Linking Persistent Organic Pollutants to Cardiovascular Disease in the Swedish Mammography Cohort. Environ Sci Technol. 2024 Jan 16;58(2):1036-1047. doi: 10.1021/acs.est.3c06388.\nTitova OE, Brunius C, Warensjö Lemming E, Stattin K, Baron JA, Byberg L, Michaëlsson K, Larsson SC. Comprehensive analyses of circulating cardiometabolic proteins and objective measures of fat mass. Int J Obes (Lond). 2023 Nov;47(11):1043-1049. doi: 10.1038/s41366-023-01351-z"
-  },
-  {
-    "objectID": "project.html",
-    "href": "project.html",
-    "title": "Projects",
-    "section": "",
-    "text": "This page contains a brief overview of projects that I significantly shaped throughout the entire project life cycle. In academic terms, this mostly corresponds to first-author publications (single and shared). If you’re interested in a full list of projects I have been involved in, please check out my CV."
-  },
-  {
-    "objectID": "project.html#cmpe",
-    "href": "project.html#cmpe",
-    "title": "Projects",
-    "section": "\n1 Consistency Model Posterior Estimation",
-    "text": "1 Consistency Model Posterior Estimation\n\nPreprint (arXiv)\nConsistency models for neural posterior estimation (CMPE) is a new free-form conditional sampler for scalable, fast, and amortized simulation-based inference with generative neural networks. CMPE combines the advantages of normalizing flows and flow matching methods into a single generative architecture: It essentially distills a continuous probability flow and enables rapid few-shot inference with an unconstrained architecture that can be tailored to the structure of the estimation problem."
-  },
-  {
-    "objectID": "project.html#multinpe",
-    "href": "project.html#multinpe",
-    "title": "Projects",
-    "section": "\n2 Deep Fusion for Multimodal Simulation-Based Inference",
-    "text": "2 Deep Fusion for Multimodal Simulation-Based Inference\n\nPreprint (arXiv)\nWe present multimodal neural posterior estimation (MultiNPE), a method to integrate heterogeneous data from different sources in simulation-based inference with neural networks. Inspired by advances in attention-based deep fusion learning, it empowers researchers to analyze data from different domains and infer the parameters of complex mathematical models with increased accuracy and better performance under partially missing data."
-  },
-  {
-    "objectID": "project.html#data-efficient-amortized-bayesian-inference-via-self-consistency-losses",
-    "href": "project.html#data-efficient-amortized-bayesian-inference-via-self-consistency-losses",
-    "title": "Projects",
-    "section": "\n3 Data-Efficient Amortized Bayesian Inference via Self-Consistency Losses",
-    "text": "3 Data-Efficient Amortized Bayesian Inference via Self-Consistency Losses\n\nShort Paper (NeurIPS UniReps 2023)\nWe propose a method to improve the efficiency and accuracy of amortized Bayesian inference by leveraging universal symmetries in the probabilistic joint model \\(p(\\theta,y)\\). In a nutshell, we invert Bayes’ theorem and estimate the marginal likelihood based on approximate representations of the joint model. Upon perfect approximation, the marginal likelihood is constant across all parameter values by definition. However, approximation error leads to undesirable variance in the marginal likelihood estimates across different parameter values. We formulate violations of this symmetry as a loss function to accelerate the learning dynamics of conditional neural density estimators."
-  },
-  {
-    "objectID": "project.html#meta-uncertainty-BMC",
-    "href": "project.html#meta-uncertainty-BMC",
-    "title": "Projects",
-    "section": "\n4 Meta-Uncertainty in Bayesian Model Comparison",
-    "text": "4 Meta-Uncertainty in Bayesian Model Comparison\n\nPaper (AISTATS 2023) | Code | ’Project website | Poster | Presentation (15min)\nMeta-Uncertainty represents a fully probabilistic framework for quantifying the uncertainty over Bayesian posterior model probabilities (PMPs) using meta-models. Meta-models integrate simulated and observed data into a predictive distribution for new PMPs and help reduce overconfidence and estimate the PMPs in future replication studies."
-  },
-  {
-    "objectID": "project.html#bayesflow-amortized-bayesian-workflows-with-neural-networks",
-    "href": "project.html#bayesflow-amortized-bayesian-workflows-with-neural-networks",
-    "title": "Projects",
-    "section": "\n5 BayesFlow: Amortized Bayesian Workflows With Neural Networks",
-    "text": "5 BayesFlow: Amortized Bayesian Workflows With Neural Networks\n\nSoftware Paper | Documentation | BayesFlow Forums (new!)\nBayesFlow is a Python library for simulation-based training of established neural network architectures for amortized data compression and inference. Amortized Bayesian inference, as implemented in BayesFlow, enables users to train custom neural networks on model simulations and re-use these networks for any subsequent application of the models. Since the trained networks can perform inference almost instantaneously, the upfront neural network training is quickly amortized."
-  },
-  {
-    "objectID": "project.html#jana-jointly-amortized-neural-approximation-of-complex-bayesian-models",
-    "href": "project.html#jana-jointly-amortized-neural-approximation-of-complex-bayesian-models",
-    "title": "Projects",
-    "section": "\n6 JANA: Jointly Amortized Neural Approximation of Complex Bayesian Models",
-    "text": "6 JANA: Jointly Amortized Neural Approximation of Complex Bayesian Models\n\nPaper (UAI 2023) | Python library\nJANA is a new amortized solution for intractable likelihood functions and posterior densities in Bayesian modeling. It trains three networks to learn both an approximate posterior and a surrogate model for the likelihood, enabling amortized marginal likelihood and posterior predictive estimation."
-  },
-  {
-    "objectID": "project.html#sbi-model-misspecification",
-    "href": "project.html#sbi-model-misspecification",
-    "title": "Projects",
-    "section": "\n7 Detecting Model Misspecification in Amortized Bayesian Inference with Neural Networks",
-    "text": "7 Detecting Model Misspecification in Amortized Bayesian Inference with Neural Networks\n\nPaper (GCPR 2023, Best Paper Honorable Mention) | Code | Poster Novel neural network based architectures enable amortized Bayesian inference in settings where the likelihood function is only implicitly defined by a simulation program. But how faithful is such inference when simulations represent reality somewhat inaccurately? This paper illustrates how imposing a probabilistic structure on the latent data summary space can help to detect potentially catastrophic domain shifts during inference.\n\nCode#don't run code, but show code\n3\n\n\n\nCode#run code, and show code, don't show output\n4\n\n\n\n\n[1] 2\n\n\n[1] 3\n\n\n\nCode#run code, and show code, and show output\n5\n\n[1] 5\n\nCodes&lt;-function(x){x+1}\ns(23)\n\n[1] 24\n\n\nFOR REFERENCE: Graduation Cap\n # stopped working 5/1/2023?"
+    "text": "Data reduction on Omics data\n\n\nCorrelations with exposures\n\n\nAssociation with outcomes\n\n\nInterpretation of triplot\n\n\nMediation analysis\n\n\nInterpreation of the triplot of mediation\n\n\n\nReference\n\nSchillemans T, Shi L, Liu X, Åkesson A, Landberg R, Brunius C. Visualization and Interpretation of Multivariate Associations with Disease Risk Markers and Disease Risk-The Triplot. Metabolites. 2019 Jul 6;9(7):133. doi: 10.3390/metabo9070133"
   },
   {
     "objectID": "pub_ho.html",
@@ -173,5 +61,12 @@
     "title": "Publication & honor",
     "section": "\n7 Featured Blog Posts",
     "text": "7 Featured Blog Posts\n\n\n\n\nCode#don't run code, but show code\n3\n\n\n\nCode#run code, and show code, don't show output\n4\n\n\n\n\n[1] 2\n\n\n\nCode#run code, and show code, and show output\n5\n\n[1] 5"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "TriplotGUI",
+    "section": "",
+    "text": "This page gives a brief explanation of what the items in the navigation bar mean.\n\n\nIntroduction\nThis section explains why we develop the TriplotGUI package: The research background, previous work of triplot and our aim.\n\n\nInstallation\nThis section gives instructions on how to install the packages needed, load library and activate the user interface.\n\n\nTutorial(simple)\nThis section provides a simple example of how to use the TriplotGUI package. The users can either use code or the user interface to achieve the similar purpose. The code tutorial suits for users that is at beginner R level. The user interface tutorial suits for user that has limited epidemiology knowledge and limited experience in dealing with high dimensional data.\nThe dataset used is CAMP_2\n\n\nTutorial(complex)\nThis section provides a simple example of how to use the TriplotGUI package. The users can either use code or the user interface to achieve the similar purpose. The code tutorial suits for users that is at intermediate or advanced R level. The user interface tutorial suits for user that has epidemiology knowledge and experience in dealing with high dimensional data.\nThe dataset used is HealthyNordicDiet_2.\n\n\nUse Case\nThis section shows a smoother example of how to use the interface to perform data analysis and interpretation, omiting the detailed explanation in the tutorial.\nThe dataset used is ExposomeChallenge.\n\n\nPaper\nThis sections covers relevant papers of our TriplotGUI package\n\n\nAbout us\nThis sections give brief introduction of the contributors to this package.\n\n\nContact us\nIf you have questions in the package, tutorial and this website, or would like to seek collaboration, please contact yingxiao@chalmers.se"
   }
 ]
