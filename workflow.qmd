@@ -18,22 +18,323 @@ format:
     toc-location: right
     toc-depth: 5
     toc-title: Workflow
+    number-sections: true  ## add number in the session or not
+    number-depth: 4
+    code-fold: show
+    code-summary: "Show the code"
+    code-overflow: wrap
+    code-tools: true
+    code-copy: true
+    highlight: tango
+    df-print: paged  ## kable is another option How the dataframe looks like 
+    standalone: false  ### specifies if all assets and libraries must be integrated into the output html file as a standalone document.
+    fig-align: right
+    theme:  solar
 ---
 
-### Data reduction on Omics data
+We will go through the statistical analysis behind [TriplotGUI]{style="color:orange"} and also explain the rationale of our visulaization in each step. If you want to search the meaning of something specific (e.g. a button, a box), please press `ctrl+F` and enter the keyword, you will probably find what you need.
+
+If you have not open the app yet, follow what is written in the [Setup](installation.qmd){style="color:blue"} and open the interface with `TriplotGUI_shiny()`
+
+::: {.alert .alert-primary}
+**Note:** You can use the [example data](https://gitlab.com/YingxiaoYan/triplotgui/-/tree/main/Example_data?ref_type=heads){target="_blank"} in our repository to follow the details in steps, so that you get hands-on replication of the steps
+:::
+
+# **Step1:** Data reduction of Omics data
+
+After reading the introduction (step 0), you can click step 1 at the side bar and you will see the lay out as below. ![](img/step1_1.png)
+
+<br> As mentioned in the introduction, this step is to transform the Omics data into a number of components using principal component analysis (PCA) or weighted correlation network analysis (WGCNA).
+
+Five boxes with unique features are presented. You can more or less guess what they are for from there titles. Now we go through each boxes in details
+
+## Data for PCA/WGCNA
+
+### Basics {#Basics_1_1_1}
+
+The [dark blue box]{style="color:darkblue"} is where you put in the Omics data. The data should meet the following criteria.
+
+-   The data should be in either csv, xlsx, rds, or rda format. The data in rds format should be a dataframe. If the data is in rda format, the rda object should only contain the data as a dataframe and be in the same directory as your working directory (You could check this by `getwd()` in the R console)
+-   The rows of data should represent observations and the columns of data should represents variables(omics features).
+-   No missing values are allowed in the data
+-   The number and order of observations should be same across all the uploaded data
+
+::: callout-note
+We do not provide the functionality of handling missing data or other data pre-processing steps (e.g. transformation, normalization) in our application due to the variability of possible methods.
+:::
+
+### Emerged {#Emerged_1_1_2}
+
+After you upload the data, A text will show up to tell you how many rows and columns do you have in the data frame. Three following buttons also emerge: ***Inspect variable class, remove variables, Force all variables to numeric***.
+
+1.  ***Inspect variable class*** This is a button that help you inspect if the variables are in correct format, since you may not want your metabolite features in character format when you want to use their numeric values. Click the button and explore.
+
+2.  ***remove variables***: This button allows you to remove variables from your uploaded data. Click the button, remove some variables and click OK. What variables are removed are then printed out and they will not be included in the Omics data to enter the downstream analysis. We also make this removal reversible so that every time when you reclick this button, the data will go back to the state where no variables are removed.
+
+    We add this button so that users will not need to manually remove redundant variables that will actually not be used in data analysis.
+
+3.  ***Force all variables to numeric***: Upon clicking, this button simply forces all the variables to numeric. Since we want to perform PCA or WGCNA on this Omics data, we want all Omics variables to be in numeric format
+
+### And more
+
+At the right side of the upload data, there is a button called ***Reset everything***. This where you can click remove all your uploads and settings and make the interface go back to a default state.
+
+## Auxilary data {#auxilary_data}
+
+The [light blue box]{style="color:lightblue"} is where you put in the auxilary data. Currently, the variables in the data uploaded here can be used for 2 things (1) Customizing the color, size and shape of scores. See section [1.4.2](#Emerged_1_4_2). (2) Providing pairing information for outcomes' associations. See section [1.1.1](#Basics_1_1_1).
+
+### Basics {#Basics_1_2_1}
+
+The requirement for input data is the same as [1.1.1](#Basics_1_1_1).
+
+### Emerged {#Emerged_1_2_2}
+
+After you upload the axuliary data, A text will show up to tell you how many rows and columns do you have in the data frame. Three following buttons also emerge: ***Inspect variable class, remove variables, Change variable class***.
+
+1.  ***Inspect variable class*** Same as [1.1.2](#Emerged_1_1_2)
+
+2.  ***remove variables***: Same as [1.1.2](#Emerged_1_1_2)
+
+3.  ***Change variable class***: This button provide your choices in transforming variables to either factor and numeric variables.
+
+    We add this button to faciliate user in tranforming variables to numeric and factor format, corresponding to numeric and caregorical variables.
+
+## Data analysis settings
+
+The [red box]{style="color:red"} is where you make choices in how do you want your data analysis to be performed
+
+### Basics
+
+1.  ***Method***: Users choose to either use principal component analysis (*PCA*) or weighted correlation network analysis (*WGCNA*) to perform data reduction. The default is *PCA*
+
+2.  ***PCA function***: Users choose what PCA function, [*prcomp*](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/prcomp){target="_blank"} or [*principal*](https://www.rdocumentation.org/packages/psych/versions/2.4.1/topics/principal){target="_blank"}, will be used for principal component analysis. The default is *prcomp*
+
+3.  ***Max number of components***: This button shows up when the ***Method*** is *PCA*. It decides how many principal component will be used in the downstream correlation& association analysis. The default is set as around the half of the total number of omics variables used for analysis.
+
+    ***Minimum number for variables per module***: This button shows up when the ***Method*** is *WGCNA*. It decides the minimum number of variables that is allowed in each cluster of WGCNA. The default number is *2*.
+
+4.  ***Center***: If the omics variables will be zero centered before the analysis take place. The default is *Yes*.
+
+5.  ***Scale***: If the omics variables will be scaled to have unit variance before the analysis take place. The default is *Yes*.
+
+### Emerged
+
+1.  ***rotate***: The button will show up and When ***PCA function*** is chosen as *principal*. How users would like to transform principal components. Please check [*here*](https://search.r-project.org/CRAN/refmans/psych/html/fa.html){target="_blank"} for the explanation fo rotate. The default is set as *none* in TriplotGUI.
+
+::: callout-note
+You maybe heard about PCA but not **WGCNA**. In brief, WGCNA is to separate omics variables into clusters, perform PCA on each cluster and extract the first principal component of each cluster as the principal components of WGCNA. The clustering method can be different. In TriplotGUI, we use the default hierarchical clustering method provided by `cutreeDynamic()` in the *dunamicTreeCut* package
+:::
+
+## Visualization settings
+
+The [orange box]{style="color:orange"} is where users can modify their visulization outputs
+
+### Basics
+
+1.  ***Which plots***: Four options are provided: (1) *scores*: The scores of principal components are plotted. (2)*loadings*: The loadings of principal components are plotted. (3) *biplots*: Both scores and loadings are plotted on the same plot. (4) *screeplot*: How much variance does each principal component contribute to is plotted. In default mode, none of the 4 options are selected
+
+2.  ***Component/module on first axis***: The principal component that will be plotted on the x-axis. The default is *1* (the first one).
+
+3.  ***Component/module on second axis***: The principal component that will be plotted on the y-axis. The default is *2* (the second one).
+
+4.  ***Which type of loading to use*** Two options are provided *Eigenvectors* and *Eigenvectors × squareroot(eigenvalues)*. The 2 calulations, respectively, correspond to what is referred to as "rotation" in the *prcomp* package and "Loadings" in the *principal* package
+
+### Emerged {#Emerged_1_4_2}
+
+1.  ***Loading labels***: Upon clicking *loadings* or *biplot* in ***Which plots***. The button will show up. It decides if labels of loadings will be shown on the plot. The default is *Yes*
+
+2.  ***Scale biplot***: Upon clicking *biplot* in ***Which plots***. The button will show up. It decides if scores and loadings will be both scaled to a visible level by adjusting the limit of axises. The default is *Yes*
+
+3.  ***Cut ratio or absolute value***: Upon clicking *loadings* or *biplot* in ***Which plots***. The button will show up. It is useful when the users only want to show loadings bigger than a certain value or bigger than a certain percent of the maximum loading. The default is *Absolute value*
+
+4.  ***Loadings cut absolute value***: When selecting *Absolute value* in ***Cut ratio or absolute value***, a slider will show up to let user decide the loadings below what value will not show up on the plot
+
+5.  ***Loadings cut ratio***: When selecting *Cut ratio* in ***Cut ratio or absolute value***, a slider will show up to let user decide the loadings below how much percent of the maximum loading will not show up on the plot
+
+6.  ***Score color by***: Upon uploading the [Auxilary data](#Auxilary%20data) and clicking *loadings* or *biplot* in ***Which plots***, this button will show up. Users can use one numeric or categorical variable in the auxilary data to color the scores points. By default, no variables are selected.
+
+7.  ***Score shape by***: Upon uploading the [Auxilary data](#Auxilary%20data) and clicking *loadings* or *biplot* in ***Which plots***, this button will show up. Users can use one categorical variable in the auxilary data to change the shape of scores points. By default, no variables are selected.
+
+8.  ***Score size by***: Upon uploading the [Auxilary data](#Auxilary%20data) and clicking *loadings* or *biplot* in ***Which plots***, this button will show up. Users can use one numeric variable in the auxilary data to change the size of score points. By default, no variables are selected.
+
+## Visualizations
+
+The [green box]{style="color:green"} represents visualization outputs. With omics data uploaded, upon selecting ***Which plots*** in the data visualization setting, the corresponding plot are shown.
 
 
-### Correlations with exposures
 
-### Association with outcomes
+# **Step2A:** Exposures' correlations
 
-### Interpretation of triplot
+After uploading Omics and auxilary data (optional) in step 1, you can click "Exposures' correlations" in step 2 at the side bar and you will see the lay out as below. ![](img/step2_1.png)
 
-### Mediation analysis
+<br> This step is to calculate the correlations between the principal components from step 1 and exposures uploaded at this step.
 
-### Interpreation of the triplot of mediation
+Four boxes with unique features are presented. Now we go through each boxes in details
+
+## Exposure data
 
 
+
+### Basics
+The [dark blue box]{style="color:darkblue"} is where you put in the exposure data. The requirement for exposure data is the same as [1.1.1](#Basics_1_1_1).
+
+### Emerged
+
+After you upload the exposure data, A text will show up to tell you how many rows and columns do you have in the data frame. Three following buttons also emerge: ***Inspect variable class, remove variables, Change variable class***.
+
+1.  ***Inspect variable class*** Same as [1.1.2](#Emerged_1_1_2)
+
+2.  ***remove variables***: Same as [1.1.2](#Emerged_1_1_2)
+
+3.  ***Change variable class***: Same as [1.2.2](#Emerged_1_2_2)
+
+## Covariate data {#Covaraite_data1}
+
+The [light blue box]{style="color:lightblue"} is where you put in the covariate data. After removing redundant variables, the remaining covariate data can be used as confounders for the partial correlation between exposures and principal components
+
+### Basics
+
+The requirement for exposure data is the same as [1.1.1](#Basics_1_1_1).
+
+### Emerged
+
+After you upload the covariate data, A text will show up to tell you how many rows and columns do you have in the data frame. Three following buttons also emerge: ***Inspect variable class, remove variables, Change variable class***.
+
+1.  ***Inspect variable class*** Same as [1.1.2](#Emerged_1_1_2)
+
+2.  ***remove variables***: Same as [1.1.2](#Emerged_1_1_2)
+
+3.  ***Change variable class***: Same as [1.2.2](#Emerged_1_2_2)
+
+## Data analysis settings
+
+The [red box]{style="color:red"} is where you make choices in how do you want your correlation analysis to be performed
+
+### Basics
+
+1.  ***Method***: Three methods inherited from the *cor* package are supported for continuous exposures: *pearson*, *spearman*, *kendall*. Please check [*cor*](https://rdrr.io/r/stats/cor.html){target="_blank"} package for more information. The default for TriplotGUI is *pearson*. 
+
+2. ***Manage missing values***: The approaches for managing missing values inherited from the *cor* package are supported for continuous exposures. Please check [*cor*](https://rdrr.io/r/stats/cor.html){target="_blank"} package for more information. The default for TriplotGUI is *everything*. 
+
+3.  ***Categorical variables***: Two options are provided *Perform one-hot-encoding* and *Use original*. When choosing *Perform one-hot-encoding*, categorical variables with n classes(n>2) are transformed to n binary variables with 0 and 1 values and then used as numeric variables.
+When chosing *Use original*, no transformation is made on the categorical variabls and linear models are used for categorical exposure-principal component correlation analysis. The default is *Use original*.
+
+### Emerged
+
+1.  ***Full or partial correaltion***
+Upon uploading the [covariate data](#Covaraite_data1), the button will show up. Two options are provided: *Full* and *Partial*. *Full* means no covariates are used as confounders in the correlation analysis and *Partial* means that partial correlations, adjusting the same group of confounders, are performed on all exposures-principal components correlations.
+
+## Visualizations
+
+The [green box]{style="color:green"} represents visualization outputs. With omics data from step 1 and exposure data uploaded, upon clicking the ***Refresh plot*** button, the correlations between exposures and the 2 selected components (selected from step 1) are shown. The figure can be downloaded by clicking  ***Download figure***.
+
+
+
+
+
+# **Step2B:** Associations with outcomes.
+
+After uploading Omics and auxilary data (optional) in step 1, you can click "Outcomes' associations" in step 2 at the side bar and you will see the lay out as below. ![](img/step2_2.png)
+
+<br> This step is to calculate risk associations between the principal components from step 1 and outcomes uploaded at this step.
+
+Five boxes with unique features are presented. Now we go through each boxes in details
+
+## Outcome data
+
+### Basics
+
+The [dark blue box]{style="color:darkblue"} is where you put in the outcome data. The requirement for exposure data is the same as [1.1.1](#Basics_1_1_1).
+
+
+### Emerged
+
+After you upload the exposure data, A text will show up to tell you how many rows and columns do you have in the data frame. Three following buttons also emerge: ***Inspect variable class, remove variables, Change variable class***.
+
+1.  ***Inspect variable class*** Same as [1.1.2](#Emerged_1_1_2)
+
+2.  ***remove variables***: Same as [1.1.2](#Emerged_1_1_2)
+
+3.  ***Change variable class***: Same as [1.2.2](#Emerged_1_2_2)
+
+## Covariate data {#Covaraite_data2}
+
+The [light blue box]{style="color:lightblue"} is where you put in the covariate data. After removing redundant variables, the remaining covariate data can be used as confounders for the partial correlation between outcomes and principal components
+
+### Basics
+
+The requirement for exposure data is the same as [1.1.1](#Basics_1_1_1).
+
+### Emerged
+
+After you upload the covariate data, A text will show up to tell you how many rows and columns do you have in the data frame. Three following buttons also emerge: ***Inspect variable class, remove variables, Change variable class***.
+
+1.  ***Inspect variable class*** Same as [1.1.2](#Emerged_1_1_2)
+
+2.  ***remove variables***: Same as [1.1.2](#Emerged_1_1_2)
+
+3.  ***Change variable class***: Same as [1.2.2](#Emerged_1_2_2)
+
+
+
+
+## Data analysis settings
+
+The [red box]{style="color:red"} is where you make choices in how do you want your risk association analysis to be performed.
+
+::: callout-note
+For outcomes - principal-components associations, statistical analysis are performed differently based on different classes of outcome and information provided. The table below summarized the methods and R packages used.
+
+![](img/step2_3.png)
+:::
+
+### Basics
+
+1.  ***log(risk estimates)***: Users can choose whether they want their risk estimations to be presented as beta coefficients or odds ratios. Two options are provided *Yes (useful for odds ratio)* and *No (useful for beta coefficient)*. The default is *No (useful for beta coefficient)*
+
+
+### Emerged
+
+1.  ***Do confounder adjustment***: 
+Upon uploading the [covariate data](#Covaraite_data2), the button will show up. The users can choose if confounder will be adjusted for all outcomes-principal components associations, using the same group of confounders. The default is *No*.
+
+2. ***Multinomial***: If categorical variables with n>2 class is uploaded or created from outcome variables, the button will show up. By selecting *No*, one-hot-encoding will be performed on these categorical variables to transform them to n binary variables with 0 and 1 values. By selecting *Yes*, multinomial regression will be performed on these categorical variables. The default is *No*
+
+3. ***Pairing variable ***
+When auxilary data [(1.2.1)](#auxilary_data) is uploaded, this button will show up. It allows users to select variables that contain pairing information in the auxilary data. For example, the matched case-control pair could constitute a categorical variable, where each pair of case and control is given a unique number. Such information can be fed in the modelling of outcome-principal components associations. 
+
+
+## Visualization settings
+The [orange box]{style="color:orange"} is where users can modify their visulization outputs
+
+### Basics {#Basics_3_1_1}
+
+1.  ***Confidence level***: The confidence level used when calulating the confidence interval of risk estimate.The default is 0.95.
+
+2.  ***Whisker length***:The whisker length of confidence intervals in the figures. Change it from 0.01 to 0.5 and see what is changed in Visulizations! The default is 0.01.
+
+
+
+## Visualizations
+
+The [green box]{style="color:green"} represents visualization outputs. With omics data from step 1 and outcome data uploaded, upon clicking the ***Refresh plot*** button, the risk assocations between outcomes and 2 selected components (selected from step 1) are shown. The figure can be downloaded by clicking  ***Download figure***.
+
+
+# **Step3:** Visualization of Triplot
+
+The component scores and loadings, the correlation coefficients and the risk associations’ estimates as beta coefficients or odds ratio, are co-visualized as 3 different layers in one 2-dimensional plot.
+
+# **Step4:** Mediation analysis and visualization
+
+Performs mediation analysis on the selected exposures and outcomes, using component scores as mediators. Mediation analysis can be done in traditional and counterfactual approaches. Confounders can be adjusted for exposure-mediator and mediator-outcome association respectively. The mediation estimates (i.e. direct, indirect and total effect) or the proportion mediated are then visualized with the correlation coefficients of the selected exposures and the risk associations’ estimates as beta coefficients or odds ratio of the selected outcomes as 3 different layers in one 2-dimensional plot.
+
+# **Step5:** Compare correlations, associations and mediations:
+
+The correlations, associations, mediation estimates and proportion mediated as well as their significance levels can be visualized through heatmap.
+
+# **Step6:** Download data
+
+The intermediate data and the generated results can be viewed and downloaded. The object that saves all relevant information can be downloaded.
 
 ```{=html}
 <br>
@@ -42,6 +343,11 @@ format:
 <strong>Reference</strong>
 </p>
 ```
-
-
-Schillemans T, Shi L, Liu X, Åkesson A, Landberg R, Brunius C. Visualization and Interpretation of Multivariate Associations with Disease Risk Markers and Disease Risk-The Triplot. Metabolites. 2019 Jul 6;9(7):133. [doi: 10.3390/metabo9070133](https://www.mdpi.com/2218-1989/9/7/133)
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 5
+#| fig-height: 3
+#| fig-alt: "photo."
+knitr::include_graphics("img/TriplotGUI_logo_black.png")
+```

@@ -39,8 +39,12 @@ paper:
 <p class="large-text">
 
 <strong>Main paper</strong>
+
+
 </p>
 ```
+Schillemans T, Shi L, Liu X, Åkesson A, Landberg R, Brunius C. Visualization and Interpretation of Multivariate Associations with Disease Risk Markers and Disease Risk-The Triplot. Metabolites. 2019 Jul 6;9(7):133. [doi: 10.3390/metabo9070133](https://www.mdpi.com/2218-1989/9/7/133)
+
 ::: embed-container
 <iframe src="`r rmarkdown::metadata$paper$pdf`" style="border: 5px">
 

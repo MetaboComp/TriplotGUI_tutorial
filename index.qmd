@@ -30,11 +30,16 @@ about:
 <strong>This page gives a brief explanation of what the items in the navigation bar mean.</strong>
 :::
 
+### Setup
+This section gives instructions on how to install the packages needed, load library and activate the user interface.
+
+
 ### Introduction
 This section explains why we develop the TriplotGUI package: The research background, previous work of triplot and our aim.
 
-### Installation
-This section gives instructions on how to install the packages needed, load library and activate the user interface.
+### Workflow
+This sections gives detailed explanation in statistics and analysis of TriplotGUI
+
 
 ### Tutorial(simple)
 This section provides a simple example of how to use the TriplotGUI package. The users can either use code or the user interface to achieve the similar purpose. The code tutorial suits for users that is at beginner R level. The user interface tutorial suits for user that has limited epidemiology knowledge and limited experience in dealing with high dimensional data.

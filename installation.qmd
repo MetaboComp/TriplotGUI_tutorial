@@ -31,7 +31,7 @@ format:
 geometry: margin=lin  
 ---
 
-### Install packages
+# Install packages
 
 Please run the following code to install the packages needed. This needs to be run in your R console.
 
@@ -54,11 +54,19 @@ install.packages("remotes")
 remotes::install_gitlab("YingxiaoYan/TriplotGUI")
 ```
 
-Sometimes it pops up in your console to ask you *which package you would like to update*. We recommened you to chose **3.None**
+Things may pop up in your console and ask you for some choices, we provide some recommedations here. We are conservative in the choices to avoid any unforseen conflict and complications in packages.
 
-Sometimes it pops up in your console to ask *Do you want to install from soutce packages which need compliation* . We recommended you to chose **no** 
+<ul>
 
-### Load libraries 
+<li>Sometimes it pops up in your console to ask you *which package you would like to update*. We recommened you to chose **3.None**</li>
+
+<li>Sometimes it pops up in your console to ask *Do you want to install from soutce packages which need compliation* . We recommended you to chose **no**</li>
+
+<li>Sometimes it pops up in your console to ask *Update all/some/none?\[a/s/n\]* . We recommended you to chose **n**</li>
+
+</ul>
+
+# Load libraries
 
 Run the following code in your R console.
 
@@ -72,13 +80,28 @@ Run the following code in your R console.
 library(TriplotGUI)
 ```
 
-### Download the example data for user interface
+# Download the example data for user interface
 
-Go to my [git repository](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Example_data.rar?ref_type=heads){target="_blank"}.
-Click the download icon at the right side and download the Exampledata.rar. Unzip it and you will find the data that will be used as example in the tutorial.
+Go to my [git repository](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Example_data.rar?ref_type=heads){target="_blank"}. Click the download icon at the right side and download the Exampledata.rar. Unzip it and you will find the data that will be used as example in the tutorial.
+
+# Change the maximize size of data file allowed
+
+The default of our package has allows data of maximize size of 5 MB. To change that, you could specify the maximize file size you prefer using the code below. Run your code in the console. However, we do not recommend to use data with more than 5 MB in our tool. The bigger the dataset, the slower it will be. It might be beneficial for you to do some variable selection before putting the data in out tool.
+
+```{r }
+#| eval: false
+#| echo: true
+#| warning: false
+#| error: true
+#| classes: styled-output
 
 
-### Activate the user interface
+filesize=100  ##MB
+options(shiny.maxRequestSize=filesize*1024^2)
+
+```
+
+# Activate the user interface
 
 Run the following code in your R console.
 
@@ -89,9 +112,7 @@ Run the following code in your R console.
 #| error: true
 #| classes: styled-output
 
-options(shiny.maxRequestSize=100*1024^2)
+
 TriplotGUI_shiny_tryout()
 
 ```
-
-
