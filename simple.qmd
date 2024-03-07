@@ -68,7 +68,7 @@ All dataframes are row-wise matched by observation and consist of 300 synthetic 
 We want to assess the relationship between diet, metabolic profiles and risk factors of metabolic diseases (i.e. BMI, total cholesterol, triglyceride, HDL, LDL).
 
 # The use of interface
-Run `TriplotGUI_shiny_tryout` to open your interface. What we will show as an example in the interface here correspond to the [code example steps](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/simple_code.html#step-1){target="_blank"}
+Run `TriplotGUI_shiny_tryout` to open your interface. What we will show as an example in the interface here correspond to the [code example steps](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/simple_code.html#step-2){target="_blank"}
 
 ## Upload data
 First upload 
