@@ -102,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./workflow.html" rel="" target="">
- <span class="menu-text">Workflow</span></a>
+ <span class="menu-text">Details</span></a>
   </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorial(simple" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
@@ -174,8 +174,8 @@ ul.task-list li input[type="checkbox"] {
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page">
-      <h1 class="title">Tutorial(simple)</h1>
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Tutorial(simple) - User Interface</h1>
             <p class="subtitle lead">Simple demo of using user Interface in TriplotGUI</p>
                       </div>
   </div>
@@ -192,14 +192,41 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Tutorial</h2>
+   
+  <ul>
+<li><a href="#data-description" id="toc-data-description" class="nav-link active" data-scroll-target="#data-description">Data description</a></li>
+  <li><a href="#research-question" id="toc-research-question" class="nav-link" data-scroll-target="#research-question">Research question</a></li>
+  <li><a href="#the-use-of-interface" id="toc-the-use-of-interface" class="nav-link" data-scroll-target="#the-use-of-interface">The use of interface</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content"><p>Before starting, please make sure you have installed the TriplotGUI package following <a href="./installation.html" target="_blank">Setup</a>.</p>
+<section id="data-description" class="level1"><h1>Data description</h1>
+<p>Each dataset used in this page of tutorial can be downloaded <a href="https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Example_data" target="_blank">here</a> as a dataframe in the rds files:</p>
+<ul>
+<li>Example1_exposure.rds</li>
+<li>Example1_Omics.rds</li>
+<li>Example1_outcome.rds</li>
+<li>Example1_covariate.rds</li>
+</ul>
+<p>The Data used for this example originates from <strong><em>CAMP_2</em></strong>, which is a synthetic dataset that was simulated from the authentic data used in a cross-sectional study of carbonhydrate alternatives and metabolic phenotypes in Chinese young adults (Liu et al.&nbsp;2018). We have selected our exposures, Omics data, outcomes and covariates based on the <strong><em>CAMP_2</em></strong> data following the code <a href="https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Tutorial_code/Data_cleaning_CAMP_2.R" target="_blank">here</a>. The brief description of these dataframes is shown as below.</p>
+<ul>
+<li>Example1_exposure.rds –&gt; exposure1: 11 variables representing the dietary intake as measured by food frequency questionnaires (<code>"Refined_grains"</code>, <code>"Coarse_grains"</code>, <code>"Red_meat"</code>, <code>"Poutry"</code>, <code>"Seafood"</code>, <code>"Egg"</code>, <code>"Animal_organs"</code>, <code>"Vegetables"</code>, <code>"Fruits"</code>, <code>"Potatos"</code>, <code>"Legumes"</code>.)</li>
+<li>Example1_Omics.rds –&gt; Omics1: 20 variables representing plasma metabolites predictive of BMI</li>
+<li>Example1_outcome.rds –&gt; outcome1: 5 variables representing clinical measurements: <code>"BMI"</code>, <code>"HDL"</code>(high-density lipoprotein cholesterol), <code>"LDL"</code>(low-density lipoprotein cholesterol), <code>"triglycerides"</code>, <code>"total_cholesterol"</code>.</li>
+<li>Example1_covariate.rds –&gt; covariate1: 2 variables that can be used as potential confounders: <code>"AGE"</code> and <code>"SEX"</code>
+</li>
+</ul>
+<p>All dataframes are row-wise matched by observation and consist of 300 synthetic observations.</p>
+</section><section id="research-question" class="level1"><h1>Research question</h1>
+<p>We want to assess the relationship between diet, metabolic profiles and risk factors of metabolic diseases (i.e.&nbsp;BMI, total cholesterol, triglyceride, HDL, LDL).</p>
+</section><section id="the-use-of-interface" class="level1"><h1>The use of interface</h1>
+<p>Run <code>TriplotGUI_shiny_tryout</code> to open your interface. What we will show as an example in the interface here correspond to the <a href="./simple_code.html#code-example-of-using-triplotgui" target="_blank">code example</a> ## Upload data</p>
 
 
-</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");

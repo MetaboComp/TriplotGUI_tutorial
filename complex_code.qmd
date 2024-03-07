@@ -88,6 +88,17 @@ s(2)
 
 ```{r}
 #| eval: true
+#| echo: false
+#| output: false
+#| classes: styled-output
+#run code, not show code, not show output
+1+1
+s<-function(x){x+1}
+s(2)
+```
+
+```{r}
+#| eval: true
 #| echo: true
 #| output: true
 #run code, and show code, and show output

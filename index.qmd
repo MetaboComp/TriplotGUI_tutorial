@@ -37,8 +37,8 @@ This section gives instructions on how to install the packages needed, load libr
 ### Introduction
 This section explains why we develop the TriplotGUI package: The research background, previous work of triplot and our aim.
 
-### Workflow
-This sections gives detailed explanation in statistics and analysis of TriplotGUI
+### Details
+This sections gives detailed manual in analysis and visualization settings of TriplotGUI. We will not focus on the produced visualization output and interpretation here. Such content will be covered by the Tutorial and use case session.
 
 
 ### Tutorial(simple)
