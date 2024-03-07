@@ -186,7 +186,14 @@
     "href": "simple.html",
     "title": "Tutorial(simple) - User Interface",
     "section": "",
-    "text": "Before starting, please make sure you have installed the TriplotGUI package following Setup.\nData description\nEach dataset used in this page of tutorial can be downloaded here as a dataframe in the rds files:\n\nExample1_exposure.rds\nExample1_Omics.rds\nExample1_outcome.rds\nExample1_covariate.rds\n\nThe Data used for this example originates from CAMP_2, which is a synthetic dataset that was simulated from the authentic data used in a cross-sectional study of carbonhydrate alternatives and metabolic phenotypes in Chinese young adults (Liu et al. 2018). We have selected our exposures, Omics data, outcomes and covariates based on the CAMP_2 data following the code here. The brief description of these dataframes is shown as below.\n\nExample1_exposure.rds –&gt; exposure1: 11 variables representing the dietary intake as measured by food frequency questionnaires (\"Refined_grains\", \"Coarse_grains\", \"Red_meat\", \"Poutry\", \"Seafood\", \"Egg\", \"Animal_organs\", \"Vegetables\", \"Fruits\", \"Potatos\", \"Legumes\".)\nExample1_Omics.rds –&gt; Omics1: 20 variables representing plasma metabolites predictive of BMI\nExample1_outcome.rds –&gt; outcome1: 5 variables representing clinical measurements: \"BMI\", \"HDL\"(high-density lipoprotein cholesterol), \"LDL\"(low-density lipoprotein cholesterol), \"triglycerides\", \"total_cholesterol\".\nExample1_covariate.rds –&gt; covariate1: 2 variables that can be used as potential confounders: \"AGE\" and \"SEX\"\n\n\nAll dataframes are row-wise matched by observation and consist of 300 synthetic observations.\nResearch question\nWe want to assess the relationship between diet, metabolic profiles and risk factors of metabolic diseases (i.e. BMI, total cholesterol, triglyceride, HDL, LDL).\nThe use of interface\nRun TriplotGUI_shiny_tryout to open your interface. What we will show as an example in the interface here correspond to the code example ## Upload data"
+    "text": "Before starting, please make sure you have installed the TriplotGUI package following Setup."
+  },
+  {
+    "objectID": "simple.html#upload-data",
+    "href": "simple.html#upload-data",
+    "title": "Tutorial(simple) - User Interface",
+    "section": "Upload data",
+    "text": "Upload data\nFirst upload"
   },
   {
     "objectID": "simple_code.html",

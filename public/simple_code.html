@@ -1081,10 +1081,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb54-172"><a href="#cb54-172" aria-hidden="true" tabindex="-1"></a>covariates1<span class="ot">&lt;-</span>ClinData[,<span class="fu">c</span>(<span class="st">"SEX"</span> ,<span class="st">"AGE"</span>)]</span>
 <span id="cb54-173"><a href="#cb54-173" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-174"><a href="#cb54-174" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-175"><a href="#cb54-175" aria-hidden="true" tabindex="-1"></a><span class="fu"># Code example of using TriplotGUI</span></span>
+<span id="cb54-175"><a href="#cb54-175" aria-hidden="true" tabindex="-1"></a><span class="fu"># Code example of using TriplotGUI </span></span>
 <span id="cb54-176"><a href="#cb54-176" aria-hidden="true" tabindex="-1"></a>We will use the most simple settings in this example. Please go to  <span class="co">[</span><span class="ot">Tutorial(complex)</span><span class="co">](complex_code.qmd)</span>{target="_blank"}.if you want to try more advanced settings.</span>
 <span id="cb54-177"><a href="#cb54-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-178"><a href="#cb54-178" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 1</span></span>
+<span id="cb54-178"><a href="#cb54-178" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 1 {#simple_link}</span></span>
 <span id="cb54-179"><a href="#cb54-179" aria-hidden="true" tabindex="-1"></a>Using <span class="in">`TriplotGUI`</span> package, first we perform dimension reduction, i.e. principal component analysis (PCA) on metabolomics data.</span>
 <span id="cb54-180"><a href="#cb54-180" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-181"><a href="#cb54-181" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_2}</span></span>
@@ -1335,7 +1335,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb54-426"><a href="#cb54-426" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb54-427"><a href="#cb54-427" aria-hidden="true" tabindex="-1"></a>:::callout-note</span>
 <span id="cb54-428"><a href="#cb54-428" aria-hidden="true" tabindex="-1"></a><span class="ss">-  </span>One star for p&lt;0.05; Two stars for p&lt;0.01; Three stars for p&lt;0.001.</span>
-<span id="cb54-429"><a href="#cb54-429" aria-hidden="true" tabindex="-1"></a><span class="ss">-  </span>Note that in the plot of <span class="in">`checkTPbject4$med_coefficients`</span>, only the slected exposures, mediators and outcomes that we use to do mediation on will show up. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure_outcome pair, 5 result are shown: *IE* (indirect effect), *DE* (direct effect), *TE* (total effect), *IE/(IE+DE)* and *IE/(abs(IE)+abs(DE))×(IE+DE)/(abs(IE+DE))*. Please see [here](workflow.qmd##other-visualization-settings){target="_blank"} for more information. The "T" before the names of exposures-outcome pairs means that this mediation is using the "Traditional" product method.</span>
+<span id="cb54-429"><a href="#cb54-429" aria-hidden="true" tabindex="-1"></a><span class="ss">-  </span>Note that in the plot of <span class="in">`checkTPbject4$med_coefficients`</span>, only the slected exposures, mediators and outcomes that we use to do mediation on will show up. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure_outcome pair, 5 result are shown: *IE* (indirect effect), *DE* (direct effect), *TE* (total effect), *IE/(IE+DE)* and *IE/(abs(IE)+abs(DE))×(IE+DE)/(abs(IE+DE))*. Please see [here](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#other-visualization-settings){target="_blank"} for more information. The "T" before the names of exposures-outcome pairs means that this mediation is using the "Traditional" product method.</span>
 <span id="cb54-430"><a href="#cb54-430" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb54-431"><a href="#cb54-431" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-432"><a href="#cb54-432" aria-hidden="true" tabindex="-1"></a></span>

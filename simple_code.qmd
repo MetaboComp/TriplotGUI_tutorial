@@ -172,10 +172,10 @@ outcome1<-ClinData[,c("BMI","triglycerides","total_cholesterol","HDL","LDL")]
 covariates1<-ClinData[,c("SEX" ,"AGE")]
 
 ```
-# Code example of using TriplotGUI
+# Code example of using TriplotGUI 
 We will use the most simple settings in this example. Please go to  [Tutorial(complex)](complex_code.qmd){target="_blank"}.if you want to try more advanced settings.
 
-## Step 1
+## Step 1 {#simple_link}
 Using `TriplotGUI` package, first we perform dimension reduction, i.e. principal component analysis (PCA) on metabolomics data.
 
 ```{r showcode_runcode_noshowoutput_2}
@@ -426,7 +426,7 @@ checkTPObject4$med_coefficients
 ```
 :::callout-note
 -  One star for p<0.05; Two stars for p<0.01; Three stars for p<0.001.
--  Note that in the plot of `checkTPbject4$med_coefficients`, only the slected exposures, mediators and outcomes that we use to do mediation on will show up. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure_outcome pair, 5 result are shown: *IE* (indirect effect), *DE* (direct effect), *TE* (total effect), *IE/(IE+DE)* and *IE/(abs(IE)+abs(DE))×(IE+DE)/(abs(IE+DE))*. Please see [here](workflow.qmd##other-visualization-settings){target="_blank"} for more information. The "T" before the names of exposures-outcome pairs means that this mediation is using the "Traditional" product method.
+-  Note that in the plot of `checkTPbject4$med_coefficients`, only the slected exposures, mediators and outcomes that we use to do mediation on will show up. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure_outcome pair, 5 result are shown: *IE* (indirect effect), *DE* (direct effect), *TE* (total effect), *IE/(IE+DE)* and *IE/(abs(IE)+abs(DE))×(IE+DE)/(abs(IE+DE))*. Please see [here](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#other-visualization-settings){target="_blank"} for more information. The "T" before the names of exposures-outcome pairs means that this mediation is using the "Traditional" product method.
 :::
 
 
