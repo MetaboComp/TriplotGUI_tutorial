@@ -40,10 +40,10 @@ website:
     foreground: yellow
     background: black   # It seems title block banner background color change with it
     left:
-      - href: installation.qmd
-        text: Setup
       - href: introduction.qmd
         text: Introduction
+      - href: installation.qmd
+        text: Setup
       - href: workflow.qmd
         text: Details
       - text: Tutorial(simple)

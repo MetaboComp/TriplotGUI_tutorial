@@ -45,30 +45,94 @@ knitr::knit_hooks$set(
 
 Before starting, please make sure you have installed the TriplotGUI package following [Setup](installation.qmd){target="_blank"}.
 
-
 # Data description
+
 Each dataset used in this page of tutorial can be downloaded [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Example_data){target="_blank"} as a dataframe in the rds files:
 
--    Example1_exposure.rds
--    Example1_Omics.rds
--    Example1_outcome.rds
--    Example1_covariate.rds
+-   Example1_exposure.rds
+-   Example1_Omics.rds
+-   Example1_outcome.rds
+-   Example1_covariate.rds
 
 The Data used for this example originates from ***CAMP_2***, which is a synthetic dataset that was simulated from the authentic data used in a cross-sectional study of carbonhydrate alternatives and metabolic phenotypes in Chinese young adults (Liu et al. 2018). We have selected our exposures, Omics data, outcomes and covariates based on the ***CAMP_2*** data following the code [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Tutorial_code/Data_cleaning_CAMP_2.R){target="_blank"}. The brief description of these dataframes is shown as below.
 
--    Example1_exposure.rds --> exposure1:  11 variables representing the dietary intake as measured by food frequency questionnaires (`"Refined_grains"`, `"Coarse_grains"`, `"Red_meat"`, `"Poutry"`, `"Seafood"`, `"Egg"`, `"Animal_organs"`, `"Vegetables"`, `"Fruits"`, `"Potatos"`, `"Legumes"`.)
--    Example1_Omics.rds -->  Omics1: 20 variables representing plasma metabolites predictive of BMI
--    Example1_outcome.rds --> outcome1: 5 variables representing clinical measurements: `"BMI"`, `"HDL"`(high-density lipoprotein cholesterol), `"LDL"`(low-density lipoprotein cholesterol), `"triglycerides"`, `"total_cholesterol"`.
--    Example1_covariate.rds --> covariate1: 2 variables that can be used as potential confounders: `"AGE"` and `"SEX"`
+-   Example1_exposure.rds --\> exposure1: 11 variables representing the dietary intake as measured by food frequency questionnaires (`"Refined_grains"`, `"Coarse_grains"`, `"Red_meat"`, `"Poutry"`, `"Seafood"`, `"Egg"`, `"Animal_organs"`, `"Vegetables"`, `"Fruits"`, `"Potatos"`, `"Legumes"`.)
+-   Example1_Omics.rds --\> Omics1: 20 variables representing plasma metabolites predictive of BMI
+-   Example1_outcome.rds --\> outcome1: 5 variables representing clinical measurements: `"BMI"`, `"HDL"`(high-density lipoprotein cholesterol), `"LDL"`(low-density lipoprotein cholesterol), `"triglycerides"`, `"total_cholesterol"`.
+-   Example1_covariate.rds --\> covariate1: 2 variables that can be used as potential confounders: `"AGE"` and `"SEX"`
 
 All dataframes are row-wise matched by observation and consist of 300 synthetic observations.
 
-
 # Research question
+
 We want to assess the relationship between diet, metabolic profiles and risk factors of metabolic diseases (i.e. BMI, total cholesterol, triglyceride, HDL, LDL).
 
 # The use of interface
+
 Run `TriplotGUI_shiny_tryout` to open your interface. What we will show as an example in the interface here correspond to the [code example steps](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/simple_code.html#step-2){target="_blank"}
 
-## Upload data
-First upload 
+## Step 1: Data reduction of omics data
+
+::: columns
+::: {.column style="width: 45%"}
+First upload the Omics data in step 1 and then examine the scree plot, score plot, loadings plot and biplot at step 1. ![](img/simple_1.png)
+:::
+
+::: {.column style="width: 5%"}
+:::
+
+::: {.column style="width: 40%"}
+![](img/simple_2.png)
+:::
+:::
+
+## Step 2: Exposures’ correlations & Outcomes’ associations
+
+Then upload exposures, outcomes and covariates data in step 2.
+
+![](img/simple_3.png)
+
+You could briefly see the correlation coefficients and risk estimates at step 2 respectively.
+
+![](img/simple_4.png)
+
+## Step 3: Visualization of Triplot
+
+In step 3, you can see and download the triplot that co-visualizing the three plots shown above. ![](img/simple_5.png)
+
+In the triplot, PC1 reflected metabolites that were positively associated with BMI and also correlated with a high intake of meat and refined grains, adjusting for age and sex. This implies that the metabolite features that contributes most to PC1, are likely to provide useful information for a potential mechanism of how red meat and refrained grains intake may affect BMI.
+
+## Step 4: Mediation analysis and visualization
+
+Mediation analysis is then performed using the "product" method on the our exposures (i.e. Refined grains, Red meat), mediator (i.e. PC1) and outcome (i.e. BMI) of interest, adjusting for age and sex for both exposure-mediator and mediator-outcome relationship.
+
+::: columns
+::: {.column style="width: 45%"}
+Note that you need to click ***Do mediation*** to start running the mediation analysis and select ***Mediation estimate or proportion*** as *Estimate* to show the indirect effect on triplot with mediation.
+
+![](img/simple_7.png)
+:::
+
+::: {.column style="width: 5%"}
+:::
+
+::: {.column style="width: 40%"}
+![](img/simple_6.png)
+:::
+:::
+
+In step 4, you can also see the barplots showed direct, indirect and total effect for each exposure-mediator-outcome combination. It is a convenient tool to check the direction and magnitude of mediation estimates.
+
+![](img/simple_8.png) Base on the barplot and the triplot with mediaiton, we observed a significant mediation effect through PC1 for Red_meat-BMI and refined_grain-BMI association. This further implies that the metabolite features that contributes to PC1 are likely to mediate the pathway from red meat and refined grain intake to BMI change.
+
+## Step 5: Compare correlations, associations and mediations
+
+Users can then check the heatmaps of correlations, risk estimations and mediation results at step 5.
+
+![](img/simple_9.png)
+
+## Step 6: Download data
+
+Revelant data, intermediate results, can then be downloaded at step 6.
+
+![](img/simple_10.png)

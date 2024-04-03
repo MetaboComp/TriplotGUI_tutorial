@@ -56,6 +56,394 @@ knitr::knit_hooks$set(
 )
 ```
 
+Before starting,please make sure you have installed the TriplotGUI package following [Setup](installation.qmd){target="_blank"}.
+
+The code of at this page can be downloaded [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Tutorial_code/HealthyNordicDiet_2_applying_TriplotGUI_code.R){target="_blank"}
+
+# Data description
+
+The data used in this page of tutorial can be downloaded [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/data/HealthyNordicDiet_2.rda){target="_blank"} in rda format.
+
+The Data used for this example of code is ***HealthyNordicDiet_2***. This is a synthetic dataset that was simulated from the authentic data used in a case/control study nested within the Swedish prospective Västerbotten Intervention Programme cohort. The original study was set up to explore plasma metabolites that could objectively reflect healthy Nordic dietary patterns in a matched case-control study and to assess associations between such patterns and later development of type 2 diabetes. (Shi et al. 2018). The simulated data ***HealthyNordicDiet_2*** is a list that contains three data frames:
+
+-   Clinical measurements (ClinData, 11 variables): `"ID"`,`"T2D"`(Cases and controls for type 2 diabetes), `"PairedInfo"`(Pairing information for case and controls),`"Energy"`,`"Gender"`,`"Age"`,`"BMI"`,`"Smoking"`,`"PhysicalActivityIndex"`,`"Education"`,`"FastingGlucose"`.\
+-   Plasma metabolites predictive of BMI (MetaboliteData, 20 variables)
+-   Dietary intake as measured by food frequency questionnaires (FoodData, 11 variables): `"HFI"`( Healthy Food Index),`"BSDS"`(the Baltic Sea Diet Score),`"Wholegrains"`,`"Sausage"`,`"Pizza"`,`"Refined.bread"`, `"Fruits"`,`"Liquor"`,`"Wine"`,`"Hamburger"`,`"Poultry"`,`"Fish"`,`"Margarine"`,`"Cabbage"`,`"Carrot"`,`"low_fat_Dairy"`,`"Vegetables"`
+
+The data frames are row-wise matched by observation and consist of 1000 synthetic observations.
+
+**Reference**
+
+Shi, L., Brunius, C., Johansson, I., Bergdahl, I. A., Lindahl, B., Hanhineva, K., & Landberg, R. (2018). Plasma metabolites associated with healthy Nordic dietary indexes and risk of type 2 diabetes—a nested case-control study in a Swedish population. The American Journal of Clinical Nutrition, 108(3), 564-575. [10.1093/ajcn/nqy145](https://www.sciencedirect.com/science/article/pii/S0002916522029628?via%3Dihub){target="_blank"}
+
+Schillemans T, Shi L, Liu X, Åkesson A, Landberg R, Brunius C. Visualization and Interpretation of Multivariate Associations with Disease Risk Markers and Disease Risk-The Triplot. Metabolites. 2019 Jul 6;9(7):133. [doi: 10.3390/metabo9070133](https://www.mdpi.com/2218-1989/9/7/133){target="_blank"}
+
+# Research question
+
+We want to assess the relationship between diet, metabolic profiles and Type 2 diabetes and BMI.
+
+# Data exploration
+
+***HealthyNordicDiet_2*** is loaded in the R environment up on running `library(TriplotGUI)`. We will do some data exploration first to see how the data looks like.
+
+```{r noshowcode_runcode_noshowoutput_1}
+#| eval: true
+#| echo: false
+#| output: false
+#| classes: styled-output
+library(TriplotGUI)
+
+```
+
+## Check HealthyNordicDiet_2
+
+Check ***HealthyNordicDiet_2*** as a list:
+
+```{r showcode_runcode_showoutput_1}
+#| eval: true
+#| echo: true
+#| output: true
+#| classes: styled-output
+class(HealthyNordicDiet_2)
+names(HealthyNordicDiet_2)
+```
+
+## Check datasets
+
+Check the names of variables in each data:
+
+```{r showcode_runcode_showoutput_2}
+#| eval: true
+#| echo: true
+#| output: true
+#| classes: styled-output
+colnames(HealthyNordicDiet_2$ClinData)  
+colnames(HealthyNordicDiet_2$MetaboliteData)
+colnames(HealthyNordicDiet_2$FoodData)
+```
+
+## Check variables' class
+
+We Transform the data to dataframe format and then use TriplotGUI's `checkdata()` function in to examine the class of variables.
+
+```{r showcode_runcode_noshowoutput_1}
+#| eval: true
+#| echo: true
+#| output: false
+#| classes: styled-output
+ClinData<-as.data.frame(HealthyNordicDiet_2$ClinData)
+MetaboliteData<-as.data.frame(HealthyNordicDiet_2$MetaboliteData)
+FoodData<-as.data.frame(HealthyNordicDiet_2$FoodData)
+
+ClinData_check<-checkdata(ClinData)
+MetaboliteData_check<-checkdata(MetaboliteData)
+FoodData_check<-checkdata(FoodData)
+```
+
+```{r showcode_runcode_showoutput_3}
+#| eval: true
+#| echo: true
+#| output: true
+#| classes: styled-output
+ClinData_check$class_sumamry_statistics
+MetaboliteData_check$class_sumamry_statistics$check_class_table
+FoodData_check$class_sumamry_statistics
+```
+
+::: callout-note
+Note that `"HFI"`(Healthy Food Index) is used as a factor variable and `"BSDS"`(the Baltic Sea Diet Score) is used as a numeric variable. You could use `table(FoodData$HFI)` and `table(FoodData$BSDS)` to check the difference.
+:::
+
+## Check sanities for variables
+
+Whether each variable contains missing (NA) or abnormal values (e.g. NAN, Inf, blank value) can also be checked
+
+```{r showcode_runcode_showoutput_4}
+#| eval: true
+#| echo: true
+#| output: true
+#| classes: styled-output
+ClinData_check$everycolumn
+MetaboliteData_check$everycolumn
+FoodData_check$everycolumn
+```
+
+::: callout-note
+You shall only continue when the class of variables are correct and the missing or abnormal values in the variable are properly handled.
+:::
+
+## Build data for analysis
+
+We see food data as our exposures and BMI and type 2 diabetes as outcomes. Note that BMI is a continuous variable. We can additionally construct BMI as a categorical outcome using the criteria below and see how this may differ the result. - BMI\<= 18.5: Underweight - 18.5\<BMI\<= 25: Normal - 25\< BMI\<= 30: Overweight - 30\< BMI: Obese
+
+```{r showcode_runcode_showoutput_4_1}
+#| eval: true
+#| echo: true
+#| output: true
+#| classes: styled-output
+BMI<-ClinData[,"BMI"]
+BMI_cat<-vector(length=length(BMI))
+for(i in 1:length(BMI)){
+  if(BMI[i]<=18.5){
+    BMI_cat[i]<-"underweight"
+  }else if (BMI[i]>18.5&BMI[i]<=25){
+    BMI_cat[i]<-"normal"
+  }else if(BMI[i]>25&BMI[i]<=30){
+    BMI_cat[i]<-"overweight"
+  }else{
+    BMI_cat[i]<-"obese"
+  }
+}
+BMI_cat<-as.factor(BMI_cat)
+```
+
+We want to explore the exposure-outcome relationships through the metabolomics data, using metabolites as assumed mediators. Gender, age, education, physical activity and smoking are used as potential confounders for exposure-mediator and mediator-outcome association. Auxiliary information regarding case-control pairs, fasting glucose level, education and physical activity are also provided.
+
+```{r showcode_runcode_showoutput_5}
+#| eval: true
+#| echo: true
+#| output: true
+#| classes: styled-output
+exposure2<-FoodData
+Omics2<-MetaboliteData
+outcome2<-cbind.data.frame(ClinData[,c("T2D","BMI")],BMI_cat)
+covariates2<-ClinData[,c("Gender" ,"Age","Education","PhysicalActivityIndex","Smoking" )]
+auxilary2<-ClinData[,c("PairedInfo","FastingGlucose","Education","PhysicalActivityIndex", "Energy")]
+```
+
+# Code example of using TriplotGUI
+
+We will use a complex settings in this example. Please go to [Tutorial(simple)](simple_code.qmd){target="_blank"}.if you want to try simple settings.
+
+## Step 1: Data reduction of omics data {#simple_link}
+
+Using `TriplotGUI` package, first we perform dimension reduction, using weighted correlation network analysis (WGCNA) on metabolomics data.
+
+```{r showcode_runcode_noshowoutput_2}
+#| eval: true
+#| echo: true
+#| output: false
+#| classes: styled-output
+#* USing the most simple settings
+reduced_Omics2<-PCAorWGCNA_plots(dataframe=Omics2,
+
+                                 plottype=c("scree","score","loading","scoreloading"),
+                                 pc_type="principal", 
+                                 # Use principal() instead of prcomp() to perform PCA
+                                 first_PC=1,
+                                 second_PC=2,
+                                 option="WGCNA",
+                                 scale=T,
+                                 center=T,
+                                 eigen_loading="loading",
+                                 rotate="none",
+                                 size_variable=auxilary2$FastingGlucose,
+                                 size_variable_name="FastigGlucose",
+                                 color_variable=auxilary2$Education,
+                                 color_variable_name="Education",
+                                 shape_variable=auxilary2$PhysicalActivityIndex,
+                                 shape_variable_name="PhysicalActivityIndex",
+                                 scale_scoreloading=T,
+                                 loadings_name=T,
+                                 loadings_cutvalue=NULL,
+                                 loadings_cutpercent=0.2,
+                                 minModuleSize=2)
+```
+
+::: callout-note
+You could try out the arguments of the `PCAorWGCNA_plots()` function and view the whole function [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/R/PCAorWGCNA_plots.R?ref_type=heads){target="_blank"}
+:::
+
+You can see scree plot, score plot, loadings plot and biplot at this stage.
+
+```{r showcode_runcode_showoutput_6}
+#| eval: true
+#| echo: true
+#| output: true
+#| classes: styled-output
+#| fold.plot: true
+reduced_Omics2$scree_plot
+reduced_Omics2$score_plot
+reduced_Omics2$loading_plot
+reduced_Omics2$scoreloading_plot
+```
+
+We then build a TPObject, which is used for saving information and pass them through steps in TriplotGUI.
+
+```{r showcode_runcode_showoutput_7}
+#| eval: true
+#| echo: true
+#| output: true
+#| classes: styled-output
+#| fold.output: false
+scores=reduced_Omics2$object$scores
+loadings<-reduced_Omics2$object$loadings
+variance<- reduced_Omics2$object$variance
+TPObject1<-makeTPO(scores=scores,
+                   loadings=loadings,
+                   variance=variance)
+
+```
+
+## Step 2: Exposures’ correlations & Outcomes’ associations
+
+The correlations between principal component (PC) scores and food items were calculated using Pearson correlations, adjusting for confounders. The associations between PC scores and risk markers were investigated using linear regression.
+
+Correlation matrix of correlation coefficients and p values between the TPO scores saved in the TPObject and the dietary variables in the data is generated, using a pair-wise Pearson correlations, adjusting for confounders.
+
+```{r showcode_runcode_noshowoutput_3}
+#| eval: true
+#| echo: true
+#| output: false
+#| classes: styled-output
+#| fold.output: false
+Correlations_object<-makeCorr(TPObject=TPObject1,
+                              corrData=exposure2,
+                              use='pairwise',
+                              method='pearson',
+                              allowcategorical=F,
+                              partial=T,
+                              confounder=covariates2)
+
+```
+
+::: callout-note
+-   `allowcategorical=F` performs one-hot-encoding to transform categorical exposures variables with n\>2 classes to n binary variables. You can use `Correlations_object$cor_estimate` to check that each HFI level is separated in to a binary variable and the correlation coefficients between PCs and the binary variables were calculated. If `allowcategorical=T` is specified, then the `HFI` variable is forced as numeric variables. This is not recommended unless you are sure that the level itself reflect the numeric value.
+
+-   `partial=T` specifies that the confounders will be adjusted.
+:::
+
+The result of correlations are then added into the TPObject.
+
+```{r showcode_runcode_showoutput_8}
+#| eval: true
+#| echo: true
+#| output: true
+#| classes: styled-output
+#| fold.output: false
+
+TPObject2<-addCorr(TPObject=TPObject1,
+                   Corr=Correlations_object$cor_estimate,
+                   Corr_p=Correlations_object$cor_pvalue)
+```
+
+Matrices of risk estimates and p values between the TPO scores saved in the TPObject and the outcome variables are generated, adjusting for confounders.
+
+```{r showcode_runcode_noshowoutput_4}
+#| eval: true
+#| echo: true
+#| output: false
+#| classes: styled-output
+#| fold.output: false
+Risks_object<-coefficient_get(TPObject=TPObject2,
+                              outcome=outcome2,
+                              confounder=covariates2,
+                              partial=T,
+                              multinomial=T,
+                              pair=auxilary2$PairedInfo,
+                              CI=0.95)
+
+```
+
+::: callout-note
+-   `partial=T` specifies that the confounders will be adjusted.
+-   When `pair` information is not provided:
+    -   `multinomial=F` means that one-hot-encoding will be performed to transform categorical variables with n \> 2 classes to n binary variables. And logistic regression will be performed on the binary variables and linear regression will be performed on continuous variables.
+    -   If specifying `multinomial=T`, multinomial regression will be performed on the categorical outcome variable with n \> 2 classes, which gives n-1 estimates. And logistic regression will be performed on the binary variables and linear regression will be performed on continuous variables.
+-   When `pair` information for case - control pair is provided:
+    -   `multinomial=F` means that one-hot-encoding will be performed on categorical variables with n \> 2 classes. And then conditional logistic regression will be performed on the binary variables and linear mixed model will be performed on continuous variables, using the pairing information.
+    -   If specifying `multinomial=T`, the pairing information will not be ignored and used (since the outcomes can have more than 2 classes), multinomial regression will be performed on the categorical outcome variable, which gives n-1 estimates. And logistic regression will be performed on the binary variables and linear regression will be performed on continuous variables.
+:::
+
+The result of risk estimates are then added into the TPObject.
+
+```{r showcode_runcode_showoutput_9}
+#| eval: true
+#| echo: true
+#| output: true
+#| classes: styled-output
+#| fold.output: false
+
+
+TPObject3<-addRisk(TPObject=TPObject2,
+                   Risk=Risks_object)
+
+```
+
+## Step 3: Visualization of Triplot
+
+Generate Triplot: Note that Triplot can be generated from any TPObject. You can try out different argument in the `TriplotGUI()` function. The function is a wrapper of `PCA_TriplotGUI()` and `WGCNA_TriplotGUI()`. You can view the functions respectively here: [`TriplotGUI()`](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/R/TriplotGUI.R?ref_type=heads){target="_blank"} [`PCA_TriplotGUI()`](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/R/PCA_TriplotGUI.R?ref_type=heads){target="_blank"} [`WGCNA_TriplotGUI()`](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/R/WGCNA_TriplotGUI.R?ref_type=heads){target="_blank"}
+
+In this example we use WGCNA to perform data reduction, therefore specifying `option="WGCNA"`.
+
+```{r showcode_runcode_noshowoutput_5}
+#| eval: true
+#| echo: true
+#| output: false
+#| classes: styled-output
+#| fold.output: false
+Triplot_object3<-TriplotGUI(TPObject3,
+                            first_PC=1,   ## The first PC to map
+                            second_PC=2,   ## The first PC to map
+                            plotLoads=TRUE,   
+                            ##Whether to plot loadings (TRUE; default) or suppress them (FALSE)
+                            plotScores=FALSE,   
+                            ##Whether to plot scores (TRUE) or suppress them (FALSE; default)
+                            plotCorr=TRUE,   
+                            ##Whether to plot correlations (TRUE; default) or suppress them (FALSE)
+                            plotRisk=TRUE,      
+                            ##Whether to plot risk estimates (TRUE; default) or suppress them (FALSE)
+                            
+                            ##For loadings
+                            loadLabels=TRUE,   
+                            ###Whether to plot variable loading labels (TRUE; default) or not (FALSE)
+                            loadArrowLength=0.02,   
+                            ###Length of arrow tip , set it as 0 if you want to remove it
+                            loadCut=0,    
+                            ###lower limit Loadings below the cut are plotted in light grey and without label
+                            loadLim=NULL,   
+                            ##higher limit,Plot range for loadings
+                            
+                            ##For correlations
+                            colCorr="blue",   
+                            ##Color vector for correlations
+                            pchCorr=16,   
+                            ##Plotting character for correlations
+                            whichCorr=NULL,  
+                            ##Which correlations to plot (vector of numbers)
+                            corLim=NULL,     
+                            ##Plot range for correlations
+                            corrLabels = T,
+                            
+                            ##For risks
+                            colRisk="red",    
+                            ##Color vector for risk estimates
+                            pchRisk=15,    
+                            ##Plotting character for risk estimates
+                            whichRisk=NULL,  
+                            ##Which risk estimates to plot (vector of numbers)
+                            riskLim=NULL,            
+                            ##Plot range for risks
+                            riskWhisker_percentage=0.1,  
+                            ## whisker length is how many percentage of confidence interval
+                            riskLabels = T,
+                            size=3,
+                            riskOR=T)
+
+```
+
+Plotting the triplot
+
+```{r showcode_runcode_showoutput_10}
+#| eval: true
+#| echo: true
+#| output: true
+#| classes: styled-output
+#| fold.plot: true
+
+Triplot_object3$triplot
+```
+
 ```{r }
 #| eval: false
 #| echo: true

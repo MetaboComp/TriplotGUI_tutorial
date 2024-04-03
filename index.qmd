@@ -31,37 +31,43 @@ about:
 :::
 
 ### Setup
+
 This section gives instructions on how to install the packages needed, load library and activate the user interface.
 
-
 ### Introduction
+
 This section explains why we develop the TriplotGUI package: The research background, previous work of triplot and our aim.
 
 ### Details
+
 This sections gives detailed manual in analysis and visualization settings of TriplotGUI. We will not focus on the produced visualization output and interpretation here. Such content will be covered by the Tutorial and use case session.
 
-
 ### Tutorial(simple)
+
 This section provides a simple example of how to use the TriplotGUI package. The users can either use code or the user interface to achieve the similar purpose. The code tutorial suits for users that is at beginner R level. The user interface tutorial suits for user that has limited epidemiology knowledge and limited experience in dealing with high dimensional data.
 
 The dataset used is CAMP_2
 
 ### Tutorial(complex)
-This section provides a simple example of how to use the TriplotGUI package. The users can either use code or the user interface to achieve the similar purpose. The code tutorial suits for users that is at intermediate or advanced R level. The user interface tutorial suits for user that has epidemiology knowledge and experience in dealing with high dimensional data.
+
+This section provides a more complex example of how to use the TriplotGUI package. The users can either use code or the user interface to achieve the similar purpose. The code tutorial suits for users that is at intermediate or advanced R level. The user interface tutorial suits for user that has epidemiology knowledge and experience in dealing with high dimensional data.
 
 The dataset used is HealthyNordicDiet_2.
 
 ### Use Case
+
 This section shows a smoother example of how to use the interface to perform data analysis and interpretation, omiting the detailed explanation in the tutorial.
 
 The dataset used is ExposomeChallenge.
 
 ### Paper
+
 This sections covers relevant papers of our TriplotGUI package
 
 ### About us
+
 This sections give brief introduction of the contributors to this package.
 
 ### Contact us
-If you have questions in the package, tutorial and this website, or would like to seek collaboration, please contact <a href="mailto:yingxiao@chalmers.se">yingxiao\@chalmers.se </a>
 
+If you have questions in the package, tutorial and this website, or would like to seek collaboration, please contact <a href="mailto:yingxiao@chalmers.se">yingxiao\@chalmers.se </a>
