@@ -2008,7 +2008,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb66-693"><a href="#cb66-693" aria-hidden="true" tabindex="-1"></a>Triplot_object4<span class="sc">$</span>mediation_plot</span>
 <span id="cb66-694"><a href="#cb66-694" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb66-695"><a href="#cb66-695" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb66-696"><a href="#cb66-696" aria-hidden="true" tabindex="-1"></a>According to the confidence interval, none of the proportion mediated is significant for the eight combinations</span>
+<span id="cb66-696"><a href="#cb66-696" aria-hidden="true" tabindex="-1"></a>We could see four data points on the figure, which represents the eight combinations of exposures, mediators and outcomes.</span>
 <span id="cb66-697"><a href="#cb66-697" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb66-698"><a href="#cb66-698" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>exposure=BSDS, mediator= component 1, outcome=BMI</span>
 <span id="cb66-699"><a href="#cb66-699" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>exposure=BSDS, mediator= component 2, outcome=BMI</span>
@@ -2019,9 +2019,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb66-704"><a href="#cb66-704" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>exposure=Hamburger, mediator= component 1, outcome=T2D</span>
 <span id="cb66-705"><a href="#cb66-705" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>exposure=Hamburger, mediator= component 2, outcome=T2D</span>
 <span id="cb66-706"><a href="#cb66-706" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-707"><a href="#cb66-707" aria-hidden="true" tabindex="-1"></a>A huge confidence interval presented on the plot has pushed the triangle points to the origin. Even though none of the results are significant, we still want to see which dimensions the points are in in the visualization.</span>
+<span id="cb66-707"><a href="#cb66-707" aria-hidden="true" tabindex="-1"></a>We could view from the confidence intervals on the figure already that some PM is not significant. A huge confidence interval presented on the plot has pushed the triangle points to the origin. If we want to zoom in and see which dimensions the points are in in the visualization.</span>
 <span id="cb66-708"><a href="#cb66-708" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-709"><a href="#cb66-709" aria-hidden="true" tabindex="-1"></a>We therefore adjust the limit of the proportion mediated to zoom in on the points. <span class="in">`"medLim = 1.5"`</span> means that the limit showing on the plot will be from -2.5 to 2.5. </span>
+<span id="cb66-709"><a href="#cb66-709" aria-hidden="true" tabindex="-1"></a>We therefore adjust the limit of the proportion mediated to zoom in on the points. <span class="in">`"medLim = 2.5"`</span> means that the limit showing on the plot will be from -2.5 to 2.5. </span>
 <span id="cb66-710"><a href="#cb66-710" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_8B}</span></span>
 <span id="cb66-711"><a href="#cb66-711" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
 <span id="cb66-712"><a href="#cb66-712" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
@@ -2047,7 +2047,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb66-732"><a href="#cb66-732" aria-hidden="true" tabindex="-1"></a>Triplot_object4<span class="sc">$</span>mediation_plot</span>
 <span id="cb66-733"><a href="#cb66-733" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb66-734"><a href="#cb66-734" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb66-735"><a href="#cb66-735" aria-hidden="true" tabindex="-1"></a>In the figure,  even though not significant, we could see the direction and magnitude of proportion mediated for the 2 mediators, all the exposures and outcomes. </span>
+<span id="cb66-735"><a href="#cb66-735" aria-hidden="true" tabindex="-1"></a>In the figure, we could see the direction and magnitude of proportion mediated for the 2 mediators, all the exposures and outcomes. We also notice that the PM for BSDS-component 1-BMI and BSDS-component 2-BMI mediation is significant.</span>
 <span id="cb66-736"><a href="#cb66-736" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb66-737"><a href="#cb66-737" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
 <span id="cb66-738"><a href="#cb66-738" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Note that some confidence intervals are automatically removed from the figure if they are not within the limit. </span>
@@ -2112,7 +2112,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb66-797"><a href="#cb66-797" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb66-798"><a href="#cb66-798" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb66-799"><a href="#cb66-799" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-800"><a href="#cb66-800" aria-hidden="true" tabindex="-1"></a>Base on the barplot and the triplot with mediation, we have not observed significant proportion mediated. Further exploration on indirect, direct and total effect of the mediation analysis could be explored by playing around the <span class="in">`which_show`</span> argument in the <span class="in">`mediation_troplot()`</span> function. We will not go into details here.</span>
+<span id="cb66-800"><a href="#cb66-800" aria-hidden="true" tabindex="-1"></a>Base on the barplot and the triplot with mediation, we have observed significant proportion mediated for BSDS-component1/2-BMI mediations. Further exploration on indirect, direct and total effect of the mediation analysis could be explored by playing around the <span class="in">`which_show`</span> argument in the <span class="in">`mediation_troplot()`</span> function. We will not go into details here.</span>
 <span id="cb66-801"><a href="#cb66-801" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb66-802"><a href="#cb66-802" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 5: Compare correlations, associations and mediations</span></span>
 <span id="cb66-803"><a href="#cb66-803" aria-hidden="true" tabindex="-1"></a></span>
