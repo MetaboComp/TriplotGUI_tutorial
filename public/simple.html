@@ -223,55 +223,78 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>The Data used for this example originates from <strong><em>CAMP_2</em></strong>, which is a synthetic dataset that was simulated from the authentic data used in a cross-sectional study of carbonhydrate alternatives and metabolic phenotypes in Chinese young adults (Liu et al.&nbsp;2018). We have selected our exposures, Omics data, outcomes and covariates based on the <strong><em>CAMP_2</em></strong> data following the code <a href="https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Tutorial_code/Data_cleaning_CAMP_2.R" target="_blank">here</a>. The brief description of these dataframes is shown as below.</p>
 <ul>
-<li>Example1_exposure.rds –&gt; exposure1: 11 variables representing the dietary intake as measured by food frequency questionnaires (<code>"Refined_grains"</code>, <code>"Coarse_grains"</code>, <code>"Red_meat"</code>, <code>"Poutry"</code>, <code>"Seafood"</code>, <code>"Egg"</code>, <code>"Animal_organs"</code>, <code>"Vegetables"</code>, <code>"Fruits"</code>, <code>"Potatos"</code>, <code>"Legumes"</code>.)</li>
-<li>Example1_Omics.rds –&gt; Omics1: 20 variables representing plasma metabolites predictive of BMI</li>
-<li>Example1_outcome.rds –&gt; outcome1: 5 variables representing clinical measurements: <code>"BMI"</code>, <code>"HDL"</code>(high-density lipoprotein cholesterol), <code>"LDL"</code>(low-density lipoprotein cholesterol), <code>"triglycerides"</code>, <code>"total_cholesterol"</code>.</li>
-<li>Example1_covariate.rds –&gt; covariate1: 2 variables that can be used as potential confounders: <code>"AGE"</code> and <code>"SEX"</code>
+<li>Example1_exposure.rds: 11 variables representing the dietary intake as measured by food frequency questionnaires (<code>"Refined_grains"</code>, <code>"Coarse_grains"</code>, <code>"Red_meat"</code>, <code>"Poutry"</code>, <code>"Seafood"</code>, <code>"Egg"</code>, <code>"Animal_organs"</code>, <code>"Vegetables"</code>, <code>"Fruits"</code>, <code>"Potatos"</code>, <code>"Legumes"</code>)</li>
+<li>Example1_Omics.rds: 20 variables representing plasma metabolites predictive of BMI</li>
+<li>Example1_outcome.rds: 5 variables representing clinical measurements: <code>"BMI"</code>, <code>"HDL"</code>(high-density lipoprotein cholesterol), <code>"LDL"</code>(low-density lipoprotein cholesterol), <code>"triglycerides"</code>, <code>"total_cholesterol"</code>.</li>
+<li>Example1_covariate.rds: 2 variables that can be used as potential confounders: <code>"AGE"</code> and <code>"SEX"</code>
 </li>
 </ul>
 <p>All dataframes are row-wise matched by observation and consist of 300 synthetic observations.</p>
+<p><strong>Reference</strong></p>
+<p>Liu X, Liao X, Gan W, et al.&nbsp;Inverse Relationship between Coarse Food Grain Intake and Blood Pressure among Young Chinese Adults. Am J Hypertens. 2019;32(4):402–408. <a href="https://academic.oup.com/ajh/article/32/4/402/5236579?login=true" target="_blank">10.1093/ajh/hpy187</a></p>
+<p>Schillemans T, Shi L, Liu X, Åkesson A, Landberg R, Brunius C. Visualization and Interpretation of Multivariate Associations with Disease Risk Markers and Disease Risk-The Triplot. Metabolites. 2019 Jul 6;9(7):133. <a href="https://www.mdpi.com/2218-1989/9/7/133" target="_blank">doi: 10.3390/metabo9070133</a></p>
 </section><section id="research-question" class="level1"><h1>Research question</h1>
-<p>We want to assess the relationship between diet, metabolic profiles and risk factors of metabolic diseases (i.e.&nbsp;BMI, total cholesterol, triglyceride, HDL, LDL).</p>
+<p>We want to assess the relationship between diet, metabolic profiles and risk factors of metabolic diseases (i.e.&nbsp;BMI, total cholesterol, triglyceride, HDL, LDL). We assume that metabolites serves as mediators, mediating the effect of dietary exposures on BMI outcome.</p>
 </section><section id="the-use-of-interface" class="level1"><h1>The use of interface</h1>
-<p>Run <code>TriplotGUI_shiny_tryout</code> to open your interface. What we will show as an example in the interface here correspond to the <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/simple_code.html#step-2" target="_blank">code example steps</a></p>
+<p>Run <code>TriplotGUI_shiny()</code> to open your interface. What we will show as an example in the interface here correspond to the <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/simple_code.html#step-2" target="_blank">Code example of using TriplotGUI</a> section in this page</p>
 <section id="step-1-data-reduction-of-omics-data" class="level2"><h2 class="anchored" data-anchor-id="step-1-data-reduction-of-omics-data">Step 1: Data reduction of omics data</h2>
 <div class="columns">
 <div class="column" style="width: 45%">
 <p>First upload the Omics data in step 1 and then examine the scree plot, score plot, loadings plot and biplot at step 1. <img src="img/simple_1.png" class="img-fluid"></p>
+<p>Upon finish uploading the Omics data, a series buttons will also show up in case you need to to make some modification on the Omics data.</p>
+<p><img src="img/simple_1_1.png" class="img-fluid"></p>
+<p>You can then play around the visualization panel on the right side and view all the plots (score, loadings, biplot, screeplot).</p>
 </div><div class="column" style="width: 5%">
 
 </div><div class="column" style="width: 40%">
-<p><img src="img/simple_2.png" class="img-fluid"></p>
+<p><img src="img/simple_1_2.png" class="img-fluid"></p>
 </div>
 </div>
 </section><section id="step-2-exposures-correlations-outcomes-associations" class="level2"><h2 class="anchored" data-anchor-id="step-2-exposures-correlations-outcomes-associations">Step 2: Exposures’ correlations &amp; Outcomes’ associations</h2>
 <p>Then upload exposures, outcomes and covariates data in step 2.</p>
-<p><img src="img/simple_3.png" class="img-fluid"></p>
-<p>You could briefly see the correlation coefficients and risk estimates at step 2 respectively.</p>
-<p><img src="img/simple_4.png" class="img-fluid"></p>
+<p><img src="img/simple_2.png" class="img-fluid"></p>
+<p>You could briefly see the correlation coefficients and risk estimates at step 2 respectively in visualizations by clicking “Refresh plot”.</p>
+<p><img src="img/simple_2_1.png" class="img-fluid"></p>
 </section><section id="step-3-visualization-of-triplot" class="level2"><h2 class="anchored" data-anchor-id="step-3-visualization-of-triplot">Step 3: Visualization of Triplot</h2>
-<p>In step 3, you can see and download the triplot that co-visualizing the three plots shown above. <img src="img/simple_5.png" class="img-fluid"></p>
+<p>In step 3, by clicking “Refresh plot”, you can see and download the triplot that co-visualizing the three plots shown above. The left side panel gives you freedom of making adjustment to the plot. <img src="img/simple_3.png" class="img-fluid"></p>
 <p>In the triplot, PC1 reflected metabolites that were positively associated with BMI and also correlated with a high intake of meat and refined grains, adjusting for age and sex. This implies that the metabolite features that contributes most to PC1, are likely to provide useful information for a potential mechanism of how red meat and refrained grains intake may affect BMI.</p>
 </section><section id="step-4-mediation-analysis-and-visualization" class="level2"><h2 class="anchored" data-anchor-id="step-4-mediation-analysis-and-visualization">Step 4: Mediation analysis and visualization</h2>
-<p>Mediation analysis is then performed using the “product” method on the our exposures (i.e.&nbsp;Refined grains, Red meat), mediator (i.e.&nbsp;PC1) and outcome (i.e.&nbsp;BMI) of interest, adjusting for age and sex for both exposure-mediator and mediator-outcome relationship.</p>
 <div class="columns">
-<div class="column" style="width: 45%">
-<p>Note that you need to click <strong><em>Do mediation</em></strong> to start running the mediation analysis and select <strong><em>Mediation estimate or proportion</em></strong> as <em>Estimate</em> to show the indirect effect on triplot with mediation.</p>
-<p><img src="img/simple_7.png" class="img-fluid"></p>
+<div class="column" style="width: 40%">
+<p><img src="img/simple_4.png" class="img-fluid"></p>
 </div><div class="column" style="width: 5%">
 
-</div><div class="column" style="width: 40%">
-<p><img src="img/simple_6.png" class="img-fluid"></p>
+</div><div class="column" style="width: 45%">
+<p>Use the following settings for your data analysis. Mediation analysis is then performed using the Baron-Kenny conventional “product” method on the our exposures (i.e.&nbsp;Refined grains, Red meat), mediator (i.e.&nbsp;PC1, PC2) and outcome (i.e.&nbsp;BMI) of interest, adjusting for age and sex for both exposure-mediator and mediator-outcome relationship.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Note that you need to click <strong><em>Do mediation</em></strong> to start running the mediation analysis.</li>
+<li>In the default setting, only proportion mediated is visualized. You could go to the “Visualization setting” to select <strong><em>Mediation estimate or proportion</em></strong> as <em>Estimate</em> to show the indirect effect or total effect triplot with mediation.</li>
+</ul>
+</div>
+</div>
+<p><img src="img/simple_4_1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>In step 4, you can also see the barplots showed direct, indirect and total effect for each exposure-mediator-outcome combination. It is a convenient tool to check the direction and magnitude of mediation estimates.</p>
-<p><img src="img/simple_8.png" class="img-fluid"> Base on the barplot and the triplot with mediaiton, we observed a significant mediation effect through PC1 for Red_meat-BMI and refined_grain-BMI association. This further implies that the metabolite features that contributes to PC1 are likely to mediate the pathway from red meat and refined grain intake to BMI change.</p>
+<p><img src="img/simple_4_2.png" class="img-fluid"></p>
+<p>Based on the barplot and the triplot with mediation, we observed a significant mediation effect through PC1 for Red_meat-BMI and refined_grain-BMI association. This further implies that the metabolite features that contributes to PC1 are likely to mediate the pathway from red meat and refined grain intake to BMI change.</p>
 </section><section id="step-5-compare-correlations-associations-and-mediations" class="level2"><h2 class="anchored" data-anchor-id="step-5-compare-correlations-associations-and-mediations">Step 5: Compare correlations, associations and mediations</h2>
-<p>Users can then check the heatmaps of correlations, risk estimations and mediation results at step 5.</p>
-<p><img src="img/simple_9.png" class="img-fluid"></p>
+<p>Users can then check the heatmaps of correlations, risk estimations and mediation results at step 5. By removing other PCs in the “Visualization settings”, users may only show results relvant to PC1 and PC2.</p>
+<p><img src="img/simple_5.png" class="img-fluid"></p>
+<p><img src="img/simple_5_1.png" class="img-fluid"></p>
 </section><section id="step-6-download-data" class="level2"><h2 class="anchored" data-anchor-id="step-6-download-data">Step 6: Download data</h2>
-<p>Revelant data, intermediate results, can then be downloaded at step 6.</p>
-<p><img src="img/simple_10.png" class="img-fluid"></p>
+<p>Relevant data, intermediate results, can then be viewed and downloaded at step 6.</p>
+<p><img src="img/simple_6.png" class="img-fluid"></p>
 
 
 </section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

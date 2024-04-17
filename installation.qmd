@@ -60,7 +60,7 @@ Things may pop up in your console and ask you for some choices, we provide some 
 
 <li>Sometimes it pops up in your console to ask you *which package you would like to update*. We recommened you to chose **3.None**</li>
 
-<li>Sometimes it pops up in your console to ask *Do you want to install from soutce packages which need compliation* . We recommended you to chose **no**</li>
+<li>Sometimes it pops up in your console to ask *Do you want to install from source packages which need compliation* . We recommended you to chose **no**</li>
 
 <li>Sometimes it pops up in your console to ask *Update all/some/none?\[a/s/n\]* . We recommended you to chose **n**</li>
 
