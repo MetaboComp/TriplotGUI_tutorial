@@ -1,6 +1,9 @@
 ---
 title: "Introduction"
-subtitle: "Brief intro of the purpose of TriplotGUi and when to use it"
+filters:
+   - lightbox
+lightbox: auto
+subtitle: "TriplotGUI's research and design"
 title-block-banner: true
 title-block-banner-color: white
 title-block-categories: false
@@ -22,13 +25,21 @@ format:
 
 # Overview
 
-![](img/event_chain.png){width="1000px"} <br> <br> Most observational epidemiology research studies associations between single exposure and outcome. Emerging exposure- and outcome-wide studies aim to more broadly identify potential risk factors and their health effects. Although omics technologies have permitted linking exposures to outcomes via molecular data, large-scale exploration of mediating mechanisms is frequently lacking. Likely because Omics data are often high dimensional and there is a lack of effective tools for direct interpretation of the complex relationships between multiple exposures, Omics and outcomes. We therefore developed the [TriplotGUI]{style="color:orange"} tool to advance exposome-risk assessment and facilitate the visualization and interpretation of such complex associations via metabolic regulation.
+**Background&aim:** Emerging exposure- and outcome-wide studies aim to more broadly identify potential risk factors and their health effects. Although Omics technologies have permitted linking exposome to outcomes, large-scale exploration of mediating mechanisms is frequently lacking. Likely because Omics data is often high dimensional and there is a lack of effective tools for direct interpretation of complex relationships between exposures, Omics and outcomes. We therefore developed the [TriplotGUI]{style="color:black"} tool to advance exposure-risk assessment and facilitate the interpretation of such complex associations via Omics profile.
 
-The application adopted a highly reactive stepwise modular design, where one or two modules represents one of the 6 following steps and the change of input from an early step will feed into a later step.
+**Methods:** Omics variables-of-interest are reduced to components using principal component analysis (PCA) or weighted correlation network analysis (WGCNA) and are associated with both exposures and outcomes using linear models. Components are then investigated as potential mediators using “meet-in-the-middle” analysis, i.e. intersecting exposure-Omics and Omics-outcome associations, and mediation analysis. TriplotGUI supports both classical (Baron-Kenny) and counterfactual mediation, as well as adjustment for covariates.
 
-![](img/workflow.png) <br>
+![](img/event_chain.png){width="1000px"}
+
+**Results:** As a molecular epidemiology toolbox, among its various functionalities, TriplotGUI co-visualizes Omics variable contributions, exposure-Omics and Omics-outcome associations as well as direct and indirect effects from mediation analysis. Centering the analyses around molecular data allows for simultaneous assessment of multiple exposures and outcomes. Without the need of programming, users can conveniently perform analysis and visualization at a [web version of TriplotGUI](https://yingxiao.shinyapps.io/triplotgui/){target="_blank"}. TriplotGUI can also be installed conveniently as a stand-alone application in RStudio in secure environments and is therefore suited for GDPR. Please read the [Setup](installation.qmd){target="_blank" style="color:blue"} session for more about installation.
+
+**Conclusion:** Using synthetic and real-world data with dietary variables as exposures, we showed that TriplotGUI can comprehensively analyze, visualize and interpret associations between exposures and outcomes through metabolome. Its flexible user interface facilitates the integration of exposures, Omics and outcomes to untangle their complex relationships.
 
 # Steps
+
+The TriplotGUI application adopted a highly reactive stepwise modular design, where one or two modules represents one of the 6 following steps and the change of input from an early step will feed into a later step.
+
+![](img/workflow.png) <br>
 
 **Step1:** Data reduction of omics data
 
@@ -48,7 +59,7 @@ The component scores and loadings, the correlation coefficients and the risk ass
 
 **Step4A:** Mediation analysis and visualization
 
-Performs mediation analysis on the selected exposures and outcomes, using component scores as mediators. The mediation estimates (i.e. indirect and total effect) or the proportion mediated are then co-visualized with the correlation coefficients of the selected exposures and the risk associations’ estimates as beta coefficients or odds ratio of the selected outcomes, as 3 different layers in one 2-dimensional plot.
+Performs mediation analysis on the selected exposures and outcomes, using component scores as mediators. The mediation estimates (i.e. indirect and total effect) or the proportion mediated are then co-visualized with the component loadings, the correlation coefficients of the selected exposures and the risk associations’ estimates as beta coefficients or odds ratio of the selected outcomes, as different layers in one 2-dimensional plot.
 
 **Step4B:** Visualization for single mediations
 
@@ -56,10 +67,12 @@ A clear overview of the magnitude and direction of indirect, direct and total ef
 
 **Step5:** Compare correlations, associations and mediations
 
-The correlations, associations, mediation estimates and proportion mediated as well as their significance levels can be visualized through heatmap.
+The correlations, associations, mediation estimates and proportion mediated as well as their significance levels can be visualized through heatmaps.
 
 **Step6:** Download data
 
 The intermediate data and the generated results can be viewed and downloaded. The object that saves all relevant information can be downloaded.
 
-<br> We will give detailed explanations of statistical data analysis and visualization in each step in the workflow session.
+<br> <br> We will give detailed explanations of statistical data analysis and visualization in each step in the [Manual](workflow.qmd){target="_blank" style="color:blue"} session.
+
+Go to TriplotGUI's [git repository](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Example_data.rar?ref_type=heads){target="_blank"}. Click the download icon at the right side and download the Exampledata.rar. Unzip it and you will find the data that will be used as example in the tutorial.

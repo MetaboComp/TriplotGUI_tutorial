@@ -1,6 +1,9 @@
 ---
 layout: page
-title: Relevant papers
+title: Relevant papers and poster
+filters:
+   - lightbox
+lightbox: auto
 title-block-banner: true
 title-block-banner-color: white
 excerpt: Relevant papers
@@ -63,3 +66,15 @@ Bodén S, Zheng R, Ribbenstedt A, Landberg R, Harlid S, Vidman L, Gunter MJ, Win
 Schillemans T, Yan Y, Ribbenstedt A, Donat-Vargas C, Lindh CH, Kiviranta H, Rantakokko P, Wolk A, Landberg R, Åkesson A, Brunius C. OMICs Signatures Linking Persistent Organic Pollutants to Cardiovascular Disease in the Swedish Mammography Cohort. Environ Sci Technol. 2024 Jan 16;58(2):1036-1047. [doi: 10.1021/acs.est.3c06388](https://pubs.acs.org/doi/full/10.1021/acs.est.3c06388){target="_blank"}.
 
 Titova OE, Brunius C, Warensjö Lemming E, Stattin K, Baron JA, Byberg L, Michaëlsson K, Larsson SC. Comprehensive analyses of circulating cardiometabolic proteins and objective measures of fat mass. Int J Obes (Lond). 2023 Nov;47(11):1043-1049. [doi: 10.1038/s41366-023-01351-z](https://pubmed.ncbi.nlm.nih.gov/37550405/){target="_blank"}.
+
+```{=html}
+<br>
+<p class="large-text">
+
+<strong>Poster</strong>
+
+
+
+</p>
+```
+![](img/TriplotGUI_poster.png){width="1000px"}

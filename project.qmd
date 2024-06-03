@@ -1,5 +1,8 @@
 ---
 title: "Projects"
+filters:
+   - lightbox
+lightbox: auto
 subtitle: "My past and ongoing projects"
 title-block-banner: true
 title-block-banner-color: white

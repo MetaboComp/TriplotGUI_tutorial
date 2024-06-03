@@ -1,6 +1,9 @@
 ---
 title: "Installation"
-subtitle: "Steps to install the package and gointo user interface"
+filters:
+   - lightbox
+lightbox: auto
+subtitle: "Install TriplotGUI as a stand-alone application and activate its user interface"
 title-block-banner: true
 title-block-banner-color: white
 title-block-categories: false
@@ -31,6 +34,8 @@ format:
 geometry: margin=lin  
 ---
 
+The TriplotGUI tool can be accessible online at [here](https://yingxiao.shinyapps.io/triplotgui/){target="_blank"}. If you want to use TriplotGUI as a stand-alone application (using it only on a local computer), please follow the procedure below.
+
 # Install packages
 
 Please run the following code to install the packages needed. This needs to be run in your R console.
@@ -42,14 +47,6 @@ Please run the following code to install the packages needed. This needs to be r
 #| error: true
 #| classes: styled-output
 
-### I may need mix Omics and impute not sure
-if (!require("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install("mixOmics")
-BiocManager::install("impute")
-BiocManager::install("preprocessCore")
-BiocManager::install("GO.db")
-
 install.packages("remotes")
 remotes::install_gitlab("YingxiaoYan/TriplotGUI")
 ```
@@ -58,17 +55,17 @@ Things may pop up in your console and ask you for some choices, we provide some 
 
 <ul>
 
-<li>Sometimes it pops up in your console to ask you *which package you would like to update*. We recommened you to chose **3.None**</li>
+<li>Sometimes it pops up in your console that asks you *which package you would like to update*. We recommened you to chose **3.None**</li>
 
-<li>Sometimes it pops up in your console to ask *Do you want to install from source packages which need compliation* . We recommended you to chose **no**</li>
+<li>Sometimes it pops up in your console that asks *Do you want to install from source packages which need compliation* . We recommended you to chose **no**</li>
 
-<li>Sometimes it pops up in your console to ask *Update all/some/none?\[a/s/n\]* . We recommended you to chose **n**</li>
+<li>Sometimes it pops up in your console that asks *Update all/some/none?\[a/s/n\]* . We recommended you to chose **n**</li>
 
 </ul>
 
 # Load libraries
 
-Run the following code in your R console.
+After installing the package, run the following code in your R console.
 
 ```{r }
 #| eval: false
@@ -80,9 +77,7 @@ Run the following code in your R console.
 library(TriplotGUI)
 ```
 
-# Download the example data for user interface
 
-Go to my [git repository](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Example_data.rar?ref_type=heads){target="_blank"}. Click the download icon at the right side and download the Exampledata.rar. Unzip it and you will find the data that will be used as example in the tutorial.
 
 # Change the maximize size of data file allowed
 
@@ -95,7 +90,6 @@ The default of our package has allows data of maximize size of 5 MB. To change t
 #| error: true
 #| classes: styled-output
 
-
 filesize=100  ##MB
 options(shiny.maxRequestSize=filesize*1024^2)
 
@@ -103,7 +97,7 @@ options(shiny.maxRequestSize=filesize*1024^2)
 
 # Activate the user interface
 
-Run the following code in your R console.
+To activate the graphical user interface, run the following code in your R console.
 
 ```{r }
 #| eval: false
@@ -113,6 +107,6 @@ Run the following code in your R console.
 #| classes: styled-output
 
 
-TriplotGUI_shiny_tryout()
+TriplotGUI_shiny()
 
 ```

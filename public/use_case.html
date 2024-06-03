@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.361">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="description" content="Epidemiologist | PhD researcher | Machine learning, computational metabolomics">
 <title>TriplotGUI  - Use case - User Interface</title>
 <style>
 code{white-space: pre-wrap;}
@@ -36,11 +35,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
+  "copy-button": true,
+  "collapse-after": 5,
   "panel-placement": "end",
   "type": "textbox",
   "limit": 20,
@@ -102,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./workflow.html" rel="" target="">
- <span class="menu-text">Details</span></a>
+ <span class="menu-text">Manual</span></a>
   </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorial(simple" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
@@ -135,10 +137,6 @@ ul.task-list li input[type="checkbox"] {
     </ul>
 </li>
   <li class="nav-item">
-    <a class="nav-link active" href="./use_case.html" rel="" target="" aria-current="page">
- <span class="menu-text">Use Case</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./papers.html" rel="" target="">
  <span class="menu-text">Papers</span></a>
   </li>  
@@ -154,17 +152,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://gitlab.com/YingxiaoYan/TriplotGUI" rel="" target=""><i class="bi bi-github" role="img">
-</i> 
- <span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
     <a class="nav-link" href="https://www.linkedin.com/in/yingxiao-yan" rel="" target=""><i class="bi bi-linkedin" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:yingxiao.yan.007@gmail.com" rel="" target=""><i class="bi bi-envelope" role="img" aria-label="email">
+    <a class="nav-link" href="mailto:yingxiao@chalmers.se" rel="" target=""><i class="bi bi-envelope" role="img" aria-label="email">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -201,7 +194,7 @@ ul.task-list li input[type="checkbox"] {
   <li>
 <a href="#the-use-of-interface" id="toc-the-use-of-interface" class="nav-link" data-scroll-target="#the-use-of-interface">The use of interface</a>
   <ul>
-<li><a href="#step-1-data-reduction-of-omics-data-and-auxiliary-data" id="toc-step-1-data-reduction-of-omics-data-and-auxiliary-data" class="nav-link" data-scroll-target="#step-1-data-reduction-of-omics-data-and-auxiliary-data">Step 1: Data reduction of Omics data and auxiliary data</a></li>
+<li><a href="#step-1-data-reduction-of-omics-data." id="toc-step-1-data-reduction-of-omics-data." class="nav-link" data-scroll-target="#step-1-data-reduction-of-omics-data.">Step 1: Data reduction of Omics data.</a></li>
   <li><a href="#step-2-exposures-correlations-outcomes-associations" id="toc-step-2-exposures-correlations-outcomes-associations" class="nav-link" data-scroll-target="#step-2-exposures-correlations-outcomes-associations">Step 2: Exposures’ correlations &amp; Outcomes’ associations</a></li>
   <li><a href="#step-3-visualization-of-triplot" id="toc-step-3-visualization-of-triplot" class="nav-link" data-scroll-target="#step-3-visualization-of-triplot">Step 3: Visualization of Triplot</a></li>
   <li><a href="#step-4-mediation-analysis-and-visualization" id="toc-step-4-mediation-analysis-and-visualization" class="nav-link" data-scroll-target="#step-4-mediation-analysis-and-visualization">Step 4: Mediation analysis and visualization</a></li>
@@ -229,10 +222,10 @@ ul.task-list li input[type="checkbox"] {
 <p>Example3_outcome.rds: 6 variables:</p>
 <ul>
 <li>
-<code>"asthma"</code>: Doctor diagnosed asthma (ever): A factor variable with 2 levels: 1 represents diagnosed and 0 represents not.<br>
+<code>"asthma"</code>: Doctor diagnosed asthma (ever): A binary factor variable with 2 levels: 1 represents diagnosed and 0 represents not.<br>
 </li>
 <li>
-<code>"zBMI_cat"</code>: Body mass index categories at 6-11 years old: A binary factor variable with 4 levels: 1: Thinness, 2: Normal, 3:Overweight, 4: Obese.</li>
+<code>"zBMI_cat"</code>: Body mass index categories at 6-11 years old: A categorical factor variable with 4 levels: 1: Thinness, 2: Normal, 3:Overweight, 4: Obese.</li>
 <li>
 <code>"zBMI"</code>: Body mass index z-score at 6-11 years old - Standardized on sex and age: A continuous/numeric variable.</li>
 <li>
@@ -244,8 +237,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </li>
 <li><p>Example3_exposome.rds: containing a dataframe with 222 environmental variables (outdoor exposures, indoor air, lifestyle chemicals). All the 222 variables are continuous/numeric.</p></li>
-<li><p>Example3_selected_exposure.rds: containing a dataframe with 33 variables. These variables are selected out of the 222 environmental variables by the “MUVR2” machine learning algorithm (Yan et al, 2024) as predictive/relevant to either <code>"IQ"</code> or <code>"zBMI_cat"</code> (Out of the 6 outcome variables, the prediction using machine learning gives convincing prediction performance for these 2 variables, but not the other 4 variables)</p></li>
-<li><p>Example3_selected_exposure_noisy.rds: containing a dataframe with 80 variables. These variables are selected out of the 222 environmental variables by the “MUVR2” machine learning algorithm as predictive/relevant to one or more of the outcome variables.</p></li>
+<li><p>Example3_selected_exposure.rds: containing a dataframe with 34 variables. These variables are selected out of the 222 environmental variables by the “MUVR2” machine learning algorithm (Yan et al, 2024) as predictive/relevant to either <code>"IQ"</code> or <code>"zBMI"</code> (Out of the 6 outcome variables, the prediction using machine learning gives convincing prediction performance for these 2 variables, but not the other 4 variables)</p></li>
+<li><p>Example3_selected_exposure_noisy.rds: containing a dataframe with 73 variables. These variables are selected out of the 222 environmental variables by the “MUVR2” machine learning algorithm as predictive/relevant to at least one out of the 6 outcome variables. However, out of the 6 outcome variables, the prediction using machine learning did not give convincing prediction performance for<code>"asthma"</code>, <code>"zBMI_cat"</code>, <code>"birth_weight"</code>, <code>"neurobehavior"</code>.</p></li>
 <li><p>Example3_covariate.rds: 13 variables that can be used as potential confounders: <code>"cohort"</code>, <code>"sex_child"</code>, <code>"yearbir_child"</code>, <code>"BMI_maternal"</code>, <code>"weight_gain_maternal"</code>, <code>"gestational_age_maternal"</code>, <code>"age_maternal"</code>, <code>"education_maternal"</code>, <code>"native_child"</code>, <code>"parity_maternal"</code>, <code>"age_child"</code>, <code>"height_child"</code>, <code>"weight_child"</code></p></li>
 </ul>
 <p>The data frames are row-wise matched by observation and consist of 1198 observations.</p>
@@ -254,29 +247,39 @@ ul.task-list li input[type="checkbox"] {
 <p>Maitre, L., Guimbaud, J. B., Warembourg, C., Güil-Oumrait, N., Petrone, P. M., Chadeau-Hyam, M., … &amp; Exposome Data Challenge Participant Consortium. (2022). State-of-the-art methods for exposure-health studies: results from the exposome data challenge event. <em>Environment international</em>, 168, 107422. <a href="https://pubmed.ncbi.nlm.nih.gov/36058017/" target="_blank">doi: 10.1016/j.envint.2022.107422</a></p>
 <p>Maitre, L., de Bont, J., Casas, M., Robinson, O., Aasvang, G. M., Agier, L., … &amp; Vrijheid, M. (2018). Human Early Life Exposome (HELIX) study: a European population-based exposome cohort. <em>BMJ Open</em> 8 (9), e021311. <a href="https://pubmed.ncbi.nlm.nih.gov/30206078/" target="_blank">doi: 10.1136/bmjopen-2017-021311</a></p>
 </section><section id="research-question" class="level1"><h1>Research question</h1>
-<p>We want to explore the given data to identify the exposure variables that are associated with our outcomes, using the metabolomics data.</p>
+<p>In this use cases, we have used three group of exposures (1) exposome: 222 variables. (2)selected_exposure_noisy: 73 variables. (3)selected exposures: 34 variables. We use 2 variables,<code>"IQ"</code> and`“zBMI” as out outcomes and metabolomics variables as our mediator Omics data.</p>
+<p>From the information in the data description, we know that group (3) variables are the most relevant variables to <code>"IQ"</code> and`“zBMI”. Group (2) variables contains all group (3) variables and also other variable that are not relevant. Group (1) variables contain even more irrelevant variable.</p>
+<p>We want to explore if group (3) variables indeed show more relevance to the outcome variables than group (1) and (2) in <span style="color:orange">TriplotGUI</span>, and whether <span style="color:orange">TriplotGUI</span> can identify Omics patterns that may mediate the mechanism from exposures to outcomes.</p>
 </section><section id="the-use-of-interface" class="level1"><h1>The use of interface</h1>
-<p>Run <code>TriplotGUI_shiny()</code> to open your interface. We will show you an use case</p>
-<section id="step-1-data-reduction-of-omics-data-and-auxiliary-data" class="level2"><h2 class="anchored" data-anchor-id="step-1-data-reduction-of-omics-data-and-auxiliary-data">Step 1: Data reduction of Omics data and auxiliary data</h2>
-<p>First upload the Omics data in step 1. Inspect the classes of Omics variables briefly. Explore that data using the “Data analysis settings” and “Visualization setting” to select 2 component of interest. We will use the following settings as an example, but of course you can use your own settings. Examine the scree plot, score plot, loadings plot and biplot at step 1 for your choice.</p>
+<p>Run <code>TriplotGUI_shiny()</code> to open your interface. We will show you an use case.</p>
+<section id="step-1-data-reduction-of-omics-data." class="level2"><h2 class="anchored" data-anchor-id="step-1-data-reduction-of-omics-data.">Step 1: Data reduction of Omics data.</h2>
 <div class="columns">
 <div class="column" style="width: 45%">
-<p><img src="img/usecase_1_1.png" class="img-fluid"></p>
+<p>First upload the Omics data in step 1. Inspect the classes of Omics variables briefly. Use the default of “Data analysis settings”. Play around in the “Visualization settings”. Since we have 177 Omics variables, click the <strong><em>Loading labels</em></strong> to <em>No</em> so that you have a clearer view of your loadings plot. You can observed that using PCA as data analysis method, your loadings (representing omics variables) are mostly positively associated with your component 1.</p>
 </div><div class="column" style="width: 5%">
 
 </div><div class="column" style="width: 45%">
-<p><img src="img/usecase_1_2.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="img/usecase_1_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/usecase_1_1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 </section><section id="step-2-exposures-correlations-outcomes-associations" class="level2"><h2 class="anchored" data-anchor-id="step-2-exposures-correlations-outcomes-associations">Step 2: Exposures’ correlations &amp; Outcomes’ associations</h2>
-<p>Then upload exposures and covariate data in step 2A. Briefly inspecting variable classes, remove the variables you don’t want. Set your own “Data analysis settings”. In our example</p>
+<p>Then upload exposures and covariate data in step 2A. Briefly inspecting variable classes. You can choose which covariate variables to adjust as you wish. In our use case example, for the sake of simplicity, we will not perform any covariate adjustment (the <strong><em>Raw or partial correlation</em></strong> is specified as <em>Raw</em> in the “Data analysis settings”)</p>
 <div class="columns">
 <div class="column" style="width: 45%">
-<p><img src="img/complex_2_1.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="img/complex_2_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="img/complex_2_1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div><div class="column" style="width: 5%">
 
 </div><div class="column" style="width: 45%">
-<p><img src="img/complex_2_2.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="img/complex_2_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="img/complex_2_2.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Change your “Data analysis settings” as the figure below.</p>
@@ -298,22 +301,34 @@ Note
 </div>
 <div class="columns">
 <div class="column" style="width: 45%">
-<p><img src="img/complex_2_3.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="img/complex_2_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img/complex_2_3.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 <p>You could briefly see the correlation coefficients in “Visualizations” by clicking “Refresh plot”.</p>
 </div><div class="column" style="width: 5%">
 
 </div><div class="column" style="width: 45%">
-<p><img src="img/complex_2_4.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="img/complex_2_4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/complex_2_4.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Then in step 2B, upload outcome and covariate data By briefly inspecting variable classes, you could notice: - In the outcome data, <code>"BMI"</code> is a numeric variable; <code>"BMI_cat"</code> and <code>"T2D"</code> are factor variables. - A variable called <code>"X"</code> exists in the covariate data. This is because the covariate data is uploaded as a csv file and the observation number may automatically be generated as a new variable when the file is read in. Remove this variable since it is not an actual covariate.</p>
 <div class="columns">
 <div class="column" style="width: 45%">
-<p><img src="img/complex_2_5.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="img/complex_2_5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="img/complex_2_5.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div><div class="column" style="width: 5%">
 
 </div><div class="column" style="width: 45%">
-<p><img src="img/complex_2_6.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="img/complex_2_6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="img/complex_2_6.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Change your “Data analysis settings” and “Visulization settings” as the figure below.</p>
@@ -346,16 +361,22 @@ Note
 </div>
 <div class="columns">
 <div class="column" style="width: 45%">
-<p><img src="img/complex_2_7.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="img/complex_2_7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="img/complex_2_7.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div><div class="column" style="width: 5%">
 
 </div><div class="column" style="width: 45%">
 <p>You could briefly see the risk estimate in “Visualizations” by clicking “Refresh plot”.</p>
-<p><img src="img/complex_2_8.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="img/complex_2_8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="img/complex_2_8.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 </section><section id="step-3-visualization-of-triplot" class="level2"><h2 class="anchored" data-anchor-id="step-3-visualization-of-triplot">Step 3: Visualization of Triplot</h2>
-<p>In step 3, by clicking “Refresh plot”, you can see and download the triplot that co-visualizing the three plots shown above. The left side panel gives you freedom of making adjustment to the plot. <img src="img/complex_3_1.png" class="img-fluid"></p>
+<p>In step 3, by clicking “Refresh plot”, you can see and download the triplot that co-visualizing the three plots shown above. The left side panel gives you freedom of making adjustment to the plot. <a href="img/complex_3_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="img/complex_3_1.png" class="img-fluid"></a></p>
 <p>In the triplot, blue circle points represent exposure correlations and the red square points represents outcome risk estimates with confidence interval. So what information can we get from this figure? Lets us list a few points:</p>
 <ul>
 <li>Having a brief look, the generally healthy food (e.g.&nbsp;<code>"Fruits"</code>, <code>"Vegetables"</code>) is on the first dimension of the figure and the generally unhealthy food (e.g.&nbsp;<code>"Hamburger"</code>, <code>"Sausage"</code>, <code>"Margarine"</code>) is on the third dimension of the figure. The numeric outcome <code>"BMI"</code>, binary outcome <code>"T2D"</code>, and one-hot-encoded categorical <code>"BMI_cat"</code> outcome is on the second and fourth dimension of the figure.</li>
@@ -412,17 +433,20 @@ Note
 </div><div class="column" style="width: 5%">
 
 </div><div class="column" style="width: 45%">
-<p><img src="img/complex_4_1.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="img/complex_4_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="img/complex_4_1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 <p>You could then play around in the “Visualization settings” too see how you want to visualize your plot.</p>
 </div>
 <div class="columns">
 <div class="column" style="width: 40%">
-<p>You could first only show the proportion mediated(PM) and adjust the limits to make the points more visible. <img src="img/complex_4_2.png" class="img-fluid"></p>
+<p>You could first only show the proportion mediated(PM) and adjust the limits to make the points more visible. <a href="img/complex_4_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="img/complex_4_2.png" class="img-fluid"></a></p>
 </div><div class="column" style="width: 5%">
 
 </div><div class="column" style="width: 45%">
-<p><img src="img/complex_4_3.png" class="img-fluid"> In the figure, even though not significant, we could see the direction and magnitude of proportion mediated for the 2 mediators, all the exposures and outcomes.</p>
+<p><a href="img/complex_4_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="img/complex_4_3.png" class="img-fluid"></a> In the figure, even though not significant, we could see the direction and magnitude of proportion mediated for the 2 mediators, all the exposures and outcomes.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -443,11 +467,14 @@ Note
 </div>
 <div class="columns">
 <div class="column" style="width: 40%">
-<p>You then show the adjusted proportion mediated(PM) and adding the layers of correlation and risk estimates <img src="img/complex_4_4.png" class="img-fluid"></p>
+<p>You then show the adjusted proportion mediated(PM) and adding the layers of correlation and risk estimates <a href="img/complex_4_4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="img/complex_4_4.png" class="img-fluid"></a></p>
 </div><div class="column" style="width: 5%">
 
 </div><div class="column" style="width: 45%">
-<p><img src="img/complex_4_5.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="img/complex_4_5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="img/complex_4_5.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </div>
 </div>
 <p>By observing this figure, we could see the direction and magnitude of adjusted proportion mediated for the 2 mediators, all the exposures and outcomes. The position of the points is similar what we have seen for proportion mediated. Note that APM for BSDS as exposure and T2D as outcome is smaller than their PM. This is because the indirect and direct effect for this mediation is of similar size but in opposite direction. This leads to a smaller total effect and in turn larger PM, but APM will not be affected by the directionality of direct and indirect effect. ::: callout-note - No confidence interval is shown for adjusted proportion mediated, as such value can not be directly calculated from the mediation analysis.</p>
@@ -455,14 +482,23 @@ Note
 <li>Note that even direct effect and indirect effects are in the opposite direction, adjusted proportion mediated is always smaller than 1, since it uses the sum of the absolute value of indirect and direct effect as denominator. <span class="math display">\[APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{IE+DE}\cdot\frac{|IE|+|DE|}{|IE+DE|}\]</span> :::</li>
 </ul>
 <p>In step 4, you can also see the barplots showed direct, indirect and total effect for each exposure-mediator-outcome combination. It is a convenient tool to check the direction and magnitude of mediation estimates.</p>
-<p><img src="img/complex_4_6.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="img/complex_4_6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="img/complex_4_6.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </section><section id="step-5-compare-correlations-associations-and-mediations" class="level2"><h2 class="anchored" data-anchor-id="step-5-compare-correlations-associations-and-mediations">Step 5: Compare correlations, associations and mediations</h2>
 <p>Users can then check the heatmaps of correlations, risk estimations and mediation results at step 5. By removing other PCs, exposures or outcomes in the “Visualization settings”, users may only show correlation, risk estimation and mediation results of their interest.</p>
-<p><img src="img/complex_5_1.png" class="img-fluid"></p>
-<p><img src="img/complex_5_2.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="img/complex_5_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="img/complex_5_1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="img/complex_5_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="img/complex_5_2.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
 </section><section id="step-6-download-data" class="level2"><h2 class="anchored" data-anchor-id="step-6-download-data">Step 6: Download data</h2>
 <p>Relevant data, intermediate results, can then be viewed and downloaded at step 6.</p>
-<p><img src="img/complex_6_1.png" class="img-fluid"><img src="img/complex_6_2.png" class="img-fluid"></p>
+<p><a href="img/complex_6_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="img/complex_6_1.png" class="img-fluid"></a> <a href="img/complex_6_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="img/complex_6_2.png" class="img-fluid"></a></p>
 
 
 </section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -525,11 +561,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
-    <div class="nav-footer-left"><span class="faux-block">© 2024 Yingxiao Yan CC BY-SA 4.0</span></div>   
-    <div class="nav-footer-center"><span class="faux-block"><a href="https://gitlab.com/YingxiaoYan/TriplotGUI">TriplotGUI gitlab</a></span></div>
-    <div class="nav-footer-right"><span class="faux-block cyan"><a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/">View source of this site on GitLab</a></span></div>
+    <div class="nav-footer-left"><span class="faux-block">© 2024 Yingxiao Yan <br> CC BY-SA 4.0</span></div>   
+    <div class="nav-footer-center"><span class="faux-block"> <a href="https://yingxiao.shinyapps.io/triplotgui/" target="_blank">TriplotGUI</a> <br><a href="https://gitlab.com/YingxiaoYan/TriplotGUI" target="_blank">TriplotGUI Gitlab</a> </span></div>
+    <div class="nav-footer-right"><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></div>
   </div>
-</footer>
+</footer><script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","loop":true,"openEffect":"zoom"});</script>
 
 
 <script src="site_libs/quarto-html/zenscroll-min.js"></script>

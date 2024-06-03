@@ -1,5 +1,8 @@
 ---
 title: "Publication & honor"
+filters:
+   - lightbox
+lightbox: auto
 subtitle: "Publications and honors"
 title-block-banner: true
 title-block-banner-color: white
@@ -37,7 +40,6 @@ geometry: margin=lin
 #  freeze: true  # never re-render during project render
 ---
 
-
 ## Publications
 
 Luyan Wu, Wenhui Zeng, Liandong Feng, Yuxuan Hu, Yidan Sun, <strong>Yingxiao Yan</strong>, HongYuan Chen & Deju Ye. <a href="https://onlinelibrary.wiley.com/doi/10.1111/joim.13540">An activatable radiometric near-inflared fluorescent probe for hydrogen sulfide imaging in vivo.</a> Science China Chemistry. 2020;63(5):741-750 <br /> <br /> <strong>Yan Y</strong>, Smith E, Melander O, Ottosson F. <a href="https://link.springer.com/article/10.1007/s11426-019-9689-4#citeas">The association between plasma metabolites and future risk of all‐cause mortality.</a> Journal of Internal Medicine. 2022;292(5):804-815. <br /> <br /> Schillemans T, <strong>Yan Y</strong>, Ribbenstedt A, Donat-Vargas C, Lindh C, Kivirante H, Wolk A, et al.OMICs signatures linking persistent organic pollutants to cardiovascular disease in the Swedish Mammography Cohort \[Submitted\]
@@ -60,7 +62,7 @@ Luyan Wu, Wenhui Zeng, Liandong Feng, Yuxuan Hu, Yidan Sun, <strong>Yingxiao Yan
 
 <li>R/shiny (data cleaning, manipulation, analysis, and visualization) <em>- Expert</em></li>
 
-<li>Biostatistics and epidemiological research  <em>- Expert</em></li>
+<li>Biostatistics and epidemiological research <em>- Expert</em></li>
 
 <li>SPSS, Excel & Microsoft Office suite <em>- Expert</em></li>
 
@@ -90,7 +92,6 @@ Filip Ottoson <br />Postdoctoral Researcher – <em>Lund University</em> <br />E
 
 </footer>
 
-
 ::: {#news}
 ## News
 
@@ -110,7 +111,6 @@ Filip Ottoson <br />Postdoctoral Researcher – <em>Lund University</em> <br />E
 
 -   **March 29, 2023**: I'll be presenting our paper on *Meta-Uncertainty in Bayesian Model Comparison* at AISTATS 2023 from April 25-27 in Valencia, Spain. You find links to the paper and code on my <a href="projects/index.qmd#meta-uncertainty-BMC" target="_blank" style="color: #E6AA04;">Projects</a> page or on the dedicated <a href="https://meta-uncertainty.github.io/" target="_blank" style="color: #E6AA04;">paper website</a>. If you see me around at AISTATS, let's chat!
 :::
-
 
 ## Featured Blog Posts
 

@@ -1,5 +1,8 @@
 ---
 title: "Use case - User Interface"
+filters:
+   - lightbox
+lightbox: auto
 subtitle: "A use case example user interface in TriplotGUI"
 title-block-banner: true
 title-block-banner-color: white
@@ -43,7 +46,6 @@ knitr::knit_hooks$set(
 )
 ```
 
-
 Before starting, please make sure you have installed the TriplotGUI package following [Setup](installation.qmd){target="_blank"}.
 
 # Data description
@@ -56,23 +58,26 @@ Each dataset used in this page of tutorial can be downloaded [here](https://gitl
 -   Example3_outcome.rds
 -   Example3_covariate.rds
 
-
 The Data used for this example originates from ***ExposomeChallenge***, which is modified from the data provided by the "the Exposome data Challenge Event" hosted by ISGlobal in April 2021 (Maitre et al, 2022). The data used by the event came from the HELIX (the Human Early Life Exposome) subcochort data base and were partially simulated. The HELIX study aims to measure and describe multiple exposures during early life (pregnancy and childhood) and associates these exposures with molecular omics signatures and child health outcomes, using 6 established logitudinal population based birth cohort studies (Maitre et al, 2018). We have selected our exposome, selected exposures, Omics data, outcomes and covariates data based on the ***ExposomeChallenge*** data following the code and data [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Tutorial_code/Data_cleaning_ExposomeChallenge.R){target="_blank"}. The brief description of these data is shown as below.
 
 -   Example3_Omics.rds: 177 variables representing plasma metabolites. All 177 variables are continuous/numeric.
+
 -   Example3_outcome.rds: 6 variables:
-    -   `"asthma"`: Doctor diagnosed asthma (ever): A factor variable with 2 levels: 1 represents diagnosed and 0 represents not.    
-    -   `"zBMI_cat"`: Body mass index categories at 6-11 years old: A binary factor variable with 4 levels: 1: Thinness, 2: Normal, 3:Overweight, 4: Obese.
-    -   `"zBMI"`: Body mass index z-score at 6-11 years old  - Standardized on sex and age: A continuous/numeric variable.
+
+    -   `"asthma"`: Doctor diagnosed asthma (ever): A binary factor variable with 2 levels: 1 represents diagnosed and 0 represents not.\
+    -   `"zBMI_cat"`: Body mass index categories at 6-11 years old: A categorical factor variable with 4 levels: 1: Thinness, 2: Normal, 3:Overweight, 4: Obese.
+    -   `"zBMI"`: Body mass index z-score at 6-11 years old - Standardized on sex and age: A continuous/numeric variable.
     -   `"birth_weight"`: Child weight at birth (g): A continuous/numeric variable.
     -   `"IQ"`: Intelligence quotient at 6-11 years old - Total of correct answers at the RAVEN test: A continuous/numeric variable.
     -   `"neurobehavior"`: Neuro behavior - Internalizing and externalizing problems at 6-11 years old - CBCL scale: A continuous/numeric variable.
+
 -   Example3_exposome.rds: containing a dataframe with 222 environmental variables (outdoor exposures, indoor air, lifestyle chemicals). All the 222 variables are continuous/numeric.
--   Example3_selected_exposure.rds: containing a dataframe with 33 variables. These variables are selected out of the 222 environmental variables by the "MUVR2" machine learning algorithm (Yan et al, 2024) as predictive/relevant to either `"IQ"` or `"zBMI_cat"` (Out of the 6 outcome variables, the prediction using machine learning gives convincing prediction performance for these 2 variables, but not the other 4 variables)
--   Example3_selected_exposure_noisy.rds: containing a dataframe with 80 variables. These variables are selected out of the 222 environmental variables by the "MUVR2" machine learning algorithm as predictive/relevant to one or more of the outcome variables.
+
+-   Example3_selected_exposure.rds: containing a dataframe with 34 variables. These variables are selected out of the 222 environmental variables by the "MUVR2" machine learning algorithm (Yan et al, 2024) as predictive/relevant to either `"IQ"` or `"zBMI"` (Out of the 6 outcome variables, the prediction using machine learning gives convincing prediction performance for these 2 variables, but not the other 4 variables)
+
+-   Example3_selected_exposure_noisy.rds: containing a dataframe with 73 variables. These variables are selected out of the 222 environmental variables by the "MUVR2" machine learning algorithm as predictive/relevant to at least one out of the 6 outcome variables. However, out of the 6 outcome variables, the prediction using machine learning did not give convincing prediction performance for`"asthma"`, `"zBMI_cat"`, `"birth_weight"`, `"neurobehavior"`.
 
 -   Example3_covariate.rds: 13 variables that can be used as potential confounders: `"cohort"`, `"sex_child"`, `"yearbir_child"`, `"BMI_maternal"`, `"weight_gain_maternal"`, `"gestational_age_maternal"`, `"age_maternal"`, `"education_maternal"`, `"native_child"`, `"parity_maternal"`, `"age_child"`, `"height_child"`, `"weight_child"`
-
 
 The data frames are row-wise matched by observation and consist of 1198 observations.
 
@@ -86,33 +91,34 @@ Maitre, L., de Bont, J., Casas, M., Robinson, O., Aasvang, G. M., Agier, L., ...
 
 # Research question
 
-We want to explore the given data to identify the exposure variables that are associated with our outcomes, using the metabolomics data. 
+In this use cases, we have used three group of exposures (1) exposome: 222 variables. (2)selected_exposure_noisy: 73 variables. (3)selected exposures: 34 variables. We use 2 variables,`"IQ"` and\`"zBMI" as out outcomes and metabolomics variables as our mediator Omics data.
+
+From the information in the data description, we know that group (3) variables are the most relevant variables to `"IQ"` and\`"zBMI". Group (2) variables contains all group (3) variables and also other variable that are not relevant. Group (1) variables contain even more irrelevant variable.
+
+We want to explore if group (3) variables indeed show more relevance to the outcome variables than group (1) and (2) in [TriplotGUI]{style="color:orange"}, and whether [TriplotGUI]{style="color:orange"} can identify Omics patterns that may mediate the mechanism from exposures to outcomes.
 
 # The use of interface
 
-Run `TriplotGUI_shiny()` to open your interface. We will show you an use case
+Run `TriplotGUI_shiny()` to open your interface. We will show you an use case.
 
-## Step 1: Data reduction of Omics data and auxiliary data
-
-First upload the Omics data in step 1. Inspect the classes of Omics variables briefly. Explore that data using the "Data analysis settings" and 
-"Visualization setting" to select 2 component of interest. We will use the following settings as an example, but of course you can use your own settings.  Examine the scree plot, score plot, loadings plot and biplot at step 1  for your choice.
+## Step 1: Data reduction of Omics data.
 
 ::: columns
 ::: {.column style="width: 45%"}
-![](img/usecase_1_1.png) 
+First upload the Omics data in step 1. Inspect the classes of Omics variables briefly. Use the default of "Data analysis settings". Play around in the "Visualization settings". Since we have 177 Omics variables, click the ***Loading labels*** to *No* so that you have a clearer view of your loadings plot. You can observed that using PCA as data analysis method, your loadings (representing omics variables) are mostly positively associated with your component 1.
 :::
 
 ::: {.column style="width: 5%"}
 :::
 
 ::: {.column style="width: 45%"}
-![](img/usecase_1_2.png) 
+![](img/usecase_1_1.png)
 :::
 :::
 
 ## Step 2: Exposures’ correlations & Outcomes’ associations
 
-Then upload exposures and covariate data in step 2A. Briefly inspecting variable classes, remove the variables you don't want. Set your own "Data analysis settings". In our example
+Then upload exposures and covariate data in step 2A. Briefly inspecting variable classes. You can choose which covariate variables to adjust as you wish. In our use case example, for the sake of simplicity, we will not perform any covariate adjustment (the ***Raw or partial correlation*** is specified as *Raw* in the "Data analysis settings")
 
 ::: columns
 ::: {.column style="width: 45%"}
@@ -126,7 +132,6 @@ Then upload exposures and covariate data in step 2A. Briefly inspecting variable
 ![](img/complex_2_2.png)
 :::
 :::
-
 
 Change your "Data analysis settings" as the figure below.
 
@@ -210,105 +215,73 @@ In the triplot, blue circle points represent exposure correlations and the red s
 
 There are many things you could explore further in the following mediation analysis. To narrow down our focus and clearly show our examples, we select `"BSDS"` (Baltic Sea Diet Score) and `"Hamburger"` as our exposures, `"BMI"` and `"T2D"` as outcome to enter our next step.
 
-
 ## Step 4: Mediation analysis and visualization
+
 This time, we perform the mediation analysis using the conterfactual/potential outcome method (the ´mediation´ package) on the our exposures (i.e. `"BSDS"`, `"Hamburger"`), mediators (i.e. the first PC of the first 2 clusters) and outcome (i.e. `"T2D"`, `"BMI"`) of interest, adjusting for `"Age"`, `"Gender"`, `"Smoking"`, `"Education"` and `"FastingGlucose"` for both exposure-mediator and mediator-outcome relationship.
 
-:::callout-note
+::: callout-note
 In the counterfactual mediation analysis, you need to specify contrast values of treatment and controls for each exposure. In brief, the algorithm will compare the scenarios with these 2 exposure values/levels. For my detailed explanation please refer to [this paper](https://www.jstatsoft.org/article/view/v059i05){target="_blank"} of the `mediation` R package.
 
-If an exposure variable is continuous (numeric variable), it is recommended that the 2 exposure values is chosen between the range of the exposure variable. 
-If an exposure variable is categorical (factor variable), the 2 exposure levels should be chosen from the levels of the exposure variable.
+If an exposure variable is continuous (numeric variable), it is recommended that the 2 exposure values is chosen between the range of the exposure variable. If an exposure variable is categorical (factor variable), the 2 exposure levels should be chosen from the levels of the exposure variable.
 :::
 
 ::: columns
-
 ::: {.column style="width: 40%"}
 Use the following settings for your data analysis. Mediation analysis is then performed using the counterfactual method on the our selected exposures, mediators and our selected outcomes, adjusting for covariates for both exposure-mediator and mediator-outcome relationship.
 
 ::: callout-note
 -   Note that you need to click ***Do mediation*** to start running the mediation analysis.
-
 :::
-
-
 :::
 
 ::: {.column style="width: 5%"}
 :::
 
-
 ::: {.column style="width: 45%"}
-
 ![](img/complex_4_1.png)
-
-
 :::
-
 
 You could then play around in the "Visualization settings" too see how you want to visualize your plot.
 :::
 
 ::: columns
-
 ::: {.column style="width: 40%"}
-You could first only show the proportion mediated(PM) and adjust the limits to make the points more visible.
-![](img/complex_4_2.png)
-
+You could first only show the proportion mediated(PM) and adjust the limits to make the points more visible. ![](img/complex_4_2.png)
 :::
 
 ::: {.column style="width: 5%"}
 :::
 
-
 ::: {.column style="width: 45%"}
-
-![](img/complex_4_3.png)
-In the figure,  even though not significant, we could see the direction and magnitude of proportion mediated for the 2 mediators, all the exposures and outcomes. 
+![](img/complex_4_3.png) In the figure, even though not significant, we could see the direction and magnitude of proportion mediated for the 2 mediators, all the exposures and outcomes.
 :::
 :::
-
 
 ::: callout-note
--   Note that some confidence intervals are automatically removed form the figure if they are not within the limit. 
--   Note that for some mediations, direct effect and indirect effects are in the opposite direction, implying possibly proportion mediated>1, since total effect could smaller than indirect effect.
+-   Note that some confidence intervals are automatically removed form the figure if they are not within the limit.
+-   Note that for some mediations, direct effect and indirect effects are in the opposite direction, implying possibly proportion mediated\>1, since total effect could smaller than indirect effect.
 :::
-
-
 
 ::: columns
-
 ::: {.column style="width: 40%"}
-You then show the adjusted proportion mediated(PM) and adding the layers of correlation and risk estimates
-![](img/complex_4_4.png)
-
+You then show the adjusted proportion mediated(PM) and adding the layers of correlation and risk estimates ![](img/complex_4_4.png)
 :::
 
 ::: {.column style="width: 5%"}
 :::
 
-
 ::: {.column style="width: 45%"}
-
 ![](img/complex_4_5.png)
-
+:::
 :::
 
-:::
+By observing this figure, we could see the direction and magnitude of adjusted proportion mediated for the 2 mediators, all the exposures and outcomes. The position of the points is similar what we have seen for proportion mediated. Note that APM for BSDS as exposure and T2D as outcome is smaller than their PM. This is because the indirect and direct effect for this mediation is of similar size but in opposite direction. This leads to a smaller total effect and in turn larger PM, but APM will not be affected by the directionality of direct and indirect effect. ::: callout-note - No confidence interval is shown for adjusted proportion mediated, as such value can not be directly calculated from the mediation analysis.
 
-By observing this figure, we could see the direction and magnitude of adjusted proportion mediated for the 2 mediators, all the exposures and outcomes. The position of the points is similar what we have seen for proportion mediated. Note that APM for BSDS as exposure and T2D as outcome is smaller than their PM. This is because the indirect and direct effect for this mediation is of similar size but in opposite direction. This leads to a smaller total effect and in turn larger PM, but APM will not be affected  by the directionality of direct and indirect effect.
-::: callout-note
--   No confidence interval is shown for adjusted proportion mediated, as such value can not be directly calculated from the mediation analysis.
-
--   Note that even direct effect and indirect effects are in the opposite direction, adjusted proportion mediated is always smaller than 1, since it uses the sum of the absolute value of indirect and direct effect as denominator.
-$$APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{IE+DE}\cdot\frac{|IE|+|DE|}{|IE+DE|}$$
-:::
-
+-   Note that even direct effect and indirect effects are in the opposite direction, adjusted proportion mediated is always smaller than 1, since it uses the sum of the absolute value of indirect and direct effect as denominator. $$APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{IE+DE}\cdot\frac{|IE|+|DE|}{|IE+DE|}$$ :::
 
 In step 4, you can also see the barplots showed direct, indirect and total effect for each exposure-mediator-outcome combination. It is a convenient tool to check the direction and magnitude of mediation estimates.
 
 ![](img/complex_4_6.png)
-
 
 ## Step 5: Compare correlations, associations and mediations
 
@@ -316,12 +289,10 @@ Users can then check the heatmaps of correlations, risk estimations and mediatio
 
 ![](img/complex_5_1.png)
 
-
 ![](img/complex_5_2.png)
 
 ## Step 6: Download data
 
 Relevant data, intermediate results, can then be viewed and downloaded at step 6.
 
-![](img/complex_6_1.png)
-![](img/complex_6_2.png)
+![](img/complex_6_1.png) ![](img/complex_6_2.png)

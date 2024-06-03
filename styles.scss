@@ -116,6 +116,8 @@ $body-emphasis-color:       $black !default;
 body{
     overscroll-behavior: none;
 }
+
+
 // Links
 $link-color: $blue !default;
 $link-decoration: none !default;    //When there is not hovering;
@@ -175,6 +177,7 @@ $btn-code-copy-color-active: $blue !default;
   max-height: 30px; /* Adjust the size according to your preference */
   max-width: 30px;
 }
+
 $navbar-brand-font-size: $font-size-lg !default;
 $dropdown-bg: $white;
 $dropdown-link-color: $red;
@@ -190,10 +193,16 @@ $dropdown-link-hover-bg:  $yellow;
     display: block;
     margin-top: 1em;
 }
+
+.title {
+  font-size: 2.5rem; /* Adjust the value as needed */
+}
 .custom-subtitle {
   font-size: 22px;
   margin-bottom: 0.15em;
 }
+
+
 
 .custom-subtitle2 {
   font-size: 20px;
@@ -472,4 +481,13 @@ $dropdown-link-hover-bg:  $yellow;
     .hero_content_below_button span{
       font-size: 10px;
     }
+}
+.search-input {
+  color: $orange;
+  background-color: $green; // Replace with your desired color
+}
+
+.search-input {
+  color: $red;
+  background-color: $blue; // Replace with your desired color
 }

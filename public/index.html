@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Epidemiologist | PhD researcher | Machine learning, computational metabolomics">
 
 <title>TriplotGUI  - TriplotGUI</title>
 <style>
@@ -43,8 +42,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
+  "copy-button": true,
+  "collapse-after": 5,
   "panel-placement": "end",
   "type": "textbox",
   "limit": 20,
@@ -113,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./workflow.html" rel="" target="">
- <span class="menu-text">Details</span></a>
+ <span class="menu-text">Manual</span></a>
   </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorial(simple" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
@@ -146,10 +145,6 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./use_case.html" rel="" target="">
- <span class="menu-text">Use Case</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./papers.html" rel="" target="">
  <span class="menu-text">Papers</span></a>
   </li>  
@@ -165,17 +160,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://gitlab.com/YingxiaoYan/TriplotGUI" rel="" target=""><i class="bi bi-github" role="img">
-</i> 
- <span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
     <a class="nav-link" href="https://www.linkedin.com/in/yingxiao-yan" rel="" target=""><i class="bi bi-linkedin" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:yingxiao.yan.007@gmail.com" rel="" target=""><i class="bi bi-envelope" role="img" aria-label="email">
+    <a class="nav-link" href="mailto:yingxiao@chalmers.se" rel="" target=""><i class="bi bi-envelope" role="img" aria-label="email">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -191,7 +181,7 @@ ul.task-list li input[type="checkbox"] {
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
       <h1 class="title">TriplotGUI</h1>
-            <p class="subtitle lead">A graphical user interface to interpret associations between multiple exposures, Omics and disease outcomes</p>
+            <p class="subtitle lead">A Molecular Epidemiology Toolbox for Investigating Associations between Exposures, Omics and Outcomes.</p>
                       </div>
   </div>
   <div class="quarto-title-meta">
@@ -203,12 +193,11 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Guide of this website</h2>
   <ul>
-  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#details" id="toc-details" class="nav-link" data-scroll-target="#details">Details</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#manual" id="toc-manual" class="nav-link" data-scroll-target="#manual">Manual</a></li>
   <li><a href="#tutorialsimple" id="toc-tutorialsimple" class="nav-link" data-scroll-target="#tutorialsimple">Tutorial(simple)</a></li>
   <li><a href="#tutorialcomplex" id="toc-tutorialcomplex" class="nav-link" data-scroll-target="#tutorialcomplex">Tutorial(complex)</a></li>
-  <li><a href="#use-case" id="toc-use-case" class="nav-link" data-scroll-target="#use-case">Use Case</a></li>
   <li><a href="#paper" id="toc-paper" class="nav-link" data-scroll-target="#paper">Paper</a></li>
   <li><a href="#about-us" id="toc-about-us" class="nav-link" data-scroll-target="#about-us">About us</a></li>
   <li><a href="#contact-us" id="toc-contact-us" class="nav-link" data-scroll-target="#contact-us">Contact us</a></li>
@@ -223,19 +212,19 @@ ul.task-list li input[type="checkbox"] {
       <div class="about-contents"><main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 <div class="small-text">
-<p><strong>This page gives a brief explanation of what the items in the navigation bar mean.</strong></p>
+<p><strong>This page gives a brief explanation of the tabs in the navigation bar.</strong></p>
 </div>
-<section id="setup" class="level3">
-<h3 data-anchor-id="setup">Setup</h3>
-<p>This section gives instructions on how to install the packages needed, load library and activate the user interface.</p>
-</section>
 <section id="introduction" class="level3">
 <h3 data-anchor-id="introduction">Introduction</h3>
-<p>This section explains why we develop the TriplotGUI package: The research background, previous work of triplot and our aim.</p>
+<p>This section covers a brief introduction of our research background, method, result and conclusion, as well as the design of TriplotGUI.</p>
 </section>
-<section id="details" class="level3">
-<h3 data-anchor-id="details">Details</h3>
-<p>This sections gives detailed manual in analysis and visualization settings of TriplotGUI. We will not focus on the produced visualization output and interpretation here. Such content will be covered by the Tutorial and use case session.</p>
+<section id="setup" class="level3">
+<h3 data-anchor-id="setup">Setup</h3>
+<p>This section gives instructions on how to install TriploGUI as a stand-alone application in RStudio and how to activate its graphical user interface in RStudio</p>
+</section>
+<section id="manual" class="level3">
+<h3 data-anchor-id="manual">Manual</h3>
+<p>This sections presents a detailed manual for using TriplotGUI. Users can follow the clarifications in this section to customize their own analysis and visualization. We will not focus on the produced visualization output and interpretation here. Such content will be covered by the Tutorial section.</p>
 </section>
 <section id="tutorialsimple" class="level3">
 <h3 data-anchor-id="tutorialsimple">Tutorial(simple)</h3>
@@ -246,23 +235,21 @@ ul.task-list li input[type="checkbox"] {
 <h3 data-anchor-id="tutorialcomplex">Tutorial(complex)</h3>
 <p>This section provides a more complex example of how to use the TriplotGUI package. The users can either use code or the user interface to achieve the similar purpose. The code tutorial suits for users that is at intermediate or advanced R level. The user interface tutorial suits for user that has epidemiology knowledge and experience in dealing with high dimensional data.</p>
 <p>The dataset used is HealthyNordicDiet_2.</p>
-</section>
-<section id="use-case" class="level3">
-<h3 data-anchor-id="use-case">Use Case</h3>
-<p>This section shows a smoother example of how to use the interface to perform data analysis and interpretation, omiting the detailed explanation in the tutorial.</p>
-<p>The dataset used is ExposomeChallenge.</p>
+<!-- ### Use Case -->
+<!-- This section shows a smoother example of how to use the interface to perform data analysis and interpretation, omiting the detailed explanation in the tutorial. -->
+<!-- The dataset used is ExposomeChallenge. -->
 </section>
 <section id="paper" class="level3">
 <h3 data-anchor-id="paper">Paper</h3>
-<p>This sections covers relevant papers of our TriplotGUI package</p>
+<p>This section presents relevant papers of TriplotGUI. A poster of TriplotGUI can be also viewed at this page.</p>
 </section>
 <section id="about-us" class="level3">
 <h3 data-anchor-id="about-us">About us</h3>
-<p>This sections give brief introduction of the contributors to this package.</p>
+<p>This section lists the contributors of TriploGUI.</p>
 </section>
 <section id="contact-us" class="level3">
 <h3 data-anchor-id="contact-us">Contact us</h3>
-<p>If you have questions in the package, tutorial and this website, or would like to seek collaboration, please contact <a href="mailto:yingxiao@chalmers.se">yingxiao@chalmers.se </a></p>
+<p>If you have questions regarding TriplotGUI or would like to seek for collaboration, please contact <a href="mailto:yingxiao@chalmers.se">yingxiao@chalmers.se </a></p>
 
 
 </section>
@@ -293,6 +280,58 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
@@ -322,14 +361,137 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
 });
 </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left"><span class="faux-block">© 2024 Yingxiao Yan CC BY-SA 4.0</span></div>   
-    <div class="nav-footer-center"><span class="faux-block"><a href="https://gitlab.com/YingxiaoYan/TriplotGUI">TriplotGUI gitlab</a></span></div>
-    <div class="nav-footer-right"><span class="faux-block cyan"><a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/">View source of this site on GitLab</a></span></div>
+    <div class="nav-footer-left"><span class="faux-block">© 2024 Yingxiao Yan <br> CC BY-SA 4.0</span></div>   
+    <div class="nav-footer-center"><span class="faux-block"> <a href="https://yingxiao.shinyapps.io/triplotgui/" target="_blank">TriplotGUI</a> <br> <a href="https://gitlab.com/YingxiaoYan/TriplotGUI" target="_blank">TriplotGUI Gitlab</a> </span></div>
+    <div class="nav-footer-right"><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br> <a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></div>
   </div>
 </footer>
 

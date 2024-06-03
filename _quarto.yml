@@ -1,10 +1,9 @@
-authorname: "TriplotGUI"
+authorname: "Yingxiao Yan"
 draft: false
 
 project:
   type: website
   output-dir: public
-
   resources:
     - "img/**"
     - "icon/**"
@@ -16,8 +15,8 @@ project:
     watch-inputs: true
     navigate: true
 
-title-meta: "TriplotGUI"
-description-meta: "Epidemiologist | PhD researcher | Machine learning, computational metabolomics"
+#title-meta: "TriplotGUI"
+#description-meta: "Epidemiologist | PhD researcher | Machine learning, computational metabolomics"
 
 
 name: "TriplotGUI"
@@ -27,13 +26,24 @@ website:
   image: img/TriplotGUI_logo_white.png
   favicon: img/TriplotGUI_logo_white.png
   site-url: "https://yingxiaoyan.gitlab.io/triplotgui_tutorial/"
-  repo-url: "https://yingxiaoyan.gitlab.io/triplotgui_tutorial/"
+  repo-url: "https://gitlab.com/YingxiaoYan/triplotgui_tutorial"
   repo-branch: main
-
   search:
     location: navbar
     type: textbox
-
+    copy-button: true
+    collapse-after: 5
+    # algolia:
+    #   index-name: TriplotGUI
+    #   application-id: YC8NCKROXT
+    #   search-only-api-key: 0b4c49741cbded7ded632b969ef356cc
+    #   analytics-events: true
+    #   show-logo: true
+    #   index-fields:
+    #     href: https://yingxiaoyan.gitlab.io/triplotgui_tutorial/
+    #     title: doc_title
+    #     text: doc_content
+    #     section: doc_section
   navbar:
     logo: /img/TriplotGUI_logo_black.png
     pinned: true
@@ -45,7 +55,7 @@ website:
       - href: installation.qmd
         text: Setup
       - href: workflow.qmd
-        text: Details
+        text: Manual
       - text: Tutorial(simple)
         menu:
           - href: simple.qmd
@@ -58,8 +68,8 @@ website:
             text: User Interface
           - href: complex_code.qmd
             text: Code
-      - text: Use Case
-        href: use_case.qmd
+      #- text: Use Case
+      #  href: use_case.qmd
       - text: Papers
         href: papers.qmd
       - href: about.qmd
@@ -68,24 +78,30 @@ website:
     right:
       - icon: folder-symlink
         href: https://yingxiaoyan.gitlab.io/triplotgui_tutorial/
-      - icon: "github"
-        href: https://gitlab.com/YingxiaoYan/TriplotGUI
+      #- icon: git
+      #  href: https://gitlab.com/YingxiaoYan/TriplotGUI
       - icon: linkedin
         href: https://www.linkedin.com/in/yingxiao-yan
       - icon: envelope
         aria-label: email
-        href: "mailto:yingxiao.yan.007@gmail.com"
+        href: "mailto:yingxiao@chalmers.se"
   page-footer:
     background: light
     left: |
-      <span class="faux-block">&#169; 2024 Yingxiao Yan CC BY-SA 4.0</span>
+      <span class="faux-block">&#169; 2024 Yingxiao Yan <br> CC BY-SA 4.0</span>
     center: |
-      <span class="faux-block"><a href="https://gitlab.com/YingxiaoYan/TriplotGUI">TriplotGUI gitlab</a></span>
+      <span class="faux-block">
+      <a href="https://yingxiao.shinyapps.io/triplotgui/" target="_blank">TriplotGUI</a> <br>
+      <a href="https://gitlab.com/YingxiaoYan/TriplotGUI" target="_blank">TriplotGUI Gitlab</a>
+      </span>
     right: |
-      <span class="faux-block cyan"><a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/">View source of this site on GitLab</a></span>
+      <span class="faux-block cyan">
+      <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a>  <br>
+      <a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a>
+      </span>
 
-execute:
-  freeze: true
+# execute:
+#   freeze: true
 
 
 format:
@@ -95,14 +111,14 @@ format:
     theme:
       - solar
       - styles.scss
-    mainfont: Nunito
+    mainfont: Arial
     css: styles.scss
     toc: true
     code-link: true
-    anchor-sections: true
-    fig-cap-location: margin
+    anchor-sections: true  ## overing over a section title (e.g. # Heading or ## Subheading) in the rendered HTML will display a clickable anchor link.
+    fig-cap-location: margin  ## top bottom margin
     reference-location: margin
     footnotes-hover: true
+lightbox: auto   ## zoom in the figure upon clicking
 
-
-editor: visual
+editor: visual  # option in Quarto that enables the Visual Editor mode for editing documents.

@@ -1,6 +1,9 @@
 ---
 title: "TriplotGUI"
-subtitle: "A graphical user interface to interpret associations between multiple exposures, Omics and disease outcomes"
+filters:
+   - lightbox
+lightbox: auto
+subtitle: "A Molecular Epidemiology Toolbox for Investigating Associations between Exposures, Omics and Outcomes."
 title-block-banner: true
 title-block-banner-color: white
 title-block-categories: false
@@ -12,7 +15,7 @@ format:
     margin-bottom: 0em
     padding-top: 0em
     padding-bottom: 0em
-    minimal: true
+    #minimal: true
     smooth-scroll: true
     fig-responsive: true
     toc-location: right
@@ -27,20 +30,20 @@ about:
 ---
 
 ::: small-text
-<strong>This page gives a brief explanation of what the items in the navigation bar mean.</strong>
+<strong>This page gives a brief explanation of the tabs in the navigation bar.</strong>
 :::
-
-### Setup
-
-This section gives instructions on how to install the packages needed, load library and activate the user interface.
 
 ### Introduction
 
-This section explains why we develop the TriplotGUI package: The research background, previous work of triplot and our aim.
+This section covers a brief introduction of our research background, method, result and conclusion, as well as the design of TriplotGUI.
 
-### Details
+### Setup
 
-This sections gives detailed manual in analysis and visualization settings of TriplotGUI. We will not focus on the produced visualization output and interpretation here. Such content will be covered by the Tutorial and use case session.
+This section gives instructions on how to install TriploGUI as a stand-alone application in RStudio and how to activate its graphical user interface in RStudio
+
+### Manual
+
+This sections presents a detailed manual for using TriplotGUI. Users can follow the clarifications in this section to customize their own analysis and visualization. We will not focus on the produced visualization output and interpretation here. Such content will be covered by the Tutorial section.
 
 ### Tutorial(simple)
 
@@ -54,20 +57,20 @@ This section provides a more complex example of how to use the TriplotGUI packag
 
 The dataset used is HealthyNordicDiet_2.
 
-### Use Case
+<!-- ### Use Case -->
 
-This section shows a smoother example of how to use the interface to perform data analysis and interpretation, omiting the detailed explanation in the tutorial.
+<!-- This section shows a smoother example of how to use the interface to perform data analysis and interpretation, omiting the detailed explanation in the tutorial. -->
 
-The dataset used is ExposomeChallenge.
+<!-- The dataset used is ExposomeChallenge. -->
 
 ### Paper
 
-This sections covers relevant papers of our TriplotGUI package
+This section presents relevant papers of TriplotGUI. A poster of TriplotGUI can be also viewed at this page.
 
 ### About us
 
-This sections give brief introduction of the contributors to this package.
+This section lists the contributors of TriploGUI.
 
 ### Contact us
 
-If you have questions in the package, tutorial and this website, or would like to seek collaboration, please contact <a href="mailto:yingxiao@chalmers.se">yingxiao\@chalmers.se </a>
+If you have questions regarding TriplotGUI or would like to seek for collaboration, please contact <a href="mailto:yingxiao@chalmers.se">yingxiao\@chalmers.se </a>

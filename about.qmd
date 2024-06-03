@@ -1,6 +1,9 @@
 ---
 title: "About us"
-subtitle: "TriplotGUI package/manuscript contributors"
+filters:
+   - lightbox
+lightbox: auto
+subtitle: "TriplotGUI's contributors"
 title-block-banner: true
 title-block-banner-color: white
 comments: false
@@ -26,7 +29,7 @@ format:
 ## {{< fa person-rifle title="shooter" >}} {{< fa bullseye title="Archery" >}} Yingxiao Yan
 
 ::: column-margin
-![](img/formal.jpg){width="150px"}
+<br>![](img/formal.jpg){width="150px"}
 
 ::: {.extra-small-text .dark-gray-text .topbr}
 A great person indeed
@@ -35,20 +38,18 @@ A great person indeed
 <br>
 :::
 
-<strong> Role:</strong> Main contributor of the package and manuscript, slayer of dragon
+<strong> Role:</strong> Main contributor of the TriplotGUI package and manuscript
 
 <strong> Title:</strong> PhD candidate
 
-<strong> Affiliation:</strong> Food and nutrition science division, department of Life science, Chalmers University of Technology
-
-<strong> Brief:</strong>
+<strong> Affiliation:</strong> Food and nutrition science division, Department of Life science, Chalmers University of Technology
 
 <strong> Email: </strong> <a href="mailto:yingxiao@chalmers.se">yingxiao\@chalmers.se </a>
 
 ## {{< fa chalkboard-user title="academic" >}} {{< fa people-group title="A person with a backpack and trekking pol" >}} Carl Brunius
 
 ::: column-margin
-<br> <br> <br> <br> ![](img/carlbru.jpg){width="150px"}
+<br> ![](img/carlbru.jpg){width="150px"}
 
 ::: {.extra-small-text .dark-gray-text .topbr}
 Knivsta inhabitor
@@ -61,39 +62,57 @@ Knivsta inhabitor
 
 <strong> Title:</strong> Associate professor
 
-<strong> Affiliation:</strong> Food and nutrition science division, department of Life science, Chalmers University of Technology
+<strong> Affiliation:</strong> Food and nutrition science division, Department of Life science, Chalmers University of Technology
 
-<strong> Brief:</strong>
 
 <strong> Email: </strong> <a href="mailto:carl.brunius@chalmers.se">carl.brunius\@chalmers.se </a>
 
 ## {{< fa floppy-disk title="academic" >}} Anton Ribbenstedt
 
 ::: column-margin
-<br> <br> <br> <br> ![](img/antonri.jpg){width="150px"}
+<br> <br> <br>![](img/antonri.jpg){width="150px"}
 
 ::: {.extra-small-text .dark-gray-text .topbr}
-hair length changes all the time
+Hair length changes all the time
 :::
 
 <br>
 :::
 
-<strong> Role:</strong> code helper and guider
+<strong> Role:</strong> Code helper and guider
 
 <strong> Title:</strong> Research engineer
 
 <strong> Affiliation:</strong> Chalmers Mass Spectrometry Infrastructure, Department of Life science, Chalmers university of Technology
 
-<strong> Brief:</strong>
 
 <strong> Email: </strong> <a href="mailto:anton.ribbenstedt@chalmers.se">anton.ribbenstedt\@chalmers.se </a>
+<br> <br> <br> <br> 
+
+::: columns
+
+::: {.column style="width: 50%"}
+![](img/Chalmers.png){width="300px" height="100px"}
+:::
+
+::: {.column style="width: 5%"}
+
+:::
+
+::: {.column style="width: 45%"}
+We thank for our funder:
+
+![](img/Formas.jpeg){width="300px" height="50px"}
+:::
+
+:::
 
 ```{r}
 #| echo: false
-#| fig-align: center
-#| fig-width: 5
+#| fig-align: left
+#| fig-width: 3
 #| fig-height: 3
-#| fig-alt: "Group photo"
-knitr::include_graphics("img/formal.jpg")
+#| fig-alt: "Chalmers"
+#knitr::include_graphics("img/Chalmers.png")
+
 ```

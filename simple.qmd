@@ -1,5 +1,8 @@
 ---
 title: "Tutorial(simple) - User Interface"
+filters:
+   - lightbox
+lightbox: auto
 subtitle: "Simple demo of using user Interface in TriplotGUI"
 title-block-banner: true
 title-block-banner-color: white
@@ -43,25 +46,25 @@ knitr::knit_hooks$set(
 )
 ```
 
-Before starting, please make sure you have installed the TriplotGUI package following [Setup](installation.qmd){target="_blank"}.
+Before starting, please make sure you can use the [online version of TriplotGUI](https://yingxiao.shinyapps.io/triplotgui/){target="_blank"} or can use TriplotGUI as a stand-alone application on your computer following [Setup](installation.qmd){target="_blank" style="color:blue"}.
 
 # Data description
 
-Each dataset used in this page of tutorial can be downloaded [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Example_data){target="_blank"} as a dataframe in the rds files:
+Each dataset used in this page of tutorial can be downloaded [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Example_data/Example1){target="_blank"} as a dataframe in the rds files:
 
 -   Example1_exposure.rds
 -   Example1_Omics.rds
 -   Example1_outcome.rds
 -   Example1_covariate.rds
 
-The Data used for this example originates from ***CAMP_2***, which is a synthetic dataset modified from the **CAMP** data provided by the triplot package (Schillemans et al. 2019). **CAMP** was simulated from the authentic data used in a cross-sectional study of carbonhydrate alternatives and metabolic phenotypes in Chinese young adults (Liu et al. 2018). We have selected our exposures, Omics data, outcomes and covariates based on the ***CAMP_2*** data following the code [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Tutorial_code/Data_cleaning_CAMP_2.R){target="_blank"}. The brief description of these data is shown as below.
+The Data used for this example originates from ***CAMP_2***, which is a synthetic dataset modified from the **CAMP** data provided by the [*triplot*](https://gitlab.com/CarlBrunius/triplot/-/blob/master/vignettes/Triplot_Tutorial.md?ref_type=heads){target="_blank"} package (Schillemans et al. 2019). **CAMP** was simulated from the authentic data used in a cross-sectional study of carbonhydrate alternatives and metabolic phenotypes in Chinese young adults (Liu et al. 2018). We have selected our exposures, Omics data, outcomes and covariates based on the ***CAMP_2*** data following the code [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Tutorial_code/Data_cleaning_CAMP_2.R){target="_blank"}. The brief description of these data is shown as below.
 
--   Example1_exposure.rds: 11 variables representing the dietary intake as measured by food frequency questionnaires (`"Refined_grains"`, `"Coarse_grains"`, `"Red_meat"`, `"Poutry"`, `"Seafood"`, `"Egg"`, `"Animal_organs"`, `"Vegetables"`, `"Fruits"`, `"Potatos"`, `"Legumes"`). All 11 variables are continuous/numeric.
+-   Example1_exposure.rds: 14 variables representing the dietary intake as measured by food frequency questionnaires (`"Refined_grains"`, `"Coarse_grains"`, `"Red_meat"`, `"Poutry"`, `"Seafood"`, `"Egg"`, `"Animal_organs"`, `"Vegetables"`, `"Fruits"`, `"Potatos"`, `"Legumes"`). All 11 variables are continuous/numeric.
 -   Example1_Omics.rds: 20 variables representing plasma metabolites predictive of BMI. All 20 variables are continuous/numeric.
 -   Example1_outcome.rds: 5 variables representing clinical measurements: `"BMI"`, `"HDL"`(high-density lipoprotein cholesterol), `"LDL"`(low-density lipoprotein cholesterol), `"triglycerides"`, `"total_cholesterol"`. All 5 variables are continuous/numeric.
--   Example1_covariate.rds: 2 variables that can be used as potential confounders: 
-   -   `"AGE"`: A continuous/numeric variable.
-   -   `"SEX"`: A factor variable with 2 levels: 1, 2.
+-   Example1_covariate.rds: 2 variables that can be used as potential confounders:
+    -   `"AGE"`: A continuous/numeric variable.
+    -   `"SEX"`: A factor variable with 2 levels: 1, 2.
 
 All data are row-wise matched by observation and consist of 300 synthetic observations.
 
@@ -71,14 +74,12 @@ Liu X, Liao X, Gan W, et al. Inverse Relationship between Coarse Food Grain Inta
 
 Schillemans T, Shi L, Liu X, Åkesson A, Landberg R, Brunius C. Visualization and Interpretation of Multivariate Associations with Disease Risk Markers and Disease Risk-The Triplot. *Metabolites*. 2019 Jul 6;9(7):133. [doi: 10.3390/metabo9070133](https://www.mdpi.com/2218-1989/9/7/133){target="_blank"}
 
-
 # Research question
 
-We want to assess the relationship between diet, metabolic profiles and risk factors of metabolic diseases (i.e. BMI, total cholesterol, triglyceride, HDL, LDL). We assume that metabolites serves as mediators, mediating the effect of dietary exposures on BMI outcome.
-
+We want to assess the relationship between diet, metabolic profiles and risk factors of metabolic diseases (i.e. BMI, total cholesterol, triglyceride, HDL, LDL). We assume that metabolites serves as mediators, mediating the effect of dietary exposures on the risk factors.
 # The use of interface
 
-Run `TriplotGUI_shiny()` to open your interface. What we will show as an example in the interface here correspond to the [Code example of using TriplotGUI](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/simple_code.html#step-2){target="_blank"} section in this page
+Open your interface. What we will show as an example in the interface here corresponds to the [Code example of using TriplotGUI](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/simple_code.html#step-2){target="_blank"} section in this page
 
 ## Step 1: Data reduction of omics data
 
@@ -86,11 +87,15 @@ Run `TriplotGUI_shiny()` to open your interface. What we will show as an example
 ::: {.column style="width: 45%"}
 First upload the Omics data in step 1 and then examine the scree plot, score plot, loadings plot and biplot at step 1. ![](img/simple_1.png)
 
-Upon finish uploading the Omics data, a series buttons will also show up in case you need to to make some modification on the Omics data.
+Upon finish uploading the Omics data, a series buttons will also show up in case you need to to make some modification on the data reduction of Omics data.
 
 ![](img/simple_1_1.png)
 
 You can then play around the visualization panel on the right side and view all the plots (score, loadings, biplot, screeplot).
+
+![](img/simple_1_1_1.png)
+
+
 :::
 
 ::: {.column style="width: 5%"}
@@ -98,11 +103,10 @@ You can then play around the visualization panel on the right side and view all 
 
 ::: {.column style="width: 40%"}
 ![](img/simple_1_2.png)
-
 :::
 :::
 
-## Step 2: Exposures’ correlations & Outcomes’ associations
+## Step 2: Exposure correlations & Outcome associations
 
 Then upload exposures, outcomes and covariates data in step 2.
 
@@ -114,15 +118,16 @@ You could briefly see the correlation coefficients and risk estimates at step 2 
 
 ## Step 3: Visualization of Triplot
 
-In step 3, by clicking "Refresh plot", you can see and download the triplot that co-visualizing the three plots shown above. The left side panel gives you freedom of making adjustment to the plot. ![](img/simple_3.png)
+In step 3, by clicking "Refresh plot", you can view and download the triplot that co-visualizes the three plots shown above. The left side panel gives you freedom of making adjustment to the plot. 
+![](img/simple_3.png)
 
-In the triplot, PC1 reflected metabolites that were positively associated with BMI and also correlated with a high intake of meat and refined grains, adjusting for age and sex. This implies that the metabolite features that contributes most to PC1, are likely to provide useful information for a potential mechanism of how red meat and refrained grains intake may affect BMI.
+In the triplot, the black arrows are loadings representing Omics variables, which form patterns in different components (axes). Blue circle points represents exposure correlations with the components and the red square points represents outcome associations with the components.
+
+How do we interpret the figure? We use principal component 1 & 2 (PC1 & PC2), the exposures `"Refined grains"`, `"Red meat"` and the outcome `"BMI"` for the example of interpretation: PC1 positively associated with BMI and also correlated with a high intake of red meat and refined grains, adjusting for age and sex. This implies that the metabolite features that dominate PC1 are likely to provide useful information for a potential mechanism of how red meat and refrained grains intake may affect BMI. PC2, on the other hand, has a smaller association with BMI and a weak reverse correlation with red meat and refined grains. The metabolite features that have high contribution to PC2 may support the beneficial effect of red meat and refrain intake, although such effect may be marginal. 
 
 ## Step 4: Mediation analysis and visualization
 
-
 ::: columns
-
 ::: {.column style="width: 40%"}
 ![](img/simple_4.png)
 :::
@@ -130,28 +135,27 @@ In the triplot, PC1 reflected metabolites that were positively associated with B
 ::: {.column style="width: 5%"}
 :::
 
-
 ::: {.column style="width: 45%"}
-Use the following settings for your data analysis. Mediation analysis is then performed using the Baron-Kenny conventional "product" method on the our exposures (i.e. Refined grains, Red meat), mediator (i.e. PC1, PC2) and outcome (i.e. BMI) of interest, adjusting for age and sex for both exposure-mediator and mediator-outcome relationship.
+Mediation analysis is then performed using the conventional "product" method on our selected exposures (i.e. `"Refined grains"`, `"Red meat"`), mediators (i.e. PC1 and PC2) and the selected outcome (i.e. `"BMI"`) of interest, adjusting for age and sex for both exposure-mediator and mediator-outcome relationship
 
 ::: callout-note
 -   Note that you need to click ***Do mediation*** to start running the mediation analysis.
--   In the default setting, only proportion mediated is visualized. You could go to the "Visualization setting" to select ***Mediation estimate or proportion*** as *Estimate* to show the indirect effect or total effect triplot with mediation.
+-   In the default setting, only proportion mediated is visualized. You could go to the "Visualization setting" to select ***Mediation estimate or proportion*** as *Estimate* to show the indirect effect or total effect in triplot with mediation.
 :::
 
 
 ![](img/simple_4_1.png)
+
+
+
 :::
-
-
-
 :::
 
 In step 4, you can also see the barplots showed direct, indirect and total effect for each exposure-mediator-outcome combination. It is a convenient tool to check the direction and magnitude of mediation estimates.
 
-![](img/simple_4_2.png) 
+![](img/simple_4_2.png)
 
-Based on the barplot and the triplot with mediation, we observed a significant mediation effect through PC1 for Red_meat-BMI and refined_grain-BMI association. This further implies that the metabolite features that contributes to PC1 are likely to mediate the pathway from red meat and refined grain intake to BMI change.
+Base on the barplot and the triplot with mediaiton, we observed a significant mediation effect through PC1 for red_meat-BMI and refined_grain-BMI association. This further implies that the metabolite features that contributes to PC1 are likely to mediate the pathway from red meat and refined grain intake to BMI change.
 
 ## Step 5: Compare correlations, associations and mediations
 
@@ -159,8 +163,12 @@ Users can then check the heatmaps of correlations, risk estimations and mediatio
 
 ![](img/simple_5.png)
 
-
 ![](img/simple_5_1.png)
+
+::: callout-note
+-   One star for p\<0.05; Two stars for p\<0.01; Three stars for p\<0.001.
+-   Note that only the selected exposures, mediators and outcomes that we use to do mediation on will show up in the mediation results. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure_outcome pair, 4 result are shown: *IE* (indirect effect), *TE* (total effect), *PM*(Proportion Mediated) and *APM*(Adjusted Proportion Mediated). Please see [Details section](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2){target="_blank"} for more information. The "BK" before the names of exposures-outcome pairs means that this mediation is using the Coventional Baron-Kenny "product" method.
+:::
 
 ## Step 6: Download data
 
