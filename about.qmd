@@ -64,7 +64,6 @@ Knivsta inhabitor
 
 <strong> Affiliation:</strong> Food and nutrition science division, Department of Life science, Chalmers University of Technology
 
-
 <strong> Email: </strong> <a href="mailto:carl.brunius@chalmers.se">carl.brunius\@chalmers.se </a>
 
 ## {{< fa floppy-disk title="academic" >}} Anton Ribbenstedt
@@ -85,18 +84,14 @@ Hair length changes all the time
 
 <strong> Affiliation:</strong> Chalmers Mass Spectrometry Infrastructure, Department of Life science, Chalmers university of Technology
 
-
-<strong> Email: </strong> <a href="mailto:anton.ribbenstedt@chalmers.se">anton.ribbenstedt\@chalmers.se </a>
-<br> <br> <br> <br> 
+<strong> Email: </strong> <a href="mailto:anton.ribbenstedt@chalmers.se">anton.ribbenstedt\@chalmers.se </a> <br> <br> <br> <br>
 
 ::: columns
-
 ::: {.column style="width: 50%"}
 ![](img/Chalmers.png){width="300px" height="100px"}
 :::
 
 ::: {.column style="width: 5%"}
-
 :::
 
 ::: {.column style="width: 45%"}
@@ -104,7 +99,6 @@ We thank for our funder:
 
 ![](img/Formas.jpeg){width="300px" height="50px"}
 :::
-
 :::
 
 ```{r}

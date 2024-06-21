@@ -78,10 +78,12 @@ website:
     right:
       - icon: folder-symlink
         href: https://yingxiaoyan.gitlab.io/triplotgui_tutorial/
+        target: _blank
       #- icon: git
       #  href: https://gitlab.com/YingxiaoYan/TriplotGUI
       - icon: linkedin
         href: https://www.linkedin.com/in/yingxiao-yan
+        target: _blank
       - icon: envelope
         aria-label: email
         href: "mailto:yingxiao@chalmers.se"
