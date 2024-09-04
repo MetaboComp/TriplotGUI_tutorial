@@ -376,9 +376,9 @@ Correlations_object <- makeCorr(TPObject = TPObject1,
 ```
 
 ::: callout-note
--   `allowcategorical=F` performs one-hot-encoding to transform categorical exposures variables with n\>2 classes to n binary variables. You can use `Correlations_object$cor_estimate` to check that each HFI level is separated in to a binary variable and the correlation coefficients between modules and the binary variables were calculated. 
+-   `allowcategorical=F` performs one-hot-encoding to transform categorical exposures variables with n\>2 classes to n binary variables. You can use `Correlations_object$cor_estimate` to check that each HFI level is separated in to a binary variable and the correlation coefficients between modules and the binary variables were calculated.
 
-     If `allowcategorical=T` is specified, then no transformation is made on the `"HFI"` variable. Linear models regressing modules on the `"HFI"` variable are used for correlation analysis. The correlation coefficients are calculated as the square root of the proportion of sum of squares for HFI in the total sum of squares.
+    If `allowcategorical=T` is specified, then no transformation is made on the `"HFI"` variable. Linear models regressing modules on the `"HFI"` variable are used for correlation analysis. The correlation coefficients are calculated as the square root of the proportion of sum of squares for HFI in the total sum of squares.
 
 -   `partial=T` specifies that the confounders will be adjusted.
 :::

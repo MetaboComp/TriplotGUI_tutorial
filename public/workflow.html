@@ -182,12 +182,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <ul class="navbar-nav navbar-nav-scroll ms-auto">
 <li class="nav-item compact">
-    <a class="nav-link" href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" rel="" target=""><i class="bi bi-folder-symlink" role="img">
+    <a class="nav-link" href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" rel="" target="_blank"><i class="bi bi-folder-symlink" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/yingxiao-yan" rel="" target=""><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://www.linkedin.com/in/yingxiao-yan" rel="" target="_blank"><i class="bi bi-linkedin" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -386,7 +386,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>The data should be in either csv, xlsx, rds, or rda format. The data in rds format should be a dataframe. If the data is in rda format, the rda object should only contain data as one dataframe.</li>
 <li>The rows of data should represent observations and the columns of data should represents variables (omics features).</li>
 <li>The names of variables (column names) should not contain special characters including <code>' '</code>, <code>'('</code>, <code>')'</code>, <code>':'</code>, <code>'/'</code>, <code>'-'</code>, <code>','</code>, <code>'@'</code>.</li>
-<li>No missing values are allowed in the data</li>
+<li>No missing values are allowed in the Omics data</li>
 <li>The number and order of observations should be same across all the uploaded data</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -406,7 +406,7 @@ Note
 <span class="header-section-number">1.1.2</span> Triggered</h3>
 <p>After you upload the data, a text will show up presenting how many rows and columns you have in the Omics data frame. Three following buttons also show up: <strong><em>Inspect variable class(es), remove variables(s), Force all variables to numeric</em></strong>.</p>
 <ol type="1">
-<li><p><strong><em>Inspect variable class(es)</em></strong> Here you could inspect if the variables are in correct format. You may not want your metabolite features in character format when you want to use their numeric values. Click the button and explore. After you selected some variables and click <em>OK</em>, the variables’ classes will be printed in the box.</p></li>
+<li><p><strong><em>Inspect variable class(es)</em></strong>: Here you could inspect if the variables are in correct format. You may not want your metabolite features in character format when you want to use their numeric values. Click the button and explore. After you selected some variables and click <em>OK</em>, the variables’ classes will be printed in the box.</p></li>
 <li>
 <p><strong><em>remove variable(s)</em></strong>: Here you could remove variables from the uploaded data. Click the button, remove some variables and click <em>OK</em>. What variables are removed are then printed out in the box and they will not enter the downstream analysis. We also make this removal reversible so that every time when you re-click this button and click <em>Cancel</em>, the data will go back to the state where no variables are removed.</p>
 <p>We add this button so that users do not need to manually remove redundant variables that will actually not be used in the data analysis.</p>
@@ -425,7 +425,7 @@ Note
 <span class="header-section-number">1.2.2</span> Triggered</h3>
 <p>After you upload the auxiliary data, a text will show up presenting how many rows and columns you have in the auxiliary data frame. Three following buttons also show up: <strong><em>Inspect variable class(es), remove variable(s), Change variable class</em></strong>.</p>
 <ol type="1">
-<li><p><strong><em>Inspect variable class(es)</em></strong> Same as <a href="#Triggered_1_1_2">1.1.2</a></p></li>
+<li><p><strong><em>Inspect variable class(es)</em></strong>: Same as <a href="#Triggered_1_1_2">1.1.2</a></p></li>
 <li><p><strong><em>remove variable(s)</em></strong>: Same as <a href="#Triggered_1_1_2">1.1.2</a></p></li>
 <li>
 <p><strong><em>Change variable class</em></strong>: Here you could transform variables to either factor and numeric variables. After select the variables to be transformed and click <em>OK</em>, the variable will be transformed to the corresponding class and used in the down stream analysis.</p>
@@ -450,7 +450,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You maybe heard about PCA but not <strong>WGCNA</strong>. In brief, WGCNA is to separate omics variables into clusters, perform PCA on each cluster and extract the first principal component of each cluster as the principal components of WGCNA. To distinguish from PCA components, we call these first principal components modules here.</p>
+<p>You maybe heard about PCA but not <strong>WGCNA</strong>. In brief, WGCNA is to separate Omics variables into clusters, perform PCA on each cluster and extract the first principal component of each cluster as the principal components of WGCNA. In PCA, the newly produced variables from data reduction is called principal components. To distinguish from PCA components, we call these first principal components from WGCNA as modules here.</p>
 <p>The clustering method used in TriplotGUI is the default hierarchical clustering method provided by <code>cutreeDynamic()</code> in the <em>dynamicTreeCut</em> package.</p>
 </div>
 </div>
@@ -476,7 +476,7 @@ Note
 <li><p><strong><em>Plotting options</em></strong>: Four options are provided: (1) <em>scores</em>: The scores of principal components are plotted. (2) <em>loadings</em>: The loadings of principal components are plotted. (3) <em>biplots</em>: Both scores and loadings are scaled plotted on the same plot. (4) <em>screeplot</em>: When <strong><em>Method</em></strong>&nbsp;is selected as <em>PCA</em>, how much variance each principal component contributes is plotted. When <strong><em>Method</em></strong>&nbsp;is selected as <em>WGCNA</em>, how much variance each cluster and each first principal component contribute are plotted.In default mode, none of the 4 options are selected.</p></li>
 <li><p><strong><em>Component/module on first axis</em></strong>: The component/module that will be plotted on the x-axis. The default is <em>1</em> (the first one). Components are ordered from the component that has the highest contribution to variance to lowest. Modules are ordered from the module that is from the cluster with the most variables to the module that is from the cluster with the least number of variables.</p></li>
 <li><p><strong><em>Component/module on second axis</em></strong>: The component/module that will be plotted on the y-axis. The default is <em>2</em> (the second one). Components are ordered from the component that has the highest contribution to variance to lowest. Modules are ordered from the module that is from the cluster with the most variables to the module that is from the cluster with the least number of variables.</p></li>
-<li><p><strong><em>Type of loadings:</em></strong> Two options are provided <em>Eigenvectors</em> and <em>Eigenvectors × squareroot(eigenvalues)</em>. The 2 calulations, respectively, correspond to the output value that is referred to as “rotation” in the <em>prcomp</em> package and “loadings” in the <em>principal</em> package.</p></li>
+<li><p><strong><em>Type of loadings</em></strong>: Two options are provided <em>Eigenvectors</em> and <em>Eigenvectors × squareroot(eigenvalues)</em>. The 2 calulations, respectively, correspond to the output value that is referred to as “rotation” in the <em>prcomp</em> package and “loadings” in the <em>principal</em> package.</p></li>
 </ol></section><section id="Triggered_1_4_2" class="level3" data-number="1.4.2"><h3 data-number="1.4.2" class="anchored" data-anchor-id="Triggered_1_4_2">
 <span class="header-section-number">1.4.2</span> Triggered</h3>
 <ol type="1">
@@ -504,8 +504,8 @@ Note
 <span class="header-section-number">2.1.2</span> Triggered</h3>
 <p>After you upload the exposure data, a text will show up presenting how many rows and columns you have in the exposure data frame. Three following buttons also show up: <strong><em>Inspect variable class(es), remove variable(s), Change variable class</em></strong>.</p>
 <ol type="1">
-<li><p><strong><em>Inspect variable class(es)</em></strong> Same as <a href="#Triggered_1_1_2">1.1.2</a></p></li>
-<li><p><strong><em>remove variable(s):</em></strong> Same as <a href="#Triggered_1_1_2">1.1.2</a></p></li>
+<li><p><strong><em>Inspect variable class(es)</em></strong>: Same as <a href="#Triggered_1_1_2">1.1.2</a></p></li>
+<li><p><strong><em>remove variable(s)</em></strong>: Same as <a href="#Triggered_1_1_2">1.1.2</a></p></li>
 <li><p><strong><em>Change variable class</em></strong>: Same as <a href="#Triggered_1_2_2">1.2.2</a></p></li>
 </ol></section></section><section id="Covaraite_data1" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="Covaraite_data1">
 <span class="header-section-number">2.2</span> Covariate data</h2>
@@ -517,8 +517,8 @@ Note
 <span class="header-section-number">2.2.2</span> Triggered</h3>
 <p>After you upload the covariate data, a text will show up presenting how many rows and columns you have in the covariate data frame. Three following buttons also show up: <strong><em>Inspect variable class(es), remove variable(s), Change variable class</em></strong>.</p>
 <ol type="1">
-<li><p><strong><em>Inspect variable class(es)</em></strong> Same as <a href="#Triggered_1_1_2">1.1.2</a></p></li>
-<li><p><strong><em>remove variable(s)</em></strong> Same as <a href="#Triggered_1_1_2">1.1.2</a></p></li>
+<li><p><strong><em>Inspect variable class(es)</em></strong>: Same as <a href="#Triggered_1_1_2">1.1.2</a></p></li>
+<li><p><strong><em>remove variable(s)</em></strong>: Same as <a href="#Triggered_1_1_2">1.1.2</a></p></li>
 <li><p><strong><em>Change variable class</em></strong>: Same as <a href="#Triggered_1_2_2">1.2.2</a></p></li>
 </ol></section></section><section id="data-analysis-settings-1" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="data-analysis-settings-1">
 <span class="header-section-number">2.3</span> Data analysis settings</h2>
@@ -537,7 +537,7 @@ Note
 <span class="header-section-number">2.3.2</span> Triggered</h3>
 <ol type="1">
 <li>
-<em><strong>Raw or partial correlation</strong>:</em> Upon uploading the <a href="#Covaraite_data1">covariate data</a>, the button will show up. Two options are provided: <em>Raw</em> and <em>Adjusted</em>. <em>Raw</em> means no covariates are used as confounders in the correlation analysis; <em>Adjusted</em> means that partial correlations, adjusting for covariates that are not removed, are performed on all exposures-components/modules correlations.</li>
+<strong><em>Raw or partial correlation</em></strong>: Upon uploading the <a href="#Covaraite_data1">covariate data</a>, the button will show up. Two options are provided: <em>Raw</em> and <em>Adjusted</em>. <em>Raw</em> means no covariates are used as confounders in the correlation analysis; <em>Adjusted</em> means that partial correlations, adjusting for covariates that are not removed, are performed on all exposures-components/modules correlations.</li>
 </ol></section></section><section id="visualizations-1" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="visualizations-1">
 <span class="header-section-number">2.4</span> Visualizations</h2>
 <p>The <span style="color:green">green box</span> represents visualization outputs. With Omics data from step 1 and exposure data uploaded, upon clicking the <strong><em>Refresh plot</em></strong> button, the correlations between exposures and the 2 selected components/modules (selected from step 1) will be shown. The figure can be downloaded by clicking <strong><em>Download figure</em></strong>.</p>
@@ -555,7 +555,7 @@ Note
 <span class="header-section-number">3.1.2</span> Triggered</h3>
 <p>After you upload the outcome data, a text will show up presenting how many rows and columns you have in the outcome data frame. Three following buttons also show up: <strong><em>Inspect variable class(es), remove variable(s), Change variable class</em></strong>.</p>
 <ol type="1">
-<li><p><strong><em>Inspect variable class(es)</em></strong> Same as <a href="#Triggered_1_1_2">1.1.2</a></p></li>
+<li><p><strong><em>Inspect variable class(es)</em></strong>: Same as <a href="#Triggered_1_1_2">1.1.2</a></p></li>
 <li><p><strong><em>remove variable(s)</em></strong>: Same as <a href="#Triggered_1_1_2">1.1.2</a></p></li>
 <li><p><strong><em>Change variable class</em></strong>: Same as <a href="#Triggered_1_2_2">1.2.2</a></p></li>
 </ol></section></section><section id="Covaraite_data2" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="Covaraite_data2">
@@ -568,7 +568,7 @@ Note
 <span class="header-section-number">3.2.2</span> Triggered</h3>
 <p>After you upload the covariate data, A text will show up presenting how many rows and columns you have in the data frame. Three following buttons also show up: <strong><em>Inspect variable class(es), remove variable(s), Change variable class</em></strong>.</p>
 <ol type="1">
-<li><p><strong><em>Inspect variable class(es)</em></strong> Same as <a href="#Triggered_1_1_2">1.1.2</a></p></li>
+<li><p><strong><em>Inspect variable class(es)</em></strong>: Same as <a href="#Triggered_1_1_2">1.1.2</a></p></li>
 <li><p><strong><em>remove variable(s)</em></strong>: Same as <a href="#Triggered_1_1_2">1.1.2</a></p></li>
 <li><p><strong><em>Change variable class</em></strong>: Same as <a href="#Triggered_1_2_2">1.2.2</a></p></li>
 </ol></section></section><section id="data-analysis-settings-2" class="level2" data-number="3.3"><h2 data-number="3.3" class="anchored" data-anchor-id="data-analysis-settings-2">
@@ -602,7 +602,7 @@ Note
 <ol type="1">
 <li><p><strong><em>Confounder adjustment</em></strong>: Upon uploading the <a href="#Covaraite_data2">covariate data</a>, the button will show up. Users can choose if covariates that are not removed will be adjusted for all outcomes - components/modules associations. The default is <em>No</em>.</p></li>
 <li><p><strong><em>Multinomial Regression</em></strong>: If categorical variables with n&gt;2 class is uploaded or created from outcome variables, the button will show up. By selecting <em>No</em>, one-hot-encoding will be performed on these categorical variables to transform them to n binary variables with 0 and 1 values. By selecting <em>Yes</em>, multinomial regression will be performed on these categorical variables. The default is <em>No.</em></p></li>
-<li><p><strong><em>Pairing variable:</em></strong> When auxilary data (<a href="#auxilary_data">1.2.1</a>) is uploaded, this button will show up. It allows users to select a variable in the auxiliary data that contains pairing information . For example, the matched case-control pair could constitute a categorical variable, where each pair of case and control is given a unique number. Upon selecting the variable, the information can be fed in the modelling of outcome - components/modules associations.</p></li>
+<li><p><strong><em>Pairing variable</em></strong>: When auxiliary data (<a href="#auxilary_data">1.2.1</a>) is uploaded, this button will show up. It allows users to select a variable in the auxiliary data that contains pairing information . For example, the matched case-control pair could constitute a categorical variable, where each pair of case and control is given a unique number. Upon selecting the variable, the information can be fed in the modelling of outcome - components/modules associations.</p></li>
 </ol></section></section><section id="visualization-settings-1" class="level2" data-number="3.4"><h2 data-number="3.4" class="anchored" data-anchor-id="visualization-settings-1">
 <span class="header-section-number">3.4</span> Visualization settings</h2>
 <p>The <span style="color:orange">orange box</span> is where users can modify their visualization outputs.</p>
@@ -610,7 +610,7 @@ Note
 <span class="header-section-number">3.4.1</span> Basics</h3>
 <ol type="1">
 <li><p><strong><em>Confidence level</em></strong>: The confidence level used when calculating the confidence interval of risk estimate.The default is 0.95.</p></li>
-<li><p><strong><em>Whisker length</em></strong>:The whisker length of confidence intervals in the figure. Change it from 0.1 to 0.5 and see what is changed in the visualization! The default is 0.1.</p></li>
+<li><p><strong><em>Whisker length</em></strong>: The whisker length of confidence intervals in the figure. Change it from 0.1 to 0.5 and see what is changed in the visualization! The default is 0.1.</p></li>
 </ol></section></section><section id="visualizations-2" class="level2" data-number="3.5"><h2 data-number="3.5" class="anchored" data-anchor-id="visualizations-2">
 <span class="header-section-number">3.5</span> Visualizations</h2>
 <p>The <span style="color:green">green box</span> represents visualization outputs. With Omics data from step 1 and outcome data uploaded, upon clicking the <strong><em>Refresh plot</em></strong> button, the risk associations between outcomes and 2 selected components/modules (selected from step 1) are shown. The figure can be downloaded by clicking <strong><em>Download figure</em></strong>.</p>
@@ -638,8 +638,8 @@ Note
 <ol type="1">
 <li><p><strong><em>Component/module on first/second axis</em></strong>: The component or module that will be plotted on the x/y-axis. The default is <em>1/2</em> (the first/second one). Components are ordered from the component that has the highest contribution to variance to lowest. Modules are ordered from the module that is from the cluster with the most variables to the module that is from the cluster with the least number of variables.</p></li>
 <li><p><strong><em>Plot loadings/correlations/risks</em></strong>: Whether loadings, correlations and risk estimates will be plotted on the visualization. The default is <em>Yes</em>. Upon selecting a <em>No</em>, buttons that are relevant to plot loadings/correlations/risks will not show up.</p></li>
-<li><p><strong><em>Loading/Correlation/Risk labels</em></strong> Whether the labels of loadings, correlations and risk estimates will be plotted on the visualization. The default is <em>Yes</em> for correlation and risk labels and <em>No</em> for loading labels.</p></li>
-<li><p><strong><em>Loading/Correlation/Risk limits</em></strong> The limits of loadings, correlations and risk estimates on the visualization. The default is set as 1.1 times of the maximum absolute loading value, 1.1 times of the maximum absolute correlation coefficients, 1.1 times of the maximum absolute value for risk estimates’ confidence intervals.</p></li>
+<li><p><strong><em>Loading/Correlation/Risk labels</em></strong>: Whether the labels of loadings, correlations and risk estimates will be plotted on the visualization. The default is <em>Yes</em> for correlation and risk labels and <em>No</em> for loading labels.</p></li>
+<li><p><strong><em>Loading/Correlation/Risk limits</em></strong>: The limits of loadings, correlations and risk estimates on the visualization. The default is set as 1.1 times of the maximum absolute loading value, 1.1 times of the maximum absolute correlation coefficients, 1.1 times of the maximum absolute value for risk estimates’ confidence intervals.</p></li>
 <li><p><strong><em>Arrow tip length</em></strong>: The arrow tip length of loadings. The default is 0.02.</p></li>
 <li><p><strong><em>Loading cut</em></strong>: Loadings below the value will not show up on the plot.</p></li>
 <li><p><strong><em>Plot Scores</em></strong>: Whether the scores will be plotted on the visualization. The default is <em>No</em>.</p></li>
@@ -755,13 +755,13 @@ Some notes for mediation analysis in TriplotGUI
 <span class="header-section-number">5.2</span> Visualization settings</h2>
 <ol type="1">
 <li><p><strong><em>Plot mediations/loadings/correlations/risks</em></strong>: Whether mediations, loadings, correlations and risk estimates will be plotted on the visualization. The default is <em>Yes</em>. Upon selecting a <em>No</em>, buttons that are relevant to plot mediations/loadings/correlations/risks will not show up.</p></li>
-<li><p><strong><em>Mediation/Loading/Correlation/Risk labels</em></strong> Whether the labels of mediations, loadings, correlations and risk estimates will be plotted on the visualization. The default is <em>Yes</em> for mediation, loading, correlation and risk labels.</p></li>
-<li><p><strong><em>Mediation/loading/correlation/risk limits</em></strong> The limits of mediationd, correlations and risk estimates on the visualization. The default value is set as the same value in step 3 for loading, correlation and risk Limits. The default value for mediation limits is set as 1.1 times of the maximum absolute value for mediation results’ confidence intervals.</p></li>
+<li><p><strong><em>Mediation/Loading/Correlation/Risk labels</em></strong>: Whether the labels of mediations, loadings, correlations and risk estimates will be plotted on the visualization. The default is <em>Yes</em> for mediation, loading, correlation and risk labels.</p></li>
+<li><p><strong><em>Mediation/loading/correlation/risk limits</em></strong>: The limits of mediation, loadings, correlations and risk estimates on the visualization. The default value for mediation limits is set as 1.1 times of the maximum absolute value for mediation results’ confidence intervals. The default is set as 1.1 times of the maximum absolute loading value, 1.1 times of the maximum absolute correlation coefficients, 1.1 times of the maximum absolute value for risk estimates’ confidence intervals.</p></li>
 <li><p><strong><em>Whisker length for mediations/risks</em></strong>: The whisker length of confidence intervals in the figure. Change it from 0.1 to 0.5 and see what is changed in Visualizations! The default is 0.1.</p></li>
 <li><p><strong><em>Mediation proportion or estimate</em></strong>: Two options are provided, <em>Proportion</em> and <em>Estimate</em>. Upon selecting <em>Proportion</em>, the proportion mediated (The impact of indirect effect among the total effect) can be used as mediation result for visualization. Upon selecting <em>Estimate</em>, the mediation estimates (indirect and total effect) can be used as mediation result for visualization. The default is <em>Proportion</em>.</p></li>
 <li><p><strong><em>Estimate type</em></strong>: Upon selecting <em>Estimate</em> in <strong><em>Mediation proportion or estimate</em></strong>, this checkbox option will show up, providing two choices: <em>IE</em> (indirect effect) and <em>TE</em> (total effect). Users can choose either IE or TE or both to be visualized on the mediation triplot.</p></li>
 <li>
-<p><strong><em>Proportion type</em></strong>: Upon selecting <em>Proportion</em> in <strong><em>Mediation proportion or estimate</em></strong>, this checkbox option will show up, providing two choices <em>PM</em>(Proportion Mediated) and <em>APM</em>(Adjusted Proportion Mediated): <span class="math display">\[PM=\frac{IE}{IE+DE}\]</span> and <span class="math display">\[APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}\]</span></p>
+<p><strong><em>Proportion type</em></strong>: Upon selecting <em>Proportion</em> in <strong><em>Mediation proportion or estimate</em></strong>, this checkbox option will show up, providing two choices <em>PM</em>(Proportion Mediated) and <em>APM</em>(Adjusted Proportion Mediated): <span class="math display">\[PM=\frac{IE}{IE+DE}\]</span> <span class="math display">\[APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}\]</span></p>
 <p>The former method to calulate <em>PM</em> represents the conventional way of calculating proportion mediated, without considering the scenario when the direct and indirect effect go into opposite directions, which may lead to a proportion mediated bigger than 1.</p>
 <p>The latter method to calulate <em>APM</em> represents a novel way to calculate adjusted proportion mediated. The formula uses the absolute value of direct and indirect effect to calculate total effect, which limits the adjusted proportion mediated to be within 0-1. APM emphasize on how much proportion of influence indirect effect has within the range of all effects. The directionality of indirect and total effect are also taken into account. Users can choose either PM or APM or both to be visualized on the mediation triplot.</p>
 </li>
@@ -777,13 +777,13 @@ Some notes for mediation analysis in TriplotGUI
 <p>We also provide mediation barplots in Step 4B, which focus on visualizing the magnitude and directions of single mediation estimates through barplot, using one exposure, one mediator(component/module) and one outcome. The barplot visualization for conventional and counterfactual mediation analysis are separated. <a href="img/step4_4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="img/step4_4.png" class="img-fluid"></a></p>
 <section id="visualization-settings-3" class="level3" data-number="5.4.1"><h3 data-number="5.4.1" class="anchored" data-anchor-id="visualization-settings-3">
 <span class="header-section-number">5.4.1</span> Visualization settings</h3>
-<p>The <span style="color:orange">orange box</span> represents visualization settings for conventional and counterfactual mediation respectively. After mediation analyses are run, <strong><em>Exposure/Mediator/Outcome</em></strong> variables that are involved in the mediation analyses will show up in the options for visualization settings. Users can choose one exposure, one mediator and one outcome to make the barplot.</p>
+<p>The <span style="color:orange">orange box</span> represents visualization settings for conventional and counterfactual mediation respectively. After mediation analyses are run, <strong><em>Exposure/Mediator/Outcome</em></strong>: variables that are involved in the mediation analyses will show up in the options for visualization settings. Users can choose one exposure, one mediator and one outcome to make the barplot.</p>
 </section><section id="mediation-barplot" class="level3" data-number="5.4.2"><h3 data-number="5.4.2" class="anchored" data-anchor-id="mediation-barplot">
 <span class="header-section-number">5.4.2</span> Mediation barplot</h3>
 <p>The <span style="color:green">green box</span> represents visualization outputs for conventional and counterfactual mediation respectively. Upon clicking the <strong><em>Refresh plot</em></strong> button, the mediation barplot for the selected exposure, mediator and outcome is shown. The figure can be downloaded by clicking <strong><em>Download conventional/counterfactual mediaiton barplot</em></strong>.</p>
 </section></section></section><section id="step5-compare-correlations-associations-and-mediations" class="level1" data-number="6"><h1 data-number="6">
 <span class="header-section-number">6</span> <strong>Step5:</strong> Compare correlations, associations and mediations:</h1>
-<p>Through heatmaps, (1) the exposures’ correlations with components/modules, (2) the outcomes’ associations with components/modules and (3) mediation estimates and proportion mediated for each component/module and exposure-outcome pair, as well as their significance levels can be visualized.</p>
+<p>Through heatmaps, the exposures’ correlations with components/modules,the outcomes’ associations with components/modules and mediation estimates and proportion mediated for each component/module and exposure-outcome pair, as well as their significance levels can be visualized.</p>
 <section id="visualization-settings-4" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="visualization-settings-4">
 <span class="header-section-number">6.1</span> Visualization settings</h2>
 <p>The <span style="color:orange">orange box</span> represents visualization settings.</p>
@@ -793,7 +793,7 @@ Some notes for mediation analysis in TriplotGUI
 </div>
 <ol type="1">
 <li><p><strong><em>Component(s)/module(s) to remove</em></strong>: All the selected components/modules from step 1 will show up as rows in the heatmap. Users can decide which components/modules they want to remove from the heatmap visualizations here.</p></li>
-<li><p><strong><em>Show correlation coefficients/risk estimates/mediation results</em></strong> : Users can decide what they want to show in the heatmap. The default is <em>Yes</em> for all options.</p></li>
+<li><p><strong><em>Show correlation coefficients/risk estimates/mediation results</em></strong>: Users can decide what they want to show in the heatmap. The default is <em>Yes</em> for all options.</p></li>
 <li><p><strong><em>Correlation(s)/Risk(s) to remove</em></strong>: All the selected exposures and outcomes from step 2 will show up as columns in the heatmap. Users can decide which exposures and outcomes they want to remove from the heatmap visualizations here.</p></li>
 <li><p><strong><em>Mediation result type</em></strong>: For the mediation results in heatmap, users can choose what mediation results (indirect effect, total effect, two types of proportion mediated) they want to show.</p></li>
 </ol></section><section id="visualizations-3" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="visualizations-3">
@@ -805,23 +805,25 @@ Some notes for mediation analysis in TriplotGUI
 <section id="download-processed-data" class="level2" data-number="7.1"><h2 data-number="7.1" class="anchored" data-anchor-id="download-processed-data">
 <span class="header-section-number">7.1</span> Download processed data</h2>
 <p>In the <span style="color:darkblue">darkblue box</span>, users can download processed data in csv format. The processed data of Omics, exposures and outcomes (i.e.&nbsp;data after possible variable removal and class change mentioned in <a href="#Triggered_1_1_2">1.1.2</a> and <a href="#Triggered_1_2_2">1.2.2</a>) can be viewed and downloaded here.</p>
-<p>If auxiliary data or covariate data are uploaded in step 1 and 2, they processed version can be similarly viewed and downloaded here.</p>
-<p>Separately, the selected exposures, outcomes and components/modules as mediator variables that are used in the mediation analysis in step 4 can be viewed and downloaded here.</p>
-</section><section id="download-exposure-correlations-outcome-associations-and-mediation-results" class="level2" data-number="7.2"><h2 data-number="7.2" class="anchored" data-anchor-id="download-exposure-correlations-outcome-associations-and-mediation-results">
+<ol type="1">
+<li><p><strong><em>Processed Omics/exposure/outcome data</em></strong>: The processed version of Omics/exposure/outcome data can be viewed and downloaded.</p></li>
+<li><p><strong><em>Processed auxiliary/covariate data</em></strong>: If there are any covariate data or auxiliary date used, the processed version can be similarly viewed and downloaded here.</p></li>
+<li><p><strong><em>Exposure/Outcome/Mediator variables for mediation</em></strong>: Separately, the selected exposures, outcomes and components/modules as mediator variables that are used in the mediation analysis in step 4 can be viewed and downloaded</p></li>
+</ol></section><section id="download-exposure-correlations-outcome-associations-and-mediation-results" class="level2" data-number="7.2"><h2 data-number="7.2" class="anchored" data-anchor-id="download-exposure-correlations-outcome-associations-and-mediation-results">
 <span class="header-section-number">7.2</span> Download exposure correlations, outcome associations and mediation results</h2>
 <p>From the <span style="color:lightblue">lightblue box</span>, results from correlations, associations and mediation can be viewed and download .</p>
 <ol type="1">
 <li>
-<p><strong><em>Correlation matrix</em></strong> are correlation coefficients between exposures and components/modules generated from step 2.</p>
-<p><strong><em>p values of correlations</em></strong> are p values of correlations between exposures and components/modules generated from step 2.</p>
+<p><strong><em>Correlation matrix</em></strong>: are correlation coefficients between exposures and components/modules generated from step 2.</p>
+<p><strong><em>p values of correlations</em></strong>: are p values of correlations between exposures and components/modules generated from step 2.</p>
 </li>
 <li>
-<p><strong><em>Risk estimates</em></strong> are beta coefficients between the outcome - components/modules association generated from step 2. If users want to use odds ratios, they just simply need to calculate the exponential of the data.</p>
-<p><strong><em>p values of risks</em></strong> are p values of risk estimates between outcomes and components/modules generated from step 2.</p>
+<p><strong><em>Risk estimates</em></strong>: are beta coefficients between the outcome - components/modules association generated from step 2. If users want to use odds ratios, they just simply need to calculate the exponential of the data.</p>
+<p><strong><em>p values of risks</em></strong>: are p values of risk estimates between outcomes and components/modules generated from step 2.</p>
 </li>
 <li>
-<p><strong><em>mediation estimates</em></strong> are indirect effect, total effect proportion meditated and adjusted proportion mediated for each combination of exposure, component/module as mediator and outcome, generated from step 4.</p>
-<p><strong><em>p values of mediation estimates</em></strong> are p values of indirect effect, total effect proportion mediatated and adjusted proportion mediated for each combination of exposure, component/module as mediator and outcome, generated from step 4.</p>
+<p><strong><em>mediation estimates</em></strong>: are indirect effect, total effect proportion meditated and adjusted proportion mediated for each combination of exposure, component/module as mediator and outcome, generated from step 4.</p>
+<p><strong><em>p values of mediation estimates</em></strong>: are p values of indirect effect, total effect proportion mediatated and adjusted proportion mediated for each combination of exposure, component/module as mediator and outcome, generated from step 4.</p>
 </li>
 </ol></section><section id="tpobject" class="level2" data-number="7.3"><h2 data-number="7.3" class="anchored" data-anchor-id="tpobject">
 <span class="header-section-number">7.3</span> TPObject</h2>
@@ -1071,7 +1073,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The data should be in either csv, xlsx, rds, or rda format. The data in rds format should be a dataframe. If the data is in rda format, the rda object should only contain data as one dataframe.</span>
 <span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The rows of data should represent observations and the columns of data should represents variables (omics features).</span>
 <span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The names of variables (column names) should not contain special characters including <span class="in">`' '`</span>, <span class="in">`'('`</span>, <span class="in">`')'`</span>, <span class="in">`':'`</span>, <span class="in">`'/'`</span>, <span class="in">`'-'`</span>, <span class="in">`','`</span>, <span class="in">`'@'`</span>.</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>No missing values are allowed in the data</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>No missing values are allowed in the Omics data</span>
 <span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The number and order of observations should be same across all the uploaded data</span>
 <span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
@@ -1082,7 +1084,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>After you upload the data, a text will show up presenting how many rows and columns you have in the Omics data frame. Three following buttons also show up: ***Inspect variable class(es), remove variables(s), Force all variables to numeric***.</span>
 <span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***Inspect variable class(es)*** Here you could inspect if the variables are in correct format. You may not want your metabolite features in character format when you want to use their numeric values. Click the button and explore. After you selected some variables and click *OK*, the variables' classes will be printed in the box.</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***Inspect variable class(es)***: Here you could inspect if the variables are in correct format. You may not want your metabolite features in character format when you want to use their numeric values. Click the button and explore. After you selected some variables and click *OK*, the variables' classes will be printed in the box.</span>
 <span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>***remove variable(s)***: Here you could remove variables from the uploaded data. Click the button, remove some variables and click *OK*. What variables are removed are then printed out in the box and they will not enter the downstream analysis. We also make this removal reversible so that every time when you re-click this button and click *Cancel*, the data will go back to the state where no variables are removed.</span>
 <span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
@@ -1106,7 +1108,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>After you upload the auxiliary data, a text will show up presenting how many rows and columns you have in the auxiliary data frame. Three following buttons also show up: ***Inspect variable class(es), remove variable(s), Change variable class***.</span>
 <span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***Inspect variable class(es)*** Same as <span class="co">[</span><span class="ot">1.1.2</span><span class="co">](#Triggered_1_1_2)</span></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***Inspect variable class(es)***: Same as <span class="co">[</span><span class="ot">1.1.2</span><span class="co">](#Triggered_1_1_2)</span></span>
 <span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>***remove variable(s)***: Same as <span class="co">[</span><span class="ot">1.1.2</span><span class="co">](#Triggered_1_1_2)</span></span>
 <span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
@@ -1123,7 +1125,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***Method***: Users choose to either use principal component analysis (*PCA*) or weighted correlation network analysis (*WGCNA*) to perform data reduction. The default method is *PCA*.</span>
 <span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>You maybe heard about PCA but not **WGCNA**. In brief, WGCNA is to separate omics variables into clusters, perform PCA on each cluster and extract the first principal component of each cluster as the principal components of WGCNA. To distinguish from PCA components, we call these first principal components modules here.</span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>You maybe heard about PCA but not **WGCNA**. In brief, WGCNA is to separate Omics variables into clusters, perform PCA on each cluster and extract the first principal component of each cluster as the principal components of WGCNA. In PCA, the newly produced variables from data reduction is called principal components. To distinguish from PCA components, we call these first principal components from WGCNA as modules here.</span>
 <span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>The clustering method used in TriplotGUI is the default hierarchical clustering method provided by <span class="in">`cutreeDynamic()`</span> in the *dynamicTreeCut* package.</span>
 <span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a>:::</span>
@@ -1154,7 +1156,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>***Component/module on second axis***: The component/module that will be plotted on the y-axis. The default is *2* (the second one). Components are ordered from the component that has the highest contribution to variance to lowest. Modules are ordered from the module that is from the cluster with the most variables to the module that is from the cluster with the least number of variables.</span>
 <span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>***Type of loadings:*** Two options are provided *Eigenvectors* and *Eigenvectors × squareroot(eigenvalues)*. The 2 calulations, respectively, correspond to the output value that is referred to as "rotation" in the *prcomp* package and "loadings" in the *principal* package.</span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>***Type of loadings***: Two options are provided *Eigenvectors* and *Eigenvectors × squareroot(eigenvalues)*. The 2 calulations, respectively, correspond to the output value that is referred to as "rotation" in the *prcomp* package and "loadings" in the *principal* package.</span>
 <span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a><span class="fu">### Triggered {#Triggered_1_4_2}</span></span>
 <span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a></span>
@@ -1194,9 +1196,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a>After you upload the exposure data, a text will show up presenting how many rows and columns you have in the exposure data frame. Three following buttons also show up: ***Inspect variable class(es), remove variable(s), Change variable class***.</span>
 <span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***Inspect variable class(es)*** Same as <span class="co">[</span><span class="ot">1.1.2</span><span class="co">](#Triggered_1_1_2)</span></span>
+<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***Inspect variable class(es)***: Same as <span class="co">[</span><span class="ot">1.1.2</span><span class="co">](#Triggered_1_1_2)</span></span>
 <span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>***remove variable(s):*** Same as <span class="co">[</span><span class="ot">1.1.2</span><span class="co">](#Triggered_1_1_2)</span></span>
+<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>***remove variable(s)***: Same as <span class="co">[</span><span class="ot">1.1.2</span><span class="co">](#Triggered_1_1_2)</span></span>
 <span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>***Change variable class***: Same as <span class="co">[</span><span class="ot">1.2.2</span><span class="co">](#Triggered_1_2_2)</span></span>
 <span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a></span>
@@ -1212,9 +1214,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a>After you upload the covariate data, a text will show up presenting how many rows and columns you have in the covariate data frame. Three following buttons also show up: ***Inspect variable class(es), remove variable(s), Change variable class***.</span>
 <span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***Inspect variable class(es)*** Same as <span class="co">[</span><span class="ot">1.1.2</span><span class="co">](#Triggered_1_1_2)</span></span>
+<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***Inspect variable class(es)***: Same as <span class="co">[</span><span class="ot">1.1.2</span><span class="co">](#Triggered_1_1_2)</span></span>
 <span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>***remove variable(s)*** Same as <span class="co">[</span><span class="ot">1.1.2</span><span class="co">](#Triggered_1_1_2)</span></span>
+<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>***remove variable(s)***: Same as <span class="co">[</span><span class="ot">1.1.2</span><span class="co">](#Triggered_1_1_2)</span></span>
 <span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>***Change variable class***: Same as <span class="co">[</span><span class="ot">1.2.2</span><span class="co">](#Triggered_1_2_2)</span></span>
 <span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a></span>
@@ -1236,7 +1238,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a><span class="fu">### Triggered</span></span>
 <span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***Raw or partial correlation**:* Upon uploading the <span class="co">[</span><span class="ot">covariate data</span><span class="co">](#Covaraite_data1)</span>, the button will show up. Two options are provided: *Raw* and *Adjusted*. *Raw* means no covariates are used as confounders in the correlation analysis; *Adjusted* means that partial correlations, adjusting for covariates that are not removed, are performed on all exposures-components/modules correlations.</span>
+<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***Raw or partial correlation***: Upon uploading the <span class="co">[</span><span class="ot">covariate data</span><span class="co">](#Covaraite_data1)</span>, the button will show up. Two options are provided: *Raw* and *Adjusted*. *Raw* means no covariates are used as confounders in the correlation analysis; *Adjusted* means that partial correlations, adjusting for covariates that are not removed, are performed on all exposures-components/modules correlations.</span>
 <span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a><span class="fu">## Visualizations</span></span>
 <span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a></span>
@@ -1260,7 +1262,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-248"><a href="#cb1-248" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-249"><a href="#cb1-249" aria-hidden="true" tabindex="-1"></a>After you upload the outcome data, a text will show up presenting how many rows and columns you have in the outcome data frame. Three following buttons also show up: ***Inspect variable class(es), remove variable(s), Change variable class***.</span>
 <span id="cb1-250"><a href="#cb1-250" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-251"><a href="#cb1-251" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***Inspect variable class(es)*** Same as <span class="co">[</span><span class="ot">1.1.2</span><span class="co">](#Triggered_1_1_2)</span></span>
+<span id="cb1-251"><a href="#cb1-251" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***Inspect variable class(es)***: Same as <span class="co">[</span><span class="ot">1.1.2</span><span class="co">](#Triggered_1_1_2)</span></span>
 <span id="cb1-252"><a href="#cb1-252" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>***remove variable(s)***: Same as <span class="co">[</span><span class="ot">1.1.2</span><span class="co">](#Triggered_1_1_2)</span></span>
 <span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a></span>
@@ -1278,7 +1280,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-266"><a href="#cb1-266" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-267"><a href="#cb1-267" aria-hidden="true" tabindex="-1"></a>After you upload the covariate data, A text will show up presenting how many rows and columns you have in the data frame. Three following buttons also show up: ***Inspect variable class(es), remove variable(s), Change variable class***.</span>
 <span id="cb1-268"><a href="#cb1-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-269"><a href="#cb1-269" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***Inspect variable class(es)*** Same as <span class="co">[</span><span class="ot">1.1.2</span><span class="co">](#Triggered_1_1_2)</span></span>
+<span id="cb1-269"><a href="#cb1-269" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***Inspect variable class(es)***: Same as <span class="co">[</span><span class="ot">1.1.2</span><span class="co">](#Triggered_1_1_2)</span></span>
 <span id="cb1-270"><a href="#cb1-270" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-271"><a href="#cb1-271" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>***remove variable(s)***: Same as <span class="co">[</span><span class="ot">1.1.2</span><span class="co">](#Triggered_1_1_2)</span></span>
 <span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a></span>
@@ -1304,7 +1306,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-292"><a href="#cb1-292" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-293"><a href="#cb1-293" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>***Multinomial Regression***: If categorical variables with n<span class="sc">\&gt;</span>2 class is uploaded or created from outcome variables, the button will show up. By selecting *No*, one-hot-encoding will be performed on these categorical variables to transform them to n binary variables with 0 and 1 values. By selecting *Yes*, multinomial regression will be performed on these categorical variables. The default is *No.*</span>
 <span id="cb1-294"><a href="#cb1-294" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-295"><a href="#cb1-295" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>***Pairing variable:*** When auxilary data (<span class="co">[</span><span class="ot">1.2.1</span><span class="co">](#auxilary_data)</span>) is uploaded, this button will show up. It allows users to select a variable in the auxiliary data that contains pairing information . For example, the matched case-control pair could constitute a categorical variable, where each pair of case and control is given a unique number. Upon selecting the variable, the information can be fed in the modelling of outcome - components/modules associations.</span>
+<span id="cb1-295"><a href="#cb1-295" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>***Pairing variable***: When auxiliary data (<span class="co">[</span><span class="ot">1.2.1</span><span class="co">](#auxilary_data)</span>) is uploaded, this button will show up. It allows users to select a variable in the auxiliary data that contains pairing information . For example, the matched case-control pair could constitute a categorical variable, where each pair of case and control is given a unique number. Upon selecting the variable, the information can be fed in the modelling of outcome - components/modules associations.</span>
 <span id="cb1-296"><a href="#cb1-296" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-297"><a href="#cb1-297" aria-hidden="true" tabindex="-1"></a><span class="fu">## Visualization settings</span></span>
 <span id="cb1-298"><a href="#cb1-298" aria-hidden="true" tabindex="-1"></a></span>
@@ -1314,7 +1316,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-302"><a href="#cb1-302" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-303"><a href="#cb1-303" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***Confidence level***: The confidence level used when calculating the confidence interval of risk estimate.The default is 0.95.</span>
 <span id="cb1-304"><a href="#cb1-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-305"><a href="#cb1-305" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>***Whisker length***:The whisker length of confidence intervals in the figure. Change it from 0.1 to 0.5 and see what is changed in the visualization! The default is 0.1.</span>
+<span id="cb1-305"><a href="#cb1-305" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>***Whisker length***: The whisker length of confidence intervals in the figure. Change it from 0.1 to 0.5 and see what is changed in the visualization! The default is 0.1.</span>
 <span id="cb1-306"><a href="#cb1-306" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-307"><a href="#cb1-307" aria-hidden="true" tabindex="-1"></a><span class="fu">## Visualizations</span></span>
 <span id="cb1-308"><a href="#cb1-308" aria-hidden="true" tabindex="-1"></a></span>
@@ -1340,9 +1342,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-328"><a href="#cb1-328" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-329"><a href="#cb1-329" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>***Plot loadings/correlations/risks***: Whether loadings, correlations and risk estimates will be plotted on the visualization. The default is *Yes*. Upon selecting a *No*, buttons that are relevant to plot loadings/correlations/risks will not show up.</span>
 <span id="cb1-330"><a href="#cb1-330" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-331"><a href="#cb1-331" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>***Loading/Correlation/Risk labels*** Whether the labels of loadings, correlations and risk estimates will be plotted on the visualization. The default is *Yes* for correlation and risk labels and *No* for loading labels.</span>
+<span id="cb1-331"><a href="#cb1-331" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>***Loading/Correlation/Risk labels***: Whether the labels of loadings, correlations and risk estimates will be plotted on the visualization. The default is *Yes* for correlation and risk labels and *No* for loading labels.</span>
 <span id="cb1-332"><a href="#cb1-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-333"><a href="#cb1-333" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>***Loading/Correlation/Risk limits*** The limits of loadings, correlations and risk estimates on the visualization. The default is set as 1.1 times of the maximum absolute loading value, 1.1 times of the maximum absolute correlation coefficients, 1.1 times of the maximum absolute value for risk estimates' confidence intervals.</span>
+<span id="cb1-333"><a href="#cb1-333" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>***Loading/Correlation/Risk limits***: The limits of loadings, correlations and risk estimates on the visualization. The default is set as 1.1 times of the maximum absolute loading value, 1.1 times of the maximum absolute correlation coefficients, 1.1 times of the maximum absolute value for risk estimates' confidence intervals.</span>
 <span id="cb1-334"><a href="#cb1-334" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-335"><a href="#cb1-335" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>***Arrow tip length***: The arrow tip length of loadings. The default is 0.02.</span>
 <span id="cb1-336"><a href="#cb1-336" aria-hidden="true" tabindex="-1"></a></span>
@@ -1434,9 +1436,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-422"><a href="#cb1-422" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-423"><a href="#cb1-423" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***Plot mediations/loadings/correlations/risks***: Whether mediations, loadings, correlations and risk estimates will be plotted on the visualization. The default is *Yes*. Upon selecting a *No*, buttons that are relevant to plot mediations/loadings/correlations/risks will not show up.</span>
 <span id="cb1-424"><a href="#cb1-424" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-425"><a href="#cb1-425" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>***Mediation/Loading/Correlation/Risk labels*** Whether the labels of mediations, loadings, correlations and risk estimates will be plotted on the visualization. The default is *Yes* for mediation, loading, correlation and risk labels.</span>
+<span id="cb1-425"><a href="#cb1-425" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>***Mediation/Loading/Correlation/Risk labels***: Whether the labels of mediations, loadings, correlations and risk estimates will be plotted on the visualization. The default is *Yes* for mediation, loading, correlation and risk labels.</span>
 <span id="cb1-426"><a href="#cb1-426" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-427"><a href="#cb1-427" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>***Mediation/loading/correlation/risk limits*** The limits of mediationd, correlations and risk estimates on the visualization. The default value is set as the same value in step 3 for loading, correlation and risk Limits. The default value for mediation limits is set as 1.1 times of the maximum absolute value for mediation results’ confidence intervals.</span>
+<span id="cb1-427"><a href="#cb1-427" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>***Mediation/loading/correlation/risk limits***: The limits of mediation, loadings, correlations and risk estimates on the visualization. The default value for mediation limits is set as 1.1 times of the maximum absolute value for mediation results’ confidence intervals. The default is set as 1.1 times of the maximum absolute loading value, 1.1 times of the maximum absolute correlation coefficients, 1.1 times of the maximum absolute value for risk estimates' confidence intervals. </span>
 <span id="cb1-428"><a href="#cb1-428" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-429"><a href="#cb1-429" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>***Whisker length for mediations/risks***: The whisker length of confidence intervals in the figure. Change it from 0.1 to 0.5 and see what is changed in Visualizations! The default is 0.1.</span>
 <span id="cb1-430"><a href="#cb1-430" aria-hidden="true" tabindex="-1"></a></span>
@@ -1444,7 +1446,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-432"><a href="#cb1-432" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-433"><a href="#cb1-433" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>***Estimate type***: Upon selecting *Estimate* in ***Mediation proportion or estimate***, this checkbox option will show up, providing two choices: *IE* (indirect effect) and *TE* (total effect). Users can choose either IE or TE or both to be visualized on the mediation triplot.</span>
 <span id="cb1-434"><a href="#cb1-434" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-435"><a href="#cb1-435" aria-hidden="true" tabindex="-1"></a><span class="ss">7.  </span>***Proportion type***: Upon selecting *Proportion* in ***Mediation proportion or estimate***, this checkbox option will show up, providing two choices *PM*(Proportion Mediated) and *APM*(Adjusted Proportion Mediated): $$PM=\frac{IE}{IE+DE}$$ and $$APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}$$</span>
+<span id="cb1-435"><a href="#cb1-435" aria-hidden="true" tabindex="-1"></a><span class="ss">7.  </span>***Proportion type***: Upon selecting *Proportion* in ***Mediation proportion or estimate***, this checkbox option will show up, providing two choices *PM*(Proportion Mediated) and *APM*(Adjusted Proportion Mediated): $$PM=\frac{IE}{IE+DE}$$  $$APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}$$</span>
 <span id="cb1-436"><a href="#cb1-436" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-437"><a href="#cb1-437" aria-hidden="true" tabindex="-1"></a>    The former method to calulate *PM* represents the conventional way of calculating proportion mediated, without considering the scenario when the direct and indirect effect go into opposite directions, which may lead to a proportion mediated bigger than 1.</span>
 <span id="cb1-438"><a href="#cb1-438" aria-hidden="true" tabindex="-1"></a></span>
@@ -1468,7 +1470,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-456"><a href="#cb1-456" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-457"><a href="#cb1-457" aria-hidden="true" tabindex="-1"></a><span class="fu">### Visualization settings</span></span>
 <span id="cb1-458"><a href="#cb1-458" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-459"><a href="#cb1-459" aria-hidden="true" tabindex="-1"></a>The <span class="co">[</span><span class="ot">orange box</span><span class="co">]</span>{style="color:orange"} represents visualization settings for conventional and counterfactual mediation respectively. After mediation analyses are run, ***Exposure/Mediator/Outcome*** variables that are involved in the mediation analyses will show up in the options for visualization settings. Users can choose one exposure, one mediator and one outcome to make the barplot.</span>
+<span id="cb1-459"><a href="#cb1-459" aria-hidden="true" tabindex="-1"></a>The <span class="co">[</span><span class="ot">orange box</span><span class="co">]</span>{style="color:orange"} represents visualization settings for conventional and counterfactual mediation respectively. After mediation analyses are run, ***Exposure/Mediator/Outcome***: variables that are involved in the mediation analyses will show up in the options for visualization settings. Users can choose one exposure, one mediator and one outcome to make the barplot.</span>
 <span id="cb1-460"><a href="#cb1-460" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-461"><a href="#cb1-461" aria-hidden="true" tabindex="-1"></a><span class="fu">### Mediation barplot</span></span>
 <span id="cb1-462"><a href="#cb1-462" aria-hidden="true" tabindex="-1"></a></span>
@@ -1476,7 +1478,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-464"><a href="#cb1-464" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-465"><a href="#cb1-465" aria-hidden="true" tabindex="-1"></a><span class="fu"># **Step5:** Compare correlations, associations and mediations:</span></span>
 <span id="cb1-466"><a href="#cb1-466" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-467"><a href="#cb1-467" aria-hidden="true" tabindex="-1"></a>Through heatmaps, (1) the exposures' correlations with components/modules, (2) the outcomes' associations with components/modules and (3) mediation estimates and proportion mediated for each component/module and exposure-outcome pair, as well as their significance levels can be visualized.</span>
+<span id="cb1-467"><a href="#cb1-467" aria-hidden="true" tabindex="-1"></a>Through heatmaps, the exposures' correlations with components/modules,the outcomes' associations with components/modules and mediation estimates and proportion mediated for each component/module and exposure-outcome pair, as well as their significance levels can be visualized.</span>
 <span id="cb1-468"><a href="#cb1-468" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-469"><a href="#cb1-469" aria-hidden="true" tabindex="-1"></a><span class="fu">## Visualization settings</span></span>
 <span id="cb1-470"><a href="#cb1-470" aria-hidden="true" tabindex="-1"></a></span>
@@ -1486,7 +1488,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-474"><a href="#cb1-474" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-475"><a href="#cb1-475" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***Component(s)/module(s) to remove***: All the selected components/modules from step 1 will show up as rows in the heatmap. Users can decide which components/modules they want to remove from the heatmap visualizations here.</span>
 <span id="cb1-476"><a href="#cb1-476" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-477"><a href="#cb1-477" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>***Show correlation coefficients/risk estimates/mediation results*** : Users can decide what they want to show in the heatmap. The default is *Yes* for all options.</span>
+<span id="cb1-477"><a href="#cb1-477" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>***Show correlation coefficients/risk estimates/mediation results***: Users can decide what they want to show in the heatmap. The default is *Yes* for all options.</span>
 <span id="cb1-478"><a href="#cb1-478" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-479"><a href="#cb1-479" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>***Correlation(s)/Risk(s) to remove***: All the selected exposures and outcomes from step 2 will show up as columns in the heatmap. Users can decide which exposures and outcomes they want to remove from the heatmap visualizations here.</span>
 <span id="cb1-480"><a href="#cb1-480" aria-hidden="true" tabindex="-1"></a></span>
@@ -1504,46 +1506,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-492"><a href="#cb1-492" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-493"><a href="#cb1-493" aria-hidden="true" tabindex="-1"></a>In the <span class="co">[</span><span class="ot">darkblue box</span><span class="co">]</span>{style="color:darkblue"}, users can download processed data in csv format. The processed data of Omics, exposures and outcomes (i.e. data after possible variable removal and class change mentioned in <span class="co">[</span><span class="ot">1.1.2</span><span class="co">](#Triggered_1_1_2)</span> and <span class="co">[</span><span class="ot">1.2.2</span><span class="co">](#Triggered_1_2_2)</span>) can be viewed and downloaded here.</span>
 <span id="cb1-494"><a href="#cb1-494" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-495"><a href="#cb1-495" aria-hidden="true" tabindex="-1"></a>If auxiliary data or covariate data are uploaded in step 1 and 2, they processed version can be similarly viewed and downloaded here.</span>
+<span id="cb1-495"><a href="#cb1-495" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***Processed Omics/exposure/outcome data***: The processed version of Omics/exposure/outcome data can be viewed and downloaded.   </span>
 <span id="cb1-496"><a href="#cb1-496" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-497"><a href="#cb1-497" aria-hidden="true" tabindex="-1"></a>Separately, the selected exposures, outcomes and components/modules as mediator variables that are used in the mediation analysis in step 4 can be viewed and downloaded here.</span>
+<span id="cb1-497"><a href="#cb1-497" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>***Processed auxiliary/covariate data***: If there are any covariate data or auxiliary date used, the processed version can be similarly viewed and downloaded here.</span>
 <span id="cb1-498"><a href="#cb1-498" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-499"><a href="#cb1-499" aria-hidden="true" tabindex="-1"></a><span class="fu">## Download exposure correlations, outcome associations and mediation results</span></span>
+<span id="cb1-499"><a href="#cb1-499" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>***Exposure/Outcome/Mediator variables for mediation***: Separately, the selected exposures, outcomes and components/modules as mediator variables that are used in the mediation analysis in step 4 can be viewed and downloaded</span>
 <span id="cb1-500"><a href="#cb1-500" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-501"><a href="#cb1-501" aria-hidden="true" tabindex="-1"></a>From the <span class="co">[</span><span class="ot">lightblue box</span><span class="co">]</span>{style="color:lightblue"}, results from correlations, associations and mediation can be viewed and download .</span>
+<span id="cb1-501"><a href="#cb1-501" aria-hidden="true" tabindex="-1"></a><span class="fu">## Download exposure correlations, outcome associations and mediation results</span></span>
 <span id="cb1-502"><a href="#cb1-502" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-503"><a href="#cb1-503" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***Correlation matrix*** are correlation coefficients between exposures and components/modules generated from step 2.</span>
+<span id="cb1-503"><a href="#cb1-503" aria-hidden="true" tabindex="-1"></a>From the <span class="co">[</span><span class="ot">lightblue box</span><span class="co">]</span>{style="color:lightblue"}, results from correlations, associations and mediation can be viewed and download .</span>
 <span id="cb1-504"><a href="#cb1-504" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-505"><a href="#cb1-505" aria-hidden="true" tabindex="-1"></a>    ***p values of correlations*** are p values of correlations between exposures and components/modules generated from step 2.</span>
+<span id="cb1-505"><a href="#cb1-505" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***Correlation matrix***: are correlation coefficients between exposures and components/modules generated from step 2.</span>
 <span id="cb1-506"><a href="#cb1-506" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-507"><a href="#cb1-507" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>***Risk estimates*** are beta coefficients between the outcome - components/modules association generated from step 2. If users want to use odds ratios, they just simply need to calculate the exponential of the data.</span>
+<span id="cb1-507"><a href="#cb1-507" aria-hidden="true" tabindex="-1"></a>    ***p values of correlations***: are p values of correlations between exposures and components/modules generated from step 2.</span>
 <span id="cb1-508"><a href="#cb1-508" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-509"><a href="#cb1-509" aria-hidden="true" tabindex="-1"></a>    ***p values of risks*** are p values of risk estimates between outcomes and components/modules generated from step 2.</span>
+<span id="cb1-509"><a href="#cb1-509" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>***Risk estimates***: are beta coefficients between the outcome - components/modules association generated from step 2. If users want to use odds ratios, they just simply need to calculate the exponential of the data.</span>
 <span id="cb1-510"><a href="#cb1-510" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-511"><a href="#cb1-511" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>***mediation estimates*** are indirect effect, total effect proportion meditated and adjusted proportion mediated for each combination of exposure, component/module as mediator and outcome, generated from step 4.</span>
+<span id="cb1-511"><a href="#cb1-511" aria-hidden="true" tabindex="-1"></a>    ***p values of risks***: are p values of risk estimates between outcomes and components/modules generated from step 2.</span>
 <span id="cb1-512"><a href="#cb1-512" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-513"><a href="#cb1-513" aria-hidden="true" tabindex="-1"></a>    ***p values of mediation estimates*** are p values of indirect effect, total effect proportion mediatated and adjusted proportion mediated for each combination of exposure, component/module as mediator and outcome, generated from step 4.</span>
+<span id="cb1-513"><a href="#cb1-513" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>***mediation estimates***: are indirect effect, total effect proportion meditated and adjusted proportion mediated for each combination of exposure, component/module as mediator and outcome, generated from step 4.</span>
 <span id="cb1-514"><a href="#cb1-514" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-515"><a href="#cb1-515" aria-hidden="true" tabindex="-1"></a><span class="fu">## TPObject</span></span>
+<span id="cb1-515"><a href="#cb1-515" aria-hidden="true" tabindex="-1"></a>    ***p values of mediation estimates***: are p values of indirect effect, total effect proportion mediatated and adjusted proportion mediated for each combination of exposure, component/module as mediator and outcome, generated from step 4.</span>
 <span id="cb1-516"><a href="#cb1-516" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-517"><a href="#cb1-517" aria-hidden="true" tabindex="-1"></a>In the <span class="co">[</span><span class="ot">red box</span><span class="co">]</span>{style="color:red"}, users can download the TPObject from step 4 in rda format as the end product. Note that we refer the list that we use to save information and pass them through the steps as TPObject.</span>
+<span id="cb1-517"><a href="#cb1-517" aria-hidden="true" tabindex="-1"></a><span class="fu">## TPObject</span></span>
 <span id="cb1-518"><a href="#cb1-518" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-519"><a href="#cb1-519" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb1-520"><a href="#cb1-520" aria-hidden="true" tabindex="-1"></a>If you are interested, please check out the <span class="co">[</span><span class="ot">Tutorial(simple)</span><span class="co">](simple_code.qmd)</span>{target="_blank"} and [Tutorial(complex)](complex_code.qmd){target="_blank"} to explore what is contained in the TPObject from each step!</span>
-<span id="cb1-521"><a href="#cb1-521" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-522"><a href="#cb1-522" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-523"><a href="#cb1-523" aria-hidden="true" tabindex="-1"></a><span class="fu">## Show data</span></span>
+<span id="cb1-519"><a href="#cb1-519" aria-hidden="true" tabindex="-1"></a>In the <span class="co">[</span><span class="ot">red box</span><span class="co">]</span>{style="color:red"}, users can download the TPObject from step 4 in rda format as the end product. Note that we refer the list that we use to save information and pass them through the steps as TPObject.</span>
+<span id="cb1-520"><a href="#cb1-520" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-521"><a href="#cb1-521" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb1-522"><a href="#cb1-522" aria-hidden="true" tabindex="-1"></a>If you are interested, please check out the <span class="co">[</span><span class="ot">Tutorial(simple)</span><span class="co">](simple_code.qmd)</span>{target="_blank"} and [Tutorial(complex)](complex_code.qmd){target="_blank"} to explore what is contained in the TPObject from each step!</span>
+<span id="cb1-523"><a href="#cb1-523" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb1-524"><a href="#cb1-524" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-525"><a href="#cb1-525" aria-hidden="true" tabindex="-1"></a>In the <span class="co">[</span><span class="ot">green box</span><span class="co">]</span>{style="color:green"},the processed data and the generated results can be viewed. Upon clicking ***View***, the corresponding data will show up here.</span>
+<span id="cb1-525"><a href="#cb1-525" aria-hidden="true" tabindex="-1"></a><span class="fu">## Show data</span></span>
 <span id="cb1-526"><a href="#cb1-526" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-529"><a href="#cb1-529" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb1-530"><a href="#cb1-530" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb1-531"><a href="#cb1-531" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-align: center</span></span>
-<span id="cb1-532"><a href="#cb1-532" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 5</span></span>
-<span id="cb1-533"><a href="#cb1-533" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 3</span></span>
-<span id="cb1-534"><a href="#cb1-534" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-alt: "photo."</span></span>
-<span id="cb1-535"><a href="#cb1-535" aria-hidden="true" tabindex="-1"></a><span class="co">#knitr::include_graphics("img/TriplotGUI_logo_black.png")</span></span>
-<span id="cb1-536"><a href="#cb1-536" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-527"><a href="#cb1-527" aria-hidden="true" tabindex="-1"></a>In the <span class="co">[</span><span class="ot">green box</span><span class="co">]</span>{style="color:green"},the processed data and the generated results can be viewed. Upon clicking ***View***, the corresponding data will show up here.</span>
+<span id="cb1-528"><a href="#cb1-528" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-531"><a href="#cb1-531" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-532"><a href="#cb1-532" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb1-533"><a href="#cb1-533" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-align: center</span></span>
+<span id="cb1-534"><a href="#cb1-534" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 5</span></span>
+<span id="cb1-535"><a href="#cb1-535" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 3</span></span>
+<span id="cb1-536"><a href="#cb1-536" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-alt: "photo."</span></span>
+<span id="cb1-537"><a href="#cb1-537" aria-hidden="true" tabindex="-1"></a><span class="co">#knitr::include_graphics("img/TriplotGUI_logo_black.png")</span></span>
+<span id="cb1-538"><a href="#cb1-538" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
@@ -1552,7 +1556,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-center"><span class="faux-block"> <a href="https://yingxiao.shinyapps.io/triplotgui/" target="_blank">TriplotGUI</a> <br><a href="https://gitlab.com/YingxiaoYan/TriplotGUI" target="_blank">TriplotGUI Gitlab</a> </span></div>
     <div class="nav-footer-right"><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","loop":true,"closeEffect":"zoom","descPosition":"bottom"});</script>
+</footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":true,"selector":".lightbox","openEffect":"zoom"});</script>
 
 
 <script src="site_libs/quarto-html/zenscroll-min.js"></script>

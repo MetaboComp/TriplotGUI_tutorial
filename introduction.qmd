@@ -75,4 +75,4 @@ The intermediate data and the generated results can be viewed and downloaded. Th
 
 <br> <br> We will give detailed explanations of statistical data analysis and visualization in each step in the [Manual](workflow.qmd){target="_blank" style="color:blue"} session.
 
-Go to TriplotGUI's [git repository](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Example_data.rar?ref_type=heads){target="_blank"}. Click the download icon at the right side and download the Exampledata.rar. Unzip it and you will find the data that will be used as example in the tutorial.
+Go to TriplotGUI's [git repository](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Example_data.zip?ref_type=heads){target="_blank"}. Click the download icon at the right side and download the Exampledata.zip. Unzip it and you will find the data that will be used as example in the tutorial.

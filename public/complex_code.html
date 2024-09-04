@@ -182,12 +182,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <ul class="navbar-nav navbar-nav-scroll ms-auto">
 <li class="nav-item compact">
-    <a class="nav-link" href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" rel="" target=""><i class="bi bi-folder-symlink" role="img">
+    <a class="nav-link" href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" rel="" target="_blank"><i class="bi bi-folder-symlink" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/yingxiao-yan" rel="" target=""><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://www.linkedin.com/in/yingxiao-yan" rel="" target="_blank"><i class="bi bi-linkedin" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -2709,9 +2709,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb60-376"><a href="#cb60-376" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb60-377"><a href="#cb60-377" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb60-378"><a href="#cb60-378" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb60-379"><a href="#cb60-379" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`allowcategorical=F`</span> performs one-hot-encoding to transform categorical exposures variables with n<span class="sc">\&gt;</span>2 classes to n binary variables. You can use <span class="in">`Correlations_object$cor_estimate`</span> to check that each HFI level is separated in to a binary variable and the correlation coefficients between modules and the binary variables were calculated. </span>
+<span id="cb60-379"><a href="#cb60-379" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`allowcategorical=F`</span> performs one-hot-encoding to transform categorical exposures variables with n<span class="sc">\&gt;</span>2 classes to n binary variables. You can use <span class="in">`Correlations_object$cor_estimate`</span> to check that each HFI level is separated in to a binary variable and the correlation coefficients between modules and the binary variables were calculated.</span>
 <span id="cb60-380"><a href="#cb60-380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-381"><a href="#cb60-381" aria-hidden="true" tabindex="-1"></a>     If <span class="in">`allowcategorical=T`</span> is specified, then no transformation is made on the <span class="in">`"HFI"`</span> variable. Linear models regressing modules on the <span class="in">`"HFI"`</span> variable are used for correlation analysis. The correlation coefficients are calculated as the square root of the proportion of sum of squares for HFI in the total sum of squares.</span>
+<span id="cb60-381"><a href="#cb60-381" aria-hidden="true" tabindex="-1"></a>    If <span class="in">`allowcategorical=T`</span> is specified, then no transformation is made on the <span class="in">`"HFI"`</span> variable. Linear models regressing modules on the <span class="in">`"HFI"`</span> variable are used for correlation analysis. The correlation coefficients are calculated as the square root of the proportion of sum of squares for HFI in the total sum of squares.</span>
 <span id="cb60-382"><a href="#cb60-382" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb60-383"><a href="#cb60-383" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`partial=T`</span> specifies that the confounders will be adjusted.</span>
 <span id="cb60-384"><a href="#cb60-384" aria-hidden="true" tabindex="-1"></a>:::</span>
@@ -3245,7 +3245,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-center"><span class="faux-block"> <a href="https://yingxiao.shinyapps.io/triplotgui/" target="_blank">TriplotGUI</a> <br><a href="https://gitlab.com/YingxiaoYan/TriplotGUI" target="_blank">TriplotGUI Gitlab</a> </span></div>
     <div class="nav-footer-right"><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","loop":true,"descPosition":"bottom","closeEffect":"zoom"});</script>
+</footer><script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":true,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom"});</script>
 
 
 <script src="site_libs/quarto-html/zenscroll-min.js"></script>

@@ -64,7 +64,7 @@ The data used in this page of tutorial can be downloaded [here](https://gitlab.c
 
 The Data used for this example originates from ***HealthyNordicDiet_2***, modified from the **HealthyNordicDiet** data provided by the [*triplot*](https://gitlab.com/CarlBrunius/triplot/-/blob/master/vignettes/Triplot_Tutorial.md?ref_type=heads){target="_blank"} package (Schillemans et al. 2019). **HealthyNordicDiet** is a synthetic dataset that was simulated from the authentic data used in a case/control study nested within the Swedish prospective Västerbotten Intervention Programme cohort. The original study was set up to explore plasma metabolites that could objectively reflect healthy Nordic dietary patterns in a matched case-control study and to assess associations between such patterns and later development of type 2 diabetes. (Shi et al. 2018). We have selected our exposures, Omics data, outcomes, covariates and auxiliary data based on the ***HealthyNordicDiet_2*** data following the code [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Tutorial_code/Data_cleaning_HealthyNordicDiet_2.R){target="_blank"}. The brief description of these data is shown as below.
 
--   Example2_exposure.rda: containing a dataframe with 17 variables representing the dietary intake as measured by food frequency questionnaires (`"HFI"`(Healthy Food Index),`"BSDS"`(the Baltic Sea Diet Score), `"Wholegrains"`, `"Sausage"`, `"Pizza"`, `"Refined.bread"`, `"Fruits"`, `"Liquor"`, `"Wine"`, `"Hamburger"`, `"Poultry"`, `"Fish"`, `"Margarine"`, `"Cabbage"`, `"Carrot"`, `"low_fat_Dairy"`, `"Vegetables"`). HFI is a categorical factor variable with 7 levels (0-6). All the other variables are continuous/numeric.
+-   Example2_exposure.rda: 17 variables representing the dietary intake as measured by food frequency questionnaires (`"HFI"`(Healthy Food Index),`"BSDS"`(the Baltic Sea Diet Score), `"Wholegrains"`, `"Sausage"`, `"Pizza"`, `"Refined.bread"`, `"Fruits"`, `"Liquor"`, `"Wine"`, `"Hamburger"`, `"Poultry"`, `"Fish"`, `"Margarine"`, `"Cabbage"`, `"Carrot"`, `"low_fat_Dairy"`, `"Vegetables"`). HFI is a categorical factor variable with 7 levels (0-6). All the other variables are continuous/numeric.
 -   Example2_Omics.rds: 31 variables representing plasma metabolites predictive of BMI. All 31 variables are continuous/numeric.
 -   Example2_outcome.rds: 3 variables:
     -   `"BMI"`: A continuous variable.
@@ -85,7 +85,6 @@ The Data used for this example originates from ***HealthyNordicDiet_2***, modifi
 
 All data are row-wise matched by observations and consist of 1000 synthetic observations.
 
-
 **Reference**
 
 Shi, L., Brunius, C., Johansson, I., Bergdahl, I. A., Lindahl, B., Hanhineva, K., & Landberg, R. (2018). Plasma metabolites associated with healthy Nordic dietary indexes and risk of type 2 diabetes—a nested case-control study in a Swedish population. *The American Journal of Clinical Nutrition*, 108(3), 564-575. [10.1093/ajcn/nqy145](https://www.sciencedirect.com/science/article/pii/S0002916522029628?via%3Dihub){target="_blank"}
@@ -98,11 +97,11 @@ We want to assess the relationship between diet, metabolic profiles and Type 2 d
 
 # The use of interface
 
-Open your interface. What we will show as an example in the interface here correspond to the [Code example of using TriplotGUI](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/complex_code.html#step-2){target="_blank"} section in this page.
+Open your interface. What we will show as an example in the interface here corresponds to using code to do the same thing in the [Code example of using TriplotGUI](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/complex_code.html#step-2){target="_blank"} section in this page.
 
 ## Step 1: Data reduction of Omics data and auxiliary data
 
-First upload the Omics data and auxiliary data in step 1. Upon finish uploading the Omics data, a series buttons will also show up in case you need to to make some modification on the Omics or auxiliary data. Inspect the classes of variables briefly. You would see it looks okay for Omics data's class but not auxiliary data. Some categorical variables should be in factor format rather than character. Therefore we change their classes.
+First upload the Omics data and auxiliary data in step 1 in the interface. Upon finish uploading the Omics data, a series buttons will also show up in case you need to to make some modification on the Omics or auxiliary data. Inspect the classes of variables briefly. You would see it looks okay for Omics data's class but not auxiliary data. Some categorical variables should be in factor format rather than character. Therefore we change their classes.
 
 ::: columns
 ::: {.column style="width: 40%"}
@@ -136,9 +135,7 @@ We could then examine the scree plot, score plot, loadings plot and biplot at st
 
 ## Step 2: Exposures’ correlations & Outcomes’ associations
 
-Then upload exposures and covariate data in step 2A. By briefly inspecting variable classes, you could notice: 
--   In the exposure data, `"HFI"`(Healthy Food Index) is a factor variable while `"BSDS"` (Baltic Sea Food Index) is a numeric variable. We may not need to change their classes at this point, but it is good to be aware of variables' classes to get a better understanding what happens in the downstream steps.
--   A variable called `"X"` exists in the covariate data. This is because the covariate data is uploaded as a csv file and the observation number may automatically be generated as a new variable when the file is read in. Remove this variable since it is not an actual covariate.
+Then upload exposures and covariate data in step 2A in the interface. By briefly inspecting variable classes, you could notice: - In the exposure data, `"HFI"`(Healthy Food Index) is a factor variable while `"BSDS"` (Baltic Sea Food Index) is a numeric variable. We may not need to change their classes at this point, but it is good to be aware of variables' classes to get a better understanding what happens in the downstream steps. - A variable called `"X"` exists in the covariate data. This is because the covariate data is uploaded as a csv file and the observation number may automatically be generated as a new variable when the file is read in. Remove this variable since it is not an actual covariate.
 
 ::: columns
 ::: {.column style="width: 45%"}
@@ -153,11 +150,7 @@ Then upload exposures and covariate data in step 2A. By briefly inspecting varia
 :::
 :::
 
-
-
 Change your "Data analysis settings" as the figure below.
-
-
 
 ::: columns
 ::: {.column style="width: 45%"}
@@ -175,15 +168,14 @@ You could then briefly view the correlation coefficients in "Visualizations" by 
 :::
 
 ::: callout-note
--   Select *One-hot-encoding* in ***Categorical variables*** performs one-hot-encoding to transform categorical exposures variables (i.e. `HFI`) with n\>2 classes to n binary variables and the correlation coefficients between modules and the binary variables were calculated. 
+-   Select *One-hot-encoding* in ***Categorical variables*** performs one-hot-encoding to transform categorical exposures variables (i.e. `HFI`) with n\>2 classes to n binary variables and the correlation coefficients between modules and the binary variables are calculated.
 
     If *Use Original* is specified in ***Categorical variables***, no transformation is made on the `"HFI"` variable. Linear models regressing modules on the `"HFI"` variable are used for correlation analysis. The correlation coefficients are calculated as the square root of the proportion of sum of squares for HFI in the total sum of squares.
+
 -   The approaches for managing ***Missing values*** are inherited from the *cor* package for continuous exposures. Please check [*cor*](https://rdrr.io/r/stats/cor.html){target="_blank"} package for more information.
 :::
 
-Then in step 2B, upload outcome and covariate data. By briefly inspecting variable classes, you could notice: 
--   In the outcome data, `"BMI"` is a numeric variable; `"BMI_cat"` and `"T2D"` are factor variables.
--   A variable called `"X"` exists in the covariate data. This is because the covariate data is uploaded as a csv file and the observation number may automatically be generated as a new variable when the file is read in. Remove this variable since it is not an actual covariate.
+Then in step 2B in the interface, upload outcome and covariate data. By briefly inspecting variable classes, you could notice: - In the outcome data, `"BMI"` is a numeric variable; `"BMI_cat"` and `"T2D"` are factor variables. - A variable called `"X"` exists in the covariate data. This is because the covariate data is uploaded as a csv file and the observation number may automatically be generated as a new variable when the file is read in. Remove this variable since it is not an actual covariate.
 
 ::: columns
 ::: {.column style="width: 45%"}
@@ -200,8 +192,6 @@ Then in step 2B, upload outcome and covariate data. By briefly inspecting variab
 
 Change your "Data analysis settings" and "Visulization settings" as the figure below.
 
-
-
 ::: columns
 ::: {.column style="width: 45%"}
 ![](img/complex_2_7.png)
@@ -211,7 +201,7 @@ Change your "Data analysis settings" and "Visulization settings" as the figure b
 :::
 
 ::: {.column style="width: 45%"}
-You could briefly view the risk estimate in "Visualizations" by clicking "Refresh plot".
+You could view the risk estimate in "Visualizations" by clicking "Refresh plot".
 
 ![](img/complex_2_8.png)
 :::
@@ -221,35 +211,31 @@ You could briefly view the risk estimate in "Visualizations" by clicking "Refres
 Some clarification for using multinomial regression and pairing variables:
 
 -   When a pairing variable is not provided:
-    -   Not performing multinomial regression means that one-hot-encoding will be performed to transform outcome's categorical variables with n \> 2 classes to n binary variables. And logistic regression will be performed on the binary variables and linear regression will be performed on continuous variables.
-    -   Performing multinomial regression means that multinomial regression will be performed on outcome's categorical outcome variable with n \> 2 classes, which gives n-1 estimates. And logistic regression will be performed on the binary variables and linear regression will be performed on continuous variables.
+    -   Not performing multinomial regression means that one-hot-encoding will be performed to transform outcome's categorical variables with n \> 2 classes to n binary variables. And logistic regression will be performed on the binary variables (including the binary variables generated from one-hot-encoding) and linear regression will be performed on continuous variables.
+    -   Performing multinomial regression means that multinomial regression will be performed on outcome's categorical outcome variable with n \> 2 classes, which gives n-1 estimates. And logistic regression will be performed on the binary variables (including the binary variables generated from one-hot-encoding) and linear regression will be performed on continuous variables.
 -   When a pairing variable is provided:
-    -   Not performing multinomial regression means that one-hot-encoding will be performed on outcome's categorical variables with n \> 2 classes. And then conditional logistic regression will be performed on the binary variables and linear mixed model will be performed on continuous variables, using the pairing information.
-    -   Performing multinomial regression means that the pairing information will be ignored and not used (since the outcomes can have more than 2 classes), multinomial regression will be performed on outcome's categorical variable, which gives n-1 estimates. And logistic regression will be performed on the binary variables and linear regression will be performed on continuous variables. THIS IS THE CASE IN OUR EXAMPLE.
+    -   Not performing multinomial regression means that one-hot-encoding will be performed on outcome's categorical variables with n \> 2 classes. And then conditional logistic regression will be performed on the binary variables (including the binary variables generated from one-hot-encoding) and linear mixed model will be performed on continuous variables, using the pairing information.
+    -   Performing multinomial regression means that the pairing information will be ignored and not used (since the outcomes can have more than 2 classes), multinomial regression will be performed on outcome's categorical variable, which gives n-1 estimates. And logistic regression will be performed on the binary variables (including the binary variables generated from one-hot-encoding) and linear regression will be performed on continuous variables. THIS IS THE CASE IN OUR EXAMPLE.
 :::
 
 ## Step 3: Visualization of Triplot
 
-
-In the triplot, the black arrows are loadings representing Omics variables. Blue circle points represents exposure correlations with the modules and the red square points represents outcome associations with the modules. So what information can we get from this figure? Lets us list a few points:
+In the step 3 in the interface, in the triplot, the black arrows are loadings representing Omics variables. Blue circle points represents exposure correlations with the modules and the red square points represents outcome associations with the modules. So what information can we get from this figure? Lets us list a few points:
 
 -   Having a brief look, the generally healthy food (e.g. `"Fruits"`, `"Vegetables"`) is on the first dimension of the figure and the generally unhealthy food (e.g. `"Hamburger"`, `"Sausage"`, `"Margarine"`) is on the third dimension of the figure. The numeric outcome `"BMI"`, binary outcome `"T2D"`, and one-hot-encoded categorical `"BMI_cat"` outcome is on the second and fourth dimension of the figure.
 -   Explanation on some variables in the plot:
     -   `"HFI"` stands for healthy food index. A higher `"HFI"` suggests healthier diet. `"HFI"` ranges from 0 to 6. You can see that there are *HFI_0*, *HFI_1*...*HFI_6* in the figure and that is because `"HFI"` is used as a factor exposure variable in step 2 and is one-hot-encoded (`allowcategorical=F`) to the same number of binary variables as its number of levels. For example, *HFI_6* is a binary variable where individuals with `"HFI"` as 6 (most healthy diet people) will be labeled as 1 and the rest of individuals will be labelled as 0. *HFI_0* is a binary variable where individuals with `"HFI"` as 0 (most unhealthy diet people) will be labeled as 1 and the rest of individuals will be labelled as 0. *HFI_1*...*HFI_5* has limited use since it only separates the group of people with certain `"HFI"` value from to the rest, which is a mixture of people with healthier and less healthier diet.
     -   `"BSDS"` stands for Baltic Sea Diet Score ranging. A higher `"BSDS"` suggests healthier diet. `"BSDS"` is used as a numeric variable ranging from 2 to 25 in the correlation.
-    -   *BMI_cat_obese*, *BMI_cat_overweight*, *BMI_cat_underweight* are the odds ratio generated from the multinomial regression. Since `"BMI_cat"` is a categorical outcome and multinomial regression is performed in step 2 (`multinomial=T`), normal weight is uses as a reference and odds ratio of obese, overweight and underweight is produced. (Note that the first level of the factor variable is set as the default reference, in this case it is *normal*).
+    -   *BMI_cat_obese*, *BMI_cat_overweight*, *BMI_cat_underweight* are the odds ratio generated from the multinomial regression. Since `"BMI_cat"` is a categorical outcome and multinomial regression is performed in step 2 in the interface in this example, normal weight is uses as a reference and odds ratio of obese, overweight and underweight is produced. (Note that the first level of the factor variable is set as the default reference, in this case it is *normal*).
 -   Adjusting for `"Age"`, `"Gender"`, `"Smoking"`, `"Education"` and `"FastingGlucose"`, the first module (on x-axis) correlates positively with generally healthy food (e.g. `"fruits"`, `"vegatables"`) and food index (e.g. `"BSDS"`) and negatively with unhealthy food (e.g. `"Hamburger"`, `"pizza"`). It also reversely associated with `"T2D"` and `"BMI"`. From the result from `"BMI_cat"`, this components also reversely associated with being obese.
 -   Adjusting for `"Age"`, `"Gender"`, `"Smoking"`, `"Education"` and `"FastingGlucose"`, the second module (on y-axis) associated positively with generally healthy food (e.g. `"fruits"`, `"vegatables"`) and food index (e.g. `"BSDS"`) and negatively with unhealthy food (e.g. `"Hamburger"`, `"pizza"`). However, the module correlates also positively with `"T2D"`,`"BMI"`, *obese*, *overweight* and negatively associated with *underweight*.
--   Based on what we summarized above, the two modules may be associated with a overall healthy eating pattern. And in such pattern, the first module is associated more with the beneficial effect on health and the second module represents the adverse health effect that may be caused by this pattern.
-
-
+-   Based on what we summarized above, the two modules may be associated with a overall healthy eating pattern. And in this healthy eating pattern, the first module is associated more with the beneficial effect on health and the second module represents the adverse health effect.
 
 ## Step 4: Mediation analysis and visualization
 
-There are many things that you could explore further in the following mediation analysis. To narrow down our focus and clearly show our examples, we select `"BSDS"` (Baltic Sea Diet Score) and `"Hamburger"` as our exposures, `"BMI"` and `"T2D"` as outcome to enter our next step.
+Then we come to step 4 in the interface. There are many things that you could explore further in the following mediation analysis. To narrow down our focus and clearly show our examples, we select `"BSDS"` (Baltic Sea Diet Score) and `"Hamburger"` as our exposures, `"BMI"` and `"T2D"` as outcome to enter our next step.
 
 This time, we perform the mediation analysis using the conterfactual/potential outcome method (the ´mediation´ package) on our exposures (i.e. `"BSDS"`, `"Hamburger"`), mediators (i.e. the first and second modules) and outcome (i.e. `"T2D"`, `"BMI"`) of interest, adjusting for `"Age"`, `"Gender"`, `"Smoking"`, `"Education"` and `"FastingGlucose"` for both exposure-mediator and mediator-outcome relationship.
-
 
 ::: callout-note
 In the counterfactual mediation analysis, you need to specify contrast values of treatment and controls for each exposure. In brief, the algorithm will compare the scenarios with these 2 exposure values/levels. For my detailed explanation please refer to [this paper](https://www.jstatsoft.org/article/view/v059i05){target="_blank"} of the `mediation` R package.
@@ -278,8 +264,6 @@ You could then play around in the "Visualization settings" too see how you want 
 
 ::: columns
 ::: {.column style="width: 40%"}
-
-
 ![](img/complex_4_2.png)
 :::
 
@@ -288,8 +272,8 @@ You could then play around in the "Visualization settings" too see how you want 
 
 ::: {.column style="width: 45%"}
 ![](img/complex_4_3.png)
-
 :::
+
 We could see four data points on the figure, which represents the eight combinations of exposures, mediators and outcomes.
 
 -   exposure=BSDS, mediator= module 1, outcome=BMI
@@ -301,7 +285,6 @@ We could see four data points on the figure, which represents the eight combinat
 -   exposure=Hamburger, mediator= module 1, outcome=T2D
 -   exposure=Hamburger, mediator= module 2, outcome=T2D
 
-
 In the figure, we could see the direction and magnitude of proportion mediated for the 2 mediators, all the exposures and outcomes. We also notice that the PM for BSDS-module 1-BMI and BSDS-module 2-BMI mediation is significant.
 :::
 
@@ -310,12 +293,10 @@ In the figure, we could see the direction and magnitude of proportion mediated f
 -   Note that for some mediations, direct effect and indirect effects are in the opposite direction, implying possibly proportion mediated(PM)\>1, since total effect could be smaller than indirect effect.
 :::
 
-
 ::: columns
 You then show the adjusted proportion mediated (APM) and adding the layers of correlation and risk estimates, using the settings below.
 
 ::: {.column style="width: 40%"}
-
 ![](img/complex_4_4.png)
 :::
 
@@ -325,7 +306,6 @@ You then show the adjusted proportion mediated (APM) and adding the layers of co
 ::: {.column style="width: 45%"}
 ![](img/complex_4_5.png)
 :::
-
 :::
 
 By observing this figure, we could see the direction and magnitude of adjusted proportion mediated for the 2 mediators, all the exposures and outcomes. The position of the points is similar what we have seen for proportion mediated. Note that APM for BSDS as exposure and T2D as outcome is smaller than their PM. This is because the indirect and direct effect for this mediation is of similar size but in opposite direction. This leads to a smaller total effect and in turn larger PM, but APM will not be affected by the directionality of the direct and indirect effect.
@@ -336,7 +316,7 @@ By observing this figure, we could see the direction and magnitude of adjusted p
 -   Note that even direct effect and indirect effects are in the opposite direction, adjusted proportion mediated is always smaller than 1, since it uses the sum of the absolute value of indirect and direct effect as denominator. $$APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{|IE|+|DE|}\cdot\frac{IE+DE}{|IE+DE|}$$
 :::
 
-In step 4, you can also see the barplots showed direct, indirect and total effect for each exposure-mediator-outcome combination. It is a convenient tool to check the direction and magnitude of mediation estimates.
+In step 4 in the interface, you can also see the barplots showed direct, indirect and total effect for each exposure-mediator-outcome combination. It is a convenient tool to check the direction and magnitude of mediation estimates.
 
 ![](img/complex_4_6.png)
 
@@ -344,7 +324,7 @@ Base on the barplot and the triplot with mediation, we have observed significant
 
 ## Step 5: Compare correlations, associations and mediations
 
-Users can then check the heatmaps of correlations, risk estimations and mediation results at step 5. By removing other PCs, exposures or outcomes in the "Visualization settings", users may only show correlation, risk estimation and mediation results of their interest.
+Users can then check the heatmaps of correlations, risk estimations and mediation results at step 5 in the interface. By removing other PCs, exposures or outcomes in the "Visualization settings", users may only show correlation, risk estimation and mediation results of their interest.
 
 ![](img/complex_5_1.png)
 
@@ -357,6 +337,6 @@ Users can then check the heatmaps of correlations, risk estimations and mediatio
 
 ## Step 6: Download data
 
-Relevant data, intermediate results, can then be viewed and downloaded at step 6.
+Relevant data, intermediate results, can then be viewed and downloaded at step 6 in the interface.
 
 ![](img/complex_6_1.png) ![](img/complex_6_2.png)

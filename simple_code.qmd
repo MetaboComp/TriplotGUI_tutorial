@@ -250,7 +250,7 @@ TPObject1 <- makeTPO(scores = scores,
 
 ## Step 2: Exposure correlations & Outcome associations
 
-The correlations between principal components (PCs)  and food items were calculated using Pearson correlations, adjusting for confounders. The associations between PC scores and risk markers were investigated using linear regression (since all food variables are numeric).
+The correlations between principal components (PCs) and food items were calculated using Pearson correlations, adjusting for confounders. The associations between PC scores and risk markers were investigated using linear regression (since all food variables are numeric).
 
 The PC scores are saved in the TPObject and the TPObject can be directly used to calculate the correlation coefficients and p values with exposures(food variables) in the `makeCorr()` function, adjusting for confounders.
 
@@ -341,7 +341,7 @@ Triplot_object3$triplot
 
 In the triplot, the black arrows are loadings representing Omics variables, which form patterns in different components (axes). Blue circle points represents exposure correlations with the components and the red square points represents outcome associations with the components.
 
-How do we interpret the figure? We use principal component 1 & 2 (PC1 & PC2), the exposures `"Refined grains"`, `"Red meat"` and the outcome `"BMI"` for the example of interpretation: PC1 positively associated with BMI and also correlated with a high intake of red meat and refined grains, adjusting for age and sex. This implies that the metabolite features that dominate PC1 are likely to provide useful information for a potential mechanism of how red meat and refrained grains intake may affect BMI. PC2, on the other hand, has a smaller association with BMI and a weak reverse correlation with red meat and refined grains. The metabolite features that have high contribution to PC2 may support the beneficial effect of red meat and refrain intake, although such effect may be marginal. 
+How do we interpret the figure? We use principal component 1 & 2 (PC1 & PC2), the exposures `"Refined grains"`, `"Red meat"` and the outcome `"BMI"` for the example of interpretation: PC1 positively associated with BMI and also correlated with a high intake of red meat and refined grains, adjusting for age and sex. This implies that the metabolite features that dominate PC1 are likely to provide useful information for a potential mechanism of how red meat and refrained grains intake may affect BMI. PC2, on the other hand, has a smaller association with BMI and a weak reverse correlation with red meat and refined grains. The metabolite features that have high contribution to PC2 may support the beneficial effect of red meat and refrain intake, although such effect may be marginal.
 
 ## Step 4: Mediation analysis and visualization
 
@@ -391,9 +391,9 @@ mediation_plot_object3
 ```
 
 ::: callout-note
-The barplot showed direct, indirect and total effect for each exposure-mediator-outcome combination. It is a convenient tool to check the direction and magnitude of mediation estimates. 
+The barplot showed direct, indirect and total effect for each exposure-mediator-outcome combination. It is a convenient tool to check the direction and magnitude of mediation estimates.
 
--   Red color represents significant positive effect (p\<0.05); Blue color represents significant negative effect (p\<0.05). Grey represents insignificant effect. 
+-   Red color represents significant positive effect (p\<0.05); Blue color represents significant negative effect (p\<0.05). Grey represents insignificant effect.
 -   One star for p\<0.05; Two stars for p\<0.01; Three stars for p\<0.001.
 :::
 

@@ -76,16 +76,17 @@ Schillemans T, Shi L, Liu X, Åkesson A, Landberg R, Brunius C. Visualization an
 
 # Research question
 
-We want to assess the relationship between diet, metabolic profiles and risk factors of metabolic diseases (i.e. BMI, total cholesterol, triglyceride, HDL, LDL). We assume that metabolites serves as mediators, mediating the effect of dietary exposures on the risk factors.
+We want to assess the relationship between diet, metabolic profiles and risk factors of metabolic diseases (i.e. BMI, total cholesterol, triglyceride, HDL, LDL). We assume that metabolites serves as mediators, mediating the effect of dietary exposures on the risk factors. 
+
 # The use of interface
 
-Open your interface. What we will show as an example in the interface here corresponds to the [Code example of using TriplotGUI](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/simple_code.html#step-2){target="_blank"} section in this page
+Open your interface. What we will show as an example in the interface here corresponds to using code to do the same thing in the [Code example of using TriplotGUI](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/simple_code.html#step-2){target="_blank"} section in this page
 
 ## Step 1: Data reduction of omics data
 
 ::: columns
 ::: {.column style="width: 45%"}
-First upload the Omics data in step 1 and then examine the scree plot, score plot, loadings plot and biplot at step 1. ![](img/simple_1.png)
+First upload the Omics data in step 1 in the interface and then examine the scree plot, score plot, loadings plot and biplot at step 1. ![](img/simple_1.png)
 
 Upon finish uploading the Omics data, a series buttons will also show up in case you need to to make some modification on the data reduction of Omics data.
 
@@ -94,8 +95,6 @@ Upon finish uploading the Omics data, a series buttons will also show up in case
 You can then play around the visualization panel on the right side and view all the plots (score, loadings, biplot, screeplot).
 
 ![](img/simple_1_1_1.png)
-
-
 :::
 
 ::: {.column style="width: 5%"}
@@ -108,22 +107,21 @@ You can then play around the visualization panel on the right side and view all 
 
 ## Step 2: Exposure correlations & Outcome associations
 
-Then upload exposures, outcomes and covariates data in step 2.
+Then upload exposures, outcomes and covariates data in step 2 in the interface.
 
 ![](img/simple_2.png)
 
-You could briefly see the correlation coefficients and risk estimates at step 2 respectively in visualizations by clicking "Refresh plot".
+You could see the correlation coefficients and risk estimates at step 2 respectively in visualizations by clicking "Refresh plot".
 
 ![](img/simple_2_1.png)
 
 ## Step 3: Visualization of Triplot
 
-In step 3, by clicking "Refresh plot", you can view and download the triplot that co-visualizes the three plots shown above. The left side panel gives you freedom of making adjustment to the plot. 
-![](img/simple_3.png)
+In step 3 in the interface, by clicking "Refresh plot", you can view and download the triplot that co-visualizes the three plots shown above. The left side panel gives you freedom of making adjustment to the plot. ![](img/simple_3.png)
 
 In the triplot, the black arrows are loadings representing Omics variables, which form patterns in different components (axes). Blue circle points represents exposure correlations with the components and the red square points represents outcome associations with the components.
 
-How do we interpret the figure? We use principal component 1 & 2 (PC1 & PC2), the exposures `"Refined grains"`, `"Red meat"` and the outcome `"BMI"` for the example of interpretation: PC1 positively associated with BMI and also correlated with a high intake of red meat and refined grains, adjusting for age and sex. This implies that the metabolite features that dominate PC1 are likely to provide useful information for a potential mechanism of how red meat and refrained grains intake may affect BMI. PC2, on the other hand, has a smaller association with BMI and a weak reverse correlation with red meat and refined grains. The metabolite features that have high contribution to PC2 may support the beneficial effect of red meat and refrain intake, although such effect may be marginal. 
+How do we interpret the figure? We use principal component 1 & 2 (PC1 & PC2), the exposures `"Refined grains"`, `"Red meat"` and the outcome `"BMI"` for the example of interpretation: PC1 positively associated with BMI and also correlated with a high intake of red meat and refined grains, adjusting for age and sex. This implies that the metabolite features that dominate PC1 are likely to provide useful information for a potential mechanism of how red meat and refrained grains intake may affect BMI. PC2, on the other hand, has a smaller association with BMI and a weak reverse correlation with red meat and refined grains. The metabolite features that have high contribution to PC2 may support the beneficial effect of red meat and refrain intake, although such effect may be marginal.
 
 ## Step 4: Mediation analysis and visualization
 
@@ -143,15 +141,11 @@ Mediation analysis is then performed using the conventional "product" method on 
 -   In the default setting, only proportion mediated is visualized. You could go to the "Visualization setting" to select ***Mediation estimate or proportion*** as *Estimate* to show the indirect effect or total effect in triplot with mediation.
 :::
 
-
 ![](img/simple_4_1.png)
-
-
-
 :::
 :::
 
-In step 4, you can also see the barplots showed direct, indirect and total effect for each exposure-mediator-outcome combination. It is a convenient tool to check the direction and magnitude of mediation estimates.
+In step 4 in the interface, you can also see the barplots showed direct, indirect and total effect for each exposure-mediator-outcome combination. It is a convenient tool to check the direction and magnitude of mediation estimates.
 
 ![](img/simple_4_2.png)
 
@@ -159,7 +153,7 @@ Base on the barplot and the triplot with mediaiton, we observed a significant me
 
 ## Step 5: Compare correlations, associations and mediations
 
-Users can then check the heatmaps of correlations, risk estimations and mediation results at step 5. By removing other PCs in the "Visualization settings", users may only show results relevant to PC1 and PC2.
+Users can then check the heatmaps of correlations, risk estimations and mediation results at step 5 in the interface. By removing other PCs in the "Visualization settings", users may only show results relevant to PC1 and PC2.
 
 ![](img/simple_5.png)
 
@@ -172,6 +166,6 @@ Users can then check the heatmaps of correlations, risk estimations and mediatio
 
 ## Step 6: Download data
 
-Relevant data, intermediate results, can then be viewed and downloaded at step 6.
+Relevant data, intermediate results, can then be viewed and downloaded at step 6 in the interface.
 
 ![](img/simple_6.png)

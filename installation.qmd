@@ -3,7 +3,7 @@ title: "Installation"
 filters:
    - lightbox
 lightbox: auto
-subtitle: "Install TriplotGUI as a stand-alone application and activate its user interface"
+subtitle: "Install TriplotGUI as a stand-alone application or use it on webserver"
 title-block-banner: true
 title-block-banner-color: white
 title-block-categories: false

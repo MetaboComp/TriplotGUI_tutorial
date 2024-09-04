@@ -77,4 +77,6 @@ Titova OE, Brunius C, Warensj√∂ Lemming E, Stattin K, Baron JA, Byberg L, Micha√
 
 </p>
 ```
+
+
 ![](img/TriplotGUI_poster.png){width="1000px"}
