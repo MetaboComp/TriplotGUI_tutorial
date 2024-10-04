@@ -310,13 +310,7 @@ ul.task-list li input[type="checkbox"] {
 <li>
 <strong>Biplot</strong>: Get a comprehensive view of how samples relate to each other alongside variable contributions.</li>
 </ul></section><section id="step-2-3-exposures-correlations-outcomes-associations" class="level2"><h2 class="anchored" data-anchor-id="step-2-3-exposures-correlations-outcomes-associations">Step 2-3: Exposures’ correlations &amp; Outcomes’ associations</h2>
-<p>After completing step 1, proceed to upload the exposures and covariate data in step 2 of the TriplotGUI interface. Upon briefly inspecting the variable classes, you’ll notice some important details:</p>
-<ul>
-<li><p>In the exposure data, <code>"HFI"</code> (Healthy Food Index) is classified as a factor variable, while <code>"BSDS"</code> (Baltic Sea Food Index) is a numeric variable. While you may not need to change their classes at this point, being aware of these classifications is crucial for understanding how they’ll be treated in subsequent analysis steps.</p></li>
-<li><p>In the covariate data, you’ll observe a variable called <code>"X"</code>. This variable is likely an artifact of uploading the data from a CSV file, where the observation numbers may have been automatically generated as a new variable during the file import process. Since <code>"X"</code> is not an actual covariate, it should be removed from the dataset to prevent it from influencing your analysis.</p></li>
-<li><p>In the covariate data, when you inspect the classes of variables you will find that some categorical variables are incorrectly classified as numeric type instead of factor. To resolve this, change the class of these variables to factor, focusing on <code>"Gender"</code>, <code>"Education"</code>, <code>"Smoking"</code> and <code>"PhysicalActivityIndex"</code>.</p></li>
-</ul>
-<p>Understanding these nuances in your data structure is essential for ensuring accurate analysis and interpretation of results. By addressing these points early in the process, you set the stage for a more robust and reliable analysis using TriplotGUI.</p>
+<p>After completing step 1, proceed to upload the exposures and covariate data in step 2 of the TriplotGUI interface.</p>
 <div class="columns">
 <div class="column" style="width: 45%">
 <div class="quarto-figure quarto-figure-center">
@@ -332,6 +326,13 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Upon briefly inspecting the variable classes, you’ll notice some important details:</p>
+<ul>
+<li><p>In the exposure data, <code>"HFI"</code> (Healthy Food Index) is classified as a factor variable, while <code>"BSDS"</code> (Baltic Sea Food Index) is a numeric variable. While you may not need to change their classes at this point, being aware of these classifications is crucial for understanding how they’ll be treated in subsequent analysis steps.</p></li>
+<li><p>In the covariate data, you’ll observe a variable called <code>"X"</code>. This variable is likely an artifact of uploading the data from a CSV file, where the observation numbers may have been automatically generated as a new variable during the file import process. Since <code>"X"</code> is not an actual covariate, it should be removed from the dataset to prevent it from influencing your analysis.</p></li>
+<li><p>In the covariate data, when you inspect the classes of variables you will find that some categorical variables are incorrectly classified as numeric type instead of factor. To resolve this, change the class of these variables to factor, focusing on <code>"Gender"</code>, <code>"Education"</code>, <code>"Smoking"</code> and <code>"PhysicalActivityIndex"</code>.</p></li>
+</ul>
+<p>Understanding these nuances in your data structure is essential for ensuring accurate analysis and interpretation of results. By addressing these points early in the process, you set the stage for a more robust and reliable analysis using TriplotGUI.</p>
 <p>Change your “Data analysis settings” as shown in the figure below.</p>
 <div class="columns">
 <div class="column" style="width: 45%">
@@ -433,6 +434,7 @@ Note
 </ul>
 </div>
 </div>
+<p>Note that it is possible for users to skip Step 2 or 3, if their interests focus on only outcome associations or exposure correlations with Omics variables.</p>
 </section><section id="step-4-visualization-of-triplot" class="level2"><h2 class="anchored" data-anchor-id="step-4-visualization-of-triplot">Step 4: Visualization of Triplot</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><a href="img/complex_3_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="img/complex_3_1.png" class="img-fluid figure-img"></a></p>
@@ -454,7 +456,7 @@ Note
 </div>
 <p>Based on the triplot visualization of the TriplotGUI interface, we can interpret the following key points:</p>
 <ul>
-<li><p>The first (top right) and third (bottom left) dimension generally represents a spectrum of dietary healthiness. Healthier foods (e.g., <code>"Fruits"</code>, <code>"Vegetables"</code>) and higher healthy food indices (<code>"HFI"</code>, <code>"BSDS"</code>) are positioned on one side in the first dimension, while less healthy foods (e.g., <code>"hamburger"</code>, <code>"sausage"</code>, <code>"margarine"</code>) are on the opposite side in the third dimension.</p></li>
+<li><p>The first (top right) and third (bottom left) dimension generally represents a spectrum of dietary healthiness. Healthier foods (e.g., <code>"Fruits"</code>, <code>"Vegetables"</code>) and higher healthy food indices (<code>"HFI"</code>, <code>"BSDS"</code>) are positioned on one side in the first dimension, while less healthy foods (e.g., <code>"Hamburger"</code>, <code>"Sausage"</code>, <code>"Margarine"</code>) are on the opposite side in the third dimension.</p></li>
 <li><p>The second (top left) and fourth (bottom right) dimensions are associated with health outcomes, including the numeric outcome <code>"BMI"</code>, binary outcome <code>"T2D"</code>, and one-hot-encoded categorical <code>"BMI_cat"</code> outcome.</p></li>
 <li>
 <p>Explanation for some variables in the plot:</p>
@@ -542,7 +544,6 @@ Note
 <li>exposure=Hamburger, mediator= module 1, outcome=T2D</li>
 <li>exposure=Hamburger, mediator= module 2, outcome=T2D</li>
 </ul>
-<p>Based on the figure showing the mediation analysis results, we can observe the direction and magnitude of proportion mediated for the 2 mediators (module 1 and 2), all the exposures and outcomes. Based on the confidence interval, we also observed that the PM for BSDS-module 1-BMI and BSDS-module 2-BMI mediation is significant.</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -560,6 +561,7 @@ Note
 </ul>
 </div>
 </div>
+<p>Based on the figure showing the mediation analysis results, we can observe the direction and magnitude of proportion mediated for the 2 mediators (module 1 and 2), all the exposures and outcomes. Based on the confidence interval, we also observed that the PM for BSDS-module 1-BMI and BSDS-module 2-BMI mediation is significant.</p>
 <div class="columns">
 <p>To visualize the adjusted proportion mediated (APM) and add layers of correlation and risk estimates, use the following settings.</p>
 <div class="column" style="width: 40%">
@@ -623,7 +625,7 @@ Note
 <ul>
 <li>Significance is indicated as follows. One star for p&lt;0.05; Two stars for p&lt;0.01; Three stars for p&lt;0.001.</li>
 <li>The first two plots, correlation coefficients with exposures and risk estimates of outcomes will show all the exposure and outcome variables that are not removed from visualization.</li>
-<li>Note that only the selected exposures, mediators and outcomes that we use to do mediation on will show up in the mediation results. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure-outcome pair, 4 result are shown: <em>IE</em> (indirect effect), <em>TE</em> (total effect), <em>PM</em>(Proportion Mediated) and <em>APM</em>(Adjusted Proportion Mediated). Please see <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2" target="_blank">Details section</a> for more information. The “CF” before the names of exposures-outcome pairs means that this mediation is using the Counterfactual method.</li>
+<li>Note that only the selected exposures, mediators and outcomes that we use to do mediation on will show up in the mediation results. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure-outcome pair, 4 results are shown: <em>IE</em> (indirect effect), <em>TE</em> (total effect), <em>PM</em>(Proportion Mediated) and <em>APM</em>(Adjusted Proportion Mediated). Please read <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2" target="_blank">Manual</a> for more information. The “CF” before the names of exposures-outcome pairs means that this mediation is using the Counterfactual method.</li>
 </ul>
 </div>
 </div>
@@ -696,7 +698,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-center"><span class="faux-block"> <a href="https://yingxiao.shinyapps.io/triplotgui/" target="_blank">TriplotGUI</a> <br><a href="https://gitlab.com/YingxiaoYan/TriplotGUI" target="_blank">TriplotGUI Gitlab</a> </span></div>
     <div class="nav-footer-right"><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","loop":true,"openEffect":"zoom","closeEffect":"zoom"});</script>
+</footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","openEffect":"zoom","loop":true});</script>
 
 
 <script src="site_libs/quarto-html/zenscroll-min.js"></script>

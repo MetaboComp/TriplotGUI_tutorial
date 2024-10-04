@@ -251,7 +251,7 @@ TPObject1 <- makeTPO(scores = scores,
 
 ## Step 2-3: Exposure correlations & Outcome associations
 
-The correlations between principal components (PCs) and food items are calculated using Pearson correlations, adjusting for confounders. We investigate associations between PC scores and risk markers using linear regression, as all food variables are numeric.
+The correlations between principal components (PCs) and food items are calculated using Pearson correlations, adjusting for confounders. We investigate associations between PC scores and risk markers adjusting for confounders using linear regression, as all food variables are numeric.
 
 The PC scores are saved in the TPObject, which can be directly used in the `makeCorr()` function to calculate correlation coefficients and p-values with exposures (food variables), while adjusting for confounders.
 

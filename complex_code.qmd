@@ -185,12 +185,12 @@ kable(FoodData_check$everycolumn)
 ```
 
 ::: callout-note
-You shall only continue when the class of variables are correct and the missing or abnormal values in the variable are properly handled.
+You shall only continue to use the data when the class of variables are correct and the missing or abnormal values in the variable are properly handled.
 :::
 
 ## Build data for analysis
 
-We treat food data as our exposures and BMI and type 2 diabetes as outcomes. Note that BMI is a continuous variable. We can additionally construct BMI as a categorical outcome using the criteria below and see how this may differ the result.
+We treat food variables as our exposures and BMI and type 2 diabetes as outcomes. Note that BMI is a continuous variable. We can additionally construct BMI as a categorical outcome using the following criteria:
 
 -   BMI \<= 18.5: Underweight
 -   18.5 \<BMI \<= 25: Normal
@@ -218,7 +218,7 @@ for(i in 1:length(BMI)){
 BMI_cat <- as.factor(BMI_cat)
 ```
 
-We want to explore the exposure-outcome relationships through the metabolomics data, using metabolites as assumed mediators. Gender, age, education, physical activity and smoking are used as potential confounders for exposure-mediator and mediator-outcome association. Auxiliary information regarding case-control matches, fasting glucose level, education and physical activity are also provided.
+We want to explore the exposure-outcome relationships through the metabolomics data, using metabolites as assumed mediators. Food data serves as exposures, while BMI (both continuous and categorical) and Type 2 Diabetes are treated as outcomes. Gender, age, education, physical activity, and smoking are used as potential confounders for the exposure-mediator and mediator-outcome associations. Additionally, auxiliary information regarding case-control matches, fasting glucose levels, education, and physical activity is provided to enhance the analysis. 
 
 ```{r showcode_runcode_showoutput_5}
 #| eval: true
@@ -234,7 +234,7 @@ auxilary2 <- ClinData[, c("PairedInfo","FastingGlucose","Education","PhysicalAct
 
 # Code example of using TriplotGUI
 
-We will use a complex settings in this example. Please go to [Tutorial(simple)](simple_code.qmd){target="_blank"}.if you want to try simple settings.
+We will use more complex settings in this example. Please go to [Tutorial(simple)](simple_code.qmd){target="_blank"}.if you want to try simpler settings.
 
 ## Step 1: PCA/WGCNA plots {#simple_link}
 
@@ -277,9 +277,12 @@ reduced_Omics2 <- PCAorWGCNA_plots(dataframe = Omics2,
 ```
 
 ::: callout-note
--   In WGCNA, Omics variables are separated into clusters. PCA are first performed on each cluster and the first principal component of each cluster will be used as the principal components (We call them modules) of WGCNA.
--   You could try out the arguments of the `PCAorWGCNA_plots()` function and view the whole function [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/R/PCAorWGCNA_plots.R?ref_type=heads){target="_blank"}
--   One important argument in the `PCAorWGCNA_plots()` is `minModuleSize`, which defines the minimum number of variables in each cluster. If this number is specified too high, for example, if you have 20 variables in total and you specify `minModuleSize=15`, you may end up having all the 20 variables in one cluster. In this case, only the first principal component of the cluster will be used and be shown on both axes of the generated triplots.
+-   In WGCNA, Omics variables are grouped into clusters. PCA is performed on each cluster, and the first principal component of each cluster is used as the module for WGCNA.
+-   You could try out the arguments of the `PCAorWGCNA_plots()` function to visualize the results and view the whole function [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/R/PCAorWGCNA_plots.R?ref_type=heads){target="_blank"}
+-   The `minModuleSize` argument in `PCAorWGCNA_plots()` is crucial as it defines the minimum number of variables in each cluster. Setting this too high may result in all variables being grouped into a single cluster. For instance, with 20 variables and `minModuleSize=15`, you might end up with one cluster containing all 20 variables. In this case, only the first principal component of this single cluster would be used and displayed on both axes of the resulting triplots.
+
+    To avoid this, adjust `minModuleSize` based on your total variable count and desired cluster granularity. Experiment with different values to achieve a balance between meaningful clusters and interpretable results.
+
 :::
 
 You can see scree plot, score plot, loadings plot and biplot at this stage.
@@ -294,9 +297,11 @@ You can see scree plot, score plot, loadings plot and biplot at this stage.
 reduced_Omics2$scree_plot
 ```
 
-In the scree plot, each cluster is named with different colors, and the column heights represents how much variance are explained by that cluster among the total variance. The darker color represents variance explained by the first principal component/module of each cluster. You may notice that in the grey cluster there is only darker color, not the lighter color. This is because there is only one variable in that cluster - which will also be used as its first principal component/module. (Even though we specified `minModuleSize=2`, sometimes there are variables left out by clustering and become clusters of their own.)
+The scree plot in WGCNA visualizes the variance explained by each cluster. Clusters are color-coded, with column heights representing the proportion of total variance explained by each cluster. The darker color in each column shows the variance explained by the first principal component (module) of that cluster.
 
-The clusters are listed from left to right base on the number of variables in each cluster. The left side cluster has the most number of variables and right side cluster has the least number of variables.
+The grey cluster, showing only a darker color, indicates it contains just one variable, which serves as its own first principal component/module. This can occur even with `minModuleSize=2`, as some variables may be left unclustered.
+
+Clusters are arranged from left to right based on the number of variables they contain, with the leftmost cluster having the most variables and the rightmost having the least. This arrangement helps in quickly identifying the relative sizes and importance of different clusters in the dataset.
 
 ```{r showcode_runcode_showoutput_6B}
 #| eval: true
@@ -308,7 +313,7 @@ The clusters are listed from left to right base on the number of variables in ea
 reduced_Omics2$score_plot
 ```
 
-In the score plot, as the function previously specified, the observations are colored by education level, and the observations with different physical activity index are marked with different shape and the observations with different fasting glucose level are plotted in different size.
+In the score plot, observations are colored by education level, with different shapes representing varying physical activity indices and different sizes indicating fasting glucose levels. This visualization allows for an integrated view of how these characteristics relate to the modules derived from the WGCNA analysis, highlighting patterns among individuals based on their traits.
 
 ```{r showcode_runcode_showoutput_6C}
 #| eval: true
@@ -320,7 +325,7 @@ In the score plot, as the function previously specified, the observations are co
 reduced_Omics2$loading_plot
 ```
 
-In the loading plot, you can see that the loadings are all in the direction along the axis. This is because we use first principal components/modules in each cluster. (It is not possible for a loading to be in the direction of another axis since the another axis represents a different principal component analysis.)
+The loading plot displays loadings aligned along the axes, reflecting the use of first principal components/modules from each cluster in WGCNA. This alignment occurs because each axis represents a distinct principal component analysis, making it impossible for loadings to point in the direction of another axis.
 
 ```{r showcode_runcode_showoutput_6D}
 #| eval: true
@@ -332,9 +337,9 @@ In the loading plot, you can see that the loadings are all in the direction alon
 reduced_Omics2$scoreloading_plot
 ```
 
-The biplot with both score and loading looks a bit messy since there are so many things on the plot.
+Although informative, the biplot combining both score and loading can appear cluttered due to the high density of information it contains.
 
-We then build a TPObject based on the data reduction results. This object will be used to save information and facilitate the transfer of data through the various steps in TriplotGUI.
+A TPObject is constructed based on the data reduction results from the WGCNA analysis. This object serves as a central repository for storing and trandfering information generated through the various steps during the analysis.
 
 ```{r showcode_runcode_showoutput_7}
 #| eval: true
@@ -353,9 +358,14 @@ TPObject1 <- makeTPO(scores = scores,
 
 ## Step 2-3: Exposure correlations & Outcome associations
 
-The correlations between modules and food items were calculated using Pearson correlations, adjusting for confounders. The associations between modules and risk markers were investigated using linear regression.
 
-Correlation matrix of correlation coefficients and p values between the modules saved in the TPObject and the dietary variables in the exposure data is generated, using a pair-wise Pearson correlations, adjusting for confounders.
+The correlations between modules and food items and the associations between modules and risk markers can be then calculated, with confounders adjusted. Note that it is possible for users to skip code regarding correlations or risk association, if their interests focus on only outcome associations or exposure correlations with Omics variables.
+
+
+The modules information saved in the TPObject can be directly utilized in the `makeCorr()` function. This function calculates correlation coefficients and p-values between the modules and exposures (food variables and diet scores), while adjusting for specified confounders.
+
+
+
 
 ```{r showcode_runcode_noshowoutput_3}
 #| eval: true
@@ -378,14 +388,15 @@ Correlations_object <- makeCorr(TPObject = TPObject1,
 ```
 
 ::: callout-note
--   `allowcategorical=F` performs one-hot-encoding to transform categorical exposures variables with n\>2 classes to n binary variables. You can use `Correlations_object$cor_estimate` to check that each HFI level is separated in to a binary variable and the correlation coefficients between modules and the binary variables were calculated.
+-   The `makeCorr()` function offers options for handling categorical variables and adjusting for confounders. When `allowcategorical=F`, categorical exposures with more than two classes undergo one-hot-encoding, transforming them into binary variables. This can be verified by examining `Correlations_object$cor_estimate`, which shows separate correlation coefficients for each binary representation of HFI levels.
 
-    If `allowcategorical=T` is specified, then no transformation is made on the `"HFI"` variable. Linear models regressing modules on the `"HFI"` variable are used for correlation analysis. The correlation coefficients are calculated as the square root of the proportion of sum of squares for HFI in the total sum of squares.
+    Conversely, setting `allowcategorical=T` leaves categorical variables like `"HFI"` untransformed. In this case, linear models regressing modules on `"HFI"` are used for correlation analysis. The correlation coefficients are derived from the square root of the proportion of HFI's sum of squares to the total sum of squares.
 
--   `partial=T` specifies that the confounders will be adjusted.
+-   Setting `partial=T` ensures that specified confounders are adjusted for in the correlation analysis.
+
 :::
 
-The result of correlations are then added into the TPObject.
+The correlation results obtained from the `makeCorr()` function are then incorporated into the TPObject. 
 
 ```{r showcode_runcode_showoutput_8}
 #| eval: true
@@ -399,7 +410,8 @@ TPObject2 <- addCorr(TPObject = TPObject1,
                      Corr_p = Correlations_object$cor_pvalue)
 ```
 
-Matrices of risk estimates and p values between the modules saved in the TPObject and the outcome variables are generated, adjusting for confounders.
+The modules information saved in the TPObject can be directly utilized in the `coefficient_get()` function. This function calculates risk estimates and p-values between the modules and outcomes (BMI, type 2 diabetes and categorical BMI), while adjusting for specified confounders.
+
 
 ```{r showcode_runcode_noshowoutput_4}
 #| eval: true
@@ -423,16 +435,23 @@ Risks_object <- coefficient_get(TPObject = TPObject2,
 ```
 
 ::: callout-note
--   When `pair` information is not provided:
-    -   `multinomial=F` means that one-hot-encoding will be first performed to transform outcome's categorical variables with n \> 2 classes to n binary variables. And logistic regression will be performed on the binary variables and linear regression will be performed on continuous variables.
-    -   If specifying `multinomial=T`, multinomial regression will be performed on outcome's categorical outcome variable with n \> 2 classes, which gives n-1 estimates. And logistic regression will be performed on the binary variables and linear regression will be performed on continuous variables.
--   When `pair` information for case - control matches is provided:
-    -   `multinomial=F` means that one-hot-encoding will be first performed on outcome's categorical variables with n \> 2 classes. And then conditional logistic regression will be performed on the binary variables and linear mixed model will be performed on continuous variables, using the pairing information.
-    -   If specifying `multinomial=T`, the pairing information will be ignored and not used (since the outcomes can have more than 2 classes), multinomial regression will be performed on outcome's categorical variable, which gives n-1 estimates. And logistic regression will be performed on the binary variables and linear regression will be performed on continuous variables.
--   `partial=T` specifies that the confounders will be adjusted.
+
+The `coefficient_get()` function offers various options for handling outcomes and adjusting for confounders, with behavior differing based on whether pair information is provided.
+
+-   Without `pair` information:
+    -   `multinomial=F` transforms categorical outcomes with >2 classes into binary variables via one-hot-encoding. Logistic regression is used for binary outcomes, and linear regression for continuous outcomes.
+    -    `multinomial=T` applies multinomial regression to categorical outcomes with >2 classes, yielding n-1 estimates. Binary and continuous outcomes are handled as before.
+    
+-   With pair information:
+    -   `multinomial=F` transforms categorical outcomes as above, then uses conditional logistic regression for binary outcomes and linear mixed models for continuous outcomes, incorporating pairing information.
+    -   `multinomial=T` ignores pairing information, applying multinomial regression to categorical outcomes and standard logistic/linear regression to binary/continuous outcomes.
+    
+-   Setting `partial=T` ensures adjustment for specified confounders in all analyses.
+
+
 :::
 
-The result of risk estimates are then added into the TPObject.
+The results for risk estimates obtained from the `coefficient_get()` function are then incorporated into the TPObject. 
 
 ```{r showcode_runcode_showoutput_9}
 #| eval: true
@@ -449,7 +468,7 @@ TPObject3 <- addRisk(TPObject = TPObject2,
 
 ## Step 4: Triplot
 
-Then we can generate Triplot using the TPObject: Note that Triplot can be generated from any TPObject. You can try out different argument in the `TriplotGUI()` function. The function is a wrapper of `PCA_TriplotGUI()` and `WGCNA_TriplotGUI()`. You can view the functions respectively here: [`TriplotGUI()`](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/R/TriplotGUI.R?ref_type=heads){target="_blank"}, [`PCA_TriplotGUI()`](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/R/PCA_TriplotGUI.R?ref_type=heads){target="_blank"}, [`WGCNA_TriplotGUI()`](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/R/WGCNA_TriplotGUI.R?ref_type=heads){target="_blank"}.
+The TPObject created from all steps can be used to generate a Triplot using the `TriplotGUI()` function. The function serves as a wrapper for `PCA_TriplotGUI()` and `WGCNA_TriplotGUI()`. You can check the functions respectively here: [`TriplotGUI()`](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/R/TriplotGUI.R?ref_type=heads){target="_blank"}, [`PCA_TriplotGUI()`](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/R/PCA_TriplotGUI.R?ref_type=heads){target="_blank"}, [`WGCNA_TriplotGUI()`](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/R/WGCNA_TriplotGUI.R?ref_type=heads){target="_blank"}.
 
 ```{r showcode_runcode_noshowoutput_5}
 #| eval: true
@@ -491,7 +510,7 @@ Triplot_object3 <- TriplotGUI(TPObject3,
 
 ```
 
-We then plot the triplot.
+We then visualize the triplot.
 
 ```{r showcode_runcode_showoutput_10}
 #| eval: true
@@ -504,28 +523,35 @@ We then plot the triplot.
 Triplot_object3$triplot
 ```
 
-In the triplot, the black arrows are loadings representing Omics variables. Blue circle points represents exposure correlations with the modules and the red square points represents outcome associations with the modules. So what information can we get from this figure? Lets us list a few points:
 
--   Having a brief look, the generally healthy food (e.g. `"Fruits"`, `"Vegetables"`) is on the first dimension of the figure and the generally unhealthy food (e.g. `"Hamburger"`, `"Sausage"`, `"Margarine"`) is on the third dimension of the figure. The numeric outcome `"BMI"`, binary outcome `"T2D"`, and one-hot-encoded categorical `"BMI_cat"` outcome is on the second and fourth dimension of the figure.
--   Explanation on some variables in the plot:
-    -   `"HFI"` stands for healthy food index. A higher `"HFI"` suggests healthier diet. `"HFI"` ranges from 0 to 6. You can see that there are *HFI_0*, *HFI_1*...*HFI_6* in the figure and that is because `"HFI"` is used as a factor exposure variable in step 2 and is one-hot-encoded (`allowcategorical=F`) to the same number of binary variables as its number of levels. For example, *HFI_6* is a binary variable where individuals with `"HFI"` as 6 (most healthy diet people) will be labeled as 1 and the rest of individuals will be labelled as 0. *HFI_0* is a binary variable where individuals with `"HFI"` as 0 (most unhealthy diet people) will be labeled as 1 and the rest of individuals will be labelled as 0. *HFI_1*...*HFI_5* has limited use since it only separates the group of people with certain `"HFI"` value from to the rest, which is a mixture of people with healthier and less healthier diet.
+In the triplot visualization, black arrows represent loadings of Omics variables, forming patterns in different modules (axes). Blue circle points show exposure correlations with the modules, while red square points indicate outcome associations with the modules. 
+
+::: callout-note
+Note that we use first and second module for our example here. In reality, you may use the `checkTPO_ggplot()` function in TriplotGUI to view which modules may be more of your interest (that are associated with specific exposures and outcomes).
+:::
+
+Based on the triplot visualization of the TriplotGUI interface, we can interpret the following key points:
+
+-  The first (top right) and third (bottom left) dimension generally represents a spectrum of dietary healthiness. Healthier foods (e.g., `"Fruits"`, `"Vegetables"`) and higher healthy food indices (`"HFI"`, `"BSDS"`) are positioned on one side in the first dimension, while less healthy foods (e.g., `"Hamburger"`, `"Sausage"`, `"Margarine"`) are on the opposite side in the third dimension.
+-  The second (top left) and fourth (bottom right) dimensions are associated with health outcomes, including the numeric outcome `"BMI"`, binary outcome `"T2D"`, and one-hot-encoded categorical `"BMI_cat"` outcome.
+
+-   Explanation for some variables in the plot:
+    -   `"HFI"` stands for healthy food index. A higher `"HFI"` suggests healthier diet. `"HFI"` ranges from 0 to 6. You can see that there are *HFI_0*, *HFI_1*...*HFI_6* in the figure and that is because `"HFI"` is used as a factor exposure variable in exposure's correlation and is one-hot-encoded to the same number of binary variables as its number of levels. For example, *HFI_6* is a binary variable where individuals with `"HFI"` as 6 (most healthy diet people) will be labeled as 1 and the rest of individuals will be labelled as 0. *HFI_0* is a binary variable where individuals with `"HFI"` as 0 (most unhealthy diet people) will be labeled as 1 and the rest of individuals will be labelled as 0. *HFI_1*...*HFI_5* has limited use since it only separates the group of people with certain `"HFI"` value from to the rest, which is a mixture of people with healthier and less healthier diet.
     -   `"BSDS"` stands for Baltic Sea Diet Score ranging. A higher `"BSDS"` suggests healthier diet. `"BSDS"` is used as a numeric variable ranging from 2 to 25 in the correlation.
-    -   *BMI_cat_obese*, *BMI_cat_overweight*, *BMI_cat_underweight* are the odds ratio generated from the multinomial regression. Since `"BMI_cat"` is a categorical outcome and multinomial regression is performed in step 3 (`multinomial=T`), normal weight is uses as a reference and odds ratio of obese, overweight and underweight is produced. (Note that the first level of the factor variable is set as the default reference, in this case it is *normal*).
+    -   *BMI_cat_obese*, *BMI_cat_overweight*, *BMI_cat_underweight* are the odds ratio generated from the multinomial regression, since `"BMI_cat"` is a categorical outcome and multinomial regression is performed in outcome's association in this example. Normal weight is uses as a reference and odds ratio of obese, overweight and underweight is produced. (Note that the first level of the factor variable is set as the default reference, in this case it is *normal*).
 -   Adjusting for `"Age"`, `"Gender"`, `"Smoking"`, `"Education"` and `"FastingGlucose"`, the first module (on x-axis) correlates positively with generally healthy food (e.g. `"fruits"`, `"vegatables"`) and food index (e.g. `"BSDS"`) and negatively with unhealthy food (e.g. `"Hamburger"`, `"pizza"`). It also reversely associated with `"T2D"` and `"BMI"`. From the result from `"BMI_cat"`, this components also reversely associated with being obese.
 -   Adjusting for `"Age"`, `"Gender"`, `"Smoking"`, `"Education"` and `"FastingGlucose"`, the second module (on y-axis) associated positively with generally healthy food (e.g. `"fruits"`, `"vegatables"`) and food index (e.g. `"BSDS"`) and negatively with unhealthy food (e.g. `"Hamburger"`, `"pizza"`). However, the module correlates also positively with `"T2D"`,`"BMI"`, *obese*, *overweight* and negatively associated with *underweight*.
--   Based on what we summarized above, the two modules may be associated with a overall healthy eating pattern. And in such pattern, the first module is associated more with the beneficial effect on health and the second module represents the adverse health effect that may be caused by this pattern.
+
+Based on what we summarized above, the two modules may be associated with a overall healthy eating pattern. And in this healthy eating pattern, the first module is associated more with the beneficial effect on health and the second module represents the adverse health effect.
 
 ## Step 5: Mediation analysis and visualization
 
-There are many things that you could explore further in the following mediation analysis. To narrow down our focus and clearly show our examples, we select `"BSDS"` (Baltic Sea Diet Score) and `"Hamburger"` as our exposures, `"BMI"` and `"T2D"` as outcome to enter our next step.
+In mediation analysis in TriplotGUI, we focus on a specific set of variables for mediation analysis: we select `"BSDS"` (Baltic Sea Diet Score) and `"Hamburger"` as our exposures, `"BMI"` and `"T2D"` as outcome to enter our next step. We choose first and second modules as our mediators.
 
-This time, we perform the mediation analysis using the conterfactual/potential outcome method (the ´mediation´ package) on our exposures (i.e. `"BSDS"`, `"Hamburger"`), mediators (i.e. the first and second modules) and outcome (i.e. `"T2D"`, `"BMI"`) of interest, adjusting for `"Age"`, `"Gender"`, `"Smoking"`, `"Education"` and `"FastingGlucose"` for both exposure-mediator and mediator-outcome relationship.
+This time, we perform the mediation analysis with the `get_mediation_counterfactual()` function, using the counterfactual/potential outcome method implemented through the `mediation` package in R on our exposures (i.e. `"BSDS"`, `"Hamburger"`), mediators (i.e. the first and second modules) and outcome (i.e. `"T2D"`, `"BMI"`) of interest, adjusting for `"Age"`, `"Gender"`, `"Smoking"`, `"Education"` and `"FastingGlucose"` for both exposure-mediator and mediator-outcome relationship.
 
-::: callout-note
-In the counterfactual mediation analysis, you need to specify contrast values of treatment and controls for each exposure. In brief, the algorithm will compare the scenarios with these 2 exposure values/levels. For my detailed explanation please refer to [this paper](https://www.jstatsoft.org/article/view/v059i05){target="_blank"} of the `mediation` R package.
 
-If an exposure variable is continuous (numeric variable), it is recommended that the 2 exposure values is chosen between the range of the exposure variable. If an exposure variable is categorical (factor variable), the 2 exposure levels should be chosen from the levels of the exposure variable.
-:::
+
 
 ```{r showcode_runcode_noshowoutput_6}
 #| eval: true
@@ -546,7 +572,13 @@ mediation_object3 <-
 
 ```
 
-Look at the barplot to have a more direct view on direct, indirect and total effects for each combination of exposure, mediator(princial component) and outcome.
+::: callout-note
+In the counterfactual mediation analysis, contrast values of treatment and controls for each exposure needs to be specified. For each individual, the analysis considers what would happen if they received the treatment versus if they received the control. In brief, the algorithm uses these contrast values to calculate the potential outcomes under each scenario to estimate the direct and indirect effects. For a detailed explanation please refer to [this paper](https://www.jstatsoft.org/article/view/v059i05){target="_blank"} of the `mediation` R package.
+
+If an exposure variable is continuous (numeric variable), it is recommended that the treatment and control contrast values are chosen between the range of the exposure variable. If an exposure variable is categorical (factor variable), the treatment and control contrast values should be chosen from the levels of the exposure variable.
+:::
+
+Then we can also Look at the barplot for mediations, which provides a clear visual representation of the direct, indirect, and total effects for each combination of exposure, mediator (principal component), and outcome. This visualization allows for a more intuitive understanding of the mediation analysis results.
 
 ```{r showcode_runcode_noshowoutput_7}
 #| eval: true
@@ -573,13 +605,14 @@ mediation_plot_object3
 ```
 
 ::: callout-note
-The barplot showed direct, indirect and total effect for each exposure-mediator-outcome combination. It is a convenient tool to check the direction and magnitude of mediation estimates.
+The barplot displays direct, indirect, and total effects for each exposure-mediator-outcome combination, offering a convenient tool to assess the direction and magnitude of mediation estimates.
 
--   Red color represents significant positive effect (p\<0.05); Blue color represents significant negative effect (p\<0.05). Grey represents insignificant effect.
--   One star for p\<0.05; Two stars for p\<0.01; Three stars for p\<0.001.
+-   Color coding enhances interpretation: red indicates significant positive effects (p<0.05), blue shows significant negative effects (p<0.05), and grey represents insignificant effects.
+-   Significance levels are denoted by stars: one star for p<0.05, two stars for p<0.01, and three stars for p<0.001.
+
 :::
 
-Add the mediation result into the TPObject.
+Add the mediation result from `get_mediation_counterfactual()` into the TPObject.
 
 ```{r showcode_runcode_showoutput_12}
 #| eval: true
@@ -593,7 +626,7 @@ mediation_object3)
 
 ```
 
-Make the triplot with mediation. We showed the aruguments you could use in the function here with default values.
+To create the triplot with mediation, use the provided function with its default arguments. This will generate a visualization that incorporates the mediation analysis results into the triplot framework. You can adjust these arguments as needed to customize the appearance and content of the triplot.
 
 ```{r showcode_runcode_noshowoutput_8}
 #| eval: true
@@ -674,9 +707,9 @@ Triplot_object4$mediation_plot
 
 ```
 
-Note that only the proportion mediated (PM) and adjusted proportion mediated(APM) is presented as darkgreen triangle points on the mediation plot. This is because we specified that we only want to show them using `which_show = c("PM", "APM")` in the `mediation_triplot()` function.
+The `mediation_triplot()` function displays only the proportion mediated (PM) and adjusted proportion mediated (APM) as dark green triangle points due to the specified `which_show = c("PM", "APM")` argument.
 
-The plot is a bit messy, all the points are crowded together. You could specify `which_show = c("PM")` and `which_show = c(APM")` respectively and re-run the `mediation_triplot()` function to see proportion mediated and adjusted proportion mediated separately. We first show the result of specifying `which_show = c("PM")` here.
+To reduce visual clutter, you can separate these by running the function twice: once with `which_show = c("PM")` and once with `which_show = c("APM")`. 
 
 ```{r showcode_runcode_noshowoutput_8A}
 #| eval: true
@@ -703,7 +736,8 @@ Triplot_object4$mediation_plot
 
 ```
 
-We could see four data points on the figure, which represents the eight combinations of exposures, mediators and outcomes.
+
+Four green triangles are displayed on the figure. Their x and y coordiates represent the eight combinations of exposures, mediators and outcomes.
 
 -   exposure=BSDS, mediator= module 1, outcome=BMI
 -   exposure=BSDS, mediator= module 2, outcome=BMI
@@ -714,9 +748,9 @@ We could see four data points on the figure, which represents the eight combinat
 -   exposure=Hamburger, mediator= module 1, outcome=T2D
 -   exposure=Hamburger, mediator= module 2, outcome=T2D
 
-We could view from the confidence intervals on the figure already that some PM is not significant. A huge confidence interval presented on the plot has pushed the triangle points to the origin. We want to zoom in and see which dimensions the points are in.
+We can see from the confidence intervals that some PM values are not significant, with large intervals pushing triangle points towards the origin. To better examine these points and their dimensions, we zoom in by adjusting the limit of the proportion mediated. Setting `"medLim = 2.5"` restricts the plot's range from -2.5 to 2.5, allowing for a closer inspection of the points and their relationships within this more focused area
 
-We therefore adjust the limit of the proportion mediated to zoom in on the points. `"medLim = 2.5"` means that the limit showing on the plot will be from -2.5 to 2.5.
+
 
 ```{r showcode_runcode_noshowoutput_8B}
 #| eval: true
@@ -745,14 +779,16 @@ Triplot_object4$mediation_plot
 
 ```
 
-In the figure, we could see the direction and magnitude of proportion mediated for the 2 mediators, all the exposures and outcomes. We also notice that the PM for BSDS-module 1-BMI and BSDS-module 2-BMI mediation is significant.
-
 ::: callout-note
--   Note that some confidence intervals are automatically removed from the figure if they are not within the limit.
--   Note that for some mediations, direct effect and indirect effects are in the opposite direction, implying possibly proportion mediated(PM)\>1, since total effect could be smaller than indirect effect.
+-   Confidence intervals are automatically removed from the figure if they fall outside the set limits. 
+-   In certain mediations, the direct and indirect effects may have opposite directions. This can result in a proportion mediated (PM) greater than 1. This occurs because the total effect might be smaller than the indirect effect.
 :::
 
-we then further look at the adjusted proportion mediated (APM):
+
+Based on the figure showing the mediation analysis results, we can observe the direction and magnitude of proportion mediated for the 2 mediators (module 1 and 2), all the exposures and outcomes. Based on the confidence interval, we also observed that the PM for BSDS-module 1-BMI and BSDS-module 2-BMI mediation is significant.
+
+
+To further examine the mediation results, we look at the adjusted proportion mediated (APM):
 
 ```{r showcode_runcode_noshowoutput_8C}
 #| eval: true
@@ -780,21 +816,25 @@ Triplot_object4$mediation_plot
 
 ```
 
-By observing this figure, we could see the direction and magnitude of adjusted proportion mediated for the 2 mediators, all the exposures and outcomes. The position of the points is similar what we have seen for proportion mediated. Note that APM for BSDS as exposure and T2D as outcome is smaller than their PM. This is because the indirect and direct effect for this mediation is of similar size but in opposite direction. This leads to a smaller total effect and in turn larger PM, but APM will not be affected by the directionality of the direct and indirect effect.
+By observing this figure, we can see the direction and magnitude of adjusted proportion mediated (APM) for the two mediators across all exposures and outcomes. The positioning of the points is similar to what we observed for the proportion mediated (PM).
+
+Notably, the APM for BSDS (Baltic Sea Diet Score) as the exposure and T2D (Type 2 Diabetes) as the outcome is smaller than their corresponding PM. This difference occurs because the indirect and direct effects for this mediation pathway are of similar size but in opposite directions. This opposition leads to a smaller total effect and consequently a larger PM. However, the APM is not affected by the directionality of the direct and indirect effects, providing a more stable measure of mediation.
 
 ::: callout-note
--   No confidence interval is shown for adjusted proportion mediated, as such value can not be directly calculated from the mediation analysis.
+-   No confidence intervals are shown for APM. This is because APM values cannot be directly calculated from the mediation analysis in the `mediation` R package, unlike the proportion mediated (PM).
 
--   Note that even direct effect and indirect effects are in the opposite direction, adjusted proportion mediated is always smaller than 1, since it uses the sum of the absolute value of indirect and direct effect as denominator. $$APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{|IE|+|DE|}\cdot\frac{IE+DE}{|IE+DE|}$$
+-   The APM is always smaller than 1, even when direct and indirect effects are in opposite directions. This is due to the calculation method of APM, which uses the sum of the absolute values of indirect and direct effects as the denominator. $$APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{|IE|+|DE|}\cdot\frac{IE+DE}{|IE+DE|}$$
 :::
 
 ::: callout-note
-If you want, you could specify `which_show = c("PM", "APM", "IE","TE")` in the `mediation_triplot()` to show all the estimates (IE for indirect effect and TE for total effect). However, it is not recommended, since the plot will get even messier if you put estimates and proportion mediated on the same plot.
 
-If you go to [Tutorial(simple)](simple_code.qmd){target="_blank"}, you can view the plot when showing `"IE"` and `"TE"`.
+Specifying `which_show = c("PM", "APM", "IE", "TE")` in the `mediation_triplot()` function would display all estimates, including indirect effect (IE) and total effect (TE). However, this is not recommended as it can overcrowd the plot, making it difficult to interpret. 
+
+For a clearer visualization, it's better to view IE and TE separately. The [Tutorial(simple)](simple_code.qmd){target="_blank"} section provides examples of plots showing `"IE"` and `"TE"`, offering a more manageable and interpretable view of these mediation components.
+
 :::
 
-Plotting the triplot with mediation,
+Plot the triplot with mediation,
 
 ```{r showcode_runcode_showoutput_14}
 #| eval: true
@@ -807,11 +847,11 @@ Triplot_object4$final_plot
 
 ```
 
-Base on the barplot and the triplot with mediation, we have observed significant proportion mediated for BSDS-module 1/2-BMI mediations. Further exploration on indirect, direct and total effect of the mediation analysis could be explored by playing around the `which_show` argument in the `mediation_triplot()` function. We will not go into details here.
+Based on the barplot and the triplot with mediation, we’ve observed significant proportion mediated for BSDS-module 1/2-BMI mediations. Further exploration on indirect, direct and total effect of the mediation analysis could be explored by playing around the `which_show` argument in the `mediation_triplot()` function. We will not go into details here.
 
 ## Comparative Visualization
 
-Users can check the heatmaps of correlations, risk estimations and mediation results from the TPObject through the `checkTPO_ggplot()` function in TriplotGUI.
+The `checkTPO_ggplot()` function in TriplotGUI allows users to generate heatmaps from the TPObject to visualize correlations, risk estimations, and mediation results.
 
 ```{r showcode_runcode_noshowoutput_9}
 #| eval: true
@@ -858,7 +898,7 @@ Risk estimates(beta coefficients) and p values between modules and outcomes:
 checkTPObject4$risk_coefficients
 ```
 
-Mediation estimates and p values for indirect effect(IE) and total effect(TE), proportion mediated(PM) and adjusted proportion mediated(APM): See [Manual](workflow.qmd){target="_blank"} for more details:
+Mediation estimates and p values for indirect effect(IE) and total effect(TE), proportion mediated(PM) and adjusted proportion mediated(APM): Read [Manual](workflow.qmd){target="_blank"} for more details:
 
 ```{r showcode_runcode_showoutput_15C}
 #| eval: true
@@ -885,13 +925,14 @@ checkTPObject4$corr_risk_med_coefficients
 ```
 
 ::: callout-note
--   One star for p\<0.05; Two stars for p\<0.01; Three stars for p\<0.001.
--   Note that in the plot of `checkTPbject4$med_coefficients`, only the selected exposures, mediators and outcomes that we use to do mediation on will show up. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure_outcome pair, 4 result are shown: *IE* (indirect effect), *TE* (total effect), *PM*(Proportion Mediated) and *APM*(Adjusted Proportion Mediated). Please see [manual](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2){target="_blank"} section for more information. The "CF" before the names of exposures-outcome pairs means that this mediation is using the Counterfactual method.
+-   Significance is indicated as follows. One star for p<0.05; Two stars for p<0.01; Three stars for p<0.001.
+-   The first two plots, correlation coefficients with exposures and risk estimates of outcomes will show all the exposure and outcome variables that are not removed from visualization.
+-   Note that in the plot of `checkTPbject4$med_coefficients`, nly the selected exposures, mediators and outcomes that we use to do mediation on will show up in the mediation results. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure-outcome pair, 4 results are shown: *IE* (indirect effect), *TE* (total effect), *PM*(Proportion Mediated) and *APM*(Adjusted Proportion Mediated). Please read [Manual](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2){target="_blank"} for more information. The "CF" before the names of exposures-outcome pairs means that this mediation is using the Counterfactual method.
 :::
 
 ## Data download
 
-We can save all your output, including data, results and visualization output through the `save()` function as an rda file.
+To save all your output, including data, results, and visualization output as an .rda file, you can use the `save()` function as an rda file.
 
 ```{r showcode_noruncode_noshowoutput_1}
 #| eval: false

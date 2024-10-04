@@ -1309,7 +1309,7 @@ TPO has 0 attached risks.</code></pre>
 </div>
 </section><section id="step-2-3-exposure-correlations-outcome-associations" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="step-2-3-exposure-correlations-outcome-associations">
 <span class="header-section-number">4.2</span> Step 2-3: Exposure correlations &amp; Outcome associations</h2>
-<p>The correlations between principal components (PCs) and food items are calculated using Pearson correlations, adjusting for confounders. We investigate associations between PC scores and risk markers using linear regression, as all food variables are numeric.</p>
+<p>The correlations between principal components (PCs) and food items are calculated using Pearson correlations, adjusting for confounders. We investigate associations between PC scores and risk markers adjusting for confounders using linear regression, as all food variables are numeric.</p>
 <p>The PC scores are saved in the TPObject, which can be directly used in the <code>makeCorr()</code> function to calculate correlation coefficients and p-values with exposures (food variables), while adjusting for confounders.</p>
 <div class="cell styled-output" data-fold.output="false">
 <details open=""><summary>Code</summary><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">Correlations_object</span> <span class="op">&lt;-</span> <span class="fu">makeCorr</span><span class="op">(</span>TPObject <span class="op">=</span> <span class="va">TPObject1</span>,</span>
@@ -1986,7 +1986,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb51-251"><a href="#cb51-251" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb51-252"><a href="#cb51-252" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 2-3: Exposure correlations &amp; Outcome associations</span></span>
 <span id="cb51-253"><a href="#cb51-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-254"><a href="#cb51-254" aria-hidden="true" tabindex="-1"></a>The correlations between principal components (PCs) and food items are calculated using Pearson correlations, adjusting for confounders. We investigate associations between PC scores and risk markers using linear regression, as all food variables are numeric.</span>
+<span id="cb51-254"><a href="#cb51-254" aria-hidden="true" tabindex="-1"></a>The correlations between principal components (PCs) and food items are calculated using Pearson correlations, adjusting for confounders. We investigate associations between PC scores and risk markers adjusting for confounders using linear regression, as all food variables are numeric.</span>
 <span id="cb51-255"><a href="#cb51-255" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb51-256"><a href="#cb51-256" aria-hidden="true" tabindex="-1"></a>The PC scores are saved in the TPObject, which can be directly used in the <span class="in">`makeCorr()`</span> function to calculate correlation coefficients and p-values with exposures (food variables), while adjusting for confounders.</span>
 <span id="cb51-257"><a href="#cb51-257" aria-hidden="true" tabindex="-1"></a></span>
@@ -2287,7 +2287,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-center"><span class="faux-block"> <a href="https://yingxiao.shinyapps.io/triplotgui/" target="_blank">TriplotGUI</a> <br><a href="https://gitlab.com/YingxiaoYan/TriplotGUI" target="_blank">TriplotGUI Gitlab</a> </span></div>
     <div class="nav-footer-right"><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":true,"openEffect":"zoom"});</script>
+</footer><script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":true,"closeEffect":"zoom"});</script>
 
 
 <script src="site_libs/quarto-html/zenscroll-min.js"></script>

@@ -145,16 +145,7 @@ After configuring the settings, we can examine several informative plots at step
 
 ## Step 2-3: Exposures’ correlations & Outcomes’ associations
 
-After completing step 1, proceed to upload the exposures and covariate data in step 2 of the TriplotGUI interface. Upon briefly inspecting the variable classes, you'll notice some important details:
-
--  In the exposure data, `"HFI"` (Healthy Food Index) is classified as a factor variable, while `"BSDS"` (Baltic Sea Food Index) is a numeric variable. While you may not need to change their classes at this point, being aware of these classifications is crucial for understanding how they'll be treated in subsequent analysis steps.
-
--  In the covariate data, you'll observe a variable called `"X"`. This variable is likely an artifact of uploading the data from a CSV file, where the observation numbers may have been automatically generated as a new variable during the file import process. Since `"X"` is not an actual covariate, it should be removed from the dataset to prevent it from influencing your analysis.
-
--  In the covariate data, when you inspect the classes of variables you will find that some categorical variables are incorrectly classified as numeric type instead of factor. To resolve this, change the class of these variables to factor, focusing on `"Gender"`, `"Education"`, `"Smoking"` and `"PhysicalActivityIndex"`.
-
-Understanding these nuances in your data structure is essential for ensuring accurate analysis and interpretation of results. By addressing these points early in the process, you set the stage for a more robust and reliable analysis using TriplotGUI.
-
+After completing step 1, proceed to upload the exposures and covariate data in step 2 of the TriplotGUI interface. 
 
 ::: columns
 ::: {.column style="width: 45%"}
@@ -168,6 +159,18 @@ Understanding these nuances in your data structure is essential for ensuring acc
 ![](img/complex_2_2.png)
 :::
 :::
+
+Upon briefly inspecting the variable classes, you'll notice some important details:
+
+-  In the exposure data, `"HFI"` (Healthy Food Index) is classified as a factor variable, while `"BSDS"` (Baltic Sea Food Index) is a numeric variable. While you may not need to change their classes at this point, being aware of these classifications is crucial for understanding how they'll be treated in subsequent analysis steps.
+
+-  In the covariate data, you'll observe a variable called `"X"`. This variable is likely an artifact of uploading the data from a CSV file, where the observation numbers may have been automatically generated as a new variable during the file import process. Since `"X"` is not an actual covariate, it should be removed from the dataset to prevent it from influencing your analysis.
+
+-  In the covariate data, when you inspect the classes of variables you will find that some categorical variables are incorrectly classified as numeric type instead of factor. To resolve this, change the class of these variables to factor, focusing on `"Gender"`, `"Education"`, `"Smoking"` and `"PhysicalActivityIndex"`.
+
+Understanding these nuances in your data structure is essential for ensuring accurate analysis and interpretation of results. By addressing these points early in the process, you set the stage for a more robust and reliable analysis using TriplotGUI.
+
+
 
 Change your "Data analysis settings" as shown in the figure below.
 
@@ -253,6 +256,8 @@ When using TriplotGUI, the handling of categorical outcomes and pairing variable
     -   With multinomial regression (as in our example), the pairing information is not used. Multinomial regression is applied to categorical outcomes, giving n-1 estimates. Logistic regression is used for binary outcomes, and linear regression for continuous ones.
 :::
 
+Note that it is possible for users to skip Step 2 or 3, if their interests focus on only outcome associations or exposure correlations with Omics variables.
+
 ## Step 4: Visualization of Triplot
 
 ![](img/complex_3_1.png)
@@ -265,7 +270,7 @@ Note that we use first and second module for our example here. In reality, you m
 
 Based on the triplot visualization of the TriplotGUI interface, we can interpret the following key points:
 
--  The first (top right) and third (bottom left) dimension generally represents a spectrum of dietary healthiness. Healthier foods (e.g., `"Fruits"`, `"Vegetables"`) and higher healthy food indices (`"HFI"`, `"BSDS"`) are positioned on one side in the first dimension, while less healthy foods (e.g., `"hamburger"`, `"sausage"`, `"margarine"`) are on the opposite side in the third dimension.
+-  The first (top right) and third (bottom left) dimension generally represents a spectrum of dietary healthiness. Healthier foods (e.g., `"Fruits"`, `"Vegetables"`) and higher healthy food indices (`"HFI"`, `"BSDS"`) are positioned on one side in the first dimension, while less healthy foods (e.g., `"Hamburger"`, `"Sausage"`, `"Margarine"`) are on the opposite side in the third dimension.
 -  The second (top left) and fourth (bottom right) dimensions are associated with health outcomes, including the numeric outcome `"BMI"`, binary outcome `"T2D"`, and one-hot-encoded categorical `"BMI_cat"` outcome.
 
 -   Explanation for some variables in the plot:
@@ -336,13 +341,14 @@ Four green triangles are displayed on the figure. Their x and y coordiates repre
 -   exposure=Hamburger, mediator= module 1, outcome=T2D
 -   exposure=Hamburger, mediator= module 2, outcome=T2D
 
-Based on the figure showing the mediation analysis results, we can observe the direction and magnitude of proportion mediated for the 2 mediators (module 1 and 2), all the exposures and outcomes. Based on the confidence interval, we also observed that the PM for BSDS-module 1-BMI and BSDS-module 2-BMI mediation is significant.
 :::
 
 ::: callout-note
 -   Confidence intervals are automatically removed from the figure if they fall outside the set limits. 
 -   In certain mediations, the direct and indirect effects may have opposite directions. This can result in a proportion mediated (PM) greater than 1. This occurs because the total effect might be smaller than the indirect effect.
 :::
+
+Based on the figure showing the mediation analysis results, we can observe the direction and magnitude of proportion mediated for the 2 mediators (module 1 and 2), all the exposures and outcomes. Based on the confidence interval, we also observed that the PM for BSDS-module 1-BMI and BSDS-module 2-BMI mediation is significant.
 
 ::: columns
 To visualize the adjusted proportion mediated (APM) and add layers of correlation and risk estimates, use the following settings.
@@ -387,7 +393,7 @@ Users can examine the heatmaps of correlations, risk estimations, and mediation 
 ::: callout-note
 -   Significance is indicated as follows. One star for p\<0.05; Two stars for p\<0.01; Three stars for p\<0.001.
 -   The first two plots, correlation coefficients with exposures and risk estimates of outcomes will show all the exposure and outcome variables that are not removed from visualization.
--   Note that only the selected exposures, mediators and outcomes that we use to do mediation on will show up in the mediation results. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure-outcome pair, 4 result are shown: *IE* (indirect effect), *TE* (total effect), *PM*(Proportion Mediated) and *APM*(Adjusted Proportion Mediated). Please see [Details section](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2){target="_blank"} for more information. The "CF" before the names of exposures-outcome pairs means that this mediation is using the Counterfactual method.
+-   Note that only the selected exposures, mediators and outcomes that we use to do mediation on will show up in the mediation results. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure-outcome pair, 4 results are shown: *IE* (indirect effect), *TE* (total effect), *PM*(Proportion Mediated) and *APM*(Adjusted Proportion Mediated). Please read [Manual](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2){target="_blank"} for more information. The "CF" before the names of exposures-outcome pairs means that this mediation is using the Counterfactual method.
 :::
 
 ## Data download
