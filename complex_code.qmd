@@ -59,19 +59,20 @@ knitr::knit_hooks$set(
 )
 ```
 
-Before starting, please make sure you have installed the TriplotGUI package following [Setup](installation.qmd){target="_blank" style="color:blue"}.
+The code at this page can be downloaded [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Tutorial_code/HealthyNordicDiet_2_applying_TriplotGUI_code.R){target="_blank"}
 
-The code of at this page can be downloaded [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Tutorial_code/HealthyNordicDiet_2_applying_TriplotGUI_code.R){target="_blank"}
+Before starting, please ensure you have installed the TriplotGUI package following the [Setup](installation.qmd){target="_blank" style="color:blue"} instructions.
+
 
 # Data description
 
 The data used in this tutorial section can be downloaded [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/data/HealthyNordicDiet_2.rda){target="_blank"} in rda format.
 
-The Data used for this example of code is ***HealthyNordicDiet_2***, modified from the **HealthyNordicDiet** data provided by the [*triplot*](https://gitlab.com/CarlBrunius/triplot/-/blob/master/vignettes/Triplot_Tutorial.md?ref_type=heads){target="_blank"} package (Schillemans et al. 2019). **HealthyNordicDiet** is a synthetic dataset that was simulated from the authentic data used in a case/control study nested within the Swedish prospective Västerbotten Intervention Programme cohort. The original study was set up to explore plasma metabolites that could objectively reflect healthy Nordic dietary patterns in a matched case-control study and to assess associations between such patterns and later development of type 2 diabetes. (Shi et al. 2018). The simulated data ***HealthyNordicDiet_2*** is a list that contains three data frames:
+This example utilizes ***HealthyNordicDiet_2***, which is a modified version of the **HealthyNordicDiet** data provided by the [*Triplot*](https://gitlab.com/CarlBrunius/triplot/-/blob/master/vignettes/Triplot_Tutorial.md?ref_type=heads){target="_blank"} package (Schillemans et al. 2019). The **HealthyNordicDiet** is a synthetic dataset that simulates data from a case-control study within the Swedish Västerbotten Intervention Programme cohort, exploring plasma metabolites reflecting healthy Nordic dietary patterns and their association with type 2 diabetes development (Shi et al. 2018). The simulated ***HealthyNordicDiet_2*** data consists of three data frames:
 
--   Clinical measurements (ClinData, 11 variables): `"ID"`,`"T2D"`(Cases and controls for type 2 diabetes), `"PairedInfo"`(Pairing/matching information for case and controls, a unique number is assigned to each case-control pairs),`"Energy"`,`"Gender"`,`"Age"`,`"BMI"`,`"Smoking"`,`"PhysicalActivityIndex"`,`"Education"`,`"FastingGlucose"`.\
--   Plasma metabolites predictive of BMI (MetaboliteData, 20 variables)
--   Dietary intake as measured by food frequency questionnaires (FoodData, 11 variables): `"HFI"`(Healthy Food Index),`"BSDS"`(the Baltic Sea Diet Score),`"Wholegrains"`,`"Sausage"`,`"Pizza"`,`"Refined.bread"`, `"Fruits"`,`"Liquor"`,`"Wine"`,`"Hamburger"`,`"Poultry"`,`"Fish"`,`"Margarine"`,`"Cabbage"`,`"Carrot"`,`"low_fat_Dairy"`,`"Vegetables"`
+-   Clinical measurements (ClinData): Contains 11 variables: `"ID"`,`"T2D"`(Cases and controls for type 2 diabetes), `"PairedInfo"`(Pairing/matching information for case and controls, a unique number is assigned to each case-control pairs),`"Energy"`,`"Gender"`,`"Age"`,`"BMI"`,`"Smoking"`,`"PhysicalActivityIndex"`,`"Education"`,`"FastingGlucose"`.\
+-   Plasma metabolites predictive of BMI (MetaboliteData): Comprises 20 variables
+-   Dietary intake as measured by food frequency questionnaires (FoodData): Includes 11 variables: `"HFI"`(Healthy Food Index),`"BSDS"`(the Baltic Sea Diet Score),`"Wholegrains"`,`"Sausage"`,`"Pizza"`,`"Refined.bread"`, `"Fruits"`,`"Liquor"`,`"Wine"`,`"Hamburger"`,`"Poultry"`,`"Fish"`,`"Margarine"`,`"Cabbage"`,`"Carrot"`,`"low_fat_Dairy"`,`"Vegetables"`
 
 The data frames are row-wise matched by observations and consist of 1000 synthetic observations.
 
@@ -87,7 +88,7 @@ We want to assess the relationship between diet, metabolic profiles and Type 2 d
 
 # Data exploration
 
-***HealthyNordicDiet_2*** is loaded in the R environment up on running `library(TriplotGUI)`. We will do some data exploration first to see how the data looks like.
+***HealthyNordicDiet_2*** is loaded in the R environment upon running `library(TriplotGUI)`. Let's begin with some data exploration to understand the structure and contents of the dataset:
 
 ```{r noshowcode_runcode_noshowoutput_1}
 #| eval: true
@@ -127,7 +128,7 @@ colnames(HealthyNordicDiet_2$FoodData)
 
 ## Check variables' class
 
-We then transform the data to dataframe format and then use TriplotGUI's `checkdata()` function in to examine the classes of variables.
+We then transform the data to dataframe format and use TriplotGUI's `checkdata()` function to examine the classes of variables.
 
 ```{r showcode_runcode_noshowoutput_1}
 #| eval: true
@@ -154,14 +155,15 @@ FoodData_check$class_summary_statistics
 ```
 
 ::: callout-note
+
+
 Note that in the given data, `"HFI"`(Healthy Food Index) is a factor variable and `"BSDS"`(the Baltic Sea Diet Score) is a numeric variable. You could use `table(FoodData$HFI)` and `table(FoodData$BSDS)` to check the difference.
 :::
 
 ## Check sanities for variables
 
-Whether each variable contains missing (NA) or abnormal values (e.g. NAN, negative values, indefinite values, blank values) can also be checked.
+To check for missing (NA) or abnormal values (e.g., NaN, negative values, infinite values, blank values) in each variable, you can use the `checkdata()` function. This function generates a summary table for each data frame, showing the number of observations containing NA, NaN, zero, negative, infinite (Inf), and blank values, along with their percentages.
 
-The previous `checkdata()` function can also generate a table to summarize how many observations contain NA, NAN, zero, negative, indefinite(inf) and blank values(" ") and the percentages, for each variable in each data frame.
 
 ```{r showcode_runcode_noshowoutput_1_1}
 #| eval: true
@@ -234,7 +236,7 @@ auxilary2 <- ClinData[, c("PairedInfo","FastingGlucose","Education","PhysicalAct
 
 We will use a complex settings in this example. Please go to [Tutorial(simple)](simple_code.qmd){target="_blank"}.if you want to try simple settings.
 
-## Step 1: Data reduction of omics data {#simple_link}
+## Step 1: PCA/WGCNA plots {#simple_link}
 
 Using `TriplotGUI` package, first we perform dimension reduction, using weighted correlation network analysis (WGCNA) on metabolomics data.
 
@@ -332,7 +334,7 @@ reduced_Omics2$scoreloading_plot
 
 The biplot with both score and loading looks a bit messy since there are so many things on the plot.
 
-We then build a TPObject, which is used for saving information and passing them through steps in TriplotGUI.
+We then build a TPObject based on the data reduction results. This object will be used to save information and facilitate the transfer of data through the various steps in TriplotGUI.
 
 ```{r showcode_runcode_showoutput_7}
 #| eval: true
@@ -349,7 +351,7 @@ TPObject1 <- makeTPO(scores = scores,
 
 ```
 
-## Step 2: Exposure correlations & Outcome associations
+## Step 2-3: Exposure correlations & Outcome associations
 
 The correlations between modules and food items were calculated using Pearson correlations, adjusting for confounders. The associations between modules and risk markers were investigated using linear regression.
 
@@ -445,7 +447,7 @@ TPObject3 <- addRisk(TPObject = TPObject2,
 
 ```
 
-## Step 3: Visualization of Triplot
+## Step 4: Triplot
 
 Then we can generate Triplot using the TPObject: Note that Triplot can be generated from any TPObject. You can try out different argument in the `TriplotGUI()` function. The function is a wrapper of `PCA_TriplotGUI()` and `WGCNA_TriplotGUI()`. You can view the functions respectively here: [`TriplotGUI()`](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/R/TriplotGUI.R?ref_type=heads){target="_blank"}, [`PCA_TriplotGUI()`](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/R/PCA_TriplotGUI.R?ref_type=heads){target="_blank"}, [`WGCNA_TriplotGUI()`](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/R/WGCNA_TriplotGUI.R?ref_type=heads){target="_blank"}.
 
@@ -508,12 +510,12 @@ In the triplot, the black arrows are loadings representing Omics variables. Blue
 -   Explanation on some variables in the plot:
     -   `"HFI"` stands for healthy food index. A higher `"HFI"` suggests healthier diet. `"HFI"` ranges from 0 to 6. You can see that there are *HFI_0*, *HFI_1*...*HFI_6* in the figure and that is because `"HFI"` is used as a factor exposure variable in step 2 and is one-hot-encoded (`allowcategorical=F`) to the same number of binary variables as its number of levels. For example, *HFI_6* is a binary variable where individuals with `"HFI"` as 6 (most healthy diet people) will be labeled as 1 and the rest of individuals will be labelled as 0. *HFI_0* is a binary variable where individuals with `"HFI"` as 0 (most unhealthy diet people) will be labeled as 1 and the rest of individuals will be labelled as 0. *HFI_1*...*HFI_5* has limited use since it only separates the group of people with certain `"HFI"` value from to the rest, which is a mixture of people with healthier and less healthier diet.
     -   `"BSDS"` stands for Baltic Sea Diet Score ranging. A higher `"BSDS"` suggests healthier diet. `"BSDS"` is used as a numeric variable ranging from 2 to 25 in the correlation.
-    -   *BMI_cat_obese*, *BMI_cat_overweight*, *BMI_cat_underweight* are the odds ratio generated from the multinomial regression. Since `"BMI_cat"` is a categorical outcome and multinomial regression is performed in step 2 (`multinomial=T`), normal weight is uses as a reference and odds ratio of obese, overweight and underweight is produced. (Note that the first level of the factor variable is set as the default reference, in this case it is *normal*).
+    -   *BMI_cat_obese*, *BMI_cat_overweight*, *BMI_cat_underweight* are the odds ratio generated from the multinomial regression. Since `"BMI_cat"` is a categorical outcome and multinomial regression is performed in step 3 (`multinomial=T`), normal weight is uses as a reference and odds ratio of obese, overweight and underweight is produced. (Note that the first level of the factor variable is set as the default reference, in this case it is *normal*).
 -   Adjusting for `"Age"`, `"Gender"`, `"Smoking"`, `"Education"` and `"FastingGlucose"`, the first module (on x-axis) correlates positively with generally healthy food (e.g. `"fruits"`, `"vegatables"`) and food index (e.g. `"BSDS"`) and negatively with unhealthy food (e.g. `"Hamburger"`, `"pizza"`). It also reversely associated with `"T2D"` and `"BMI"`. From the result from `"BMI_cat"`, this components also reversely associated with being obese.
 -   Adjusting for `"Age"`, `"Gender"`, `"Smoking"`, `"Education"` and `"FastingGlucose"`, the second module (on y-axis) associated positively with generally healthy food (e.g. `"fruits"`, `"vegatables"`) and food index (e.g. `"BSDS"`) and negatively with unhealthy food (e.g. `"Hamburger"`, `"pizza"`). However, the module correlates also positively with `"T2D"`,`"BMI"`, *obese*, *overweight* and negatively associated with *underweight*.
 -   Based on what we summarized above, the two modules may be associated with a overall healthy eating pattern. And in such pattern, the first module is associated more with the beneficial effect on health and the second module represents the adverse health effect that may be caused by this pattern.
 
-## Step 4: Mediation analysis and visualization
+## Step 5: Mediation analysis and visualization
 
 There are many things that you could explore further in the following mediation analysis. To narrow down our focus and clearly show our examples, we select `"BSDS"` (Baltic Sea Diet Score) and `"Hamburger"` as our exposures, `"BMI"` and `"T2D"` as outcome to enter our next step.
 
@@ -787,7 +789,7 @@ By observing this figure, we could see the direction and magnitude of adjusted p
 :::
 
 ::: callout-note
-If you want, you could specify `which_show = c("PM", "APM", "IE","TE")` in the `mediation_troplot()` to show all the estimates (IE for indirect effect and TE for total effect). However, it is not recommended, since the plot will get even messier if you put estimates and proportion mediated on the same plot.
+If you want, you could specify `which_show = c("PM", "APM", "IE","TE")` in the `mediation_triplot()` to show all the estimates (IE for indirect effect and TE for total effect). However, it is not recommended, since the plot will get even messier if you put estimates and proportion mediated on the same plot.
 
 If you go to [Tutorial(simple)](simple_code.qmd){target="_blank"}, you can view the plot when showing `"IE"` and `"TE"`.
 :::
@@ -805,9 +807,9 @@ Triplot_object4$final_plot
 
 ```
 
-Base on the barplot and the triplot with mediation, we have observed significant proportion mediated for BSDS-module 1/2-BMI mediations. Further exploration on indirect, direct and total effect of the mediation analysis could be explored by playing around the `which_show` argument in the `mediation_troplot()` function. We will not go into details here.
+Base on the barplot and the triplot with mediation, we have observed significant proportion mediated for BSDS-module 1/2-BMI mediations. Further exploration on indirect, direct and total effect of the mediation analysis could be explored by playing around the `which_show` argument in the `mediation_triplot()` function. We will not go into details here.
 
-## Step 5: Compare correlations, associations and mediations
+## Comparative Visualization
 
 Users can check the heatmaps of correlations, risk estimations and mediation results from the TPObject through the `checkTPO_ggplot()` function in TriplotGUI.
 
@@ -887,7 +889,7 @@ checkTPObject4$corr_risk_med_coefficients
 -   Note that in the plot of `checkTPbject4$med_coefficients`, only the selected exposures, mediators and outcomes that we use to do mediation on will show up. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure_outcome pair, 4 result are shown: *IE* (indirect effect), *TE* (total effect), *PM*(Proportion Mediated) and *APM*(Adjusted Proportion Mediated). Please see [manual](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2){target="_blank"} section for more information. The "CF" before the names of exposures-outcome pairs means that this mediation is using the Counterfactual method.
 :::
 
-## Step 6: Download data
+## Data download
 
 We can save all your output, including data, results and visualization output through the `save()` function as an rda file.
 
@@ -899,7 +901,7 @@ We can save all your output, including data, results and visualization output th
 #| classes: styled-output
 
 save(exposure2,Omics2,outcome2,covariates2,auxilariy2,
-     reduced_Omics2,Correlations_object,Risks_objects,
+     reduced_Omics2,Correlations_object,Risks_object,
      mediation_object3,mediation_plot_object3,
      TPObject1,TPObject2,TPObject3,TPObject4,
      checkTPObject4,

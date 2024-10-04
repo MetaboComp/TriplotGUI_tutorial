@@ -59,19 +59,21 @@ knitr::knit_hooks$set(
 )
 ```
 
-Before starting,please make sure you have installed the TriplotGUI package following [Setup](installation.qmd){target="_blank" style="color:blue"}.
+The code at this page can be downloaded [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Tutorial_code/CAMP_2_applying_TriplotGUI_code.R){target="_blank"}
 
-The code of at this page can be downloaded [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Tutorial_code/CAMP_2_applying_TriplotGUI_code.R){target="_blank"}
+Before starting, please ensure you have installed the TriplotGUI package following the [Setup](installation.qmd){target="_blank" style="color:blue"} instructions.
+
+
 
 # Data description
 
-The data used in this tutorial section can be downloaded [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/data/CAMP_2.rda){target="_blank"} in rda format.
+The data used in this tutorial can be downloaded  [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/data/CAMP_2.rda){target="_blank"} in rda format.
 
-The Data used for this example of code is ***CAMP_2*** modified from the **CAMP** data provided by the [*triplot*](https://gitlab.com/CarlBrunius/triplot/-/blob/master/vignettes/Triplot_Tutorial.md?ref_type=heads){target="_blank"} package (Schillemans et al. 2019). **CAMP** was simulated from the authentic data used in a cross-sectional study of carbonhydrate alternatives and metabolic phenotypes in Chinese young adults (Liu et al. 2018). The simulated data ***CAMP_2*** is a list that contains three data frames:
+This example utilizes ***CAMP_2***, which is a modified version of the **CAMP** data provided by the [*Triplot*](https://gitlab.com/CarlBrunius/triplot/-/blob/master/vignettes/Triplot_Tutorial.md?ref_type=heads){target="_blank"} package (Schillemans et al. 2019). The **CAMP** dataset was simulated from authentic data collected in a cross-sectional study of carbohydrate alternatives and metabolic phenotypes among young adults in China (Liu et al. 2018). The simulated ***CAMP_2*** data consists of three data frames:
 
--   Clinical measurements (ClinData, 14 variables): `"AGE"`, `"SEX"`, `"BMI"`, `"triglycerides"`, `"total_cholesterol"` `"HDL"`(high-density lipoprotein cholesterol), `"LDL"`(low-density lipoprotein cholesterol),, `"GGT"`(gamma-glutamyltransferase), `"ALT"`(alanine aminotransferase), `"AST"`(aspartate aminotransferase), `"creatinine"`, `"Urea_nitrogen"`, `"Uric_acid"`, `"Fasting_glucose"`.
--   Plasma metabolites predictive of BMI (MetaboliteData, 20 variables)
--   Dietary intake as measured by food frequency questionnaires (FoodData, 11 variables): `"Refined_grains"`, `"Coarse_grains"`, `"Red_meat"`, `"Poutry"`, `"Seafood"`, `"Egg"`, `"Animal_organs"`, `"Vegetables"`, `"Fruits"`, `"Potatos"`, `"Legumes"`.
+-   Clinical measurements (ClinData): Contains 14 variables, including `"AGE"`, `"SEX"`, `"BMI"`, `"triglycerides"`, `"total_cholesterol"` `"HDL"`(high-density lipoprotein cholesterol), `"LDL"`(low-density lipoprotein cholesterol),, `"GGT"`(gamma-glutamyltransferase), `"ALT"`(alanine aminotransferase), `"AST"`(aspartate aminotransferase), `"creatinine"`, `"Urea_nitrogen"`, `"Uric_acid"`, `"Fasting_glucose"`.
+-   Plasma metabolites predictive of BMI (MetaboliteData): Comprises 20 variables
+-   Dietary intake as measured by food frequency questionnaires (FoodData): Includes 11 variables: `"Refined_grains"`, `"Coarse_grains"`, `"Red_meat"`, `"Poutry"`, `"Seafood"`, `"Egg"`, `"Animal_organs"`, `"Vegetables"`, `"Fruits"`, `"Potatos"`, `"Legumes"`.
 
 The data frames are row-wise matched by observations and consist of 300 synthetic observations.
 
@@ -83,11 +85,11 @@ Schillemans T, Shi L, Liu X, Åkesson A, Landberg R, Brunius C. Visualization an
 
 # Research question
 
-We want to assess the relationship between diet, metabolic profiles and risk factors of metabolic diseases (i.e. BMI, total cholesterol, triglyceride, HDL, LDL). We assume that metabolites serves as mediators, mediating the effect of dietary exposures on the risk factors.
+We aim to assess the relationship between diet, metabolic profiles, and risk factors for metabolic diseases, including BMI, total cholesterol, triglycerides, HDL, and LDL. In this context, we assume that metabolites act as mediators, facilitating the effect of dietary exposures on these risk factors.
 
 # Data exploration
 
-***CAMP_2*** is loaded in the R environment up on running `library(TriplotGUI)`. We will do some data exploration first to see how the data looks like.
+***CAMP_2*** is loaded in the R environment upon running `library(TriplotGUI)`. Let's begin with some data exploration to understand the structure and contents of the dataset:
 
 ```{r noshowcode_runcode_noshowoutput_1}
 #| eval: true
@@ -127,7 +129,7 @@ colnames(CAMP_2$FoodData)
 
 ## Check variables' class
 
-We then transform the data to dataframe format and then use TriplotGUI's `checkdata()` function in to examine the classes of variables.
+We then transform the data to dataframe format and use TriplotGUI's `checkdata()` function to examine the classes of variables.
 
 ```{r showcode_runcode_noshowoutput_1}
 #| eval: true
@@ -155,9 +157,8 @@ FoodData_check$class_summary_statistics
 
 ## Check sanities for variables
 
-Whether each variable contains missing (NA) or abnormal values (e.g. NAN, negative values, indefinite values, blank values) can also be checked.
+To check for missing (NA) or abnormal values (e.g., NaN, negative values, infinite values, blank values) in each variable, you can use the `checkdata()` function. This function generates a summary table for each data frame, showing the number of observations containing NA, NaN, zero, negative, infinite (Inf), and blank values, along with their percentages.
 
-The previous `checkdata()` function can also generate a table to summarize how many observations contain NA, NAN, zero, negative, indefinite(inf) and blank values(" ") and the percentages, for each variable in each data frame.
 
 ```{r showcode_runcode_noshowoutput_1_1}
 #| eval: true
@@ -178,12 +179,12 @@ kable(FoodData_check$everycolumn)
 ```
 
 ::: callout-note
-You shall only continue when the class of variables are correct and the missing or abnormal values in the variable are properly handled.
+You shall only continue to use the data when the class of variables are correct and the missing or abnormal values in the variable are properly handled.
 :::
 
 ## Build data for analysis
 
-We treat food data as our exposures and BMI, triglycerides, total_cholesterol, HDL and LDL as outcomes. We want to explore their relationships through the metabolomics data, using metabolites as assumed mediators. Sex and age are used as potential confounders for exposure-mediator and mediator-outcome association.
+We treat food variables as our exposures and BMI, triglycerides, total_cholesterol, HDL and LDL as outcomes. We want to explore their relationships through the metabolomics data, using metabolites as assumed mediators. Sex and age are used as potential confounders for exposure-mediator and mediator-outcome association.
 
 ```{r showcode_runcode_showoutput_5}
 #| eval: true
@@ -201,9 +202,9 @@ covariates1 <- ClinData[, c("SEX" , "AGE")]
 
 We will use the most simple settings in this example. Please go to [Tutorial(complex)](complex_code.qmd){target="_blank"}, if you want to try more advanced settings.
 
-## Step 1: Data reduction of omics data {#simple_link}
+## Step 1: PCA/WGCNA plots {#simple_link}
 
-Using `TriplotGUI` package, first we perform dimension reduction, i.e. principal component analysis (PCA) on metabolomics data.
+Using `TriplotGUI` package, first we perform dimension reduction, i.e. principal component analysis (PCA) on metabolomics variables.
 
 ```{r showcode_runcode_noshowoutput_2}
 #| eval: true
@@ -217,7 +218,7 @@ reduced_Omics1 <- PCAorWGCNA_plots(dataframe = Omics1,
 
 ```
 
-You can see scree plot, score plot, loading plot and biplot at this stage.
+You can view scree plot, score plot, loading plot and biplot at this stage.
 
 ```{r showcode_runcode_showoutput_6}
 #| eval: true
@@ -232,7 +233,7 @@ reduced_Omics1$loading_plot
 reduced_Omics1$scoreloading_plot
 ```
 
-We then build a TPObject based on the data reduction result, which will be used for saving information and passing them through steps in TriplotGUI.
+We then build a TPObject based on the data reduction results. This object will be used to save information and facilitate the transfer of data through the various steps in TriplotGUI.
 
 ```{r showcode_runcode_showoutput_7}
 #| eval: true
@@ -248,11 +249,11 @@ TPObject1 <- makeTPO(scores = scores,
                      variance = variance)
 ```
 
-## Step 2: Exposure correlations & Outcome associations
+## Step 2-3: Exposure correlations & Outcome associations
 
-The correlations between principal components (PCs) and food items were calculated using Pearson correlations, adjusting for confounders. The associations between PC scores and risk markers were investigated using linear regression (since all food variables are numeric).
+The correlations between principal components (PCs) and food items are calculated using Pearson correlations, adjusting for confounders. We investigate associations between PC scores and risk markers using linear regression, as all food variables are numeric.
 
-The PC scores are saved in the TPObject and the TPObject can be directly used to calculate the correlation coefficients and p values with exposures(food variables) in the `makeCorr()` function, adjusting for confounders.
+The PC scores are saved in the TPObject, which can be directly used in the `makeCorr()` function to calculate correlation coefficients and p-values with exposures (food variables), while adjusting for confounders.
 
 ```{r showcode_runcode_noshowoutput_3}
 #| eval: true
@@ -267,7 +268,8 @@ Correlations_object <- makeCorr(TPObject = TPObject1,
 
 ```
 
-The result of correlations are then added into the TPObject.
+The correlation results are then added to the TPObject.
+
 
 ```{r showcode_runcode_showoutput_8}
 #| eval: true
@@ -281,7 +283,8 @@ TPObject2 <- addCorr(TPObject = TPObject1,
                      Corr_p = Correlations_object$cor_pvalue)
 ```
 
-Similarly, the risk estimates (beta coefficients from linear regression) and p values can be calculated from the PC scores saved in the TPObject and the outcome variables in the `coefficient_get()` function, adjusting for confounders.
+Similarly, we calculate risk estimates (beta coefficients from linear regression) and p-values using the PC scores saved in the TPObject and the outcome variables. This is done using the `coefficient_get()` function, which also adjusts for confounders.
+
 
 ```{r showcode_runcode_noshowoutput_4}
 #| eval: true
@@ -295,7 +298,7 @@ Risks_object <- coefficient_get(TPObject = TPObject2,
 
 ```
 
-The result of risk estimates are then added into the TPObject.
+The risk estimate results are then added to the TPObject.
 
 ```{r showcode_runcode_showoutput_9}
 #| eval: true
@@ -310,9 +313,9 @@ TPObject3 <- addRisk(TPObject = TPObject2,
 
 ```
 
-## Step 3: Visualization of Triplot
+## Step 4: Visualization of Triplot
 
-Then we generate Triplot. Note that Triplot can be generated from any TPObject.
+Then we generate the Triplot. It's important to note that a Triplot can be generated from any TPObject.
 
 ```{r showcode_runcode_noshowoutput_5}
 #| eval: true
@@ -326,7 +329,7 @@ Triplot_object3 <- TriplotGUI(TPObject3,
 
 ```
 
-Plotting the triplot
+Plot the triplot
 
 ```{r showcode_runcode_showoutput_10}
 #| eval: true
@@ -339,13 +342,22 @@ Triplot_object3$triplot
 
 ```
 
-In the triplot, the black arrows are loadings representing Omics variables, which form patterns in different components (axes). Blue circle points represents exposure correlations with the components and the red square points represents outcome associations with the components.
+In the triplot, black arrows represent loadings of Omics variables, forming patterns in different components (axes). Blue circle points show exposure correlations with the components, while red square points indicate outcome associations with the components.
 
-How do we interpret the figure? We use principal component 1 & 2 (PC1 & PC2), the exposures `"Refined grains"`, `"Red meat"` and the outcome `"BMI"` for the example of interpretation: PC1 positively associated with BMI and also correlated with a high intake of red meat and refined grains, adjusting for age and sex. This implies that the metabolite features that dominate PC1 are likely to provide useful information for a potential mechanism of how red meat and refrained grains intake may affect BMI. PC2, on the other hand, has a smaller association with BMI and a weak reverse correlation with red meat and refined grains. The metabolite features that have high contribution to PC2 may support the beneficial effect of red meat and refrain intake, although such effect may be marginal.
 
-## Step 4: Mediation analysis and visualization
+For interpretation, let’s focus on Principal Component 1 (PC1) and Principal Component 2 (PC2), using the exposures `"Refined grains"`, `"Red meat"`, and the outcome `"BMI"` as examples:
 
-Mediation analysis is then performed using the conventional "product" method on our selected exposures (i.e. `"Refined grains"`, `"Red meat"`), mediators (i.e. PC1 and PC2) and the selected outcome (i.e. `"BMI"`) of interest, adjusting for age and sex for both exposure-mediator and mediator-outcome relationship.
+
+PC1: This component shows a positive association with BMI and is correlated with high intakes of red meat and refined grains, even after adjusting for age and sex. This suggests that the metabolite features dominating PC1 may provide valuable insights into how the intake of red meat and refined grains could influence BMI.
+
+
+PC2: In contrast, PC2 exhibits a smaller association with BMI and a weak inverse correlation with red meat and refined grains. The metabolite features contributing significantly to PC2 may indicate a marginal beneficial effect of these dietary components, although this effect appears to be limited. This may also suggest that the features dominating PC2 may reflect metabolite patterns influenced by food, but not to a large degree associations with metabolic regulation in relation to health.
+
+This interpretation highlights how different dietary exposures relate to metabolic outcomes, offering insights into potential mechanisms at play.
+
+## Step 5: Triplot with mediation
+
+Mediation analysis will be performed using the conventional “product” method on our selected exposures (`"Refined grains"`, `"Red meat"`), mediators (PC1 and PC2), and the outcome of interest (`"BMI"`), adjusting for age and sex in both the exposure-mediator and mediator-outcome relationships. 
 
 ```{r showcode_runcode_noshowoutput_6}
 #| eval: true
@@ -364,7 +376,7 @@ mediation_object3 <-
 
 ```
 
-Look at the barplot to have a more direct view on direct, indirect and total effects for each combination of PC, exposure and outcome.
+Examine the barplot for a clearer view of the direct, indirect, and total effects for each combination of PC, exposure, and outcome.
 
 ```{r showcode_runcode_noshowoutput_7}
 #| eval: true
@@ -391,13 +403,14 @@ mediation_plot_object3
 ```
 
 ::: callout-note
-The barplot showed direct, indirect and total effect for each exposure-mediator-outcome combination. It is a convenient tool to check the direction and magnitude of mediation estimates.
+The barplot displays direct, indirect, and total effects for each exposure-mediator-outcome combination, providing a convenient tool to assess the direction and magnitude of mediation estimates.
 
--   Red color represents significant positive effect (p\<0.05); Blue color represents significant negative effect (p\<0.05). Grey represents insignificant effect.
--   One star for p\<0.05; Two stars for p\<0.01; Three stars for p\<0.001.
+-  Color coding indicates significance and direction: red represents significant positive effects (p<0.05), blue represents significant negative effects (p<0.05), and grey represents insignificant effects.
+-  Significance levels are denoted by stars: one star for p<0.05, two stars for p<0.01, and three stars for p<0.001.
+
 :::
 
-Add the mediation result into the TPObject.
+The mediation results are then added to the TPObject.
 
 ```{r showcode_runcode_showoutput_12}
 #| eval: true
@@ -426,7 +439,7 @@ Triplot_object4 <- mediation_triplot(TPObject4,
 
 ```
 
-Only showing the mediation estimates (indirect and total effect).
+Show the mediation estimates only (indirect and total effect).
 
 ```{r showcode_runcode_showoutput_13}
 #| eval: true
@@ -440,10 +453,10 @@ Triplot_object4$mediation_plot
 ```
 
 ::: callout-note
-The indirect effect is presented as darkgreen triangle points and the total effect is presented as circles. While indirect effect can only be presented with a mediator(e.g. PC1, PC2), total effect is always there and the value remains the same for specific exposure-outcome pairs, regardless of which mediation analysis we want to present in the figure.
+In the triplot, indirect effects, which are specific to each mediator (such as PC1 or PC2), are depicted as dark green triangle points. Total effects, on the other hand, are shown as circles. It's important to note that while indirect effects are tied to particular mediators, total effects remain constant for specific exposure-outcome pairs. 
 :::
 
-Plotting the triplot with mediation
+Plot the triplot with mediation.
 
 ```{r showcode_runcode_showoutput_14}
 #| eval: true
@@ -456,11 +469,11 @@ Triplot_object4$final_plot
 
 ```
 
-Base on the barplot and the triplot with mediaiton, we observed a significant mediation effect through PC1 for red_meat-BMI and refined_grain-BMI association. This further implies that the metabolite features that contributes to PC1 are likely to mediate the pathway from red meat and refined grain intake to BMI change.
+Based on the barplot and the triplot with mediation, we observed significant mediation effects through PC1 for the red_meat-BMI and refined_grain-BMI associations. This finding suggests that the metabolite features contributing to PC1 are likely mediating the pathway from red meat and refined grain intake to BMI changes. These results provide insight into potential metabolic mechanisms linking dietary patterns to body mass index.
 
-## Step 5: Compare correlations, associations and mediations
+## Comparative Visualization
 
-Users can check the heatmaps of correlations, risk estimations and mediation results from the TPObject through the `checkTPO_ggplot()` function in TriplotGUI.
+Users can easily visualize the correlations, risk estimations, and mediation results stored in the TPObject using the `checkTPO_ggplot()` function provided by TriplotGUI. This function generates heatmaps for each type of analysis, offering a comprehensive and intuitive way to examine the relationships between variables. Note that you could put any TPObjects generate along the steps for heatmap visualizations.
 
 ```{r showcode_runcode_noshowoutput_9}
 #| eval: true
@@ -473,7 +486,7 @@ checkTPObject4 <- checkTPO_ggplot(TPObject4)
 
 ```
 
-Correlation coefficients and p values between PCs and exposures:
+Show heatmap for correlation coefficients and p values between PCs and exposures:
 
 ```{r showcode_runcode_showoutput_15A}
 #| eval: true
@@ -485,7 +498,7 @@ Correlation coefficients and p values between PCs and exposures:
 checkTPObject4$corr_coefficients
 ```
 
-Risk estimates (beta coefficients) and p values between PCs and outcomes:
+Show heatmap for risk estimates (beta coefficients) and p values between PCs and outcomes:
 
 ```{r showcode_runcode_showoutput_15B}
 #| eval: true
@@ -496,7 +509,7 @@ Risk estimates (beta coefficients) and p values between PCs and outcomes:
 checkTPObject4$risk_coefficients
 ```
 
-Mediation estimates and p values for indirect effect(IE), and total effect(TE), proportion mediated (PM) and adjusted proportion mediated (APM): See [Manual](workflow.qmd){target="_blank"} section for more details:
+Show heatmap for mediation estimates and p values for indirect effect(IE), and total effect(TE), proportion mediated (PM) and adjusted proportion mediated (APM): See [Manual](workflow.qmd){target="_blank"} section for more details:
 
 ```{r showcode_runcode_showoutput_15C}
 #| eval: true
@@ -510,13 +523,13 @@ checkTPObject4$med_coefficients
 ```
 
 ::: callout-note
--   One star for p\<0.05; Two stars for p\<0.01; Three stars for p\<0.001.
--   Note that in the plot of `checkTPbject4$med_coefficients`, only the selected exposures, mediators and outcomes that we use to do mediation on will show up. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure_outcome pair, 4 result are shown: *IE* (indirect effect), *TE* (total effect), *PM*(Proportion Mediated) and *APM*(Adjusted Proportion Mediated). Please see [Details section](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2){target="_blank"} for more information. The "BK" before the names of exposures-outcome pairs means that this mediation is using the conventional Baron-Kenny "product" method.
+-   Significance is indicated as follows. One star for p\<0.05; Two stars for p\<0.01; Three stars for p\<0.001.
+-   Note that in the heatmap from `checkTPbject4$med_coefficients`, only the selected exposures, mediators and outcomes that we use to do mediation on will show up. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure-outcome pair, 4 result are shown: *IE* (indirect effect), *TE* (total effect), *PM*(Proportion Mediated) and *APM*(Adjusted Proportion Mediated). Please see [Details section](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2){target="_blank"} for more information. The "BK" before the names of exposures-outcome pairs means that this mediation is using the Coventional Baron-Kenny "product" method.
 :::
 
-## Step 6: Download data
+## Data Download
 
-We can save all your output, including data, results and visualization output through the `save()` function as an rda file.
+To save all your output, including data, results, and visualization output as an .rda file, you can use the `save()` function in R.
 
 ```{r showcode_noruncode_noshowoutput_1}
 #| eval: false
@@ -526,7 +539,7 @@ We can save all your output, including data, results and visualization output th
 #| classes: styled-output
 
 save(exposure1,Omics1,outcome1,covariates1,
-     reduced_Omics1,Correlations_object,Risks_objects,
+     reduced_Omics1,Correlations_object,Risks_object,
      mediation_object3,mediation_plot_object3,
      TPObject1,TPObject2,TPObject3,TPObject4,
      checkTPObject4,

@@ -42,7 +42,7 @@ A great person indeed
 
 <strong> Title:</strong> PhD candidate
 
-<strong> Affiliation:</strong> Food and nutrition science division, Department of Life science, Chalmers University of Technology
+<strong> Affiliation:</strong> Food and nutrition science division, Department of Life sciences, Chalmers University of Technology
 
 <strong> Email: </strong> <a href="mailto:yingxiao@chalmers.se">yingxiao\@chalmers.se </a>
 
@@ -62,7 +62,7 @@ Knivsta inhabitor
 
 <strong> Title:</strong> Associate professor
 
-<strong> Affiliation:</strong> Food and nutrition science division, Department of Life science, Chalmers University of Technology
+<strong> Affiliation:</strong> Food and nutrition science division, Department of Life sciences, Chalmers University of Technology
 
 <strong> Email: </strong> <a href="mailto:carl.brunius@chalmers.se">carl.brunius\@chalmers.se </a>
 
@@ -82,7 +82,7 @@ Hair length changes all the time
 
 <strong> Title:</strong> Research engineer
 
-<strong> Affiliation:</strong> Chalmers Mass Spectrometry Infrastructure, Department of Life science, Chalmers university of Technology
+<strong> Affiliation:</strong> Chalmers Mass Spectrometry Infrastructure, Department of Life sciences, Chalmers university of Technology
 
 <strong> Email: </strong> <a href="mailto:anton.ribbenstedt@chalmers.se">anton.ribbenstedt\@chalmers.se </a> <br> <br> <br> <br>
 

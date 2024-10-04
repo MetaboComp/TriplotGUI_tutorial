@@ -283,7 +283,7 @@ In step 4, you can also see the barplots showed direct, indirect and total effec
 
 ![](img/complex_4_6.png)
 
-## Step 5: Compare correlations, associations and mediations
+## Comparative Visualization
 
 Users can then check the heatmaps of correlations, risk estimations and mediation results at step 5. By removing other PCs, exposures or outcomes in the "Visualization settings", users may only show correlation, risk estimation and mediation results of their interest.
 
@@ -291,7 +291,7 @@ Users can then check the heatmaps of correlations, risk estimations and mediatio
 
 ![](img/complex_5_2.png)
 
-## Step 6: Download data
+## Data Download
 
 Relevant data, intermediate results, can then be viewed and downloaded at step 6.
 

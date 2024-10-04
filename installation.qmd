@@ -34,11 +34,11 @@ format:
 geometry: margin=lin  
 ---
 
-The TriplotGUI tool can be accessible online at [here](https://yingxiao.shinyapps.io/triplotgui/){target="_blank"}. If you want to use TriplotGUI as a stand-alone application (using it only on a local computer), please follow the procedure below.
+The TriplotGUI tool can be accessible online at [here](https://yingxiao.shinyapps.io/triplotgui/){target="_blank"}. If you want to use TriplotGUI as a stand-alone application (using it only on a local computer), please follow the instruction below.
 
 # Install packages
 
-Please run the following code to install the packages needed. This needs to be run in your R console.
+To install and use TriplotGUI as a stand-alone application on your local computer, start by opening your R console or RStudio. Then, install the required packages by running the following code:
 
 ```{r }
 #| eval: false
@@ -51,21 +51,20 @@ install.packages("remotes")
 remotes::install_gitlab("YingxiaoYan/TriplotGUI")
 ```
 
-Things may pop up in your console and ask you for some choices, we provide some recommedations here. We are conservative in the choices to avoid any unforseen conflict and complications in packages.
+During installation, you may encounter prompts in your console. For package updates, it is recommended to choose "**3. None**". If asked whether you want to install from source packages that need compilation, select "**No**". When prompted about updating all, some, or none, it is advisable to choose "**n**".
+<!-- <ul> -->
 
-<ul>
+<!-- <li>Sometimes it pops up in your console that asks you *which package you would like to update*. We recommened you to chose **3.None**</li> -->
 
-<li>Sometimes it pops up in your console that asks you *which package you would like to update*. We recommened you to chose **3.None**</li>
+<!-- <li>Sometimes it pops up in your console that asks *Do you want to install from source packages which need compliation* . We recommended you to chose **no**</li> -->
 
-<li>Sometimes it pops up in your console that asks *Do you want to install from source packages which need compliation* . We recommended you to chose **no**</li>
+<!-- <li>Sometimes it pops up in your console that asks *Update all/some/none?\[a/s/n\]* . We recommended you to chose **n**</li> -->
 
-<li>Sometimes it pops up in your console that asks *Update all/some/none?\[a/s/n\]* . We recommended you to chose **n**</li>
-
-</ul>
+<!-- </ul> -->
 
 # Load libraries
 
-After installing the package, run the following code in your R console.
+Once the installation is complete, load the TriplotGUI library by executing:
 
 ```{r }
 #| eval: false
@@ -81,7 +80,8 @@ library(TriplotGUI)
 
 # Change the maximize size of data file allowed
 
-The default of our package has allows data of maximize size of 5 MB. To change that, you could specify the maximize file size you prefer using the code below. Run your code in the console. However, we do not recommend to use data with more than 5 MB in our tool. The bigger the dataset, the slower it will be. It might be beneficial for you to do some variable selection before putting the data in out tool.
+If you wish to change the maximum allowed data file size (the default is 5 MB), you can specify your preferred maximum size using the following code:
+
 
 ```{r }
 #| eval: false
@@ -95,9 +95,10 @@ options(shiny.maxRequestSize=filesize*1024^2)
 
 ```
 
+
 # Activate the user interface
 
-To activate the graphical user interface, run the following code in your R console.
+To activate the graphical user interface, run:
 
 ```{r }
 #| eval: false
@@ -110,3 +111,5 @@ To activate the graphical user interface, run the following code in your R conso
 TriplotGUI_shiny()
 
 ```
+
+This will launch the TriplotGUI application on your local machine. Keep in mind that larger datasets may slow down the tool's performance, so it is recommended to perform some variable selection before using very large datasets.

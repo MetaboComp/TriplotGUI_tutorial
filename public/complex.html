@@ -194,20 +194,20 @@ ul.task-list li input[type="checkbox"] {
   <li>
 <a href="#the-use-of-interface" id="toc-the-use-of-interface" class="nav-link" data-scroll-target="#the-use-of-interface">The use of interface</a>
   <ul>
-<li><a href="#step-1-data-reduction-of-omics-data-and-auxiliary-data" id="toc-step-1-data-reduction-of-omics-data-and-auxiliary-data" class="nav-link" data-scroll-target="#step-1-data-reduction-of-omics-data-and-auxiliary-data">Step 1: Data reduction of Omics data and auxiliary data</a></li>
-  <li><a href="#step-2-exposures-correlations-outcomes-associations" id="toc-step-2-exposures-correlations-outcomes-associations" class="nav-link" data-scroll-target="#step-2-exposures-correlations-outcomes-associations">Step 2: Exposures’ correlations &amp; Outcomes’ associations</a></li>
-  <li><a href="#step-3-visualization-of-triplot" id="toc-step-3-visualization-of-triplot" class="nav-link" data-scroll-target="#step-3-visualization-of-triplot">Step 3: Visualization of Triplot</a></li>
-  <li><a href="#step-4-mediation-analysis-and-visualization" id="toc-step-4-mediation-analysis-and-visualization" class="nav-link" data-scroll-target="#step-4-mediation-analysis-and-visualization">Step 4: Mediation analysis and visualization</a></li>
-  <li><a href="#step-5-compare-correlations-associations-and-mediations" id="toc-step-5-compare-correlations-associations-and-mediations" class="nav-link" data-scroll-target="#step-5-compare-correlations-associations-and-mediations">Step 5: Compare correlations, associations and mediations</a></li>
-  <li><a href="#step-6-download-data" id="toc-step-6-download-data" class="nav-link" data-scroll-target="#step-6-download-data">Step 6: Download data</a></li>
+<li><a href="#step-1-pcawgcna-plots" id="toc-step-1-pcawgcna-plots" class="nav-link" data-scroll-target="#step-1-pcawgcna-plots">Step 1: PCA/WGCNA plots</a></li>
+  <li><a href="#step-2-3-exposures-correlations-outcomes-associations" id="toc-step-2-3-exposures-correlations-outcomes-associations" class="nav-link" data-scroll-target="#step-2-3-exposures-correlations-outcomes-associations">Step 2-3: Exposures’ correlations &amp; Outcomes’ associations</a></li>
+  <li><a href="#step-4-visualization-of-triplot" id="toc-step-4-visualization-of-triplot" class="nav-link" data-scroll-target="#step-4-visualization-of-triplot">Step 4: Visualization of Triplot</a></li>
+  <li><a href="#step-5-triplot-with-mediation" id="toc-step-5-triplot-with-mediation" class="nav-link" data-scroll-target="#step-5-triplot-with-mediation">Step 5: Triplot with mediation</a></li>
+  <li><a href="#comparative-visualization" id="toc-comparative-visualization" class="nav-link" data-scroll-target="#comparative-visualization">Comparative Visualization</a></li>
+  <li><a href="#data-download" id="toc-data-download" class="nav-link" data-scroll-target="#data-download">Data download</a></li>
   </ul>
 </li>
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content"><p>Before starting, please make sure you can use the <a href="https://yingxiao.shinyapps.io/triplotgui/" target="_blank">online version of TriplotGUI</a> or can use TriplotGUI as a stand-alone application on your computer following <a href="./installation.html" target="_blank" style="color:blue">Setup</a>.</p>
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content"><p>Before you begin, ensure that you have access to either the <a href="https://yingxiao.shinyapps.io/triplotgui/" target="_blank">online version of TriplotGUI</a> or can use TriplotGUI as a stand-alone application on your computer following <a href="./installation.html" target="_blank" style="color:blue">Setup</a>.</p>
 <section id="data-description" class="level1"><h1>Data description</h1>
-<p>Each dataset used in this page of tutorial can be downloaded <a href="https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Example_data/Example2" target="_blank">here</a> as a dataframe in the rds/rda/csv/xlsx files:</p>
+<p>The datasets utilized in this tutorial can be downloaded <a href="https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Example_data/Example2" target="_blank">here</a> as data frames in the rds/rda/csv/xlsx files:</p>
 <ul>
 <li>Example2_exposure.rda</li>
 <li>Example2_Omics.rds</li>
@@ -215,61 +215,62 @@ ul.task-list li input[type="checkbox"] {
 <li>Example2_covariate.csv</li>
 <li>Example2_auxiliary.xlsx</li>
 </ul>
-<p>We have used different file types on purpose to show you that TriplotGUI can deal with different data type.</p>
-<p>The data used in this page of tutorial can be downloaded <a href="https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/data/HealthyNordicDiet_2.rda" target="_blank">here</a> in rda format.</p>
-<p>The Data used for this example originates from <strong><em>HealthyNordicDiet_2</em></strong>, modified from the <strong>HealthyNordicDiet</strong> data provided by the <a href="https://gitlab.com/CarlBrunius/triplot/-/blob/master/vignettes/Triplot_Tutorial.md?ref_type=heads" target="_blank"><em>triplot</em></a> package (Schillemans et al.&nbsp;2019). <strong>HealthyNordicDiet</strong> is a synthetic dataset that was simulated from the authentic data used in a case/control study nested within the Swedish prospective Västerbotten Intervention Programme cohort. The original study was set up to explore plasma metabolites that could objectively reflect healthy Nordic dietary patterns in a matched case-control study and to assess associations between such patterns and later development of type 2 diabetes. (Shi et al.&nbsp;2018). We have selected our exposures, Omics data, outcomes, covariates and auxiliary data based on the <strong><em>HealthyNordicDiet_2</em></strong> data following the code <a href="https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Tutorial_code/Data_cleaning_HealthyNordicDiet_2.R" target="_blank">here</a>. The brief description of these data is shown as below.</p>
+<p>To demonstrate TriplotGUI’s versatility in handling various data formats, we’ve intentionally used a range of file types in this tutorial.</p>
+<p>These datasets originate from <strong><em>HealthyNordicDiet_2</em></strong>, a synthetic dataset derived from the original <strong>HealthyNordicDiet</strong> data provided by the <a href="https://gitlab.com/CarlBrunius/triplot/-/blob/master/vignettes/Triplot_Tutorial.md?ref_type=heads" target="_blank"><em>Triplot</em></a> package (Schillemans et al., 2019). The <strong>HealthyNordicDiet</strong> dataset itself was simulated from a case-control study within the Swedish Västerbotten Intervention Programme cohort, exploring plasma metabolites reflecting healthy Nordic dietary patterns and their association with type 2 diabetes development (Shi et al.&nbsp;2018).</p>
+<p>Our selection of exposures, Omics data, outcomes, and covariates is based on the <strong><em>HealthyNordicDiet_2</em></strong> data, as detailed in the accompanying code <a href="https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Tutorial_code/Data_cleaning_HealthyNordicDiet_2.R" target="_blank">here</a>. Below is a brief description of each dataset:</p>
 <ul>
-<li>Example2_exposure.rda: 17 variables representing the dietary intake as measured by food frequency questionnaires (<code>"HFI"</code>(Healthy Food Index),<code>"BSDS"</code>(the Baltic Sea Diet Score), <code>"Wholegrains"</code>, <code>"Sausage"</code>, <code>"Pizza"</code>, <code>"Refined.bread"</code>, <code>"Fruits"</code>, <code>"Liquor"</code>, <code>"Wine"</code>, <code>"Hamburger"</code>, <code>"Poultry"</code>, <code>"Fish"</code>, <code>"Margarine"</code>, <code>"Cabbage"</code>, <code>"Carrot"</code>, <code>"low_fat_Dairy"</code>, <code>"Vegetables"</code>). HFI is a categorical factor variable with 7 levels (0-6). All the other variables are continuous/numeric.</li>
-<li>Example2_Omics.rds: 31 variables representing plasma metabolites predictive of BMI. All 31 variables are continuous/numeric.</li>
-<li>Example2_outcome.rds: 3 variables:
+<li>Example2_exposure.rda: Contains 17 variables representing the dietary intake as measured by food frequency questionnaires (<code>"HFI"</code>(Healthy Food Index),<code>"BSDS"</code>(the Baltic Sea Diet Score), <code>"Wholegrains"</code>, <code>"Sausage"</code>, <code>"Pizza"</code>, <code>"Refined.bread"</code>, <code>"Fruits"</code>, <code>"Liquor"</code>, <code>"Wine"</code>, <code>"Hamburger"</code>, <code>"Poultry"</code>, <code>"Fish"</code>, <code>"Margarine"</code>, <code>"Cabbage"</code>, <code>"Carrot"</code>, <code>"low_fat_Dairy"</code>, <code>"Vegetables"</code>). HFI is a categorical factor variable with 7 levels (0-6). All the other variables are continuous/numeric.</li>
+<li>Example2_Omics.rds: Comprises 31 variables representing plasma metabolites predictive of BMI. All 31 variables are continuous/numeric.</li>
+<li>Example2_outcome.rds: Includes 3 variables:
 <ul>
 <li>
-<code>"BMI"</code>: A continuous variable.</li>
+<code>"BMI"</code>: A continuous/numeric variable.</li>
 <li>
 <code>"BMI_cat"</code>: A categorical factor variable with 4 levels: normal, overweight, obese, underweight</li>
 <li>
 <code>"T2D"</code>: A binary factor variable, 1 for cases and 0 for controls.</li>
 </ul>
 </li>
-<li>Example2_covariate.csv: 5 variables that can be used as potential confounders:
+<li>Example2_covariate.csv: Contains 5 variables that can be used as potential confounders:
 <ul>
 <li>
-<code>"Gender"</code>: A factor variable with 2 levels: 1, 2.</li>
+<code>"Gender"</code>: A binary factor variable with 2 levels: 1, 2.</li>
 <li>
 <code>"Age"</code>: A continuous/numeric variable.</li>
 <li>
-<code>"Education"</code>: A factor variable with 4 levels: 1-4.</li>
+<code>"Education"</code>: A categorical factor variable with 4 levels: 1-4.</li>
 <li>
-<code>"PhysicalActivityIndex"</code>: A factor variable with 4 levels: 1-4.</li>
+<code>"PhysicalActivityIndex"</code>: A categorical factor variable with 4 levels: 1-4.</li>
 <li>
-<code>"Smoking"</code>: A factor variable with 5 levels: 1-5.</li>
+<code>"Smoking"</code>: A categorical factor variable with 5 levels: 1-5.</li>
 </ul>
 </li>
-<li>Example2_auxiliary.xlsx: 5 variables that can be used as potential confounders:
+<li>Example2_auxiliary.xlsx: Comprises 5 variables that can be used as potential confounders:
 <ul>
 <li>
-<code>"PairedInfo"</code>: A factor variable containing the pairing information of case-control matches of <code>"T2D"</code>, with 500 levels: 1-500</li>
+<code>"PairedInfo"</code>: A character variable containing the pairing information of case-control matches for <code>"T2D"</code>, with 500 levels: 1-500</li>
 <li>
 <code>"Energy"</code>: A continuous/numeric variable.</li>
 <li>
 <code>"FastingGlucose"</code>: A continuous/numeric variable.</li>
 <li>
-<code>"Education"</code>: A factor variable with 4 levels: 1-4.</li>
+<code>"Education"</code>: A categorical character variable with 4 levels: 1-4.</li>
 <li>
-<code>"PhysicalActivityIndex"</code>: A factor variable with 4 levels: 1-4.</li>
+<code>"PhysicalActivityIndex"</code>: A categorical character variable with 4 levels: 1-4.</li>
 </ul>
 </li>
 </ul>
-<p>All data are row-wise matched by observations and consist of 1000 synthetic observations.</p>
+<p>All datasets are row-wise matched by observation and consist of a total of 1000 synthetic observations.</p>
 <p><strong>Reference</strong></p>
 <p>Shi, L., Brunius, C., Johansson, I., Bergdahl, I. A., Lindahl, B., Hanhineva, K., &amp; Landberg, R. (2018). Plasma metabolites associated with healthy Nordic dietary indexes and risk of type 2 diabetes—a nested case-control study in a Swedish population. <em>The American Journal of Clinical Nutrition</em>, 108(3), 564-575. <a href="https://www.sciencedirect.com/science/article/pii/S0002916522029628?via%3Dihub" target="_blank">10.1093/ajcn/nqy145</a></p>
 <p>Schillemans T, Shi L, Liu X, Åkesson A, Landberg R, Brunius C. Visualization and Interpretation of Multivariate Associations with Disease Risk Markers and Disease Risk-The Triplot. <em>Metabolites</em>. 2019 Jul 6;9(7):133. <a href="https://www.mdpi.com/2218-1989/9/7/133" target="_blank">doi: 10.3390/metabo9070133</a></p>
 </section><section id="research-question" class="level1"><h1>Research question</h1>
 <p>We want to assess the relationship between diet, metabolic profiles and Type 2 diabetes and BMI. We assume that metabolites serves as mediators, mediating the effect of dietary exposures on Type 2 diabetes and BMI.</p>
 </section><section id="the-use-of-interface" class="level1"><h1>The use of interface</h1>
-<p>Open your interface. What we will show as an example in the interface here corresponds to using code to do the same thing in the <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/complex_code.html#step-2" target="_blank">Code example of using TriplotGUI</a> section in this page.</p>
-<section id="step-1-data-reduction-of-omics-data-and-auxiliary-data" class="level2"><h2 class="anchored" data-anchor-id="step-1-data-reduction-of-omics-data-and-auxiliary-data">Step 1: Data reduction of Omics data and auxiliary data</h2>
-<p>First upload the Omics data and auxiliary data in step 1 in the interface. Upon finish uploading the Omics data, a series buttons will also show up in case you need to to make some modification on the Omics or auxiliary data. Inspect the classes of variables briefly. You would see it looks okay for Omics data’s class but not auxiliary data. Some categorical variables should be in factor format rather than character. Therefore we change their classes.</p>
+<p>To demonstrate more functionality of the interface, we will provide an example on this page that corresponds to the code implementation outlined in the <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/complex_code.html#step-2" target="_blank">Code example of using TriplotGUI</a> section. This will allow you to see how the interface operates in practical terms.</p>
+<section id="step-1-pcawgcna-plots" class="level2"><h2 class="anchored" data-anchor-id="step-1-pcawgcna-plots">Step 1: PCA/WGCNA plots</h2>
+<p>To begin the analysis in TriplotGUI, first upload the Omics data (Example2_Omics.rds) and the auxiliary data (Example2_auxiliary.xlsx) using the interface in step 1. Once the Omics data is uploaded, a series of additional buttons will appear, allowing you to make modifications to either the Omics or auxiliary data if necessary.</p>
+<p>Next, inspect the classes of variables in both datasets. You will find that the classes for the Omics data look correct; however, there are issues with the auxiliary data. Specifically, some categorical variables are incorrectly classified as character type instead of factor. To resolve this, change the class of these variables to factor, focusing on <code>"PairedInfo"</code>, <code>"Education"</code>, and <code>"PhysicalActivityIndex"</code>.</p>
 <div class="columns">
 <div class="column" style="width: 40%">
 <div class="quarto-figure quarto-figure-center">
@@ -285,8 +286,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>Then change the “Data analysis settings” and “Visualization settings” as figure. In this example, we will use WGCNA method to obtain the principal components/modules and using auxiliary data to obtain more informative figures.</p>
-<p>We could then examine the scree plot, score plot, loadings plot and biplot at step 1.</p>
+<p>To proceed with the analysis in TriplotGUI, adjust the “Data analysis settings” and “Visualization settings” according to the provided figure. In this example, we’ll employ the WGCNA (Weighted Gene Co-expression Network Analysis) method to obtain principal components/modules, while utilizing auxiliary data to generate more informative visualizations.</p>
+<p>After configuring the settings, we can examine several informative plots at step 1.</p>
 <div class="columns">
 <div class="column" style="width: 45%">
 <p><a href="img/complex_1_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="img/complex_1_3.png" class="img-fluid"></a> <a href="img/complex_1_4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img/complex_1_4.png" class="img-fluid"></a> You can then play around the visualization panel on the right side and view all the plots (score, loadings, biplot, screeplot).</p>
@@ -299,8 +300,23 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-</section><section id="step-2-exposures-correlations-outcomes-associations" class="level2"><h2 class="anchored" data-anchor-id="step-2-exposures-correlations-outcomes-associations">Step 2: Exposures’ correlations &amp; Outcomes’ associations</h2>
-<p>Then upload exposures and covariate data in step 2A in the interface. By briefly inspecting variable classes, you could notice: - In the exposure data, <code>"HFI"</code>(Healthy Food Index) is a factor variable while <code>"BSDS"</code> (Baltic Sea Food Index) is a numeric variable. We may not need to change their classes at this point, but it is good to be aware of variables’ classes to get a better understanding what happens in the downstream steps. - A variable called <code>"X"</code> exists in the covariate data. This is because the covariate data is uploaded as a csv file and the observation number may automatically be generated as a new variable when the file is read in. Remove this variable since it is not an actual covariate.</p>
+<ul>
+<li>
+<strong>Scree Plot</strong>: Assess the variance explained by each cluster and the first principal component of each cluster.</li>
+<li>
+<strong>Score Plot</strong>: Visualize sample clustering and identify any outliers.</li>
+<li>
+<strong>Loadings Plot</strong>: Examine the contribution of each variable to the principal components.</li>
+<li>
+<strong>Biplot</strong>: Get a comprehensive view of how samples relate to each other alongside variable contributions.</li>
+</ul></section><section id="step-2-3-exposures-correlations-outcomes-associations" class="level2"><h2 class="anchored" data-anchor-id="step-2-3-exposures-correlations-outcomes-associations">Step 2-3: Exposures’ correlations &amp; Outcomes’ associations</h2>
+<p>After completing step 1, proceed to upload the exposures and covariate data in step 2 of the TriplotGUI interface. Upon briefly inspecting the variable classes, you’ll notice some important details:</p>
+<ul>
+<li><p>In the exposure data, <code>"HFI"</code> (Healthy Food Index) is classified as a factor variable, while <code>"BSDS"</code> (Baltic Sea Food Index) is a numeric variable. While you may not need to change their classes at this point, being aware of these classifications is crucial for understanding how they’ll be treated in subsequent analysis steps.</p></li>
+<li><p>In the covariate data, you’ll observe a variable called <code>"X"</code>. This variable is likely an artifact of uploading the data from a CSV file, where the observation numbers may have been automatically generated as a new variable during the file import process. Since <code>"X"</code> is not an actual covariate, it should be removed from the dataset to prevent it from influencing your analysis.</p></li>
+<li><p>In the covariate data, when you inspect the classes of variables you will find that some categorical variables are incorrectly classified as numeric type instead of factor. To resolve this, change the class of these variables to factor, focusing on <code>"Gender"</code>, <code>"Education"</code>, <code>"Smoking"</code> and <code>"PhysicalActivityIndex"</code>.</p></li>
+</ul>
+<p>Understanding these nuances in your data structure is essential for ensuring accurate analysis and interpretation of results. By addressing these points early in the process, you set the stage for a more robust and reliable analysis using TriplotGUI.</p>
 <div class="columns">
 <div class="column" style="width: 45%">
 <div class="quarto-figure quarto-figure-center">
@@ -316,14 +332,14 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>Change your “Data analysis settings” as the figure below.</p>
+<p>Change your “Data analysis settings” as shown in the figure below.</p>
 <div class="columns">
 <div class="column" style="width: 45%">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><a href="img/complex_2_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="img/complex_2_3.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
-<p>You could then briefly view the correlation coefficients in “Visualizations” by clicking “Refresh plot”.</p>
+<p>You can then briefly view the correlation coefficients in the “Visualizations” section by clicking <strong><em>Refresh plot</em></strong>.”</p>
 </div><div class="column" style="width: 5%">
 
 </div><div class="column" style="width: 45%">
@@ -345,14 +361,19 @@ Note
 <div class="callout-body-container callout-body">
 <ul>
 <li>
-<p>Select <em>One-hot-encoding</em> in <strong><em>Categorical variables</em></strong> performs one-hot-encoding to transform categorical exposures variables (i.e.&nbsp;<code>HFI</code>) with n&gt;2 classes to n binary variables and the correlation coefficients between modules and the binary variables are calculated.</p>
-<p>If <em>Use Original</em> is specified in <strong><em>Categorical variables</em></strong>, no transformation is made on the <code>"HFI"</code> variable. Linear models regressing modules on the <code>"HFI"</code> variable are used for correlation analysis. The correlation coefficients are calculated as the square root of the proportion of sum of squares for HFI in the total sum of squares.</p>
+<p>Select <em>One-hot-encoding</em> in <strong><em>Categorical variables</em></strong> transform categorical exposure variables (like <code>"HFI"</code>) with more than two classes into multiple binary variables. This process creates n binary variables for a categorical variable with n classes. The correlation coefficients between modules and these new binary variables are then calculated.</p>
+<p>If <em>Use Original</em> is selected for <strong><em>Categorical variables</em></strong>, no transformation is made on the categorical exposure variables. In this case, linear models regressing modules on the <code>"HFI"</code> variable are used for correlation analysis. The correlation coefficients are derived as the square root of the proportion of <code>"HFI"</code>’s sum of squares in the total sum of squares.</p>
 </li>
-<li><p>The approaches for managing <strong><em>Missing values</em></strong> are inherited from the <em>cor</em> package for continuous exposures. Please check <a href="https://rdrr.io/r/stats/cor.html" target="_blank"><em>cor</em></a> package for more information.</p></li>
+<li><p>For handling <strong><em>Missing values</em></strong>, TriplotGUI adopts the approaches from the <em>cor</em> package when dealing with continuous exposures. For more detailed information on these methods, refer to the documentation of the <a href="https://rdrr.io/r/stats/cor.html" target="_blank"><em>cor</em></a> package.</p></li>
 </ul>
 </div>
 </div>
-<p>Then in step 2B in the interface, upload outcome and covariate data. By briefly inspecting variable classes, you could notice: - In the outcome data, <code>"BMI"</code> is a numeric variable; <code>"BMI_cat"</code> and <code>"T2D"</code> are factor variables. - A variable called <code>"X"</code> exists in the covariate data. This is because the covariate data is uploaded as a csv file and the observation number may automatically be generated as a new variable when the file is read in. Remove this variable since it is not an actual covariate.</p>
+<p>In step 3 of the TriplotGUI interface, upload the outcome and covariate data. Upon inspecting the variable classes, you’ll notice:</p>
+<ul>
+<li><p>In the outcome data, <code>"BMI"</code> is classified as a numeric variable, while <code>"BMI_cat"</code> and <code>"T2D"</code> are factor variables.</p></li>
+<li><p>In the covariate data, you’ll observe a variable called <code>"X"</code>. This variable is likely an artifact of uploading the data from a CSV file, where the observation numbers may have been automatically generated as a new variable during the file import process. Since <code>"X"</code> is not an actual covariate, it should be removed from the dataset to prevent it from influencing your analysis.</p></li>
+<li><p>In the covariate data, when you inspect the classes of variables you will find that some categorical variables are incorrectly classified as numeric type instead of factor. To resolve this, change the class of these variables to factor, focusing on <code>"Gender"</code>, <code>"Education"</code>, <code>"Smoking"</code> and <code>"PhysicalActivityIndex"</code>.</p></li>
+</ul>
 <div class="columns">
 <div class="column" style="width: 45%">
 <div class="quarto-figure quarto-figure-center">
@@ -368,7 +389,7 @@ Note
 </div>
 </div>
 </div>
-<p>Change your “Data analysis settings” and “Visulization settings” as the figure below.</p>
+<p>Change your “Data analysis settings” and “Visulization settings” as shown in the figure below.</p>
 <div class="columns">
 <div class="column" style="width: 45%">
 <div class="quarto-figure quarto-figure-center">
@@ -378,7 +399,7 @@ Note
 </div><div class="column" style="width: 5%">
 
 </div><div class="column" style="width: 45%">
-<p>You could view the risk estimate in “Visualizations” by clicking “Refresh plot”.</p>
+<p>You can then briefly view the risk estimates in the “Visualizations” section by clicking <strong><em>Refresh plot</em></strong>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><a href="img/complex_2_8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="img/complex_2_8.png" class="img-fluid figure-img"></a></p>
 </figure>
@@ -395,43 +416,29 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Some clarification for using multinomial regression and pairing variables:</p>
+<p>When using TriplotGUI, the handling of categorical outcomes and pairing variables depends on your chosen settings:</p>
 <ul>
-<li>When a pairing variable is not provided:
+<li>Without a pairing variable:
 <ul>
-<li>Not performing multinomial regression means that one-hot-encoding will be performed to transform outcome’s categorical variables with n &gt; 2 classes to n binary variables. And logistic regression will be performed on the binary variables (including the binary variables generated from one-hot-encoding) and linear regression will be performed on continuous variables.</li>
-<li>Performing multinomial regression means that multinomial regression will be performed on outcome’s categorical outcome variable with n &gt; 2 classes, which gives n-1 estimates. And logistic regression will be performed on the binary variables (including the binary variables generated from one-hot-encoding) and linear regression will be performed on continuous variables.</li>
+<li><p>If not using multinomial regression, categorical outcomes with more than two classes are one-hot encoded into binary variables. Logistic regression is applied to binary outcomes (including those from one-hot encoding), while linear regression is used for continuous outcomes.</p></li>
+<li><p>If using multinomial regression, it’s applied directly to categorical outcomes with more than two classes, producing n-1 estimates. Logistic regression is used for binary outcomes, and linear regression for continuous ones.</p></li>
 </ul>
 </li>
 <li>When a pairing variable is provided:
 <ul>
-<li>Not performing multinomial regression means that one-hot-encoding will be performed on outcome’s categorical variables with n &gt; 2 classes. And then conditional logistic regression will be performed on the binary variables (including the binary variables generated from one-hot-encoding) and linear mixed model will be performed on continuous variables, using the pairing information.</li>
-<li>Performing multinomial regression means that the pairing information will be ignored and not used (since the outcomes can have more than 2 classes), multinomial regression will be performed on outcome’s categorical variable, which gives n-1 estimates. And logistic regression will be performed on the binary variables (including the binary variables generated from one-hot-encoding) and linear regression will be performed on continuous variables. THIS IS THE CASE IN OUR EXAMPLE.</li>
+<li><p>Without multinomial regression, categorical outcomes are one-hot encoded. Conditional logistic regression is then applied to binary outcomes (including those from one-hot encoding), and linear mixed models are used for continuous outcomes, incorporating the pairing information.</p></li>
+<li><p>With multinomial regression (as in our example), the pairing information is not used. Multinomial regression is applied to categorical outcomes, giving n-1 estimates. Logistic regression is used for binary outcomes, and linear regression for continuous ones.</p></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-</section><section id="step-3-visualization-of-triplot" class="level2"><h2 class="anchored" data-anchor-id="step-3-visualization-of-triplot">Step 3: Visualization of Triplot</h2>
-<p>In the step 3 in the interface, in the triplot, the black arrows are loadings representing Omics variables. Blue circle points represents exposure correlations with the modules and the red square points represents outcome associations with the modules. So what information can we get from this figure? Lets us list a few points:</p>
-<ul>
-<li>Having a brief look, the generally healthy food (e.g.&nbsp;<code>"Fruits"</code>, <code>"Vegetables"</code>) is on the first dimension of the figure and the generally unhealthy food (e.g.&nbsp;<code>"Hamburger"</code>, <code>"Sausage"</code>, <code>"Margarine"</code>) is on the third dimension of the figure. The numeric outcome <code>"BMI"</code>, binary outcome <code>"T2D"</code>, and one-hot-encoded categorical <code>"BMI_cat"</code> outcome is on the second and fourth dimension of the figure.</li>
-<li>Explanation on some variables in the plot:
-<ul>
-<li>
-<code>"HFI"</code> stands for healthy food index. A higher <code>"HFI"</code> suggests healthier diet. <code>"HFI"</code> ranges from 0 to 6. You can see that there are <em>HFI_0</em>, <em>HFI_1</em>…<em>HFI_6</em> in the figure and that is because <code>"HFI"</code> is used as a factor exposure variable in step 2 and is one-hot-encoded (<code>allowcategorical=F</code>) to the same number of binary variables as its number of levels. For example, <em>HFI_6</em> is a binary variable where individuals with <code>"HFI"</code> as 6 (most healthy diet people) will be labeled as 1 and the rest of individuals will be labelled as 0. <em>HFI_0</em> is a binary variable where individuals with <code>"HFI"</code> as 0 (most unhealthy diet people) will be labeled as 1 and the rest of individuals will be labelled as 0. <em>HFI_1</em>…<em>HFI_5</em> has limited use since it only separates the group of people with certain <code>"HFI"</code> value from to the rest, which is a mixture of people with healthier and less healthier diet.</li>
-<li>
-<code>"BSDS"</code> stands for Baltic Sea Diet Score ranging. A higher <code>"BSDS"</code> suggests healthier diet. <code>"BSDS"</code> is used as a numeric variable ranging from 2 to 25 in the correlation.</li>
-<li>
-<em>BMI_cat_obese</em>, <em>BMI_cat_overweight</em>, <em>BMI_cat_underweight</em> are the odds ratio generated from the multinomial regression. Since <code>"BMI_cat"</code> is a categorical outcome and multinomial regression is performed in step 2 in the interface in this example, normal weight is uses as a reference and odds ratio of obese, overweight and underweight is produced. (Note that the first level of the factor variable is set as the default reference, in this case it is <em>normal</em>).</li>
-</ul>
-</li>
-<li>Adjusting for <code>"Age"</code>, <code>"Gender"</code>, <code>"Smoking"</code>, <code>"Education"</code> and <code>"FastingGlucose"</code>, the first module (on x-axis) correlates positively with generally healthy food (e.g.&nbsp;<code>"fruits"</code>, <code>"vegatables"</code>) and food index (e.g.&nbsp;<code>"BSDS"</code>) and negatively with unhealthy food (e.g.&nbsp;<code>"Hamburger"</code>, <code>"pizza"</code>). It also reversely associated with <code>"T2D"</code> and <code>"BMI"</code>. From the result from <code>"BMI_cat"</code>, this components also reversely associated with being obese.</li>
-<li>Adjusting for <code>"Age"</code>, <code>"Gender"</code>, <code>"Smoking"</code>, <code>"Education"</code> and <code>"FastingGlucose"</code>, the second module (on y-axis) associated positively with generally healthy food (e.g.&nbsp;<code>"fruits"</code>, <code>"vegatables"</code>) and food index (e.g.&nbsp;<code>"BSDS"</code>) and negatively with unhealthy food (e.g.&nbsp;<code>"Hamburger"</code>, <code>"pizza"</code>). However, the module correlates also positively with <code>"T2D"</code>,<code>"BMI"</code>, <em>obese</em>, <em>overweight</em> and negatively associated with <em>underweight</em>.</li>
-<li>Based on what we summarized above, the two modules may be associated with a overall healthy eating pattern. And in this healthy eating pattern, the first module is associated more with the beneficial effect on health and the second module represents the adverse health effect.</li>
-</ul></section><section id="step-4-mediation-analysis-and-visualization" class="level2"><h2 class="anchored" data-anchor-id="step-4-mediation-analysis-and-visualization">Step 4: Mediation analysis and visualization</h2>
-<p>Then we come to step 4 in the interface. There are many things that you could explore further in the following mediation analysis. To narrow down our focus and clearly show our examples, we select <code>"BSDS"</code> (Baltic Sea Diet Score) and <code>"Hamburger"</code> as our exposures, <code>"BMI"</code> and <code>"T2D"</code> as outcome to enter our next step.</p>
-<p>This time, we perform the mediation analysis using the conterfactual/potential outcome method (the ´mediation´ package) on our exposures (i.e.&nbsp;<code>"BSDS"</code>, <code>"Hamburger"</code>), mediators (i.e.&nbsp;the first and second modules) and outcome (i.e.&nbsp;<code>"T2D"</code>, <code>"BMI"</code>) of interest, adjusting for <code>"Age"</code>, <code>"Gender"</code>, <code>"Smoking"</code>, <code>"Education"</code> and <code>"FastingGlucose"</code> for both exposure-mediator and mediator-outcome relationship.</p>
+</section><section id="step-4-visualization-of-triplot" class="level2"><h2 class="anchored" data-anchor-id="step-4-visualization-of-triplot">Step 4: Visualization of Triplot</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="img/complex_3_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="img/complex_3_1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>In the triplot visualization, black arrows represent loadings of Omics variables, forming patterns in different modules (axes). Blue circle points show exposure correlations with the modules, while red square points indicate outcome associations with the modules.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -442,13 +449,56 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In the counterfactual mediation analysis, you need to specify contrast values of treatment and controls for each exposure. In brief, the algorithm will compare the scenarios with these 2 exposure values/levels. For my detailed explanation please refer to <a href="https://www.jstatsoft.org/article/view/v059i05" target="_blank">this paper</a> of the <code>mediation</code> R package.</p>
-<p>If an exposure variable is continuous (numeric variable), it is recommended that the 2 exposure values is chosen between the range of the exposure variable. If an exposure variable is categorical (factor variable), the 2 exposure levels should be chosen from the levels of the exposure variable.</p>
+<p>Note that we use first and second module for our example here. In reality, you may navigate to the “Comparative Visualization” tab in TriplotGUI’s interface already to view which modules may be more of your interest (that are associated with specific exposures and outcomes).</p>
+</div>
+</div>
+<p>Based on the triplot visualization of the TriplotGUI interface, we can interpret the following key points:</p>
+<ul>
+<li><p>The first (top right) and third (bottom left) dimension generally represents a spectrum of dietary healthiness. Healthier foods (e.g., <code>"Fruits"</code>, <code>"Vegetables"</code>) and higher healthy food indices (<code>"HFI"</code>, <code>"BSDS"</code>) are positioned on one side in the first dimension, while less healthy foods (e.g., <code>"hamburger"</code>, <code>"sausage"</code>, <code>"margarine"</code>) are on the opposite side in the third dimension.</p></li>
+<li><p>The second (top left) and fourth (bottom right) dimensions are associated with health outcomes, including the numeric outcome <code>"BMI"</code>, binary outcome <code>"T2D"</code>, and one-hot-encoded categorical <code>"BMI_cat"</code> outcome.</p></li>
+<li>
+<p>Explanation for some variables in the plot:</p>
+<ul>
+<li>
+<code>"HFI"</code> stands for healthy food index. A higher <code>"HFI"</code> suggests healthier diet. <code>"HFI"</code> ranges from 0 to 6. You can see that there are <em>HFI_0</em>, <em>HFI_1</em>…<em>HFI_6</em> in the figure and that is because <code>"HFI"</code> is used as a factor exposure variable in step 2 and is one-hot-encoded to the same number of binary variables as its number of levels. For example, <em>HFI_6</em> is a binary variable where individuals with <code>"HFI"</code> as 6 (most healthy diet people) will be labeled as 1 and the rest of individuals will be labelled as 0. <em>HFI_0</em> is a binary variable where individuals with <code>"HFI"</code> as 0 (most unhealthy diet people) will be labeled as 1 and the rest of individuals will be labelled as 0. <em>HFI_1</em>…<em>HFI_5</em> has limited use since it only separates the group of people with certain <code>"HFI"</code> value from to the rest, which is a mixture of people with healthier and less healthier diet.</li>
+<li>
+<code>"BSDS"</code> stands for Baltic Sea Diet Score ranging. A higher <code>"BSDS"</code> suggests healthier diet. <code>"BSDS"</code> is used as a numeric variable ranging from 2 to 25 in the correlation.</li>
+<li>
+<em>BMI_cat_obese</em>, <em>BMI_cat_overweight</em>, <em>BMI_cat_underweight</em> are the odds ratio generated from the multinomial regression, since <code>"BMI_cat"</code> is a categorical outcome and multinomial regression is performed in step 3 in the interface in this example. Normal weight is uses as a reference and odds ratio of obese, overweight and underweight is produced. (Note that the first level of the factor variable is set as the default reference, in this case it is <em>normal</em>).</li>
+</ul>
+</li>
+<li><p>Adjusting for <code>"Age"</code>, <code>"Gender"</code>, <code>"Smoking"</code>, <code>"Education"</code> and <code>"FastingGlucose"</code>, the first module (on x-axis) correlates positively with generally healthy food (e.g.&nbsp;<code>"fruits"</code>, <code>"vegatables"</code>) and food index (e.g.&nbsp;<code>"BSDS"</code>) and negatively with unhealthy food (e.g.&nbsp;<code>"Hamburger"</code>, <code>"pizza"</code>). It also reversely associated with <code>"T2D"</code> and <code>"BMI"</code>. From the result from <code>"BMI_cat"</code>, this components also reversely associated with being obese.</p></li>
+<li><p>Adjusting for <code>"Age"</code>, <code>"Gender"</code>, <code>"Smoking"</code>, <code>"Education"</code> and <code>"FastingGlucose"</code>, the second module (on y-axis) associated positively with generally healthy food (e.g.&nbsp;<code>"fruits"</code>, <code>"vegatables"</code>) and food index (e.g.&nbsp;<code>"BSDS"</code>) and negatively with unhealthy food (e.g.&nbsp;<code>"Hamburger"</code>, <code>"pizza"</code>). However, the module correlates also positively with <code>"T2D"</code>,<code>"BMI"</code>, <em>obese</em>, <em>overweight</em> and negatively associated with <em>underweight</em>.</p></li>
+</ul>
+<p>Based on what we summarized above, the two modules may be associated with a overall healthy eating pattern. And in this healthy eating pattern, the first module is associated more with the beneficial effect on health and the second module represents the adverse health effect.</p>
+</section><section id="step-5-triplot-with-mediation" class="level2"><h2 class="anchored" data-anchor-id="step-5-triplot-with-mediation">Step 5: Triplot with mediation</h2>
+<p>In step 5 of the TriplotGUI interface, we focus on a specific set of variables for mediation analysis: we select <code>"BSDS"</code> (Baltic Sea Diet Score) and <code>"Hamburger"</code> as our exposures, <code>"BMI"</code> and <code>"T2D"</code> as outcome to enter our next step. We choose first and second modules as our mediators.</p>
+<p>This time, we perform the mediation analysis using the counterfactual/potential outcome method, implemented through the <code>mediation</code> package in R on our exposures (i.e.&nbsp;<code>"BSDS"</code>, <code>"Hamburger"</code>), mediators (i.e.&nbsp;the first and second modules) and outcome (i.e.&nbsp;<code>"T2D"</code>, <code>"BMI"</code>) of interest, adjusting for <code>"Age"</code>, <code>"Gender"</code>, <code>"Smoking"</code>, <code>"Education"</code> and <code>"FastingGlucose"</code> for both exposure-mediator and mediator-outcome relationship.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the counterfactual mediation analysis, contrast values of treatment and controls for each exposure needs to be specified. For each individual, the analysis considers what would happen if they received the treatment versus if they received the control. In brief, the algorithm uses these contrast values to calculate the potential outcomes under each scenario to estimate the direct and indirect effects. For a detailed explanation please refer to <a href="https://www.jstatsoft.org/article/view/v059i05" target="_blank">this paper</a> of the <code>mediation</code> R package.</p>
+<p>If an exposure variable is continuous (numeric variable), it is recommended that the treatment and control contrast values are chosen between the range of the exposure variable. If an exposure variable is categorical (factor variable), the treatment and control contrast values should be chosen from the levels of the exposure variable.</p>
 </div>
 </div>
 <div class="columns">
 <div class="column" style="width: 40%">
-<p>Use the following settings for your data analysis. Mediation analysis is then performed using the counterfactual method on the our selected exposures, mediators and our selected outcomes, adjusting for covariates for both exposure-mediator and mediator-outcome relationship.</p>
+<p>Use the following settings for your data analysis in TriplotGUI. Mediation analysis is then performed using the counterfactual method on the our selected exposures, mediators and our selected outcomes, adjusting for covariates for both exposure-mediator and mediator-outcome relationship.</p>
+</div><div class="column" style="width: 5%">
+
+</div><div class="column" style="width: 45%">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="img/complex_4_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="img/complex_4_1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -464,31 +514,24 @@ Note
 </ul>
 </div>
 </div>
-</div><div class="column" style="width: 5%">
-
-</div><div class="column" style="width: 45%">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="img/complex_4_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="img/complex_4_1.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<p>You could then play around in the “Visualization settings” too see how you want to visualize your plot. You could first only show the proportion mediated(PM) and adjust the limits to make the points more visible.</p>
+<p>You can explore the “Visualization settings” to customize how your plot is displayed. Start by selecting to show only the proportion mediated (PM). This will help you focus on the mediation effects in your analysis.</p>
+<p>Additionally, adjust the limits of the plot to enhance visibility. By fine-tuning these settings, you can ensure that the points representing your mediation results are more clearly visible, allowing for better interpretation and understanding of the data. Note that the confidence interval that beyond the limits of the plot will not be displayed on the plot.</p>
 </div>
 <div class="columns">
 <div class="column" style="width: 40%">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="img/complex_4_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="img/complex_4_2.png" class="img-fluid figure-img"></a></p>
+<figure class="figure"><p><a href="img/complex_4_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="img/complex_4_2.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </div><div class="column" style="width: 5%">
 
 </div><div class="column" style="width: 45%">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="img/complex_4_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="img/complex_4_3.png" class="img-fluid figure-img"></a></p>
+<figure class="figure"><p><a href="img/complex_4_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="img/complex_4_3.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </div>
-<p>We could see four data points on the figure, which represents the eight combinations of exposures, mediators and outcomes.</p>
+<p>Four green triangles are displayed on the figure. Their x and y coordiates represent the eight combinations of exposures, mediators and outcomes.</p>
 <ul>
 <li>exposure=BSDS, mediator= module 1, outcome=BMI</li>
 <li>exposure=BSDS, mediator= module 2, outcome=BMI</li>
@@ -499,7 +542,7 @@ Note
 <li>exposure=Hamburger, mediator= module 1, outcome=T2D</li>
 <li>exposure=Hamburger, mediator= module 2, outcome=T2D</li>
 </ul>
-<p>In the figure, we could see the direction and magnitude of proportion mediated for the 2 mediators, all the exposures and outcomes. We also notice that the PM for BSDS-module 1-BMI and BSDS-module 2-BMI mediation is significant.</p>
+<p>Based on the figure showing the mediation analysis results, we can observe the direction and magnitude of proportion mediated for the 2 mediators (module 1 and 2), all the exposures and outcomes. Based on the confidence interval, we also observed that the PM for BSDS-module 1-BMI and BSDS-module 2-BMI mediation is significant.</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -512,28 +555,29 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Note that some confidence intervals are automatically removed from the figure if they are not within the limit.</li>
-<li>Note that for some mediations, direct effect and indirect effects are in the opposite direction, implying possibly proportion mediated(PM)&gt;1, since total effect could be smaller than indirect effect.</li>
+<li>Confidence intervals are automatically removed from the figure if they fall outside the set limits.</li>
+<li>In certain mediations, the direct and indirect effects may have opposite directions. This can result in a proportion mediated (PM) greater than 1. This occurs because the total effect might be smaller than the indirect effect.</li>
 </ul>
 </div>
 </div>
 <div class="columns">
-<p>You then show the adjusted proportion mediated (APM) and adding the layers of correlation and risk estimates, using the settings below.</p>
+<p>To visualize the adjusted proportion mediated (APM) and add layers of correlation and risk estimates, use the following settings.</p>
 <div class="column" style="width: 40%">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="img/complex_4_4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="img/complex_4_4.png" class="img-fluid figure-img"></a></p>
+<figure class="figure"><p><a href="img/complex_4_4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="img/complex_4_4.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </div><div class="column" style="width: 5%">
 
 </div><div class="column" style="width: 45%">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="img/complex_4_5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="img/complex_4_5.png" class="img-fluid figure-img"></a></p>
+<figure class="figure"><p><a href="img/complex_4_5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="img/complex_4_5.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<p>By observing this figure, we could see the direction and magnitude of adjusted proportion mediated for the 2 mediators, all the exposures and outcomes. The position of the points is similar what we have seen for proportion mediated. Note that APM for BSDS as exposure and T2D as outcome is smaller than their PM. This is because the indirect and direct effect for this mediation is of similar size but in opposite direction. This leads to a smaller total effect and in turn larger PM, but APM will not be affected by the directionality of the direct and indirect effect.</p>
+<p>By observing this figure, we can see the direction and magnitude of adjusted proportion mediated (APM) for the two mediators across all exposures and outcomes. The positioning of the points is similar to what we observed for the proportion mediated (PM).</p>
+<p>Notably, the APM for BSDS (Baltic Sea Diet Score) as the exposure and T2D (Type 2 Diabetes) as the outcome is smaller than their corresponding PM. This difference occurs because the indirect and direct effects for this mediation pathway are of similar size but in opposite directions. This opposition leads to a smaller total effect and consequently a larger PM. However, the APM is not affected by the directionality of the direct and indirect effects, providing a more stable measure of mediation.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -545,25 +589,25 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li><p>No confidence interval is shown for adjusted proportion mediated, as such value can not be directly calculated from the mediation analysis.</p></li>
-<li><p>Note that even direct effect and indirect effects are in the opposite direction, adjusted proportion mediated is always smaller than 1, since it uses the sum of the absolute value of indirect and direct effect as denominator. <span class="math display">\[APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{|IE|+|DE|}\cdot\frac{IE+DE}{|IE+DE|}\]</span></p></li>
+<li><p>No confidence intervals are shown for APM. This is because APM values cannot be directly calculated from the mediation analysis in the <code>mediation</code> R package, unlike the proportion mediated (PM).</p></li>
+<li><p>The APM is always smaller than 1, even when direct and indirect effects are in opposite directions. This is due to the calculation method of APM, which uses the sum of the absolute values of indirect and direct effects as the denominator. <span class="math display">\[APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{|IE|+|DE|}\cdot\frac{IE+DE}{|IE+DE|}\]</span></p></li>
 </ul>
 </div>
 </div>
-<p>In step 4 in the interface, you can also see the barplots showed direct, indirect and total effect for each exposure-mediator-outcome combination. It is a convenient tool to check the direction and magnitude of mediation estimates.</p>
+<p>In step 5B of the TriplotGUI interface, you can view barplots that display the direct, indirect, and total effects for each exposure-mediator-outcome combination. These barplots offer a convenient visual tool to check the direction and magnitude of mediation estimates.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="img/complex_4_6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="img/complex_4_6.png" class="img-fluid figure-img"></a></p>
+<figure class="figure"><p><a href="img/complex_4_6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="img/complex_4_6.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
-<p>Base on the barplot and the triplot with mediation, we have observed significant proportion mediated for BSDS-module 1/2-BMI mediations. Further exploration on indirect, direct and total effect of the mediation analysis could be explored by playing around the <code>which_show</code> argument in the <code>mediation_troplot()</code> function. We will not go into details here.</p>
-</section><section id="step-5-compare-correlations-associations-and-mediations" class="level2"><h2 class="anchored" data-anchor-id="step-5-compare-correlations-associations-and-mediations">Step 5: Compare correlations, associations and mediations</h2>
-<p>Users can then check the heatmaps of correlations, risk estimations and mediation results at step 5 in the interface. By removing other PCs, exposures or outcomes in the “Visualization settings”, users may only show correlation, risk estimation and mediation results of their interest.</p>
+<p>Based on the barplot and the triplot with mediation, we’ve observed significant proportion mediated for BSDS-module 1/2-BMI mediations. To further explore the indirect, direct, and total effects of different combinations of mediations, you can return to Step 5A in the TriplotGUI interface to run more mediation analysis.</p>
+</section><section id="comparative-visualization" class="level2"><h2 class="anchored" data-anchor-id="comparative-visualization">Comparative Visualization</h2>
+<p>Users can examine the heatmaps of correlations, risk estimations, and mediation results in the TriplotGUI interface. To focus on specific aspects of interest, navigate to the “Visualization settings” section and remove unwanted mediators, exposures, or outcomes. This customization allows users to display only the correlation, risk estimation, and mediation results they find most relevant.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="img/complex_5_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="img/complex_5_1.png" class="img-fluid figure-img"></a></p>
+<figure class="figure"><p><a href="img/complex_5_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="img/complex_5_1.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="img/complex_5_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="img/complex_5_2.png" class="img-fluid figure-img"></a></p>
+<figure class="figure"><p><a href="img/complex_5_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img src="img/complex_5_2.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -577,14 +621,15 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>One star for p&lt;0.05; Two stars for p&lt;0.01; Three stars for p&lt;0.001.</li>
-<li>Note that only the selected exposures, mediators and outcomes that we use to do mediation on will show up in the mediation results. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure_outcome pair, 4 result are shown: <em>IE</em> (indirect effect), <em>TE</em> (total effect), <em>PM</em>(Proportion Mediated) and <em>APM</em>(Adjusted Proportion Mediated). Please see <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2" target="_blank">Details section</a> for more information. The “CF” before the names of exposures-outcome pairs means that this mediation is using the Counterfactual method.</li>
+<li>Significance is indicated as follows. One star for p&lt;0.05; Two stars for p&lt;0.01; Three stars for p&lt;0.001.</li>
+<li>The first two plots, correlation coefficients with exposures and risk estimates of outcomes will show all the exposure and outcome variables that are not removed from visualization.</li>
+<li>Note that only the selected exposures, mediators and outcomes that we use to do mediation on will show up in the mediation results. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure-outcome pair, 4 result are shown: <em>IE</em> (indirect effect), <em>TE</em> (total effect), <em>PM</em>(Proportion Mediated) and <em>APM</em>(Adjusted Proportion Mediated). Please see <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2" target="_blank">Details section</a> for more information. The “CF” before the names of exposures-outcome pairs means that this mediation is using the Counterfactual method.</li>
 </ul>
 </div>
 </div>
-</section><section id="step-6-download-data" class="level2"><h2 class="anchored" data-anchor-id="step-6-download-data">Step 6: Download data</h2>
-<p>Relevant data, intermediate results, can then be viewed and downloaded at step 6 in the interface.</p>
-<p><a href="img/complex_6_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img src="img/complex_6_1.png" class="img-fluid"></a> <a href="img/complex_6_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img src="img/complex_6_2.png" class="img-fluid"></a></p>
+</section><section id="data-download" class="level2"><h2 class="anchored" data-anchor-id="data-download">Data download</h2>
+<p>Relevant data, intermediate results, can then be viewed and downloaded here in the interface.</p>
+<p><a href="img/complex_6_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img src="img/complex_6_1.png" class="img-fluid"></a> <a href="img/complex_6_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img src="img/complex_6_2.png" class="img-fluid"></a></p>
 
 
 </section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -651,7 +696,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-center"><span class="faux-block"> <a href="https://yingxiao.shinyapps.io/triplotgui/" target="_blank">TriplotGUI</a> <br><a href="https://gitlab.com/YingxiaoYan/TriplotGUI" target="_blank">TriplotGUI Gitlab</a> </span></div>
     <div class="nav-footer-right"><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","loop":true,"openEffect":"zoom","descPosition":"bottom"});</script>
+</footer><script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","loop":true,"openEffect":"zoom","closeEffect":"zoom"});</script>
 
 
 <script src="site_libs/quarto-html/zenscroll-min.js"></script>

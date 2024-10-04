@@ -228,44 +228,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content"><p>The TriplotGUI tool can be accessible online at <a href="https://yingxiao.shinyapps.io/triplotgui/" target="_blank">here</a>. If you want to use TriplotGUI as a stand-alone application (using it only on a local computer), please follow the procedure below.</p>
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content"><p>The TriplotGUI tool can be accessible online at <a href="https://yingxiao.shinyapps.io/triplotgui/" target="_blank">here</a>. If you want to use TriplotGUI as a stand-alone application (using it only on a local computer), please follow the instruction below.</p>
 <section id="install-packages" class="level1"><h1>Install packages</h1>
-<p>Please run the following code to install the packages needed. This needs to be run in your R console.</p>
+<p>To install and use TriplotGUI as a stand-alone application on your local computer, start by opening your R console or RStudio. Then, install the required packages by running the following code:</p>
 <div class="cell styled-output">
 <details open=""><summary>Code</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_gitlab.html">install_gitlab</a></span><span class="op">(</span><span class="st">"YingxiaoYan/TriplotGUI"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Things may pop up in your console and ask you for some choices, we provide some recommedations here. We are conservative in the choices to avoid any unforseen conflict and complications in packages.</p>
-<ul>
-<li>
-Sometimes it pops up in your console that asks you <em>which package you would like to update</em>. We recommened you to chose <strong>3.None</strong>
-</li>
-<li>
-Sometimes it pops up in your console that asks <em>Do you want to install from source packages which need compliation</em> . We recommended you to chose <strong>no</strong>
-</li>
-<li>
-Sometimes it pops up in your console that asks <em>Update all/some/none?[a/s/n]</em> . We recommended you to chose <strong>n</strong>
-</li>
-</ul></section><section id="load-libraries" class="level1"><h1>Load libraries</h1>
-<p>After installing the package, run the following code in your R console.</p>
+<p>During installation, you may encounter prompts in your console. For package updates, it is recommended to choose “<strong>3. None</strong>”. If asked whether you want to install from source packages that need compilation, select “<strong>No</strong>”. When prompted about updating all, some, or none, it is advisable to choose “<strong>n</strong>”. <!-- <ul> --></p>
+<!-- <li>Sometimes it pops up in your console that asks you *which package you would like to update*. We recommened you to chose **3.None**</li> -->
+<!-- <li>Sometimes it pops up in your console that asks *Do you want to install from source packages which need compliation* . We recommended you to chose **no**</li> -->
+<!-- <li>Sometimes it pops up in your console that asks *Update all/some/none?\[a/s/n\]* . We recommended you to chose **n**</li> -->
+<!-- </ul> -->
+</section><section id="load-libraries" class="level1"><h1>Load libraries</h1>
+<p>Once the installation is complete, load the TriplotGUI library by executing:</p>
 <div class="cell styled-output">
 <details open=""><summary>Code</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">TriplotGUI</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section><section id="change-the-maximize-size-of-data-file-allowed" class="level1"><h1>Change the maximize size of data file allowed</h1>
-<p>The default of our package has allows data of maximize size of 5 MB. To change that, you could specify the maximize file size you prefer using the code below. Run your code in the console. However, we do not recommend to use data with more than 5 MB in our tool. The bigger the dataset, the slower it will be. It might be beneficial for you to do some variable selection before putting the data in out tool.</p>
+<p>If you wish to change the maximum allowed data file size (the default is 5 MB), you can specify your preferred maximum size using the following code:</p>
 <div class="cell styled-output">
 <details open=""><summary>Code</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">filesize</span><span class="op">=</span><span class="fl">100</span>  <span class="co">##MB</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>shiny.maxRequestSize<span class="op">=</span><span class="va">filesize</span><span class="op">*</span><span class="fl">1024</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section><section id="activate-the-user-interface" class="level1"><h1>Activate the user interface</h1>
-<p>To activate the graphical user interface, run the following code in your R console.</p>
+<p>To activate the graphical user interface, run:</p>
 <div class="cell styled-output">
 <details open=""><summary>Code</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">TriplotGUI_shiny</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<p>This will launch the TriplotGUI application on your local machine. Keep in mind that larger datasets may slow down the tool’s performance, so it is recommended to perform some variable selection before using very large datasets.</p>
 
 
 <!-- -->
@@ -467,11 +462,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="an">geometry:</span><span class="co"> margin=lin  </span></span>
 <span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>The TriplotGUI tool can be accessible online at <span class="co">[</span><span class="ot">here</span><span class="co">](https://yingxiao.shinyapps.io/triplotgui/)</span>{target="_blank"}. If you want to use TriplotGUI as a stand-alone application (using it only on a local computer), please follow the procedure below.</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>The TriplotGUI tool can be accessible online at <span class="co">[</span><span class="ot">here</span><span class="co">](https://yingxiao.shinyapps.io/triplotgui/)</span>{target="_blank"}. If you want to use TriplotGUI as a stand-alone application (using it only on a local computer), please follow the instruction below.</span>
 <span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="fu"># Install packages</span></span>
 <span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>Please run the following code to install the packages needed. This needs to be run in your R console.</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>To install and use TriplotGUI as a stand-alone application on your local computer, start by opening your R console or RStudio. Then, install the required packages by running the following code:</span>
 <span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="in">```{r }</span></span>
 <span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
@@ -484,37 +479,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_gitlab</span>(<span class="st">"YingxiaoYan/TriplotGUI"</span>)</span>
 <span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>Things may pop up in your console and ask you for some choices, we provide some recommedations here. We are conservative in the choices to avoid any unforseen conflict and complications in packages.</span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;ul&gt;</span></span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;li&gt;</span>Sometimes it pops up in your console that asks you *which package you would like to update*. We recommened you to chose **3.None**<span class="kw">&lt;/li&gt;</span></span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;li&gt;</span>Sometimes it pops up in your console that asks *Do you want to install from source packages which need compliation* . We recommended you to chose **no**<span class="kw">&lt;/li&gt;</span></span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;li&gt;</span>Sometimes it pops up in your console that asks *Update all/some/none?\[a/s/n\]* . We recommended you to chose **n**<span class="kw">&lt;/li&gt;</span></span>
-<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/ul&gt;</span></span>
-<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a><span class="fu"># Load libraries</span></span>
-<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>After installing the package, run the following code in your R console.</span>
-<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a><span class="in">```{r }</span></span>
-<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a><span class="co">#| error: true</span></span>
-<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a><span class="co">#| classes: styled-output</span></span>
-<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(TriplotGUI)</span>
-<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>During installation, you may encounter prompts in your console. For package updates, it is recommended to choose "**3. None**". If asked whether you want to install from source packages that need compilation, select "**No**". When prompted about updating all, some, or none, it is advisable to choose "**n**".</span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- &lt;ul&gt; --&gt;</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- &lt;li&gt;Sometimes it pops up in your console that asks you *which package you would like to update*. We recommened you to chose **3.None**&lt;/li&gt; --&gt;</span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- &lt;li&gt;Sometimes it pops up in your console that asks *Do you want to install from source packages which need compliation* . We recommended you to chose **no**&lt;/li&gt; --&gt;</span></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- &lt;li&gt;Sometimes it pops up in your console that asks *Update all/some/none?\[a/s/n\]* . We recommended you to chose **n**&lt;/li&gt; --&gt;</span></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- &lt;/ul&gt; --&gt;</span></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a><span class="fu"># Load libraries</span></span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>Once the installation is complete, load the TriplotGUI library by executing:</span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a><span class="in">```{r }</span></span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a><span class="co">#| error: true</span></span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a><span class="co">#| classes: styled-output</span></span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(TriplotGUI)</span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a><span class="fu"># Change the maximize size of data file allowed</span></span>
-<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>The default of our package has allows data of maximize size of 5 MB. To change that, you could specify the maximize file size you prefer using the code below. Run your code in the console. However, we do not recommend to use data with more than 5 MB in our tool. The bigger the dataset, the slower it will be. It might be beneficial for you to do some variable selection before putting the data in out tool.</span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a><span class="fu"># Change the maximize size of data file allowed</span></span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>If you wish to change the maximum allowed data file size (the default is 5 MB), you can specify your preferred maximum size using the following code:</span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{r }</span></span>
 <span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
@@ -528,21 +523,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a><span class="fu"># Activate the user interface</span></span>
-<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>To activate the graphical user interface, run the following code in your R console.</span>
-<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a><span class="in">```{r }</span></span>
-<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a><span class="co">#| error: true</span></span>
-<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a><span class="co">#| classes: styled-output</span></span>
-<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a><span class="fu"># Activate the user interface</span></span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a>To activate the graphical user interface, run:</span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a><span class="in">```{r }</span></span>
+<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a><span class="co">#| error: true</span></span>
+<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a><span class="co">#| classes: styled-output</span></span>
 <span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a><span class="fu">TriplotGUI_shiny</span>()</span>
-<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a><span class="fu">TriplotGUI_shiny</span>()</span>
+<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a>This will launch the TriplotGUI application on your local machine. Keep in mind that larger datasets may slow down the tool's performance, so it is recommended to perform some variable selection before using very large datasets.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">

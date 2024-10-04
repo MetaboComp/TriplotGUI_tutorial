@@ -25,53 +25,60 @@ format:
 
 # Overview
 
-**Background&aim:** Emerging exposure- and outcome-wide studies aim to more broadly identify potential risk factors and their health effects. Although Omics technologies have permitted linking exposome to outcomes, large-scale exploration of mediating mechanisms is frequently lacking. Likely because Omics data is often high dimensional and there is a lack of effective tools for direct interpretation of complex relationships between exposures, Omics and outcomes. We therefore developed the [TriplotGUI]{style="color:black"} tool to advance exposure-risk assessment and facilitate the interpretation of such complex associations via Omics profile.
+TriplotGUI is an innovative tool designed to address the challenges of analyzing and interpreting complex relationships between exposures, omics data, and health outcomes in large-scale epidemiological studies. Here's an overview of its key features and capabilities:
 
-**Methods:** Omics variables-of-interest are reduced to components using principal component analysis (PCA) or weighted correlation network analysis (WGCNA) and are associated with both exposures and outcomes using linear models. Components are then investigated as potential mediators using “meet-in-the-middle” analysis, i.e. intersecting exposure-Omics and Omics-outcome associations, and mediation analysis. TriplotGUI supports both classical (Baron-Kenny) and counterfactual mediation, as well as adjustment for covariates.
+**Background&aim:** Exposure- and outcome-wide studies aim to identify potential risk factors and their health effects on a broader scale. While Omics technologies have enabled linking exposome to outcomes, there's often a lack of large-scale exploration of mediating mechanisms. This gap exists due to the high-dimensional nature of Omics data and the absence of effective tools for interpreting complex relationships. [TriplotGUI]{style="color:black"} was developed to advance exposure-risk assessment and facilitate the interpretation of these complex associations via omics profiles.
+
+**Methods:** TriplotGUI employs several key analytical approaches. First, Omics variables are reduced to components using methods such as Principal Component Analysis (PCA) or Weighted Correlation Network Analysis (WGCNA). These components are then associated with both exposures and outcomes through linear models. To investigate potential mediators, TriplotGUI utilizes a "meet-in-the-middle" analysis that intersects exposure-Omics and Omics-outcome associations, along with mediation analysis. The tool supports both classical (Baron-Kenny) mediation and counterfactual mediation, while also allowing for adjustment for covariates.
 
 ![](img/event_chain.png){width="1000px"}
 
-**Results:** As a molecular epidemiology toolbox, among its various functionalities, TriplotGUI co-visualizes Omics variable contributions, exposure-Omics and Omics-outcome associations as well as direct and indirect effects from mediation analysis. Centering the analyses around molecular data allows for simultaneous assessment of multiple exposures and outcomes. Without the need of programming, users can conveniently perform analysis and visualization at a [web version of TriplotGUI](https://yingxiao.shinyapps.io/triplotgui/){target="_blank"}. TriplotGUI can also be installed conveniently as a stand-alone application in RStudio in secure environments and is therefore suited for GDPR. Please read the [Setup](installation.qmd){target="_blank" style="color:blue"} session for more about installation.
+**Results:** Among its various functionalities, TriplotGUI co-visualizes omics variable contributions, exposure-omics associations, omics-outcome associations, and direct and indirect effects from mediation analysis. By centering analyses around molecular data, TriplotGUI enables the simultaneous assessment of multiple exposures and outcomes. Users can conveniently perform analyses and visualizations through a [web-based version of TriplotGUI](https://yingxiao.shinyapps.io/triplotgui/){target="_blank"} or install it as a stand-alone application in RStudio, making it suitable for secure environments in compliance with GDPR. Please read the [Setup](installation.qmd){target="_blank" style="color:blue"} session for more about installation.
 
-**Conclusion:** Using synthetic and real-world data with dietary variables as exposures, we showed that TriplotGUI can comprehensively analyze, visualize and interpret associations between exposures and outcomes through metabolome. Its flexible user interface facilitates the integration of exposures, Omics and outcomes to untangle their complex relationships.
+TriplotGUI has been tested using both synthetic and real-world data, particularly focusing on dietary variables as exposures. The tool has demonstrated its capability to comprehensively analyze, visualize, and interpret associations between exposures and outcomes through metabolomic profiles.
+
+**Conclusion:** In summary, TriplotGUI offers a powerful and flexible platform for integrating exposures, omics data, and outcomes to unravel their complex relationships. Its user-friendly interface combined with comprehensive analytical capabilities makes it an invaluable tool for molecular epidemiology research, advancing our understanding of exposure-risk relationships and potential mediating mechanisms
 
 # Steps
 
-The TriplotGUI application adopted a highly reactive stepwise modular design, where one or two modules represents one of the 6 following steps and the change of input from an early step will feed into a later step.
+TriplotGUI is a reactive stepwise modular application designed for multi-omics data analysis. The workflow consists of five key steps and two general functionalities, with each step building upon the previous ones. Here's an overview of the process:
 
 ![](img/workflow.png) <br>
 
-**Step1:** Data reduction of omics data
+**Step1:** PCA/WGCNA plots
 
-Transforms the Omics data into a number of components using principal component analysis (PCA) or weighted correlation network analysis (WGCNA).
+Transforms high-dimensional Omics data into a manageable number of components using principal component analysis (PCA) or weighted correlation network analysis (WGCNA).
 
-**Step2A:** Exposures' correlations
+**Step2:** Exposure correlations
 
-Assesses correlations between exposures and component scores from Step 1. Confounders can be adjusted.
+Assesses correlations between exposures and component scores from Step 1, with the option to adjust for confounders.
 
-**Step2B:** Outcomes' associations
+**Step3:** Outcome associations
 
-Assesses risk associations between outcomes and the component scores from Step 1. Confounders can be adjusted.
+Evaluates risk associations between outcomes and component scores from Step 1, allowing for confounder adjustment.
 
-**Step3:** Visualization of Triplot
+**Step4:** Triplot
 
-The component scores and loadings, the correlation coefficients and the risk associations’ estimates as beta coefficients or odds ratio, are co-visualized as 3 different layers in one 2-dimensional plot.
+Co-visualizes three layers of information in a 2D plot:
+-  Component scores and loadings
+-  Correlation coefficients
+-  Risk association estimates (beta coefficients or odds ratios)
 
-**Step4A:** Mediation analysis and visualization
+**Step5A:** Triplot with mediation
 
-Performs mediation analysis on the selected exposures and outcomes, using component scores as mediators. The mediation estimates (i.e. indirect and total effect) or the proportion mediated are then co-visualized with the component loadings, the correlation coefficients of the selected exposures and the risk associations’ estimates as beta coefficients or odds ratio of the selected outcomes, as different layers in one 2-dimensional plot.
+Performs mediation analysis on selected exposures and outcomes, using component scores as mediators. Visualizes results alongside data from previous steps in a multi-layered 2D plot.
 
-**Step4B:** Visualization for single mediations
+**Step5B:** Mediation barplots
 
-A clear overview of the magnitude and direction of indirect, direct and total effect of each single mediation analysis can be visualized through bar plots.
+Provides bar plots showing the magnitude and direction of indirect, direct, and total effects for individual mediation analyses.
 
-**Step5:** Compare correlations, associations and mediations
+**Comparative Visualization:** 
 
-The correlations, associations, mediation estimates and proportion mediated as well as their significance levels can be visualized through heatmaps.
+Compares correlations, associations, mediation estimates, and their significance levels using heatmaps.
 
-**Step6:** Download data
+**Data Download:** 
 
-The intermediate data and the generated results can be viewed and downloaded. The object that saves all relevant information can be downloaded.
+Allows users to view and download intermediate data, generated results, and a comprehensive object containing all relevant information.
 
 <br> <br> We will give detailed explanations of statistical data analysis and visualization in each step in the [Manual](workflow.qmd){target="_blank" style="color:blue"} session.
 
