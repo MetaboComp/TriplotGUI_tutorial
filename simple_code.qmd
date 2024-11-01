@@ -482,7 +482,9 @@ Users can easily visualize the correlations, risk estimations, and mediation res
 #| classes: styled-output
 #| fold.plot: true
 
-checkTPObject4 <- checkTPO_ggplot(TPObject4)
+checkTPObject4 <- checkTPO_ggplot(TPObject4,
+                                  size=7    ## customize the size of stars
+                                  )
 
 ```
 

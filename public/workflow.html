@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>TriplotGUI  - Manual</title>
+<title>Manual – TriplotGUI </title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,7 +19,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -30,7 +30,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -65,21 +65,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": true,
   "collapse-after": 5,
   "panel-placement": "end",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -88,6 +92,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -110,13 +115,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       }
 </style>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><link rel="stylesheet" href="styles.scss">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script><link rel="stylesheet" href="styles.scss">
 </head>
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
     <img src="./img/TriplotGUI_logo_black.png" alt="" class="navbar-logo"></a>
     <a class="navbar-brand" href="./index.html">
@@ -124,82 +154,82 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item">
-    <a class="nav-link" href="./introduction.html" rel="" target="">
- <span class="menu-text">Introduction</span></a>
+    <a class="nav-link" href="./introduction.html"> 
+<span class="menu-text">Introduction</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./installation.html" rel="" target="">
- <span class="menu-text">Setup</span></a>
+    <a class="nav-link" href="./installation.html"> 
+<span class="menu-text">Setup</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./workflow.html" rel="" target="" aria-current="page">
- <span class="menu-text">Manual</span></a>
+    <a class="nav-link active" href="./workflow.html" aria-current="page"> 
+<span class="menu-text">Manual</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorial(simple" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorial(simple" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Tutorial(simple)</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-tutorial(simple">
 <li>
-    <a class="dropdown-item" href="./simple.html" rel="" target="">
+    <a class="dropdown-item" href="./simple.html">
  <span class="dropdown-text">User Interface</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./simple_code.html" rel="" target="">
+    <a class="dropdown-item" href="./simple_code.html">
  <span class="dropdown-text">Code</span></a>
   </li>  
     </ul>
 </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorial(complex" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorial(complex" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Tutorial(complex)</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-tutorial(complex">
 <li>
-    <a class="dropdown-item" href="./complex.html" rel="" target="">
+    <a class="dropdown-item" href="./complex.html">
  <span class="dropdown-text">User Interface</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./complex_code.html" rel="" target="">
+    <a class="dropdown-item" href="./complex_code.html">
  <span class="dropdown-text">Code</span></a>
   </li>  
     </ul>
 </li>
   <li class="nav-item">
-    <a class="nav-link" href="./papers.html" rel="" target="">
- <span class="menu-text">Papers</span></a>
+    <a class="nav-link" href="./papers.html"> 
+<span class="menu-text">Papers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
- <span class="menu-text">About us</span></a>
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About us</span></a>
   </li>  
 </ul>
 <ul class="navbar-nav navbar-nav-scroll ms-auto">
 <li class="nav-item compact">
-    <a class="nav-link" href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" rel="" target="_blank"><i class="bi bi-folder-symlink" role="img">
+    <a class="nav-link" href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank"> <i class="bi bi-folder-symlink" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/yingxiao-yan" rel="" target="_blank"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://www.linkedin.com/in/yingxiao-yan" target="_blank"> <i class="bi bi-linkedin" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:yingxiao@chalmers.se" rel="" target=""><i class="bi bi-envelope" role="img" aria-label="email">
+    <a class="nav-link" href="mailto:yingxiao@chalmers.se"> <i class="bi bi-envelope" role="img" aria-label="email">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-<div class="quarto-navbar-tools">
+</div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
@@ -209,7 +239,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
     
   
-  <div class="quarto-title-meta">
+  <div class="quarto-title-meta column-page-left">
 
       
     
@@ -375,10 +405,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="step1-pcawgcna-plots" class="level1" data-number="1"><h1 data-number="1">
 <span class="header-section-number">1</span> <strong>Step1:</strong> PCA/WGCNA plots</h1>
 <p>After reading the introduction/welcome page (Step 0), click on Step 1 in the sidebar. You will then see the layout as shown below.</p>
-<div class="quarto-figure quarto-figure-right">
-<figure class="figure"><p><a href="img/step1_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/step1_1.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
+<p><a href="img/step1_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/step1_1.png" class="img-fluid"></a></p>
 <p><br> This step transforms the Omics data into a number of components using Principal Component Analysis (PCA) or Weighted Correlation Network Analysis (WGCNA).</p>
 <p>Five boxes with unique features are presented, and you can infer their purposes from their titles. Now, let’s go through each box in detail.</p>
 <section id="data-for-pcawgcna" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="data-for-pcawgcna">
@@ -506,7 +533,7 @@ Note
 <p>The <span style="color:green">green box</span> represents visualization outputs. With Omics data uploaded, selecting <strong><em>Plotting options</em></strong> in the visualization settings will display the corresponding plots here.</p>
 </section></section><section id="step2-exposure-correlations" class="level1" data-number="2"><h1 data-number="2">
 <span class="header-section-number">2</span> <strong>Step2:</strong> Exposure correlations</h1>
-<p>After uploading Omics and auxiliary data (optional) in Step 1, click “Exposure correlations” in Step 2 on the sidebar. You will then see the layout as shown below. <a href="img/step2_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="img/step2_1.png" class="img-fluid"></a></p>
+<p>After uploading Omics and auxiliary data (optional) in Step 1, click “Exposure correlations” in Step 2 on the sidebar. You will then see the layout as shown below. <img src="img/step2_1.png" class="img-fluid"></p>
 <p><br> This step is to calculate the correlations between the components/modules from Step 1 and the exposures uploaded in this step.</p>
 <p>Four boxes with unique features are presented. Now we will go through each box in detail:</p>
 <section id="exposure-data" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="exposure-data">
@@ -560,10 +587,7 @@ Note
 </section></section><section id="step3-outcome-associations." class="level1" data-number="3"><h1 data-number="3">
 <span class="header-section-number">3</span> <strong>Step3:</strong> Outcome associations.</h1>
 <p>After uploading Omics and auxiliary data (optional) in Step 1, clicking “Outcome associations” in Step 3 on the sidebar will display the layout for this step.</p>
-<div class="quarto-figure quarto-figure-right">
-<figure class="figure"><p><a href="img/step2_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="img/step2_2.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
+<p><a href="img/step2_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="img/step2_2.png" class="img-fluid"></a></p>
 <p><br> This step calculates risk associations between principal components from Step 1 and outcomes uploaded here.</p>
 <p>Five boxes with unique features are presented. Now we will go through each box in detail:</p>
 <section id="outcome-data" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="outcome-data">
@@ -605,10 +629,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>For outcomes - components/modules associations, statistical analyses are performed differently based on outcome classes and provided information. A table summarizes the methods and R packages used.</p>
-<div class="quarto-figure quarto-figure-right">
-<figure class="figure"><p><a href="img/step2_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="img/step2_3.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
+<p><a href="img/step2_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="img/step2_3.png" class="img-fluid"></a></p>
 </div>
 </div>
 <section id="basics-7" class="level3" data-number="3.3.1"><h3 data-number="3.3.1" class="anchored" data-anchor-id="basics-7">
@@ -640,10 +661,7 @@ Note
 </section></section><section id="step4-triplot" class="level1" data-number="4"><h1 data-number="4">
 <span class="header-section-number">4</span> <strong>Step4:</strong> Triplot</h1>
 <p>After uploading Omics and either exposure or outcome data (or both), you can click “Triplot” in Step 3 on the sidebar to view the layout for this step.</p>
-<div class="quarto-figure quarto-figure-right">
-<figure class="figure"><p><a href="img/step3_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img/step3_1.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
+<p><a href="img/step3_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img/step3_1.png" class="img-fluid"></a></p>
 <p><br> This step co-visualizes scores, loadings, exposure correlations, and outcome associations generated from Steps 1-3 as three different layers in one 2-dimensional plot.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -686,10 +704,7 @@ Note
 </div><div class="column" style="width: 10%">
 
 </div><div class="column" style="width: 40%">
-<div class="quarto-figure quarto-figure-right">
-<figure class="figure"><p><a href="img/step4_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/step4_1.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
+<p><a href="img/step4_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/step4_1.png" class="img-fluid"></a></p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -714,10 +729,7 @@ Note
 <li><p><strong><em>Component/module on first/second axis</em></strong>: This option lets you select which component or module will be plotted on the x-axis (first axis) and y-axis (second axis). The default settings are <em>1</em> for the first axis and <em>2</em> for the second. Components are ordered from the highest contribution to variance to the lowest, while modules are ordered based on the cluster size, from the most variables to the least.</p></li>
 <li><p><strong><em>Type of mediation analysis</em></strong>: Two options are provided, <em>Coventional</em> and <em>Counterfactual</em>. By selecting <em>Conventional</em>, mediation analysis based on the approach originated by <a href="https://pubmed.ncbi.nlm.nih.gov/3806354/" target="_blank">Baron and Kenny</a> will be performed, utilizing the <a href="https://www.annualreviews.org/doi/pdf/10.1146/annurev-publhealth-032315-021402" target="_blank">product method</a>. In contrast, selecting <em>Counterfactual</em> mediation analysis employs a potential outcome framework provided by the <a href="https://cran.r-project.org/web/packages/mediation/vignettes/mediation.pdf" target="_blank"><em>mediation</em></a> package. Here is a summary of these two methods in TriplotGUI:</p></li>
 </ol>
-<div class="quarto-figure quarto-figure-right">
-<figure class="figure"><p><a href="img/step4_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="img/step4_2.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
+<p><a href="img/step4_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="img/step4_2.png" class="img-fluid"></a></p>
 </section><section id="more-7" class="level3" data-number="5.1.2"><h3 data-number="5.1.2" class="anchored" data-anchor-id="more-7">
 <span class="header-section-number">5.1.2</span> More</h3>
 <ol type="1">
@@ -805,10 +817,7 @@ Some notes for mediation analysis in TriplotGUI
 </section><section id="mediation-barplots" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="mediation-barplots">
 <span class="header-section-number">5.4</span> Mediation barplots</h2>
 <p>We also offer mediation barplots in Step 5B, which focus on visualizing the magnitude and direction of single mediation estimates through barplots. These plots use one exposure, one mediator (component/module), and one outcome. The barplot visualizations for conventional and counterfactual mediation analyses are presented separately, allowing for clear comparison between the two methods.</p>
-<div class="quarto-figure quarto-figure-right">
-<figure class="figure"><p><a href="img/step4_4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="img/step4_4.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
+<p><a href="img/step4_4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="img/step4_4.png" class="img-fluid"></a></p>
 <section id="visualization-settings-3" class="level3" data-number="5.4.1"><h3 data-number="5.4.1" class="anchored" data-anchor-id="visualization-settings-3">
 <span class="header-section-number">5.4.1</span> Visualization settings</h3>
 <p>The <span style="color:orange">orange box</span> represents visualization settings for conventional and counterfactual mediation, respectively. After running mediation analyses, <strong><em>Exposure/Mediator/Outcome</em></strong> variables involved in the analyses appear in the options for visualization settings. Users can select one exposure, one mediator, and one outcome to create the barplot.</p>
@@ -821,10 +830,7 @@ Some notes for mediation analysis in TriplotGUI
 <section id="visualization-settings-4" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="visualization-settings-4">
 <span class="header-section-number">6.1</span> Visualization settings</h2>
 <p>The <span style="color:orange">orange box</span> contains visualization settings.</p>
-<div class="quarto-figure quarto-figure-right">
-<figure class="figure"><p><a href="img/step5_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="img/step5_1.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
+<p><a href="img/step5_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="img/step5_1.png" class="img-fluid"></a></p>
 <ol type="1">
 <li><p><strong><em>Component(s)/module(s) to remove</em></strong>: All selected components/modules from Step 1 appear as rows in the heatmap. Users can choose which components/modules they want to exclude from the heatmap visualizations.</p></li>
 <li><p><strong><em>Show correlation coefficients/risk estimates/mediation results</em></strong>: Users can determine what to display in the heatmap, with the default setting being <em>Yes</em> for all options.</p></li>
@@ -837,10 +843,7 @@ Some notes for mediation analysis in TriplotGUI
 <span class="header-section-number">7</span> <strong>Data download:</strong>
 </h1>
 <p>At this step, users can download data and intermediate results produced during data analysis and visualization.</p>
-<div class="quarto-figure quarto-figure-right">
-<figure class="figure"><p><a href="img/step6_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="img/step6_1.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
+<p><a href="img/step6_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="img/step6_1.png" class="img-fluid"></a></p>
 <section id="download-processed-data" class="level2" data-number="7.1"><h2 data-number="7.1" class="anchored" data-anchor-id="download-processed-data">
 <span class="header-section-number">7.1</span> Download processed data</h2>
 <p>In the <span style="color:darkblue">darkblue box</span>, users can download processed data in CSV format. The processed data of Omics, exposures and outcomes (i.e., data after possible variable removal and class changes mentioned in sections <a href="#Triggered_1_1_2">1.1.2</a> and <a href="#Triggered_1_2_2">1.2.2</a>) can be viewed and downloaded here.</p>
@@ -883,9 +886,6 @@ Note
 </section><section id="show-data" class="level2" data-number="7.4"><h2 data-number="7.4" class="anchored" data-anchor-id="show-data">
 <span class="header-section-number">7.4</span> Show data</h2>
 <p>In the <span style="color:green">green box</span>,users can view the processed data and generated results. By clicking the <strong><em>View</em></strong> button, the corresponding data will be displayed in this section.</p>
-<div class="cell" data-layout-align="center">
-
-</div>
 
 
 <!-- -->
@@ -925,18 +925,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -968,7 +957,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
   const viewSource = window.document.getElementById('quarto-view-source') ||
                      window.document.getElementById('quarto-code-tools-source');
   if (viewSource) {
@@ -1020,10 +1031,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/yingxiaoyan\.gitlab\.io\/triplotgui_tutorial\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1033,8 +1061,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1046,7 +1083,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
 });
@@ -1089,10 +1130,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>If you haven’t done so already, please read <span class="co">[</span><span class="ot">Introduction</span><span class="co">](introduction.qmd)</span>{target="_blank" style="color:blue"} to familiarize yourself with the steps of TriplotGUI. In this manual section, we will go through the statistical analysis and visualization involved in each step of <span class="co">[</span><span class="ot">TriplotGUI</span><span class="co">]</span>{style="color:black"}. If you want to search for the meaning of something specific (e.g., a button or a box), please press <span class="in">`ctrl+F`</span> and enter the keyword; you will likely find what you need.</span>
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>If you have not opened the app yet, you can use the <span class="co">[</span><span class="ot">web application of TriplotGUI</span><span class="co">](https://yingxiao.shinyapps.io/triplotgui/)</span>{target="_blank"} or follow the [Setup](installation.qmd){target="_blank" style="color:blue"} section to open the interface using <span class="in">`TriplotGUI_shiny()`</span>.</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>If you have not opened the app yet, you can use the <span class="co">[</span><span class="ot">web application of TriplotGUI</span><span class="co">](https://yingxiao.shinyapps.io/triplotgui/)</span>{target="_blank"} or follow the <span class="co">[</span><span class="ot">Setup</span><span class="co">](installation.qmd)</span>{target="_blank" style="color:blue"} section to open the interface using <span class="in">`TriplotGUI_shiny()`</span>.</span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>::: {.alert .alert-primary}</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>**Note:** You can later use the <span class="co">[</span><span class="ot">example data</span><span class="co">](https://gitlab.com/YingxiaoYan/triplotgui/-/tree/main/Example_data?ref_type=heads)</span>{target="_blank"} in our repository to test the TriplotGUI interface by following the [Tutorial(simple)](simple.qmd){target="_blank" style="color:blue"} and [Tutorial(complex)](complex.qmd){target="_blank" style="color:blue"} sections. This page serves as a detailed manual that covers everything about TriplotGUI.</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>**Note:** You can later use the <span class="co">[</span><span class="ot">example data</span><span class="co">](https://gitlab.com/YingxiaoYan/triplotgui/-/tree/main/Example_data?ref_type=heads)</span>{target="_blank"} in our repository to test the TriplotGUI interface by following the <span class="co">[</span><span class="ot">Tutorial(simple)</span><span class="co">](simple.qmd)</span>{target="_blank" style="color:blue"} and <span class="co">[</span><span class="ot">Tutorial(complex)</span><span class="co">](complex.qmd)</span>{target="_blank" style="color:blue"} sections. This page serves as a detailed manual that covers everything about TriplotGUI.</span>
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="fu"># **Step1:** PCA/WGCNA plots</span></span>
@@ -1101,7 +1142,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="al">![](img/step1_1.png)</span></span>
 <span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span> This step transforms the Omics data into a number of components using Principal Component Analysis (PCA) or Weighted Correlation Network Analysis (WGCNA).</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>&lt;br&gt; This step transforms the Omics data into a number of components using Principal Component Analysis (PCA) or Weighted Correlation Network Analysis (WGCNA).</span>
 <span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>Five boxes with unique features are presented, and you can infer their purposes from their titles. Now, let’s go through each box in detail.</span>
 <span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
@@ -1171,7 +1212,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>The clustering method used is the default hierarchical clustering method provided by <span class="in">`cutreeDynamic()`</span> in the *dynamicTreeCut* package.</span>
 <span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>***PCA function***: Select either <span class="co">[</span><span class="ot">*prcomp*</span><span class="co">](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/prcomp)</span>{target="_blank"} or [*principal*](https://www.rdocumentation.org/packages/psych/versions/2.4.1/topics/principal){target="_blank"} for PCA/WGCNA. Default is [*prcomp*](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/prcomp){target="_blank"}.</span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>***PCA function***: Select either <span class="co">[</span><span class="ot">*prcomp*</span><span class="co">](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/prcomp)</span>{target="_blank"} or <span class="co">[</span><span class="ot">*principal*</span><span class="co">](https://www.rdocumentation.org/packages/psych/versions/2.4.1/topics/principal)</span>{target="_blank"} for PCA/WGCNA. Default is <span class="co">[</span><span class="ot">*prcomp*</span><span class="co">](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/prcomp)</span>{target="_blank"}.</span>
 <span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>***Max number of components***: (*PCA* only) Determines how many principal components to use in downstream analysis. Default is *5* or the number of Omics variables if less than 5.</span>
 <span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a></span>
@@ -1235,7 +1276,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a>After uploading Omics and auxiliary data (optional) in Step 1, click "Exposure correlations" in Step 2 on the sidebar. You will then see the layout as shown below. <span class="al">![](img/step2_1.png)</span></span>
 <span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span> This step is to calculate the correlations between the components/modules from Step 1 and the exposures uploaded in this step. </span>
+<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a>&lt;br&gt; This step is to calculate the correlations between the components/modules from Step 1 and the exposures uploaded in this step. </span>
 <span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a>Four boxes with unique features are presented. Now we will go through each box in detail:</span>
 <span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a></span>
@@ -1307,7 +1348,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a><span class="al">![](img/step2_2.png)</span></span>
 <span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-257"><a href="#cb1-257" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span> This step calculates risk associations between principal components from Step 1 and outcomes uploaded here.</span>
+<span id="cb1-257"><a href="#cb1-257" aria-hidden="true" tabindex="-1"></a>&lt;br&gt; This step calculates risk associations between principal components from Step 1 and outcomes uploaded here.</span>
 <span id="cb1-258"><a href="#cb1-258" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a>Five boxes with unique features are presented. Now we will go through each box in detail:</span>
 <span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a></span>
@@ -1391,7 +1432,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-338"><a href="#cb1-338" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-339"><a href="#cb1-339" aria-hidden="true" tabindex="-1"></a><span class="al">![](img/step3_1.png)</span></span>
 <span id="cb1-340"><a href="#cb1-340" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-341"><a href="#cb1-341" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;br&gt;</span> This step co-visualizes scores, loadings, exposure correlations, and outcome associations generated from Steps 1-3 as three different layers in one 2-dimensional plot.</span>
+<span id="cb1-341"><a href="#cb1-341" aria-hidden="true" tabindex="-1"></a>&lt;br&gt; This step co-visualizes scores, loadings, exposure correlations, and outcome associations generated from Steps 1-3 as three different layers in one 2-dimensional plot.</span>
 <span id="cb1-342"><a href="#cb1-342" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-343"><a href="#cb1-343" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
 <span id="cb1-344"><a href="#cb1-344" aria-hidden="true" tabindex="-1"></a>Data upload is needed in Steps 1-3. Steps 4-5 use the uploaded data from Steps 1 and 2, with no further data upload needed.</span>
@@ -1608,7 +1649,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-555"><a href="#cb1-555" aria-hidden="true" tabindex="-1"></a>In the <span class="co">[</span><span class="ot">red box</span><span class="co">]</span>{style="color:red"}, users can download the TPObject in RDA format as the end product. The TPObject is a list structure used to save information and pass it through the various steps of the analysis in TriplotGUI.</span>
 <span id="cb1-556"><a href="#cb1-556" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-557"><a href="#cb1-557" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb1-558"><a href="#cb1-558" aria-hidden="true" tabindex="-1"></a>If you are interested in learning more about the contents of the TPObject at each step of the analysis in TriplotGUI, we recommend exploring <span class="co">[</span><span class="ot">Tutorial(simple)</span><span class="co">](simple_code.qmd)</span>{target="_blank"} and [Tutorial(complex)](complex_code.qmd){target="_blank"}.</span>
+<span id="cb1-558"><a href="#cb1-558" aria-hidden="true" tabindex="-1"></a>If you are interested in learning more about the contents of the TPObject at each step of the analysis in TriplotGUI, we recommend exploring <span class="co">[</span><span class="ot">Tutorial(simple)</span><span class="co">](simple_code.qmd)</span>{target="_blank"} and <span class="co">[</span><span class="ot">Tutorial(complex)</span><span class="co">](complex_code.qmd)</span>{target="_blank"}.</span>
 <span id="cb1-559"><a href="#cb1-559" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb1-560"><a href="#cb1-560" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-561"><a href="#cb1-561" aria-hidden="true" tabindex="-1"></a><span class="fu">## Show data</span></span>
@@ -1623,15 +1664,52 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-572"><a href="#cb1-572" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-alt: "photo."</span></span>
 <span id="cb1-573"><a href="#cb1-573" aria-hidden="true" tabindex="-1"></a><span class="co">#knitr::include_graphics("img/TriplotGUI_logo_black.png")</span></span>
 <span id="cb1-574"><a href="#cb1-574" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
-    <div class="nav-footer-left"><span class="faux-block">© 2024 Yingxiao Yan <br> CC BY-SA 4.0</span></div>   
-    <div class="nav-footer-center"><span class="faux-block"> <a href="https://yingxiao.shinyapps.io/triplotgui/" target="_blank">TriplotGUI</a> <br><a href="https://gitlab.com/YingxiaoYan/TriplotGUI" target="_blank">TriplotGUI Gitlab</a> </span></div>
-    <div class="nav-footer-right"><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></div>
+    <div class="nav-footer-left">
+<p><span class="faux-block">© 2024 Yingxiao Yan <br> CC BY-SA 4.0</span></p>
+</div>   
+    <div class="nav-footer-center">
+<p><span class="faux-block"> <a href="https://yingxiao.shinyapps.io/triplotgui/" target="_blank">TriplotGUI</a> <br><a href="https://gitlab.com/YingxiaoYan/TriplotGUI" target="_blank">TriplotGUI Gitlab</a> </span></p>
+</div>
+    <div class="nav-footer-right">
+<p><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></p>
+</div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"loop":true,"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom"});</script>
+</footer><script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"descPosition":"bottom","closeEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 <script src="site_libs/quarto-html/zenscroll-min.js"></script>

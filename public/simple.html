@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>TriplotGUI  - Tutorial(simple) - User Interface</title>
+<title>Tutorial(simple) - User Interface – TriplotGUI </title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,21 +31,25 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": true,
   "collapse-after": 5,
   "panel-placement": "end",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -54,6 +58,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -80,8 +85,8 @@ ul.task-list li input[type="checkbox"] {
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
     <img src="./img/TriplotGUI_logo_black.png" alt="" class="navbar-logo"></a>
     <a class="navbar-brand" href="./index.html">
@@ -89,82 +94,82 @@ ul.task-list li input[type="checkbox"] {
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item">
-    <a class="nav-link" href="./introduction.html" rel="" target="">
- <span class="menu-text">Introduction</span></a>
+    <a class="nav-link" href="./introduction.html"> 
+<span class="menu-text">Introduction</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./installation.html" rel="" target="">
- <span class="menu-text">Setup</span></a>
+    <a class="nav-link" href="./installation.html"> 
+<span class="menu-text">Setup</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./workflow.html" rel="" target="">
- <span class="menu-text">Manual</span></a>
+    <a class="nav-link" href="./workflow.html"> 
+<span class="menu-text">Manual</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorial(simple" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorial(simple" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Tutorial(simple)</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-tutorial(simple">
 <li>
-    <a class="dropdown-item" href="./simple.html" rel="" target="">
+    <a class="dropdown-item" href="./simple.html">
  <span class="dropdown-text">User Interface</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./simple_code.html" rel="" target="">
+    <a class="dropdown-item" href="./simple_code.html">
  <span class="dropdown-text">Code</span></a>
   </li>  
     </ul>
 </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorial(complex" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorial(complex" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Tutorial(complex)</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-tutorial(complex">
 <li>
-    <a class="dropdown-item" href="./complex.html" rel="" target="">
+    <a class="dropdown-item" href="./complex.html">
  <span class="dropdown-text">User Interface</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./complex_code.html" rel="" target="">
+    <a class="dropdown-item" href="./complex_code.html">
  <span class="dropdown-text">Code</span></a>
   </li>  
     </ul>
 </li>
   <li class="nav-item">
-    <a class="nav-link" href="./papers.html" rel="" target="">
- <span class="menu-text">Papers</span></a>
+    <a class="nav-link" href="./papers.html"> 
+<span class="menu-text">Papers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
- <span class="menu-text">About us</span></a>
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About us</span></a>
   </li>  
 </ul>
 <ul class="navbar-nav navbar-nav-scroll ms-auto">
 <li class="nav-item compact">
-    <a class="nav-link" href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" rel="" target="_blank"><i class="bi bi-folder-symlink" role="img">
+    <a class="nav-link" href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank"> <i class="bi bi-folder-symlink" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/yingxiao-yan" rel="" target="_blank"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://www.linkedin.com/in/yingxiao-yan" target="_blank"> <i class="bi bi-linkedin" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:yingxiao@chalmers.se" rel="" target=""><i class="bi bi-envelope" role="img" aria-label="email">
+    <a class="nav-link" href="mailto:yingxiao@chalmers.se"> <i class="bi bi-envelope" role="img" aria-label="email">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-<div class="quarto-navbar-tools">
+</div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
@@ -174,7 +179,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
     
   
-  <div class="quarto-title-meta">
+  <div class="quarto-title-meta column-page-left">
 
       
     
@@ -244,27 +249,15 @@ ul.task-list li input[type="checkbox"] {
 <div class="columns">
 <div class="column" style="width: 45%">
 <p>First, upload the Omics data in Step 1 of the interface.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="img/simple_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/simple_1.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
+<p><a href="img/simple_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/simple_1.png" class="img-fluid"></a></p>
 <p>After successfully uploading the data, a series of buttons will appear, allowing you to make modifications to the data reduction process for the Omics data.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="img/simple_1_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="img/simple_1_1.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
+<p><a href="img/simple_1_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="img/simple_1_1.png" class="img-fluid"></a></p>
 <p>Once the upload is complete, you can explore the visualization panel on the right side. Here, you will be able to view all the relevant plots (score, loadings, biplot, screeplot).</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="img/simple_1_1_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="img/simple_1_1_1.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
+<p><a href="img/simple_1_1_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="img/simple_1_1_1.png" class="img-fluid"></a></p>
 </div><div class="column" style="width: 5%">
 
 </div><div class="column" style="width: 40%">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="img/simple_1_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img/simple_1_2.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
+<p><a href="img/simple_1_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img/simple_1_2.png" class="img-fluid"></a></p>
 </div>
 </div>
 <ul>
@@ -278,21 +271,12 @@ ul.task-list li input[type="checkbox"] {
 <strong>Biplot</strong>: Get a comprehensive view of how samples relate to each other alongside variable contributions.</li>
 </ul></section><section id="step-2-3-exposure-correlations-outcome-associations" class="level2"><h2 class="anchored" data-anchor-id="step-2-3-exposure-correlations-outcome-associations">Step 2-3: Exposure correlations &amp; Outcome associations</h2>
 <p>Next, proceed to upload the exposures, outcomes, and covariates data in Steps 2 and 3 of the interface.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="img/simple_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/simple_2.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
+<p><a href="img/simple_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/simple_2.png" class="img-fluid"></a></p>
 <p>Once you have uploaded these datasets, you can view the correlation coefficients in Step 2 and the risk estimates in Step 3. To refresh the visualizations and see the updated plots, simply click on the <strong><em>Refresh Plot</em></strong> button. This will allow you to analyze the relationships between your exposures, outcomes, and covariates effectively.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="img/simple_2_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="img/simple_2_1.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
+<p><a href="img/simple_2_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="img/simple_2_1.png" class="img-fluid"></a></p>
 </section><section id="step-4-visualization-of-triplot" class="level2"><h2 class="anchored" data-anchor-id="step-4-visualization-of-triplot">Step 4: Visualization of Triplot</h2>
 <p>In Step 4 of the interface, you can view and download the triplot by clicking <strong><em>Refresh Plot</em></strong> The left-side panel allows you to make adjustments to the plot as needed.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="img/simple_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="img/simple_3.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
+<p><a href="img/simple_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="img/simple_3.png" class="img-fluid"></a></p>
 <p>In the triplot, black arrows represent loadings of Omics variables, forming patterns in different components (axes). Blue circle points show exposure correlations with the components, while red square points indicate outcome associations with the components.</p>
 <p>For interpretation, let’s focus on Principal Component 1 (PC1) and Principal Component 2 (PC2), using the exposures <code>"Refined grains"</code>, <code>"Red meat"</code>, and the outcome <code>"BMI"</code> as examples:</p>
 <p>PC1: This component shows a positive association with BMI and is correlated with high intakes of red meat and refined grains, even after adjusting for age and sex. This suggests that the metabolite features dominating PC1 may provide valuable insights into how the intake of red meat and refined grains could influence BMI.</p>
@@ -303,19 +287,13 @@ ul.task-list li input[type="checkbox"] {
 </section><section id="step-5-triplot-with-mediation" class="level2"><h2 class="anchored" data-anchor-id="step-5-triplot-with-mediation">Step 5: Triplot with mediation</h2>
 <div class="columns">
 <div class="column" style="width: 40%">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="img/simple_4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="img/simple_4.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
+<p><a href="img/simple_4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="img/simple_4.png" class="img-fluid"></a></p>
 </div><div class="column" style="width: 5%">
 
 </div><div class="column" style="width: 45%">
 <p>Mediation analysis will be performed using the conventional “product” method on our selected exposures (<code>"Refined grains"</code>, <code>"Red meat"</code>), mediators (PC1 and PC2), and the outcome of interest (<code>"BMI"</code>), adjusting for age and sex in both the exposure-mediator and mediator-outcome relationships.</p>
 <!-- Mediation analysis is then performed using the conventional "product" method on our selected exposures (i.e. `"Refined grains"`, `"Red meat"`), mediators (i.e. PC1 and PC2) and the selected outcome (i.e. `"BMI"`) of interest, adjusting for age and sex for both exposure-mediator and mediator-outcome relationship -->
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="img/simple_4_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="img/simple_4_1.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
+<p><a href="img/simple_4_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="img/simple_4_1.png" class="img-fluid"></a></p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -335,10 +313,7 @@ Note
 </div>
 </div>
 <p>In Step 5B of the interface, you can view bar plots that display the direct, indirect, and total effects for each exposure-mediator-outcome combination. This tool conveniently illustrates the direction and magnitude of mediation estimates.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="img/simple_4_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="img/simple_4_2.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
+<p><a href="img/simple_4_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="img/simple_4_2.png" class="img-fluid"></a></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -359,14 +334,8 @@ Note
 <p>Based on the barplot and the triplot with mediation, we observed significant mediation effects through PC1 for the red_meat-BMI and refined_grain-BMI associations. This finding suggests that the metabolite features contributing to PC1 are likely mediating the pathway from red meat and refined grain intake to BMI changes. These results provide insight into potential metabolic mechanisms linking dietary patterns to body mass index.</p>
 </section><section id="comparative-visualization" class="level2"><h2 class="anchored" data-anchor-id="comparative-visualization">Comparative Visualization</h2>
 <p>Users can check the heatmaps of correlations, risk estimations, and mediation results in Step 5A of the interface. To focus specifically on the results relevant to PC1 and PC2, you can remove other principal components in the “Visualization Settings.” This will streamline the analysis, allowing for a clearer interpretation of the relationships involving these two components.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="img/simple_5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="img/simple_5.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="img/simple_5_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="img/simple_5_1.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
+<p><a href="img/simple_5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="img/simple_5.png" class="img-fluid"></a></p>
+<p><a href="img/simple_5_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="img/simple_5_1.png" class="img-fluid"></a></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -386,10 +355,7 @@ Note
 </div>
 </section><section id="data-download" class="level2"><h2 class="anchored" data-anchor-id="data-download">Data download</h2>
 <p>Relevant data and intermediate results can be viewed and downloaded directly from the interface.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="img/simple_6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="img/simple_6.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
+<p><a href="img/simple_6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="img/simple_6.png" class="img-fluid"></a></p>
 
 
 </section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -419,10 +385,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/yingxiaoyan\.gitlab\.io\/triplotgui_tutorial\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -432,8 +415,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -445,18 +437,59 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
 });
 </script>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
-    <div class="nav-footer-left"><span class="faux-block">© 2024 Yingxiao Yan <br> CC BY-SA 4.0</span></div>   
-    <div class="nav-footer-center"><span class="faux-block"> <a href="https://yingxiao.shinyapps.io/triplotgui/" target="_blank">TriplotGUI</a> <br><a href="https://gitlab.com/YingxiaoYan/TriplotGUI" target="_blank">TriplotGUI Gitlab</a> </span></div>
-    <div class="nav-footer-right"><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></div>
+    <div class="nav-footer-left">
+<p><span class="faux-block">© 2024 Yingxiao Yan <br> CC BY-SA 4.0</span></p>
+</div>   
+    <div class="nav-footer-center">
+<p><span class="faux-block"> <a href="https://yingxiao.shinyapps.io/triplotgui/" target="_blank">TriplotGUI</a> <br><a href="https://gitlab.com/YingxiaoYan/TriplotGUI" target="_blank">TriplotGUI Gitlab</a> </span></p>
+</div>
+    <div class="nav-footer-right">
+<p><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></p>
+</div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"loop":true,"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","openEffect":"zoom"});</script>
+</footer><script>var lightboxQuarto = GLightbox({"openEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false,"closeEffect":"zoom"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 <script src="site_libs/quarto-html/zenscroll-min.js"></script>

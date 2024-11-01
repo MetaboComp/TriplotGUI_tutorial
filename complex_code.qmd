@@ -911,18 +911,18 @@ Mediation estimates and p values for indirect effect(IE) and total effect(TE), p
 checkTPObject4$med_coefficients
 ```
 
-You could also View the three plots aboved combinedly.
+<!-- You could also View the three plots aboved combinedly. -->
 
-```{r showcode_runcode_showoutput_15D}
-#| eval: true
-#| echo: true
-#| output: true
-#| classes: styled-output
-#| fold.plot: true
-#| out-width: "100%"
+<!-- ```{r showcode_runcode_showoutput_15D} -->
+<!-- #| eval: true -->
+<!-- #| echo: true -->
+<!-- #| output: true -->
+<!-- #| classes: styled-output -->
+<!-- #| fold.plot: true -->
+<!-- #| out-width: "100%" -->
 
-checkTPObject4$corr_risk_med_coefficients
-```
+<!-- checkTPObject4$corr_risk_med_coefficients -->
+<!-- ``` -->
 
 ::: callout-note
 -   Significance is indicated as follows. One star for p<0.05; Two stars for p<0.01; Three stars for p<0.001.
