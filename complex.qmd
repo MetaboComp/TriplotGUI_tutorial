@@ -191,7 +191,7 @@ You can then briefly view the correlation coefficients in the "Visualizations" s
 :::
 
 ::: callout-note
--   Select *One-hot-encoding* in ***Categorical variables*** transform categorical exposure variables (like `"HFI"`) with more than two classes into multiple binary variables. This process creates n binary variables for a categorical variable with n classes. The correlation coefficients between modules and these new binary variables are then calculated.
+-   Select *One-hot-encoding* in ***Categorical variables*** transform categorical exposure variables (like `"HFI"`) with more than two classes into multiple binary variables. This process creates n binary variables for a categorical variable with n classes. The correlation coefficients between modules and these new binary variables are then calculated. However, *One-hot-encoding* is limited for  meaningful use. The binary variables may be only meaningful when we want to compare one level to all the other levels together. We use this option for categorical variable `"HFI"` for demonstration purpose. Ideally, one should use *Use Original* for HFI.
 
     If *Use Original* is selected for ***Categorical variables***, no transformation is made on the categorical exposure variables. In this case, linear models regressing modules on the `"HFI"` variable are used for correlation analysis. The correlation coefficients are derived as the square root of the proportion of `"HFI"`'s sum of squares in the total sum of squares.
 

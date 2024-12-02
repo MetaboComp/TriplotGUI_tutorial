@@ -232,7 +232,7 @@ window.Quarto = {
   <li><a href="#data-download" id="toc-data-download" class="nav-link" data-scroll-target="#data-download">Data download</a></li>
   </ul>
 </li>
-  </ul></nav>
+  </ul><div class="toc-actions"><ul><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/edit/main/complex.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/blob/main/complex.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content"><p>Before you begin, ensure that you have access to either the <a href="https://yingxiao.shinyapps.io/triplotgui/" target="_blank">online version of TriplotGUI</a> or can use TriplotGUI as a stand-alone application on your computer following <a href="./installation.html" target="_blank" style="color:blue">Setup</a>.</p>
@@ -371,7 +371,7 @@ Note
 <div class="callout-body-container callout-body">
 <ul>
 <li>
-<p>Select <em>One-hot-encoding</em> in <strong><em>Categorical variables</em></strong> transform categorical exposure variables (like <code>"HFI"</code>) with more than two classes into multiple binary variables. This process creates n binary variables for a categorical variable with n classes. The correlation coefficients between modules and these new binary variables are then calculated.</p>
+<p>Select <em>One-hot-encoding</em> in <strong><em>Categorical variables</em></strong> transform categorical exposure variables (like <code>"HFI"</code>) with more than two classes into multiple binary variables. This process creates n binary variables for a categorical variable with n classes. The correlation coefficients between modules and these new binary variables are then calculated. However, <em>One-hot-encoding</em> is limited for meaningful use. The binary variables may be only meaningful when we want to compare one level to all the other levels together. We use this option for categorical variable <code>"HFI"</code> for demonstration purpose. Ideally, one should use <em>Use Original</em> for HFI.</p>
 <p>If <em>Use Original</em> is selected for <strong><em>Categorical variables</em></strong>, no transformation is made on the categorical exposure variables. In this case, linear models regressing modules on the <code>"HFI"</code> variable are used for correlation analysis. The correlation coefficients are derived as the square root of the proportion of <code>"HFI"</code>’s sum of squares in the total sum of squares.</p>
 </li>
 <li><p>For handling <strong><em>Missing values</em></strong>, TriplotGUI adopts the approaches from the <em>cor</em> package when dealing with continuous exposures. For more detailed information on these methods, refer to the documentation of the <a href="https://rdrr.io/r/stats/cor.html" target="_blank"><em>cor</em></a> package.</p></li>
@@ -699,12 +699,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
 <p><span class="faux-block"> <a href="https://yingxiao.shinyapps.io/triplotgui/" target="_blank">TriplotGUI</a> <br><a href="https://gitlab.com/YingxiaoYan/TriplotGUI" target="_blank">TriplotGUI Gitlab</a> </span></p>
-</div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/edit/main/complex.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/blob/main/complex.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></p>
 </div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false});
+</footer><script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

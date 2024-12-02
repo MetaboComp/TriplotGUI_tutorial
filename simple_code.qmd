@@ -63,11 +63,9 @@ The code at this page can be downloaded [here](https://gitlab.com/YingxiaoYan/tr
 
 Before starting, please ensure you have installed the TriplotGUI package following the [Setup](installation.qmd){target="_blank" style="color:blue"} instructions.
 
-
-
 # Data description
 
-The data used in this tutorial can be downloaded  [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/data/CAMP_2.rda){target="_blank"} in rda format.
+The data used in this tutorial can be downloaded [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/data/CAMP_2.rda){target="_blank"} in rda format.
 
 This example utilizes ***CAMP_2***, which is a modified version of the **CAMP** data provided by the [*Triplot*](https://gitlab.com/CarlBrunius/triplot/-/blob/master/vignettes/Triplot_Tutorial.md?ref_type=heads){target="_blank"} package (Schillemans et al. 2019). The **CAMP** dataset was simulated from authentic data collected in a cross-sectional study of carbohydrate alternatives and metabolic phenotypes among young adults in China (Liu et al. 2018). The simulated ***CAMP_2*** data consists of three data frames:
 
@@ -159,13 +157,19 @@ FoodData_check$class_summary_statistics
 
 To check for missing (NA) or abnormal values (e.g., NaN, negative values, infinite values, blank values) in each variable, you can use the `checkdata()` function. This function generates a summary table for each data frame, showing the number of observations containing NA, NaN, zero, negative, infinite (Inf), and blank values, along with their percentages.
 
-
 ```{r showcode_runcode_noshowoutput_1_1}
 #| eval: true
 #| echo: true
 #| output: false
 #| classes: styled-output
-library(kableExtra)  ## You may need to install.packages("kableExtra") first 
+
+
+if (!require(kableExtra)) {
+  install.packages("kableExtra")  # Install the package if it's not available.
+
+}
+library(kableExtra)             # Load it after installation.'
+
 ```
 
 ```{r showcode_runcode_showoutput_4}
@@ -211,10 +215,10 @@ Using `TriplotGUI` package, first we perform dimension reduction, i.e. principal
 #| echo: true
 #| output: false
 #| classes: styled-output
-reduced_Omics1 <- PCAorWGCNA_plots(dataframe = Omics1,
-                                   pc_num = 5,
+reduced_Omics1 <- OmicsReduction(dataframe = Omics1,
+                                   pcNum = 5,
                                    option = "PCA",
-                                   loadings_name = TRUE)
+                                   loadingsName = TRUE)
 
 ```
 
@@ -232,6 +236,22 @@ reduced_Omics1$score_plot
 reduced_Omics1$loading_plot
 reduced_Omics1$scoreloading_plot
 ```
+
+
+::: callout-note
+Sometimes the following text will show up in your console and the figure cannot be directly run:
+
+`libpng warning: Image width is zero in IHDR` 
+
+`libpng error: Invalid IHDR data` 
+
+`Warning message:`
+
+`In dev.off(which) : agg could not write to the given file\`
+
+Run `gc()` in your console to clear the memory. Then rerun the code again to view the figure.
+::: 
+
 
 We then build a TPObject based on the data reduction results. This object will be used to save information and facilitate the transfer of data through the various steps in TriplotGUI.
 
@@ -253,7 +273,7 @@ TPObject1 <- makeTPO(scores = scores,
 
 The correlations between principal components (PCs) and food items are calculated using Pearson correlations, adjusting for confounders. We investigate associations between PC scores and risk markers adjusting for confounders using linear regression, as all food variables are numeric.
 
-The PC scores are saved in the TPObject, which can be directly used in the `makeCorr()` function to calculate correlation coefficients and p-values with exposures (food variables), while adjusting for confounders.
+The PC scores are saved in the TPObject, which can be directly used in the `exposureAssociation()` function to calculate correlation coefficients and p-values with exposures (food variables), while adjusting for confounders.
 
 ```{r showcode_runcode_noshowoutput_3}
 #| eval: true
@@ -261,15 +281,14 @@ The PC scores are saved in the TPObject, which can be directly used in the `make
 #| output: false
 #| classes: styled-output
 #| fold.output: false
-Correlations_object <- makeCorr(TPObject = TPObject1,
-                                corrData = exposure1,
+Correlations_object <- exposureAssociation(TPObject = TPObject1,
+                                exposure = exposure1,
                                 confounder = covariates1,
                                 method = "pearson")
 
 ```
 
 The correlation results are then added to the TPObject.
-
 
 ```{r showcode_runcode_showoutput_8}
 #| eval: true
@@ -278,13 +297,12 @@ The correlation results are then added to the TPObject.
 #| classes: styled-output
 #| fold.output: false
 
-TPObject2 <- addCorr(TPObject = TPObject1,
-                     Corr = Correlations_object$cor_estimate,
-                     Corr_p = Correlations_object$cor_pvalue)
+TPObject2 <- addExposure(TPObject = TPObject1,
+                     corrEstimate = Correlations_object$cor_estimate,
+                     corrPvalue = Correlations_object$cor_pvalue)
 ```
 
-Similarly, we calculate risk estimates (beta coefficients from linear regression) and p-values using the PC scores saved in the TPObject and the outcome variables. This is done using the `coefficient_get()` function, which also adjusts for confounders.
-
+Similarly, we calculate risk estimates (beta coefficients from linear regression) and p-values using the PC scores saved in the TPObject and the outcome variables. This is done using the `outcomeAssociation()` function, which also adjusts for confounders.
 
 ```{r showcode_runcode_noshowoutput_4}
 #| eval: true
@@ -292,7 +310,7 @@ Similarly, we calculate risk estimates (beta coefficients from linear regression
 #| output: false
 #| classes: styled-output
 #| fold.output: false
-Risks_object <- coefficient_get(TPObject = TPObject2,
+Risks_object <- outcomeAssociation(TPObject = TPObject2,
                                outcome = outcome1,
                                confounder = covariates1)
 
@@ -308,7 +326,7 @@ The risk estimate results are then added to the TPObject.
 #| fold.output: false
 
 
-TPObject3 <- addRisk(TPObject = TPObject2, 
+TPObject3 <- addOutcome(TPObject = TPObject2, 
                      Risk = Risks_object)
 
 ```
@@ -324,7 +342,7 @@ Then we generate the Triplot. It's important to note that a Triplot can be gener
 #| classes: styled-output
 #| fold.output: false
 
-Triplot_object3 <- TriplotGUI(TPObject3, 
+TPO_plots3 <- TriplotGUI(TPObject3, 
                               riskOR = FALSE) #risks is shown as coeffcients, not odds ratio
 
 ```
@@ -338,18 +356,15 @@ Plot the triplot
 #| classes: styled-output
 #| fold.plot: true
 #| out-width: "100%"
-Triplot_object3$triplot
+TPO_plots3$triplot
 
 ```
 
 In the triplot, black arrows represent loadings of Omics variables, forming patterns in different components (axes). Blue circle points show exposure correlations with the components, while red square points indicate outcome associations with the components.
 
-
 For interpretation, let’s focus on Principal Component 1 (PC1) and Principal Component 2 (PC2), using the exposures `"Refined grains"`, `"Red meat"`, and the outcome `"BMI"` as examples:
 
-
 PC1: This component shows a positive association with BMI and is correlated with high intakes of red meat and refined grains, even after adjusting for age and sex. This suggests that the metabolite features dominating PC1 may provide valuable insights into how the intake of red meat and refined grains could influence BMI.
-
 
 PC2: In contrast, PC2 exhibits a smaller association with BMI and a weak inverse correlation with red meat and refined grains. The metabolite features contributing significantly to PC2 may indicate a marginal beneficial effect of these dietary components, although this effect appears to be limited. This may also suggest that the features dominating PC2 may reflect metabolite patterns influenced by food, but not to a large degree associations with metabolic regulation in relation to health.
 
@@ -357,7 +372,7 @@ This interpretation highlights how different dietary exposures relate to metabol
 
 ## Step 5: Triplot with mediation
 
-Mediation analysis will be performed using the conventional “product” method on our selected exposures (`"Refined grains"`, `"Red meat"`), mediators (PC1 and PC2), and the outcome of interest (`"BMI"`), adjusting for age and sex in both the exposure-mediator and mediator-outcome relationships. 
+Mediation analysis will be performed using the conventional “product” method on our selected exposures (`"Refined grains"`, `"Red meat"`), mediators (PC1 and PC2), and the outcome of interest (`"BMI"`), adjusting for age and sex in both the exposure-mediator and mediator-outcome relationships.
 
 ```{r showcode_runcode_noshowoutput_6}
 #| eval: true
@@ -367,12 +382,12 @@ Mediation analysis will be performed using the conventional “product” method
 #| fold.output: false
 
 mediation_object3 <- 
-  get_mediation_traditional (mediator = TPObject3$scores[,c(1:2),drop = FALSE], 
+  getMediationConventional (mediator = TPObject3$scores[,c(1:2),drop = FALSE], 
                              # Specfiying at least 2 components so that there can be a 2-dimensional plot
                              exposure = exposure1[,c("Refined_grains","Red_meat"),drop = FALSE],
-                             outcome=outcome1[,"BMI",drop = FALSE],
-                             confounder_ME = covariates1,
-                             confounder_OE = covariates1)
+                             outcome = outcome1[,"BMI",drop = FALSE],
+                             confounderME = covariates1,
+                             confounderOE = covariates1)
 
 ```
 
@@ -384,7 +399,7 @@ Examine the barplot for a clearer view of the direct, indirect, and total effect
 #| output: false
 #| classes: styled-output
 #| fold.plot: true
-mediation_plot_object3 <- plot_mediation(mediation_object3,
+mediation_plots3 <- mediationBarplot(mediationObject = mediation_object3,
                                          cex = 2,
                                          # size of the text
                                          by_row = "one_column")
@@ -399,15 +414,14 @@ mediation_plot_object3 <- plot_mediation(mediation_object3,
 #| fold.plot: true
 #| out-width: "100%"
 #| out-height: "200%"
-mediation_plot_object3
+mediation_plots3
 ```
 
 ::: callout-note
 The barplot displays direct, indirect, and total effects for each exposure-mediator-outcome combination, providing a convenient tool to assess the direction and magnitude of mediation estimates.
 
--  Color coding indicates significance and direction: red represents significant positive effects (p<0.05), blue represents significant negative effects (p<0.05), and grey represents insignificant effects.
--  Significance levels are denoted by stars: one star for p<0.05, two stars for p<0.01, and three stars for p<0.001.
-
+-   Color coding indicates significance and direction: red represents significant positive effects (p\<0.05), blue represents significant negative effects (p\<0.05), and grey represents insignificant effects.
+-   Significance levels are denoted by stars: one star for p\<0.05, two stars for p\<0.01, and three stars for p\<0.001.
 :::
 
 The mediation results are then added to the TPObject.
@@ -419,8 +433,8 @@ The mediation results are then added to the TPObject.
 #| classes: styled-output
 #| fold.plot: true
 
-TPObject4 <- add_mediation(TPObject3, 
-                           mediation_object3)
+TPObject4 <- addMediation(TPObject = TPObject3, 
+                           mediationObject = mediation_object3)
 
 ```
 
@@ -433,8 +447,8 @@ Make the triplot with mediation.
 #| classes: styled-output
 #| fold.plot: true
 
-Triplot_object4 <- mediation_triplot(TPObject4,
-                                     which_show = c("IE","TE")
+TPO_plots4 <- mediationTriplot(TPObject4,
+                                     show = c("IE","TE")
                                      )
 
 ```
@@ -448,12 +462,12 @@ Show the mediation estimates only (indirect and total effect).
 #| classes: styled-output
 #| fold.plot: true
 #| out-width: "100%"
-Triplot_object4$mediation_plot
+TPO_plots4$mediations_plot
 
 ```
 
 ::: callout-note
-In the triplot, indirect effects, which are specific to each mediator (such as PC1 or PC2), are depicted as dark green triangle points. Total effects, on the other hand, are shown as circles. It's important to note that while indirect effects are tied to particular mediators, total effects remain constant for specific exposure-outcome pairs. 
+In the triplot, indirect effects, which are specific to each mediator (such as PC1 or PC2), are depicted as dark green triangle points. Total effects, on the other hand, are shown as circles. It's important to note that while indirect effects are tied to particular mediators, total effects remain constant for specific exposure-outcome pairs.
 :::
 
 Plot the triplot with mediation.
@@ -465,7 +479,7 @@ Plot the triplot with mediation.
 #| classes: styled-output
 #| fold.plot: true
 #| out-width: "100%"
-Triplot_object4$final_plot
+TPO_plots4$mediations_triplot
 
 ```
 
@@ -473,7 +487,7 @@ Based on the barplot and the triplot with mediation, we observed significant med
 
 ## Comparative Visualization
 
-Users can easily visualize the correlations, risk estimations, and mediation results stored in the TPObject using the `checkTPO_ggplot()` function provided by TriplotGUI. This function generates heatmaps for each type of analysis, offering a comprehensive and intuitive way to examine the relationships between variables. Note that you could put any TPObjects generate along the steps for heatmap visualizations.
+Users can easily visualize the correlations, risk estimations, and mediation results stored in the TPObject using the `checkTPO()` function provided by TriplotGUI. This function generates heatmaps for each type of analysis, offering a comprehensive and intuitive way to examine the relationships between variables. Note that you could put any TPObjects generate along the steps for heatmap visualizations.
 
 ```{r showcode_runcode_noshowoutput_9}
 #| eval: true
@@ -482,7 +496,7 @@ Users can easily visualize the correlations, risk estimations, and mediation res
 #| classes: styled-output
 #| fold.plot: true
 
-checkTPObject4 <- checkTPO_ggplot(TPObject4,
+checkTPObject4 <- checkTPO(TPObject4,
                                   size=7    ## customize the size of stars
                                   )
 
@@ -542,7 +556,7 @@ To save all your output, including data, results, and visualization output as an
 
 save(exposure1,Omics1,outcome1,covariates1,
      reduced_Omics1,Correlations_object,Risks_object,
-     mediation_object3,mediation_plot_object3,
+     mediation_object3,mediation_plots3,
      TPObject1,TPObject2,TPObject3,TPObject4,
      checkTPObject4,
      "Tutorial_simple_output.rda")

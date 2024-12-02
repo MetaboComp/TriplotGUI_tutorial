@@ -84,13 +84,20 @@ These features may allow you to inspect, clean, and prepare your data for analys
 
 At the right side of the Omics data upload section, there is a button labeled ***Reset all***. Clicking this button will remove all your uploads and settings, returning the interface to its default state. This feature is convenient for starting a new analysis or restarting a workflow.
 
-## Auxiliary data {#auxilary_data}
+## Auxiliary data {#auxiliary_data}
 
 The [lightblue box]{style="color:lightblue"} is for uploading auxiliary data. The variables in this data can serve two purposes: (1) Customizing the color, size, and shape of scores in the visualizations in Step 1 (See section [1.4.2](#Triggered_1_4_2)). (2) Providing pairing information (case-control match) for outcomes' associations (See section [3.3.2](#Triggered_3_3_2)).
 
 ### Basics {#Basics_1_2_1}
 
-The requirements for the uploaded auxiliary data are the same as those outlined in section [1.1.1](#Basics_1_1_1).
+The requirements for the uploaded auxiliary data are the similar as those outlined in section [1.1.1](#Basics_1_1_1).
+
+-   The data must be in either csv, xlsx, rds, or rda format. If using rds format, it should be a dataframe. In the case of rda format, the rda object should contain only one dataframe.
+-   The rows of data should represent observations, while the columns should represent variables (auxiliary variables).
+-   Variable names (column names) must not contain special characters such as `' '`, `'('`, `')'`, `':'`, `'/'`, `'-'`, `','`, or `'@'`.
+-   Missing values are allowed in the auxiliary data.
+-   Additionally, the number and order of observations must be the same across all uploaded data.
+
 
 ### More {#Triggered_1_2_2}
 
@@ -166,11 +173,11 @@ The [orange box]{style="color:orange"} allows you to modify visualization output
 
 4.  ***Proportion of maximum loading***: When selecting *Proportion* in ***Loading Cut by***, a slider will show up to let user decide only loadings above how much percent of the maximum loading will show up on the plot.
 
-5.  ***Score color by***: After uploading [Auxilary data](#auxilary_data) and selecting *loadings* or *biplo*t in ***Plotting options***, this button allows users to color score points based on one numeric or categorical variable from the auxiliary data. By default, no variables are selected.
+5.  ***Score color by***: After uploading [Auxiliary data](#auxiliary_data) and selecting *loadings* or *biplo*t in ***Plotting options***, this button allows users to color score points based on one numeric or categorical variable from the auxiliary data. By default, no variables are selected.
 
 6.  ***Score shape by***: Similar to ***Score color by***, this button allows users to change the shape of score points based on one categorical variable from the auxiliary data. By default, no variables are selected.
 
-<!-- Upon uploading the [Auxilary data](#auxilary_data) and clicking *loadings* or *biplot* in ***Plotting options***, this button will show up. Users can use one categorical variable in the auxiliary data to change the shape of scores points. By default, no variables are selected. -->
+<!-- Upon uploading the [Auxilary data](#auxiliary_data) and clicking *loadings* or *biplot* in ***Plotting options***, this button will show up. Users can use one categorical variable in the auxiliary data to change the shape of scores points. By default, no variables are selected. -->
 
 7.  ***Score size by***: Similar to ***Score color by***, this button allows users to change the sie of score points based on one numeric variable from the auxiliary data. By default, no variables are selected.
 
@@ -190,7 +197,14 @@ Four boxes with unique features are presented. Now we will go through each box i
 
 ### Basics
 
-The [dark blue box]{style="color:darkblue"} is for uploading exposure data. Requirements are the same as in [1.1.1](#Basics_1_1_1).
+The [dark blue box]{style="color:darkblue"} is for uploading exposure data. Requirements are the similar as in [1.1.1](#Basics_1_1_1).
+
+-   The data must be in either csv, xlsx, rds, or rda format. If using rds format, it should be a dataframe. In the case of rda format, the rda object should contain only one dataframe.
+-   The rows of data should represent observations, while the columns should represent variables (exposures).
+-   Variable names (column names) must not contain special characters such as `' '`, `'('`, `')'`, `':'`, `'/'`, `'-'`, `','`, or `'@'`.
+-   Missing values are allowed in the exposure data. When missing values exists, by default, they are handled according to the 'pairwise.complete.obs' in the 'cor()' function in the [*cor*](https://rdrr.io/r/stats/cor.html){target="_blank"} package. The correlation or covariance between each pair of variables is computed using all complete pairs of observations on those variables. Please specify in the ***Missing values*** if you want to use other options.
+-   Additionally, the number and order of observations must be the same across all uploaded data.
+
 
 ### More
 
@@ -208,7 +222,14 @@ The [light blue box]{style="color:lightblue"} for uploading covariate data, usab
 
 ### Basics
 
-Requirements are the same as in [1.1.1](#Basics_1_1_1).
+Requirements are the similar as in [1.1.1](#Basics_1_1_1).
+
+-   The data must be in either csv, xlsx, rds, or rda format. If using rds format, it should be a dataframe. In the case of rda format, the rda object should contain only one dataframe.
+-   The rows of data should represent observations, while the columns should represent variables (covariates).
+-   Variable names (column names) must not contain special characters such as `' '`, `'('`, `')'`, `':'`, `'/'`, `'-'`, `','`, or `'@'`.
+-   Missing values are allowed in the covariate data. When missing values exists, observations that contain missing values in any of the variables used in a model will not be used.
+-   Additionally, the number and order of observations must be the same across all uploaded data.
+
 
 ### More
 
@@ -262,7 +283,13 @@ Five boxes with unique features are presented. Now we will go through each box i
 
 ### Basics
 
-The [dark blue box]{style="color:darkblue"} is for uploading outcome data. The requirements are the same as in section [1.1.1](#Basics_1_1_1).
+The [dark blue box]{style="color:darkblue"} is for uploading outcome data. The requirements are the similar as in section [1.1.1](#Basics_1_1_1).
+
+-   The data must be in either csv, xlsx, rds, or rda format. If using rds format, it should be a dataframe. In the case of rda format, the rda object should contain only one dataframe.
+-   The rows of data should represent observations, while the columns should represent variables (outcomes).
+-   Variable names (column names) must not contain special characters such as `' '`, `'('`, `')'`, `':'`, `'/'`, `'-'`, `','`, or `'@'`.
+-   Missing values are allowed in the outcome data. When missing values exists, observations that contain missing values in any of the variables used in a model will not be used.
+-   Additionally, the number and order of observations must be the same across all uploaded data.
 
 ### More
 
@@ -280,7 +307,13 @@ The [light blue box]{style="color:lightblue"} is for uploading covariate data. A
 
 ### Basics
 
-The requirements for covariate data are the same as in section [1.1.1](#Basics_1_1_1).
+The requirements for covariate data are the similar as in section [1.1.1](#Basics_1_1_1).
+
+-   The data must be in either csv, xlsx, rds, or rda format. If using rds format, it should be a dataframe. In the case of rda format, the rda object should contain only one dataframe.
+-   The rows of data should represent observations, while the columns should represent variables (covariates).
+-   Variable names (column names) must not contain special characters such as `' '`, `'('`, `')'`, `':'`, `'/'`, `'-'`, `','`, or `'@'`.
+-   Missing values are allowed in the covariate data. When missing values exists, observations that contain missing values in any of the variables used in a model will not be used.
+-   Additionally, the number and order of observations must be the same across all uploaded data.
 
 ### More
 
@@ -314,7 +347,7 @@ For outcomes - components/modules associations, statistical analyses are perform
 
 <!-- If categorical variables with n\>2 class is uploaded or created from outcome variables, the button will show up. By selecting *No*, one-hot-encoding will be performed on these categorical variables to transform them to n binary variables with 0 and 1 values. By selecting *Yes*, multinomial regression will be performed on these categorical variables. The default is *No.* -->
 
-3.  ***Pairing variable***: Appears when auxiliary data ([1.2.1](#auxilary_data)) is uploaded. From auxiliary data, users can select a variable containing pairing information for modeling. For example, the matched case-control pair could constitute a categorical variable, where each pair of case and control is given a unique number. Upon selecting the variable, the information can be fed in the modelling of outcome - components/modules associations.
+3.  ***Pairing variable***: Appears when auxiliary data ([1.2.1](#auxiliary_data)) is uploaded. From auxiliary data, users can select a variable containing pairing information for modeling. For example, the matched case-control pair could constitute a categorical variable, where each pair of case and control is given a unique number. Upon selecting the variable, the information can be fed in the modelling of outcome - components/modules associations.
 
 ## Visualization settings
 
@@ -445,7 +478,7 @@ Once the analysis is complete, the progress bar will disappear, and the button w
 -   TriplotGUI memorizes what mediation analysis has been run (e.g. Using what exposure, what outcome, what method). This means that once you have run mediation analysis on certain exposures and outcomes using certain method, even if you unselect an exposure or outcome, their mediation results are not deleted. You can check this by reselecting the unselected exposure/outcome and click ***Do mediation***. You may notice that the mediation analysis is finished rather fast since the result is already generated.
 -   You can run *Counterfactual* and *Conventional* analysis alternatively on the same exposure-outcome pair. The result for different methods will be saved respectively.
 -   For a *Counterfactual* mediation analysis, if you have used exposures-outcomes pairs to run mediation analysis, given specific treatment or control contrasts for exposures, once you use a different treatment or control contrasts for an exposure, all the mediation analysis connecting with that exposure will be rerun and the new results will replaces the corresponding old ones. The last-used treatment and control contrasts for running mediation analysis will be memorized and show up in the Treatment and Control.
--   *Counterfactual* mediation analysis may take more time to run *Traditional* mediation analysis.
+-   *Counterfactual* mediation analysis may take more time to run *Conventional* mediation analysis.
 :::
 
 ## Visualization settings {#simple_code_link}

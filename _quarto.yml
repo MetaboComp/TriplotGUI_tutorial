@@ -21,6 +21,9 @@ project:
 
 name: "TriplotGUI"
 website:
+  bread-crumbs: true
+  page-navigation: true
+  repo-actions: [edit, source, issue]
   title: "TriplotGUI {{< fa brands gitlab >}}"
   description: "Epidemiologist | PhD researcher | Machine learning, computational metabolomics"
   image: img/TriplotGUI_logo_white.png

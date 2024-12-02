@@ -37,7 +37,7 @@ geometry: margin=lin
 ---
 
 ```{r, include=FALSE}
-##This is a function that combines html and rmarkdown. It aims to generate a button that could hide output or plot (fold.output=T or fold.plot=T).
+##This is a function that combines html and rmarkdown. It aims to generate a button that could hide output or plot (fold.output=TRUE or fold.plot=TRUE).
 hooks = knitr::knit_hooks$get()
 hook_foldable = function(type) {
   force(type)
@@ -170,7 +170,13 @@ To check for missing (NA) or abnormal values (e.g., NaN, negative values, infini
 #| echo: true
 #| output: false
 #| classes: styled-output
-library(kableExtra)  ## You may need to install.packages("kableExtra") first 
+#| 
+if (!require(kableExtra)) {
+  install.packages("kableExtra")  # Install the package if it's not available.
+
+}
+library(kableExtra)             # Load it after installation.
+
 ```
 
 ```{r showcode_runcode_showoutput_4}
@@ -202,20 +208,14 @@ We treat food variables as our exposures and BMI and type 2 diabetes as outcomes
 #| echo: true
 #| output: true
 #| classes: styled-output
-BMI <- ClinData[,"BMI"]
-BMI_cat <- vector(length = length(BMI))
-for(i in 1:length(BMI)){
-  if(BMI[i] <= 18.5){
-    BMI_cat[i] <- "underweight"
-  }else if (BMI[i] > 18.5&BMI[i] <= 25){
-    BMI_cat[i] <- "normal"
-  }else if(BMI[i] > 25&BMI[i] <= 30){
-    BMI_cat[i] <- "overweight"
-  }else{
-    BMI_cat[i] <- "obese"
-  }
-}
-BMI_cat <- as.factor(BMI_cat)
+
+BMI <- ClinData[,"BMI"] 
+
+BMI_cat <- cut(BMI,  
+               breaks = c(-Inf, 18.5, 25, 30, Inf),  
+               labels = c('underweight', 'normal', 'overweight', 'obese'),  
+               right = TRUE) 
+
 ```
 
 We want to explore the exposure-outcome relationships through the metabolomics data, using metabolites as assumed mediators. Food data serves as exposures, while BMI (both continuous and categorical) and Type 2 Diabetes are treated as outcomes. Gender, age, education, physical activity, and smoking are used as potential confounders for the exposure-mediator and mediator-outcome associations. Additionally, auxiliary information regarding case-control matches, fasting glucose levels, education, and physical activity is provided to enhance the analysis. 
@@ -229,7 +229,7 @@ exposure2 <- FoodData
 Omics2 <- MetaboliteData
 outcome2 <- cbind.data.frame(ClinData[,c("T2D","BMI")], BMI_cat)
 covariates2 <- ClinData[, c("Gender" ,"Age","Education","PhysicalActivityIndex","Smoking" )]
-auxilary2 <- ClinData[, c("PairedInfo","FastingGlucose","Education","PhysicalActivityIndex", "Energy")]
+auxiliary2 <- ClinData[, c("PairedInfo","FastingGlucose","Education","PhysicalActivityIndex", "Energy")]
 ```
 
 # Code example of using TriplotGUI
@@ -246,30 +246,30 @@ Using `TriplotGUI` package, first we perform dimension reduction, using weighted
 #| output: false
 #| classes: styled-output
 # Using the complex settings
-reduced_Omics2 <- PCAorWGCNA_plots(dataframe = Omics2,
-                                   plottype = c("scree","score","loading","scoreloading"),
-                                   pc_type = "principal", 
+reduced_Omics2 <- OmicsReduction(dataframe = Omics2,
+                                   plotType = c("scree","score","loading","scoreloading"),
+                                   pcType = "principal", 
 # Users can choose freely to use principal() instead of prcomp() to perform PCA.The result should be very similar, but principal() allows more functionalities
-                                   first_PC = 1,
-                                   second_PC= 2,
+                                   firstPC = 1,
+                                   secondPC= 2,
                                    option = "WGCNA",
 # In this example we use WGCNA to perform data reduction, therefore specifying `option="WGCNA"`.
-                                   scale = T,
-                                   center = T,
-                                   eigen_loading = "loading",
+                                   scale = TRUE,
+                                   center = TRUE,
+                                   eigenLoading = "loading",
 # If you want to show loading or scale it to eigevalues.
                                    rotate = "none",
 # This argument is inherited from the principal() function
-                                   size_variable = auxilary2$FastingGlucose,
-                                   size_variable_name = "FastigGlucose",
-                                   color_variable = auxilary2$Education,
-                                   color_variable_name = "Education",
-                                   shape_variable = auxilary2$PhysicalActivityIndex,
-                                   shape_variable_name = "PhysicalActivityIndex",
+                                   sizeVariable = auxiliary2$FastingGlucose,
+                                   sizeVariableName = "FastigGlucose",
+                                   colorVariable = auxiliary2$Education,
+                                   colorVariableName = "Education",
+                                   shapeVariable = auxiliary2$PhysicalActivityIndex,
+                                   shapeVariableName = "PhysicalActivityIndex",
 # The size,shape,color variables are used to differentiate points on the score plot and biplot 
-                                   loadings_name = T,
+                                   loadingsName = TRUE,
 # Show the names of loadings
-                                   loadings_cutpercent = 0.2,
+                                   loadingsCutpercent = 0.2,
 # The loadings bigger than 20% of all the loadings will show up
                                    minModuleSize = 3
 # The mimimum number of variable in each cluster of WGCNA
@@ -278,8 +278,8 @@ reduced_Omics2 <- PCAorWGCNA_plots(dataframe = Omics2,
 
 ::: callout-note
 -   In WGCNA, Omics variables are grouped into clusters. PCA is performed on each cluster, and the first principal component of each cluster is used as the module for WGCNA.
--   You could try out the arguments of the `PCAorWGCNA_plots()` function to visualize the results and view the whole function [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/R/PCAorWGCNA_plots.R?ref_type=heads){target="_blank"}
--   The `minModuleSize` argument in `PCAorWGCNA_plots()` is crucial as it defines the minimum number of variables in each cluster. Setting this too high may result in all variables being grouped into a single cluster. For instance, with 20 variables and `minModuleSize=15`, you might end up with one cluster containing all 20 variables. In this case, only the first principal component of this single cluster would be used and displayed on both axes of the resulting triplots.
+-   You could try out the arguments of the `OmicsReduction()` function to visualize the results and view the whole function [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/R/PCAorWGCNA_plots.R?ref_type=heads){target="_blank"}
+-   The `minModuleSize` argument in `OmicsReduction()` is crucial as it defines the minimum number of variables in each cluster. Setting this too high may result in all variables being grouped into a single cluster. For instance, with 20 variables and `minModuleSize=15`, you might end up with one cluster containing all 20 variables. In this case, only the first principal component of this single cluster would be used and displayed on both axes of the resulting triplots.
 
     To avoid this, adjust `minModuleSize` based on your total variable count and desired cluster granularity. Experiment with different values to achieve a balance between meaningful clusters and interpretable results.
 
@@ -337,6 +337,20 @@ The loading plot displays loadings aligned along the axes, reflecting the use of
 reduced_Omics2$scoreloading_plot
 ```
 
+::: callout-note
+Sometimes the following text will show up in your console and the figure cannot be directly run:
+
+`libpng warning: Image width is zero in IHDR` 
+
+`libpng error: Invalid IHDR data` 
+
+`Warning message:`
+
+`In dev.off(which) : agg could not write to the given file\`
+
+Run `gc()` in your console to clear the memory. Then rerun the code again to view the figure.
+::: 
+
 Although informative, the biplot combining both score and loading can appear cluttered due to the high density of information it contains.
 
 A TPObject is constructed based on the data reduction results from the WGCNA analysis. This object serves as a central repository for storing and trandfering information generated through the various steps during the analysis.
@@ -362,7 +376,7 @@ TPObject1 <- makeTPO(scores = scores,
 The correlations between modules and food items and the associations between modules and risk markers can be then calculated, with confounders adjusted. Note that it is possible for users to skip code regarding correlations or risk association, if their interests focus on only outcome associations or exposure correlations with Omics variables.
 
 
-The modules information saved in the TPObject can be directly utilized in the `makeCorr()` function. This function calculates correlation coefficients and p-values between the modules and exposures (food variables and diet scores), while adjusting for specified confounders.
+The modules information saved in the TPObject can be directly utilized in the `exposureAssociation()` function. This function calculates correlation coefficients and p-values between the modules and exposures (food variables and diet scores), while adjusting for specified confounders.
 
 
 
@@ -373,30 +387,30 @@ The modules information saved in the TPObject can be directly utilized in the `m
 #| output: false
 #| classes: styled-output
 #| fold.output: false
-Correlations_object <- makeCorr(TPObject = TPObject1,
-                                corrData = exposure2,
+Correlations_object <- exposureAssociation(TPObject = TPObject1,
+                                exposure = exposure2,
                                 use = 'pairwise', 
                                 # use inherit from cor() function 
                                 method = 'pearson',
                                 # method inherit from cor() function 
-                                allowcategorical = F,
+                                allowCategorical = FALSE,
                                 # one-hot-encoding on categorical exposures
-                                partial = T,
+                                partial = TRUE,
                                 # perform confonder adjustment
                                 confounder = covariates2)
 
 ```
 
 ::: callout-note
--   The `makeCorr()` function offers options for handling categorical variables and adjusting for confounders. When `allowcategorical=F`, categorical exposures with more than two classes undergo one-hot-encoding, transforming them into binary variables. This can be verified by examining `Correlations_object$cor_estimate`, which shows separate correlation coefficients for each binary representation of HFI levels.
+-   The `exposureAssociation()` function offers options for handling categorical variables and adjusting for confounders. When setting `allowcategorical=FALSE`, categorical exposures with more than two classes undergo one-hot-encoding, transforming them into binary variables. This can be verified by examining `Correlations_object$cor_estimate`, which shows separate correlation coefficients for each binary representation of HFI levels. However, `allowcategorical=FALSE` is limited for  meaningful use. The binary variables may be only meaningful when we want to compare one level to all the other levels together. We use this option for categorical variable `"HFI"` for demonstration purpose. Ideally, one should use `allowcategorical=TRUE` for HFI.
 
-    Conversely, setting `allowcategorical=T` leaves categorical variables like `"HFI"` untransformed. In this case, linear models regressing modules on `"HFI"` are used for correlation analysis. The correlation coefficients are derived from the square root of the proportion of HFI's sum of squares to the total sum of squares.
+    Conversely, `allowcategorical=TRUE` leaves categorical variables like `"HFI"` untransformed. In this case, linear models regressing modules on `"HFI"` are used for correlation analysis. The correlation coefficients are derived from the square root of the proportion of HFI's sum of squares to the total sum of squares. 
 
--   Setting `partial=T` ensures that specified confounders are adjusted for in the correlation analysis.
+-   Setting `partial=TRUE` ensures that specified confounders are adjusted for in the correlation analysis.
 
 :::
 
-The correlation results obtained from the `makeCorr()` function are then incorporated into the TPObject. 
+The correlation results obtained from the `exposureAssociation()` function are then incorporated into the TPObject. 
 
 ```{r showcode_runcode_showoutput_8}
 #| eval: true
@@ -405,12 +419,12 @@ The correlation results obtained from the `makeCorr()` function are then incorpo
 #| classes: styled-output
 #| fold.output: false
 
-TPObject2 <- addCorr(TPObject = TPObject1,
-                     Corr = Correlations_object$cor_estimate,
-                     Corr_p = Correlations_object$cor_pvalue)
+TPObject2 <- addExposure(TPObject = TPObject1,
+                     corrEstimate = Correlations_object$cor_estimate,
+                     corrPvalue = Correlations_object$cor_pvalue)
 ```
 
-The modules information saved in the TPObject can be directly utilized in the `coefficient_get()` function. This function calculates risk estimates and p-values between the modules and outcomes (BMI, type 2 diabetes and categorical BMI), while adjusting for specified confounders.
+The modules information saved in the TPObject can be directly utilized in the `outcomeAssociation()` function. This function calculates risk estimates and p-values between the modules and outcomes (BMI, type 2 diabetes and categorical BMI), while adjusting for specified confounders.
 
 
 ```{r showcode_runcode_noshowoutput_4}
@@ -419,14 +433,14 @@ The modules information saved in the TPObject can be directly utilized in the `c
 #| output: false
 #| classes: styled-output
 #| fold.output: false
-Risks_object <- coefficient_get(TPObject = TPObject2,
+Risks_object <- outcomeAssociation(TPObject = TPObject2,
                                 outcome = outcome2,
                                 confounder = covariates2,
-                                partial = T,
+                                partial = TRUE,
                                 # performs confounder adjustment
-                                multinomial = T,
+                                multinomial = TRUE,
                                 # multinomial regression is used
-                                pair = auxilary2$PairedInfo,
+                                pair = auxiliary2$PairedInfo,
                                 # use the pairing information of case and control
                                 CI = 0.95
                                 # confidence interval
@@ -436,22 +450,22 @@ Risks_object <- coefficient_get(TPObject = TPObject2,
 
 ::: callout-note
 
-The `coefficient_get()` function offers various options for handling outcomes and adjusting for confounders, with behavior differing based on whether pair information is provided.
+The `outcomeAssociation()` function offers various options for handling outcomes and adjusting for confounders, with behavior differing based on whether pair information is provided.
 
 -   Without `pair` information:
-    -   `multinomial=F` transforms categorical outcomes with >2 classes into binary variables via one-hot-encoding. Logistic regression is used for binary outcomes, and linear regression for continuous outcomes.
-    -    `multinomial=T` applies multinomial regression to categorical outcomes with >2 classes, yielding n-1 estimates. Binary and continuous outcomes are handled as before.
+    -   `multinomial=FALSE` transforms categorical outcomes with >2 classes into binary variables via one-hot-encoding. Logistic regression is used for binary outcomes, and linear regression for continuous outcomes.
+    -    `multinomial=TRUE` applies multinomial regression to categorical outcomes with >2 classes, yielding n-1 estimates. Binary and continuous outcomes are handled as before.
     
 -   With pair information:
-    -   `multinomial=F` transforms categorical outcomes as above, then uses conditional logistic regression for binary outcomes and linear mixed models for continuous outcomes, incorporating pairing information.
-    -   `multinomial=T` ignores pairing information, applying multinomial regression to categorical outcomes and standard logistic/linear regression to binary/continuous outcomes.
+    -   `multinomial=FALSE` transforms categorical outcomes as above, then uses conditional logistic regression for binary outcomes and linear mixed models for continuous outcomes, incorporating pairing information.
+    -   `multinomial=TRUE` ignores pairing information, applying multinomial regression to categorical outcomes and standard logistic/linear regression to binary/continuous outcomes.
     
--   Setting `partial=T` ensures adjustment for specified confounders in all analyses.
+-   Setting `partial=TRUE` ensures adjustment for specified confounders in all analyses.
 
 
 :::
 
-The results for risk estimates obtained from the `coefficient_get()` function are then incorporated into the TPObject. 
+The results for risk estimates obtained from the `outcomeAssociation()` function are then incorporated into the TPObject. 
 
 ```{r showcode_runcode_showoutput_9}
 #| eval: true
@@ -461,7 +475,7 @@ The results for risk estimates obtained from the `coefficient_get()` function ar
 #| fold.output: false
 
 
-TPObject3 <- addRisk(TPObject = TPObject2, 
+TPObject3 <- addOutcome(TPObject = TPObject2, 
                      Risk = Risks_object)
 
 ```
@@ -476,9 +490,9 @@ The TPObject created from all steps can be used to generate a Triplot using the 
 #| output: false
 #| classes: styled-output
 #| fold.output: false
-Triplot_object3 <- TriplotGUI(TPObject3,
-                              first_PC = 1, ## The first PC to map
-                              second_PC = 2, ## The first PC to map
+TPO_plots3 <- TriplotGUI(TPObject3,
+                              firstPC = 1, ## The first PC to map
+                              secondPC = 2, ## The first PC to map
                               plotLoads = TRUE, ##Whether to plot loadings (TRUE; default) or suppress them (FALSE)
                               plotScores = FALSE, ##Whether to plot scores (TRUE) or suppress them (FALSE; default)
                               plotCorr = TRUE, ##Whether to plot correlations (TRUE; default) or suppress them (FALSE)
@@ -495,16 +509,16 @@ Triplot_object3 <- TriplotGUI(TPObject3,
                               pchCorr = 16, ##Plotting character for correlations
                               whichCorr = NULL, ##Which correlations to plot (vector of numbers)
                               corLim = NULL, ##Plot range for correlations
-                              corrLabels = T, 
+                              corrLabels = TRUE, 
                               ###############################################
                               ##For risks
                               colRisk = "red", ##Color vector for risk estimates
                               pchRisk = 15, ##Plotting character for risk estimates
                               whichRisk = NULL, ##Which risk estimates to plot (vector of numbers)
                               riskLim = NULL, ##Plot range for risks
-                              riskWhisker_percentage = 0.1, ## whisker length is how many percentage of confidence interval
-                              riskLabels = T, size = 3, # the size of points ont he plot
-                              riskOR = T
+                              riskWhiskerPercentage = 0.1, ## whisker length is how many percentage of confidence interval
+                              riskLabels = TRUE, size = 3, # the size of points ont he plot
+                              riskOR = TRUE
                               # plot the risk estimates as odds ratio
                               )
 
@@ -520,14 +534,14 @@ We then visualize the triplot.
 #| fold.plot: true
 #| out-width: "100%"
 
-Triplot_object3$triplot
+TPO_plots3$triplot
 ```
 
 
 In the triplot visualization, black arrows represent loadings of Omics variables, forming patterns in different modules (axes). Blue circle points show exposure correlations with the modules, while red square points indicate outcome associations with the modules. 
 
 ::: callout-note
-Note that we use first and second module for our example here. In reality, you may use the `checkTPO_ggplot()` function in TriplotGUI to view which modules may be more of your interest (that are associated with specific exposures and outcomes).
+Note that we use first and second module for our example here. In reality, you may use the `checkTPO()` function in TriplotGUI to view which modules may be more of your interest (that are associated with specific exposures and outcomes).
 :::
 
 Based on the triplot visualization of the TriplotGUI interface, we can interpret the following key points:
@@ -548,7 +562,7 @@ Based on what we summarized above, the two modules may be associated with a over
 
 In mediation analysis in TriplotGUI, we focus on a specific set of variables for mediation analysis: we select `"BSDS"` (Baltic Sea Diet Score) and `"Hamburger"` as our exposures, `"BMI"` and `"T2D"` as outcome to enter our next step. We choose first and second modules as our mediators.
 
-This time, we perform the mediation analysis with the `get_mediation_counterfactual()` function, using the counterfactual/potential outcome method implemented through the `mediation` package in R on our exposures (i.e. `"BSDS"`, `"Hamburger"`), mediators (i.e. the first and second modules) and outcome (i.e. `"T2D"`, `"BMI"`) of interest, adjusting for `"Age"`, `"Gender"`, `"Smoking"`, `"Education"` and `"FastingGlucose"` for both exposure-mediator and mediator-outcome relationship.
+This time, we perform the mediation analysis with the `getMediationCounterfactual()` function, using the counterfactual/potential outcome method implemented through the `mediation` package in R on our exposures (i.e. `"BSDS"`, `"Hamburger"`), mediators (i.e. the first and second modules) and outcome (i.e. `"T2D"`, `"BMI"`) of interest, adjusting for `"Age"`, `"Gender"`, `"Smoking"`, `"Education"` and `"FastingGlucose"` for both exposure-mediator and mediator-outcome relationship.
 
 
 
@@ -561,14 +575,14 @@ This time, we perform the mediation analysis with the `get_mediation_counterfact
 #| fold.output: false
 
 mediation_object3 <- 
-  get_mediation_counterfactual (mediator = TPObject3$scores[,c(1:2),drop = FALSE], 
+  getMediationCounterfactual (mediator = TPObject3$scores[,c(1:2),drop = FALSE], 
                              # Specfiying at least 2 components so that there can be a 2-dimensional plot
                                exposure=exposure2[,c("Hamburger","BSDS"),drop = FALSE],
                              outcome = outcome2[,c("BMI","T2D"),drop = FALSE],
-                             exposure_treatment = c(25,19),
-                             exposure_control = c(2,0),
-                             confounder_ME = covariates2,
-                             confounder_OE = covariates2)
+                             exposureTreatment = c(25,19),
+                             exposureControl = c(2,0),
+                             confounderME = covariates2,
+                             confounderOE = covariates2)
 
 ```
 
@@ -586,7 +600,7 @@ Then we can also Look at the barplot for mediations, which provides a clear visu
 #| output: false
 #| classes: styled-output
 #| fold.plot: true
-mediation_plot_object3 <- plot_mediation(mediation_object3,
+mediation_plots3 <- mediationBarplot(mediationObject = mediation_object3,
                                          cex = 2#,
                                          # size of the text
                                          #by_row = "one_column"
@@ -601,7 +615,7 @@ mediation_plot_object3 <- plot_mediation(mediation_object3,
 #| classes: styled-output
 #| fold.plot: true
 #| out-width: "100%"
-mediation_plot_object3
+mediation_plots3
 ```
 
 ::: callout-note
@@ -612,7 +626,7 @@ The barplot displays direct, indirect, and total effects for each exposure-media
 
 :::
 
-Add the mediation result from `get_mediation_counterfactual()` into the TPObject.
+Add the mediation result from `getMediationCounterfactual()` into the TPObject.
 
 ```{r showcode_runcode_showoutput_12}
 #| eval: true
@@ -621,8 +635,8 @@ Add the mediation result from `get_mediation_counterfactual()` into the TPObject
 #| classes: styled-output
 #| fold.plot: true
 
-TPObject4 <- add_mediation(TPObject3, 
-mediation_object3)
+TPObject4 <- addMediation(TPObject = TPObject3, 
+                          mediationObject = mediation_object3)
 
 ```
 
@@ -635,14 +649,14 @@ To create the triplot with mediation, use the provided function with its default
 #| classes: styled-output
 #| fold.plot: true
 
-Triplot_object4 <-
-  mediation_triplot(
+TPO_plots4 <-
+  mediationTriplot(
     TPObject4,
-    which_show = c("APM","PM"),
+    show = c("APM","PM"),
     ##Which mediation estimate to show
-    first_PC = 1,
+    firstPC = 1,
     ##The first PC to map
-    second_PC = 2,
+    secondPC = 2,
     ##The second PC to map
     plotMed = TRUE,
     ##Whether to plot mediation estimates (TRUE; default) or suppress them (FALSE)
@@ -658,7 +672,7 @@ Triplot_object4 <-
     ##Plotting character for correlations
     corrLim = NULL,
     ##Plot range for correlations
-    corrLabels = T,
+    corrLabels = TRUE,
     ##Add labels on exposures
     ###############################################
     ##For risks
@@ -668,11 +682,11 @@ Triplot_object4 <-
     ##Plotting character for risk estimates
     riskLim = NULL,
     ##Plot range for risks
-    Whisker_percentage_risk = 0.1,
+    whiskerPercentageRisk = 0.1,
     ##whisker length is how many percentage of confidence interval
-    riskLabels = T,
+    riskLabels = TRUE,
     ##Add labels on outcomes
-    riskOR = T,
+    riskOR = TRUE,
     #plot the risk estimates as odds ratio
     ###############################################
     ##For mediations
@@ -682,9 +696,9 @@ Triplot_object4 <-
     ##Plotting character for mediation estimates
     medLim = NULL,
     ##Plot range for mediations
-    Whisker_percentage_med= 0.1,
+    whiskerPercentageMediation= 0.1,
     ##whisker length is how many percentage of confidence interval
-    medLabels = T,
+    medLabels = TRUE,
     ##Add labels on mediation estimates
     #########################################
     
@@ -703,13 +717,13 @@ Only showing the mediation results.
 #| classes: styled-output
 #| fold.plot: true
 #| out-width: "100%"
-Triplot_object4$mediation_plot
+TPO_plots4$mediations_plot
 
 ```
 
-The `mediation_triplot()` function displays only the proportion mediated (PM) and adjusted proportion mediated (APM) as dark green triangle points due to the specified `which_show = c("PM", "APM")` argument.
+The `mediationTriplot()` function displays only the proportion mediated (PM) and adjusted proportion mediated (APM) as dark green triangle points due to the specified `show = c("PM", "APM")` argument.
 
-To reduce visual clutter, you can separate these by running the function twice: once with `which_show = c("PM")` and once with `which_show = c("APM")`. 
+To reduce visual clutter, you can separate these by running the function twice: once with `show = c("PM")` and once with `show = c("APM")`. 
 
 ```{r showcode_runcode_noshowoutput_8A}
 #| eval: true
@@ -718,10 +732,10 @@ To reduce visual clutter, you can separate these by running the function twice: 
 #| classes: styled-output
 #| fold.plot: true
 
-Triplot_object4 <-
-  mediation_triplot(
+TPO_plots4 <-
+  mediationTriplot(
     TPObject4,
-    which_show = c("PM")
+    show = c("PM")
   )
 ```
 
@@ -732,7 +746,7 @@ Triplot_object4 <-
 #| classes: styled-output
 #| fold.plot: true
 #| out-width: "100%"
-Triplot_object4$mediation_plot
+TPO_plots4$mediations_plot
 
 ```
 
@@ -759,10 +773,10 @@ We can see from the confidence intervals that some PM values are not significant
 #| classes: styled-output
 #| fold.plot: true
 
-Triplot_object4 <-
-  mediation_triplot(
+TPO_plots4 <-
+  mediationTriplot(
     TPObject4,
-    which_show = c("PM"),
+    show = c("PM"),
     medLim = 2.5
   )
 
@@ -775,7 +789,7 @@ Triplot_object4 <-
 #| classes: styled-output
 #| fold.plot: true
 #| out-width: "100%"
-Triplot_object4$mediation_plot
+TPO_plots4$mediations_plot
 
 ```
 
@@ -797,10 +811,10 @@ To further examine the mediation results, we look at the adjusted proportion med
 #| classes: styled-output
 #| fold.plot: true
 
-Triplot_object4 <-
-  mediation_triplot(
+TPO_plots4 <-
+  mediationTriplot(
     TPObject4,
-    which_show = c("APM")
+    show = c("APM")
   )
 
 ```
@@ -812,7 +826,7 @@ Triplot_object4 <-
 #| classes: styled-output
 #| fold.plot: true
 #| out-width: "100%"
-Triplot_object4$mediation_plot
+TPO_plots4$mediations_plot
 
 ```
 
@@ -828,7 +842,7 @@ Notably, the APM for BSDS (Baltic Sea Diet Score) as the exposure and T2D (Type 
 
 ::: callout-note
 
-Specifying `which_show = c("PM", "APM", "IE", "TE")` in the `mediation_triplot()` function would display all estimates, including indirect effect (IE) and total effect (TE). However, this is not recommended as it can overcrowd the plot, making it difficult to interpret. 
+Specifying `show = c("PM", "APM", "IE", "TE")` in the `mediationTriplot()` function would display all estimates, including indirect effect (IE) and total effect (TE). However, this is not recommended as it can overcrowd the plot, making it difficult to interpret. 
 
 For a clearer visualization, it's better to view IE and TE separately. The [Tutorial(simple)](simple_code.qmd){target="_blank"} section provides examples of plots showing `"IE"` and `"TE"`, offering a more manageable and interpretable view of these mediation components.
 
@@ -843,15 +857,15 @@ Plot the triplot with mediation,
 #| classes: styled-output
 #| fold.plot: true
 #| out-width: "100%"
-Triplot_object4$final_plot
+TPO_plots4$mediations_triplot
 
 ```
 
-Based on the barplot and the triplot with mediation, we’ve observed significant proportion mediated for BSDS-module 1/2-BMI mediations. Further exploration on indirect, direct and total effect of the mediation analysis could be explored by playing around the `which_show` argument in the `mediation_triplot()` function. We will not go into details here.
+Based on the barplot and the triplot with mediation, we’ve observed significant proportion mediated for BSDS-module 1/2-BMI mediations. Further exploration on indirect, direct and total effect of the mediation analysis could be explored by playing around the `show` argument in the `mediationTriplot()` function. We will not go into details here.
 
 ## Comparative Visualization
 
-The `checkTPO_ggplot()` function in TriplotGUI allows users to generate heatmaps from the TPObject to visualize correlations, risk estimations, and mediation results.
+The `checkTPO()` function in TriplotGUI allows users to generate heatmaps from the TPObject to visualize correlations, risk estimations, and mediation results.
 
 ```{r showcode_runcode_noshowoutput_9}
 #| eval: true
@@ -860,14 +874,14 @@ The `checkTPO_ggplot()` function in TriplotGUI allows users to generate heatmaps
 #| classes: styled-output
 #| fold.plot: true
 
-checkTPObject4 <- checkTPO_ggplot(TPObject4,
-                                  which_med = c("IE","TE","PM","APM"),
+checkTPObject4 <- checkTPO(TPObject4,
+                                  mediatorEstimates = c("IE","TE","PM","APM"),
                                   ## What type of mediation estimate or proportion mediated to show on the heatmap
-                                  which_PC = c("turquoise", "blue"),
+                                  mediators = c("turquoise", "blue"),
                                   ## What mediators (principal component) you want to show
-                                  which_corr = c("Hamburger","BSDS"),
+                                  exposures = c("Hamburger","BSDS"),
                                   ## What exposure variables you want to show
-                                  which_risk = c("T2D","BMI")
+                                  outcomes = c("T2D","BMI")
                                   ## What outcome variables you want to show
                                   )
 
@@ -943,8 +957,9 @@ To save all your output, including data, results, and visualization output as an
 
 save(exposure2,Omics2,outcome2,covariates2,auxilariy2,
      reduced_Omics2,Correlations_object,Risks_object,
-     mediation_object3,mediation_plot_object3,
+     mediation_object3,mediation_plots3,
      TPObject1,TPObject2,TPObject3,TPObject4,
      checkTPObject4,
      "Tutorial_complex_output.rda")
 ```
+0

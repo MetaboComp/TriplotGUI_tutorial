@@ -103,7 +103,7 @@ Run `TriplotGUI_shiny()` to open your interface. We will show you an use case.
 
 ## Step 1: Data reduction of Omics data.
 
-::: columns
+:::::: columns
 ::: {.column style="width: 45%"}
 First upload the Omics data in step 1. Inspect the classes of Omics variables briefly. Use the default of "Data analysis settings". Play around in the "Visualization settings". Since we have 177 Omics variables, click the ***Loading labels*** to *No* so that you have a clearer view of your loadings plot. You can observed that using PCA as data analysis method, your loadings (representing omics variables) are mostly positively associated with your component 1.
 :::
@@ -114,13 +114,13 @@ First upload the Omics data in step 1. Inspect the classes of Omics variables br
 ::: {.column style="width: 45%"}
 ![](img/usecase_1_1.png)
 :::
-:::
+::::::
 
 ## Step 2: Exposures’ correlations & Outcomes’ associations
 
 Then upload exposures and covariate data in step 2A. Briefly inspecting variable classes. You can choose which covariate variables to adjust as you wish. In our use case example, for the sake of simplicity, we will not perform any covariate adjustment (the ***Raw or partial correlation*** is specified as *Raw* in the "Data analysis settings")
 
-::: columns
+:::::: columns
 ::: {.column style="width: 45%"}
 ![](img/complex_2_1.png)
 :::
@@ -131,7 +131,7 @@ Then upload exposures and covariate data in step 2A. Briefly inspecting variable
 ::: {.column style="width: 45%"}
 ![](img/complex_2_2.png)
 :::
-:::
+::::::
 
 Change your "Data analysis settings" as the figure below.
 
@@ -140,7 +140,7 @@ Change your "Data analysis settings" as the figure below.
 -   The approaches for managing ***Missing values*** are inherited from the *cor* package for continuous exposures. Please check [*cor*](https://rdrr.io/r/stats/cor.html){target="_blank"} package for more information.
 :::
 
-::: columns
+:::::: columns
 ::: {.column style="width: 45%"}
 ![](img/complex_2_3.png)
 
@@ -153,11 +153,11 @@ You could briefly see the correlation coefficients in "Visualizations" by clicki
 ::: {.column style="width: 45%"}
 ![](img/complex_2_4.png)
 :::
-:::
+::::::
 
 Then in step 2B, upload outcome and covariate data By briefly inspecting variable classes, you could notice: - In the outcome data, `"BMI"` is a numeric variable; `"BMI_cat"` and `"T2D"` are factor variables. - A variable called `"X"` exists in the covariate data. This is because the covariate data is uploaded as a csv file and the observation number may automatically be generated as a new variable when the file is read in. Remove this variable since it is not an actual covariate.
 
-::: columns
+:::::: columns
 ::: {.column style="width: 45%"}
 ![](img/complex_2_5.png)
 :::
@@ -168,7 +168,7 @@ Then in step 2B, upload outcome and covariate data By briefly inspecting variabl
 ::: {.column style="width: 45%"}
 ![](img/complex_2_6.png)
 :::
-:::
+::::::
 
 Change your "Data analysis settings" and "Visulization settings" as the figure below.
 
@@ -183,7 +183,7 @@ Some clarification for using multinomial regression and pairing variables:
     -   Performing multinomial regression means that the pairing information will not be ignored and used (since the outcomes can have more than 2 classes), multinomial regression will be performed on outcome's categorical variable, which gives n-1 estimates. And logistic regression will be performed on the binary variables and linear regression will be performed on continuous variables. THIS IS THE CASE IN OUR EXAMPLE.
 :::
 
-::: columns
+:::::: columns
 ::: {.column style="width: 45%"}
 ![](img/complex_2_7.png)
 :::
@@ -196,7 +196,7 @@ You could briefly see the risk estimate in "Visualizations" by clicking "Refresh
 
 ![](img/complex_2_8.png)
 :::
-:::
+::::::
 
 ## Step 3: Visualization of Triplot
 
@@ -225,14 +225,14 @@ In the counterfactual mediation analysis, you need to specify contrast values of
 If an exposure variable is continuous (numeric variable), it is recommended that the 2 exposure values is chosen between the range of the exposure variable. If an exposure variable is categorical (factor variable), the 2 exposure levels should be chosen from the levels of the exposure variable.
 :::
 
-::: columns
-::: {.column style="width: 40%"}
+::::::: columns
+:::: {.column style="width: 40%"}
 Use the following settings for your data analysis. Mediation analysis is then performed using the counterfactual method on the our selected exposures, mediators and our selected outcomes, adjusting for covariates for both exposure-mediator and mediator-outcome relationship.
 
 ::: callout-note
 -   Note that you need to click ***Do mediation*** to start running the mediation analysis.
 :::
-:::
+::::
 
 ::: {.column style="width: 5%"}
 :::
@@ -242,9 +242,9 @@ Use the following settings for your data analysis. Mediation analysis is then pe
 :::
 
 You could then play around in the "Visualization settings" too see how you want to visualize your plot.
-:::
+:::::::
 
-::: columns
+:::::: columns
 ::: {.column style="width: 40%"}
 You could first only show the proportion mediated(PM) and adjust the limits to make the points more visible. ![](img/complex_4_2.png)
 :::
@@ -255,14 +255,14 @@ You could first only show the proportion mediated(PM) and adjust the limits to m
 ::: {.column style="width: 45%"}
 ![](img/complex_4_3.png) In the figure, even though not significant, we could see the direction and magnitude of proportion mediated for the 2 mediators, all the exposures and outcomes.
 :::
-:::
+::::::
 
 ::: callout-note
 -   Note that some confidence intervals are automatically removed form the figure if they are not within the limit.
 -   Note that for some mediations, direct effect and indirect effects are in the opposite direction, implying possibly proportion mediated\>1, since total effect could smaller than indirect effect.
 :::
 
-::: columns
+:::::: columns
 ::: {.column style="width: 40%"}
 You then show the adjusted proportion mediated(PM) and adding the layers of correlation and risk estimates ![](img/complex_4_4.png)
 :::
@@ -273,7 +273,7 @@ You then show the adjusted proportion mediated(PM) and adding the layers of corr
 ::: {.column style="width: 45%"}
 ![](img/complex_4_5.png)
 :::
-:::
+::::::
 
 By observing this figure, we could see the direction and magnitude of adjusted proportion mediated for the 2 mediators, all the exposures and outcomes. The position of the points is similar what we have seen for proportion mediated. Note that APM for BSDS as exposure and T2D as outcome is smaller than their PM. This is because the indirect and direct effect for this mediation is of similar size but in opposite direction. This leads to a smaller total effect and in turn larger PM, but APM will not be affected by the directionality of direct and indirect effect. ::: callout-note - No confidence interval is shown for adjusted proportion mediated, as such value can not be directly calculated from the mediation analysis.
 

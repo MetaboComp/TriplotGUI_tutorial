@@ -47,12 +47,15 @@ To install and use TriplotGUI as a stand-alone application on your local compute
 #| error: true
 #| classes: styled-output
 
-install.packages("remotes")
+if (!require(remotes)) {
+  install.packages("remotes")  # Install the package if it's not available.
+  library(remotes)             # Load it after installation.
+}
+
 remotes::install_gitlab("YingxiaoYan/TriplotGUI")
 ```
 
-During installation, you may encounter prompts in your console. For package updates, it is recommended to choose "**3. None**". If asked whether you want to install from source packages that need compilation, select "**No**". When prompted about updating all, some, or none, it is advisable to choose "**n**".
-<!-- <ul> -->
+During installation, you may encounter prompts in your console. For package updates, it is recommended to choose "**3. None**". If asked whether you want to install from source packages that need compilation, select "**No**". When prompted about updating all, some, or none, it is advisable to choose "**n**". <!-- <ul> -->
 
 <!-- <li>Sometimes it pops up in your console that asks you *which package you would like to update*. We recommened you to chose **3.None**</li> -->
 
@@ -76,12 +79,9 @@ Once the installation is complete, load the TriplotGUI library by executing:
 library(TriplotGUI)
 ```
 
-
-
 # Change the maximize size of data file allowed
 
 If you wish to change the maximum allowed data file size (the default is 5 MB), you can specify your preferred maximum size using the following code:
-
 
 ```{r }
 #| eval: false
@@ -94,7 +94,6 @@ filesize=100  ##MB
 options(shiny.maxRequestSize=filesize*1024^2)
 
 ```
-
 
 # Activate the user interface
 
