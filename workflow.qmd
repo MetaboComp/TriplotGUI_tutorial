@@ -252,7 +252,7 @@ The [red box]{style="color:red"} is for exposure association analysis choices.
 
     *Perform one-hot-encoding*: a categorical exposure variable with 2 classes is transformed to a binary variable with 0 and 1 values and then used as a numeric variable; A categorical exposure variable with n classes (n\>2) are transformed to n binary variables with 0 and 1 values.
 
-    *Use original*: No transformation is made on the categorical variables. Linear models regressing components/modules on each categorical variable and analysis of variance (ANOVA) are used for calculating the proportion of sum of squares of  a categorical variable out of the total sum of square. This value is use as the estimate of exposure associations and the corresponding p value form the ANOVA is used as the p value for exposure associations.
+    *Use original*: No transformation is made on the categorical variables. Linear models regressing components/modules on each categorical variable and analysis of variance (ANOVA) are used for calculating the square root of the proportion of sum of squares of  a categorical variable out of the total sum of square. This value is use as the estimate of exposure associations and the corresponding p value form the ANOVA is used as the p value for exposure associations.
 
 <!-- no transformation is made on the categorical variables. Linear models regressing components/modules on the categorical exposure variables are used for correlation analysis. Correlation coefficients are calculated as the square root of the proportion of sum of squares for categorical variables in the total sum of squares. -->
 

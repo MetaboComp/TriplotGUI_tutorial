@@ -172,7 +172,7 @@ Understanding these nuances in your data structure is essential for ensuring acc
 
 
 
-Change your "Data analysis settings" as shown in the figure below.
+Change your "Data analysis settings" as shown in the figure below. This is to perform Spearman pairwise correlation analysis, adjusting for confounders. Categorical variables (i.e., `"HFI"`) is one-hot-encoded to binary variables.
 
 ::: columns
 ::: {.column style="width: 45%"}
@@ -221,7 +221,7 @@ In step 3 of the TriplotGUI interface, upload the outcome and covariate data. Up
 :::
 :::
 
-Change your "Data analysis settings" and "Visulization settings" as shown in the figure below.
+Change your "Data analysis settings" and "Visulization settings" as shown in the figure below. Multinomial regression is applied to categorical outcomes (i.e., `"BMI_cat"`), giving n-1 estimates. Logistic regression is used for binary outcomes (i.e., `"T2D"`), and linear regression for continuous ones (i.e., `"BMI"`). Confounders are adjusted for all analysis. Pairing variable is ignored when multinomial regression is selected.
 
 
 ::: columns
@@ -289,7 +289,7 @@ In step 5 of the TriplotGUI interface, we focus on a specific set of variables f
 This time, we perform the mediation analysis using the counterfactual/potential outcome method, implemented through the `mediation` package in R on our exposures (i.e. `"BSDS"`, `"Hamburger"`), mediators (i.e. the first and second modules) and outcome (i.e. `"T2D"`, `"BMI"`) of interest, adjusting for `"Age"`, `"Gender"`, `"Smoking"`, `"Education"` and `"FastingGlucose"` for both exposure-mediator and mediator-outcome relationship.
 
 ::: callout-note
-In the counterfactual mediation analysis, contrast values of treatment and controls for each exposure needs to be specified. For each individual, the analysis considers what would happen if they received the treatment versus if they received the control. In brief, the algorithm uses these contrast values to calculate the potential outcomes under each scenario to estimate the direct and indirect effects. For a detailed explanation please refer to [this paper](https://www.jstatsoft.org/article/view/v059i05){target="_blank"} of the `mediation` R package.
+In the counterfactual mediation analysis, contrast values of treatment and controls for each exposure needs to be specified. For each individual, the analysis considers what would happen if they received the treatment (usually what is assumed as good for health) versus if they received the control (usually what is assumed not as good for health). In brief, the algorithm uses these contrast values to calculate the potential outcomes under each scenario to estimate the direct and indirect effects. For a detailed explanation please refer to [this paper](https://www.jstatsoft.org/article/view/v059i05){target="_blank"} of the `mediation` R package.
 
 If an exposure variable is continuous (numeric variable), it is recommended that the treatment and control contrast values are chosen between the range of the exposure variable. If an exposure variable is categorical (factor variable), the treatment and control contrast values should be chosen from the levels of the exposure variable.
 :::
@@ -312,74 +312,77 @@ Use the following settings for your data analysis in TriplotGUI. Mediation analy
 -   Note that you need to click ***Do mediation*** to start running the mediation analysis.
 :::
 
-You can explore the "Visualization settings" to customize how your plot is displayed. Start by selecting to show only the proportion mediated (PM). This will help you focus on the mediation effects in your analysis.
 
-Additionally, adjust the limits of the plot to enhance visibility. By fine-tuning these settings, you can ensure that the points representing your mediation results are more clearly visible, allowing for better interpretation and understanding of the data. Note that the confidence interval that beyond the limits of the plot will not be displayed on the plot.
+
+<!-- Start by selecting to show only the proportion mediated (PM). This will help you focus on the mediation effects in your analysis. -->
+
+<!-- Additionally, adjust the limits of the plot to enhance visibility. By fine-tuning these settings, you can ensure that the points representing your mediation results are more clearly visible, allowing for better interpretation and understanding of the data. Note that the confidence interval that beyond the limits of the plot will not be displayed on the plot. -->
 
 :::
 
 ::: columns
 ::: {.column style="width: 40%"}
+
+You can use the "Visualization settings" to customize what exposure, mediator and outcome you want to display. The figure on the right using BSDS as exposure, turquoise module as mediator (the module on the x axis in the triplot in step 4) and BMI as outcome. We will explain its mediation barlot as an example of its interpretation.
+
+:::
+
+::: {.column style="width: 5%"}
+:::
+
+::: {.column style="width: 45%"}
 ![](img/complex_4_2.png)
 :::
 
-::: {.column style="width: 5%"}
-:::
+In the step 5 of the TriplotGUI interface, you can view barplots that display the direct, indirect, and total effects for each exposure-mediator-outcome combination. These barplots offer a convenient visual tool to check the direction and magnitude of mediation estimates.
 
-::: {.column style="width: 45%"}
 ![](img/complex_4_3.png)
-:::
 
-Four green triangles are displayed on the figure. Their x and y coordiates represent the eight combinations of exposures, mediators and outcomes.
+<!-- Four green triangles are displayed on the figure. Their x and y coordiates represent the eight combinations of exposures, mediators and outcomes. -->
 
--   exposure=BSDS, mediator= module 1, outcome=BMI
--   exposure=BSDS, mediator= module 2, outcome=BMI
--   exposure=Hamburger, mediator= module 1, outcome=BMI
--   exposure=Hamburger, mediator= module 2, outcome=BMI
--   exposure=BSDS, mediator= module 1, outcome=T2D
--   exposure=BSDS, mediator= module 2, outcome=T2D
--   exposure=Hamburger, mediator= module 1, outcome=T2D
--   exposure=Hamburger, mediator= module 2, outcome=T2D
+<!-- -   exposure=BSDS, mediator= module 1, outcome=BMI -->
+<!-- -   exposure=BSDS, mediator= module 2, outcome=BMI -->
+<!-- -   exposure=Hamburger, mediator= module 1, outcome=BMI -->
+<!-- -   exposure=Hamburger, mediator= module 2, outcome=BMI -->
+<!-- -   exposure=BSDS, mediator= module 1, outcome=T2D -->
+<!-- -   exposure=BSDS, mediator= module 2, outcome=T2D -->
+<!-- -   exposure=Hamburger, mediator= module 1, outcome=T2D -->
+<!-- -   exposure=Hamburger, mediator= module 2, outcome=T2D -->
 
-:::
 
-::: callout-note
--   Confidence intervals are automatically removed from the figure if they fall outside the set limits. 
--   In certain mediations, the direct and indirect effects may have opposite directions. This can result in a proportion mediated (PM) greater than 1. This occurs because the total effect might be smaller than the indirect effect.
-:::
 
-Based on the figure showing the mediation analysis results, we can observe the direction and magnitude of proportion mediated for the 2 mediators (module 1 and 2), all the exposures and outcomes. Based on the confidence interval, we also observed that the PM for BSDS-module 1-BMI and BSDS-module 2-BMI mediation is significant.
+<!-- ::: callout-note -->
+<!-- -   Confidence intervals are automatically removed from the figure if they fall outside the set limits.  -->
+<!-- -   In certain mediations, the direct and indirect effects may have opposite directions. This can result in a proportion mediated (PM) greater than 1. This occurs because the total effect might be smaller than the indirect effect. -->
+<!-- ::: -->
 
-::: columns
-To visualize the adjusted proportion mediated (APM) and add layers of correlation and risk estimates, use the following settings.
 
-::: {.column style="width: 40%"}
-![](img/complex_4_4.png)
-:::
 
-::: {.column style="width: 5%"}
-:::
+In the shown mediation barplot, we can observe the direction and magnitude of the indirect effect and proportion mediated. We observed that with all effects significant, indirect effect is negative, direct and total effect is positive. The negative indirect effect is consistent with the its visualization in the triplot, i.e, the turquiose module on the x axis associative with BSDS positively and with BMI negatively.
 
-::: {.column style="width: 45%"}
-![](img/complex_4_5.png)
-:::
-:::
+However, the figure also shows that BSDS is positively associated with BMI through a larger direct effect. This seems counterintuitive but this could be due to a true direct effect or indirect effect mediated by other modules.
 
-By observing this figure, we can see the direction and magnitude of adjusted proportion mediated (APM) for the two mediators across all exposures and outcomes. The positioning of the points is similar to what we observed for the proportion mediated (PM).
+Based on the mediation barplot, we've also observed significant proportion mediated with for BSDS-turquiose module-BMI mediations, suggesting a robust mediation effect.
 
-Notably, the APM for BSDS (Baltic Sea Diet Score) as the exposure and T2D (Type 2 Diabetes) as the outcome is smaller than their corresponding PM. This difference occurs because the indirect and direct effects for this mediation pathway are of similar size but in opposite directions. This opposition leads to a smaller total effect and consequently a larger PM. However, the APM is not affected by the directionality of the direct and indirect effects, providing a more stable measure of mediation.
+
+<!-- To visualize the adjusted proportion mediated (APM) and add layers of correlation and risk estimates, use the following settings. -->
+
+
 
 ::: callout-note
--   No confidence intervals are shown for APM. This is because APM values cannot be directly calculated from the mediation analysis in the `mediation` R package, unlike the proportion mediated (PM).
+
+<!-- By observing this figure, we can see the direction and magnitude of adjusted proportion mediated (APM) for the two mediators across all exposures and outcomes. The positioning of the points is similar to what we observed for the proportion mediated (PM). -->
+
+-   Notably, the APM for BSDS (Baltic Sea Diet Score) as the exposure and T2D (Type 2 Diabetes) as the outcome is smaller than their corresponding PM (considering the abosolute value). This difference occurs because the indirect and direct effects for this mediation pathway are in opposite directions. This opposition leads to a smaller total effect and consequently a larger PM (considering the abosolute value). However, the APM is not affected by the directionality of the direct and indirect effects, providing a more stable measure of mediation.
+
+<!-- -   No confidence intervals are shown for APM. This is because APM values cannot be directly calculated from the mediation analysis in the `mediation` R package, unlike the proportion mediated (PM). -->
 
 -   The APM is always smaller than 1, even when direct and indirect effects are in opposite directions. This is due to the calculation method of APM, which uses the sum of the absolute values of indirect and direct effects as the denominator. $$APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{|IE|+|DE|}\cdot\frac{IE+DE}{|IE+DE|}$$
 :::
 
-In step 5B of the TriplotGUI interface, you can view barplots that display the direct, indirect, and total effects for each exposure-mediator-outcome combination. These barplots offer a convenient visual tool to check the direction and magnitude of mediation estimates.
 
-![](img/complex_4_6.png)
 
-Based on the barplot and the triplot with mediation, we've observed significant proportion mediated for BSDS-module 1/2-BMI mediations. To further explore the indirect, direct, and total effects of different combinations of mediations, you can return to Step 5A in the TriplotGUI interface to run more mediation analysis.
+ To further explore the indirect, direct, and total effects of different combinations of mediations, you can run more mediation analysis at Step 5 in the TriplotGUI interface .
 
 
 ## Comparative Visualization

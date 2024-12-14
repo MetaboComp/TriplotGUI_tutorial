@@ -583,7 +583,7 @@ Note
 <li>
 <p><strong><em>Categorical variables</em></strong>: Two options are provided: <em>Perform one-hot-encoding</em> and <em>Use original</em>. The default option is <em>Use original</em>.</p>
 <p><em>Perform one-hot-encoding</em>: a categorical exposure variable with 2 classes is transformed to a binary variable with 0 and 1 values and then used as a numeric variable; A categorical exposure variable with n classes (n&gt;2) are transformed to n binary variables with 0 and 1 values.</p>
-<p><em>Use original</em>: No transformation is made on the categorical variables. Linear models regressing components/modules on each categorical variable and analysis of variance (ANOVA) are used for calculating the proportion of sum of squares of a categorical variable out of the total sum of square. This value is use as the estimate of exposure associations and the corresponding p value form the ANOVA is used as the p value for exposure associations.</p>
+<p><em>Use original</em>: No transformation is made on the categorical variables. Linear models regressing components/modules on each categorical variable and analysis of variance (ANOVA) are used for calculating the square root of the proportion of sum of squares of a categorical variable out of the total sum of square. This value is use as the estimate of exposure associations and the corresponding p value form the ANOVA is used as the p value for exposure associations.</p>
 </li>
 </ol>
 <!-- no transformation is made on the categorical variables. Linear models regressing components/modules on the categorical exposure variables are used for correlation analysis. Correlation coefficients are calculated as the square root of the proportion of sum of squares for categorical variables in the total sum of squares. --></section><section id="more-3" class="level3" data-number="2.3.2"><h3 data-number="2.3.2" class="anchored" data-anchor-id="more-3">
@@ -1344,7 +1344,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-252"><a href="#cb1-252" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a>    *Perform one-hot-encoding*: a categorical exposure variable with 2 classes is transformed to a binary variable with 0 and 1 values and then used as a numeric variable; A categorical exposure variable with n classes (n<span class="sc">\&gt;</span>2) are transformed to n binary variables with 0 and 1 values.</span>
 <span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a>    *Use original*: No transformation is made on the categorical variables. Linear models regressing components/modules on each categorical variable and analysis of variance (ANOVA) are used for calculating the proportion of sum of squares of  a categorical variable out of the total sum of square. This value is use as the estimate of exposure associations and the corresponding p value form the ANOVA is used as the p value for exposure associations.</span>
+<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a>    *Use original*: No transformation is made on the categorical variables. Linear models regressing components/modules on each categorical variable and analysis of variance (ANOVA) are used for calculating the square root of the proportion of sum of squares of  a categorical variable out of the total sum of square. This value is use as the estimate of exposure associations and the corresponding p value form the ANOVA is used as the p value for exposure associations.</span>
 <span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-257"><a href="#cb1-257" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- no transformation is made on the categorical variables. Linear models regressing components/modules on the categorical exposure variables are used for correlation analysis. Correlation coefficients are calculated as the square root of the proportion of sum of squares for categorical variables in the total sum of squares. --&gt;</span></span>
 <span id="cb1-258"><a href="#cb1-258" aria-hidden="true" tabindex="-1"></a></span>
@@ -1674,7 +1674,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <p><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></p>
 </div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","loop":false});
+</footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false,"openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

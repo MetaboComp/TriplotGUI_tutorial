@@ -348,7 +348,7 @@ window.Quarto = {
 <li><p>In the covariate data, when you inspect the classes of variables you will find that some categorical variables are incorrectly classified as numeric type instead of factor. To resolve this, change the class of these variables to factor, focusing on <code>"Gender"</code>, <code>"Education"</code>, <code>"Smoking"</code> and <code>"PhysicalActivityIndex"</code>.</p></li>
 </ul>
 <p>Understanding these nuances in your data structure is essential for ensuring accurate analysis and interpretation of results. By addressing these points early in the process, you set the stage for a more robust and reliable analysis using TriplotGUI.</p>
-<p>Change your “Data analysis settings” as shown in the figure below.</p>
+<p>Change your “Data analysis settings” as shown in the figure below. This is to perform Spearman pairwise correlation analysis, adjusting for confounders. Categorical variables (i.e., <code>"HFI"</code>) is one-hot-encoded to binary variables.</p>
 <div class="columns">
 <div class="column" style="width: 45%">
 <p><a href="img/complex_2_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="img/complex_2_3.png" class="img-fluid"></a></p>
@@ -704,7 +704,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <p><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></p>
 </div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","loop":false,"openEffect":"zoom"});
+</footer><script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","loop":false,"closeEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
