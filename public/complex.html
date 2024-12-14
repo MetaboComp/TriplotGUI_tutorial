@@ -224,10 +224,10 @@ window.Quarto = {
   <li>
 <a href="#the-use-of-interface" id="toc-the-use-of-interface" class="nav-link" data-scroll-target="#the-use-of-interface">The use of interface</a>
   <ul>
-<li><a href="#step-1-pcawgcna-plots" id="toc-step-1-pcawgcna-plots" class="nav-link" data-scroll-target="#step-1-pcawgcna-plots">Step 1: PCA/WGCNA plots</a></li>
-  <li><a href="#step-2-3-exposures-correlations-outcomes-associations" id="toc-step-2-3-exposures-correlations-outcomes-associations" class="nav-link" data-scroll-target="#step-2-3-exposures-correlations-outcomes-associations">Step 2-3: Exposures’ correlations &amp; Outcomes’ associations</a></li>
-  <li><a href="#step-4-visualization-of-triplot" id="toc-step-4-visualization-of-triplot" class="nav-link" data-scroll-target="#step-4-visualization-of-triplot">Step 4: Visualization of Triplot</a></li>
-  <li><a href="#step-5-triplot-with-mediation" id="toc-step-5-triplot-with-mediation" class="nav-link" data-scroll-target="#step-5-triplot-with-mediation">Step 5: Triplot with mediation</a></li>
+<li><a href="#step-1-data-reduction-of-omics-variables" id="toc-step-1-data-reduction-of-omics-variables" class="nav-link" data-scroll-target="#step-1-data-reduction-of-omics-variables">Step 1: Data reduction of Omics variables</a></li>
+  <li><a href="#step-2-3-exposures-omics-and-omics-outcomes-associations" id="toc-step-2-3-exposures-omics-and-omics-outcomes-associations" class="nav-link" data-scroll-target="#step-2-3-exposures-omics-and-omics-outcomes-associations">Step 2-3: Exposures-Omics and Omics-Outcomes associations</a></li>
+  <li><a href="#step-4-meet-in-the-middle-triplot-visualization" id="toc-step-4-meet-in-the-middle-triplot-visualization" class="nav-link" data-scroll-target="#step-4-meet-in-the-middle-triplot-visualization">Step 4: Meet-in-the-middle Triplot Visualization</a></li>
+  <li><a href="#step-5-mediation-analysis-and-visualization" id="toc-step-5-mediation-analysis-and-visualization" class="nav-link" data-scroll-target="#step-5-mediation-analysis-and-visualization">Step 5: Mediation analysis and visualization</a></li>
   <li><a href="#comparative-visualization" id="toc-comparative-visualization" class="nav-link" data-scroll-target="#comparative-visualization">Comparative Visualization</a></li>
   <li><a href="#data-download" id="toc-data-download" class="nav-link" data-scroll-target="#data-download">Data download</a></li>
   </ul>
@@ -298,7 +298,7 @@ window.Quarto = {
 <p>We want to assess the relationship between diet, metabolic profiles and Type 2 diabetes and BMI. We assume that metabolites serves as mediators, mediating the effect of dietary exposures on Type 2 diabetes and BMI.</p>
 </section><section id="the-use-of-interface" class="level1"><h1>The use of interface</h1>
 <p>To demonstrate more functionality of the interface, we will provide an example on this page that corresponds to the code implementation outlined in the <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/complex_code.html#step-2" target="_blank">Code example of using TriplotGUI</a> section. This will allow you to see how the interface operates in practical terms.</p>
-<section id="step-1-pcawgcna-plots" class="level2"><h2 class="anchored" data-anchor-id="step-1-pcawgcna-plots">Step 1: PCA/WGCNA plots</h2>
+<section id="step-1-data-reduction-of-omics-variables" class="level2"><h2 class="anchored" data-anchor-id="step-1-data-reduction-of-omics-variables">Step 1: Data reduction of Omics variables</h2>
 <p>To begin the analysis in TriplotGUI, first upload the Omics data (Example2_Omics.rds) and the auxiliary data (Example2_auxiliary.xlsx) using the interface in step 1. Once the Omics data is uploaded, a series of additional buttons will appear, allowing you to make modifications to either the Omics or auxiliary data if necessary.</p>
 <p>Next, inspect the classes of variables in both datasets. You will find that the classes for the Omics data look correct; however, there are issues with the auxiliary data. Specifically, some categorical variables are incorrectly classified as character type instead of factor. To resolve this, change the class of these variables to factor, focusing on <code>"PairedInfo"</code>, <code>"Education"</code>, and <code>"PhysicalActivityIndex"</code>.</p>
 <div class="columns">
@@ -330,7 +330,7 @@ window.Quarto = {
 <strong>Loadings Plot</strong>: Examine the contribution of each variable to the principal components.</li>
 <li>
 <strong>Biplot</strong>: Get a comprehensive view of how samples relate to each other alongside variable contributions.</li>
-</ul></section><section id="step-2-3-exposures-correlations-outcomes-associations" class="level2"><h2 class="anchored" data-anchor-id="step-2-3-exposures-correlations-outcomes-associations">Step 2-3: Exposures’ correlations &amp; Outcomes’ associations</h2>
+</ul></section><section id="step-2-3-exposures-omics-and-omics-outcomes-associations" class="level2"><h2 class="anchored" data-anchor-id="step-2-3-exposures-omics-and-omics-outcomes-associations">Step 2-3: Exposures-Omics and Omics-Outcomes associations</h2>
 <p>After completing step 1, proceed to upload the exposures and covariate data in step 2 of the TriplotGUI interface.</p>
 <div class="columns">
 <div class="column" style="width: 45%">
@@ -432,7 +432,7 @@ Note
 </div>
 </div>
 <p>Note that it is possible for users to skip Step 2 or 3, if their interests focus on only outcome associations or exposure correlations with Omics variables.</p>
-</section><section id="step-4-visualization-of-triplot" class="level2"><h2 class="anchored" data-anchor-id="step-4-visualization-of-triplot">Step 4: Visualization of Triplot</h2>
+</section><section id="step-4-meet-in-the-middle-triplot-visualization" class="level2"><h2 class="anchored" data-anchor-id="step-4-meet-in-the-middle-triplot-visualization">Step 4: Meet-in-the-middle Triplot Visualization</h2>
 <p><a href="img/complex_3_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="img/complex_3_1.png" class="img-fluid"></a></p>
 <p>In the triplot visualization, black arrows represent loadings of Omics variables, forming patterns in different modules (axes). Blue circle points show exposure correlations with the modules, while red square points indicate outcome associations with the modules.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -467,7 +467,7 @@ Note
 <li><p>Adjusting for <code>"Age"</code>, <code>"Gender"</code>, <code>"Smoking"</code>, <code>"Education"</code> and <code>"FastingGlucose"</code>, the second module (on y-axis) associated positively with generally healthy food (e.g.&nbsp;<code>"fruits"</code>, <code>"vegatables"</code>) and food index (e.g.&nbsp;<code>"BSDS"</code>) and negatively with unhealthy food (e.g.&nbsp;<code>"Hamburger"</code>, <code>"pizza"</code>). However, the module correlates also positively with <code>"T2D"</code>,<code>"BMI"</code>, <em>obese</em>, <em>overweight</em> and negatively associated with <em>underweight</em>.</p></li>
 </ul>
 <p>Based on what we summarized above, the two modules may be associated with a overall healthy eating pattern. And in this healthy eating pattern, the first module is associated more with the beneficial effect on health and the second module represents the adverse health effect.</p>
-</section><section id="step-5-triplot-with-mediation" class="level2"><h2 class="anchored" data-anchor-id="step-5-triplot-with-mediation">Step 5: Triplot with mediation</h2>
+</section><section id="step-5-mediation-analysis-and-visualization" class="level2"><h2 class="anchored" data-anchor-id="step-5-mediation-analysis-and-visualization">Step 5: Mediation analysis and visualization</h2>
 <p>In step 5 of the TriplotGUI interface, we focus on a specific set of variables for mediation analysis: we select <code>"BSDS"</code> (Baltic Sea Diet Score) and <code>"Hamburger"</code> as our exposures, <code>"BMI"</code> and <code>"T2D"</code> as outcome to enter our next step. We choose first and second modules as our mediators.</p>
 <p>This time, we perform the mediation analysis using the counterfactual/potential outcome method, implemented through the <code>mediation</code> package in R on our exposures (i.e.&nbsp;<code>"BSDS"</code>, <code>"Hamburger"</code>), mediators (i.e.&nbsp;the first and second modules) and outcome (i.e.&nbsp;<code>"T2D"</code>, <code>"BMI"</code>) of interest, adjusting for <code>"Age"</code>, <code>"Gender"</code>, <code>"Smoking"</code>, <code>"Education"</code> and <code>"FastingGlucose"</code> for both exposure-mediator and mediator-outcome relationship.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -704,7 +704,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <p><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></p>
 </div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","selector":".lightbox"});
+</footer><script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","loop":false,"openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

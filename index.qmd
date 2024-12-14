@@ -47,11 +47,17 @@ The manual section provides comprehensive guidance for using TriplotGUI. Users c
 
 ### Tutorial(simple)
 
-This section presents a basic example of using TriplotGUI, utilizing the CAMP_2 dataset. It offers two approaches: - Code tutorial: Suitable for users with beginner-level R skills - User interface tutorial: Ideal for those with limited epidemiology knowledge and experience in handling high-dimensional data
+This section presents a basic example of using TriplotGUI, utilizing the CAMP_2 dataset. It offers two approaches: 
+
+- Code tutorial: Suitable for users with beginner-level R skills 
+- User interface tutorial: Ideal for those with limited epidemiology knowledge and experience in handling high-dimensional data
 
 ### Tutorial(complex)
 
-A more advanced example using the HealthyNordicDiet_2 dataset, with two options: - Code tutorial: Tailored for intermediate to advanced R users - User interface tutorial: Designed for users with epidemiology knowledge and experience in working with high-dimensional data
+A more advanced example using the HealthyNordicDiet_2 dataset, with two options: 
+
+- Code tutorial: Tailored for intermediate to advanced R users 
+- User interface tutorial: Designed for users with epidemiology knowledge and experience in working with high-dimensional data
 
 <!-- ### Use Case -->
 
@@ -61,7 +67,7 @@ A more advanced example using the HealthyNordicDiet_2 dataset, with two options:
 
 ### Paper
 
-This section showcases relevant papers related to TriplotGUI and includes a viewable poster presentation.
+This section showcases relevant papers related to TriplotGUI and includes a previous poster of TriplotGUI.
 
 ### About us
 

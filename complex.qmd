@@ -100,7 +100,7 @@ We want to assess the relationship between diet, metabolic profiles and Type 2 d
 
 To demonstrate more functionality of the interface, we will provide an example on this page that corresponds to the code implementation outlined in the [Code example of using TriplotGUI](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/complex_code.html#step-2){target="_blank"} section. This will allow you to see how the interface operates in practical terms.
 
-## Step 1: PCA/WGCNA plots
+## Step 1: Data reduction of Omics variables
 
 To begin the analysis in TriplotGUI, first upload the Omics data (Example2_Omics.rds) and the auxiliary data (Example2_auxiliary.xlsx) using the interface in step 1. Once the Omics data is uploaded, a series of additional buttons will appear, allowing you to make modifications to either the Omics or auxiliary data if necessary.
 
@@ -143,7 +143,7 @@ After configuring the settings, we can examine several informative plots at step
 -  **Loadings Plot**: Examine the contribution of each variable to the principal components.
 -  **Biplot**: Get a comprehensive view of how samples relate to each other alongside variable contributions.
 
-## Step 2-3: Exposures’ correlations & Outcomes’ associations
+## Step 2-3: Exposures-Omics and Omics-Outcomes associations
 
 After completing step 1, proceed to upload the exposures and covariate data in step 2 of the TriplotGUI interface. 
 
@@ -258,7 +258,7 @@ When using TriplotGUI, the handling of categorical outcomes and pairing variable
 
 Note that it is possible for users to skip Step 2 or 3, if their interests focus on only outcome associations or exposure correlations with Omics variables.
 
-## Step 4: Visualization of Triplot
+## Step 4: Meet-in-the-middle Triplot Visualization
 
 ![](img/complex_3_1.png)
 
@@ -282,7 +282,7 @@ Based on the triplot visualization of the TriplotGUI interface, we can interpret
 
 Based on what we summarized above, the two modules may be associated with a overall healthy eating pattern. And in this healthy eating pattern, the first module is associated more with the beneficial effect on health and the second module represents the adverse health effect.
 
-## Step 5: Triplot with mediation
+## Step 5: Mediation analysis and visualization
 
 In step 5 of the TriplotGUI interface, we focus on a specific set of variables for mediation analysis: we select `"BSDS"` (Baltic Sea Diet Score) and `"Hamburger"` as our exposures, `"BMI"` and `"T2D"` as outcome to enter our next step. We choose first and second modules as our mediators.
 

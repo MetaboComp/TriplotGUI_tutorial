@@ -236,7 +236,7 @@ auxiliary2 <- ClinData[, c("PairedInfo","FastingGlucose","Education","PhysicalAc
 
 We will use more complex settings in this example. Please go to [Tutorial(simple)](simple_code.qmd){target="_blank"}.if you want to try simpler settings.
 
-## Step 1: PCA/WGCNA plots {#simple_link}
+## Step 1: Data reduction of Omics variables {#simple_link}
 
 Using `TriplotGUI` package, first we perform dimension reduction, using weighted correlation network analysis (WGCNA) on metabolomics data.
 
@@ -370,8 +370,7 @@ TPObject1 <- makeTPO(scores = scores,
 
 ```
 
-## Step 2-3: Exposure correlations & Outcome associations
-
+## Step 2-3: Exposure-Omics and Omics-Outcome associations
 
 The correlations between modules and food items and the associations between modules and risk markers can be then calculated, with confounders adjusted. Note that it is possible for users to skip code regarding correlations or risk association, if their interests focus on only outcome associations or exposure correlations with Omics variables.
 
@@ -480,7 +479,7 @@ TPObject3 <- addOutcome(TPObject = TPObject2,
 
 ```
 
-## Step 4: Triplot
+## Step 4: Meet-in-the-middle Triplot Visualization
 
 The TPObject created from all steps can be used to generate a Triplot using the `TriplotGUI()` function. The function serves as a wrapper for `PCA_TriplotGUI()` and `WGCNA_TriplotGUI()`. You can check the functions respectively here: [`TriplotGUI()`](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/R/TriplotGUI.R?ref_type=heads){target="_blank"}, [`PCA_TriplotGUI()`](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/R/PCA_TriplotGUI.R?ref_type=heads){target="_blank"}, [`WGCNA_TriplotGUI()`](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/R/WGCNA_TriplotGUI.R?ref_type=heads){target="_blank"}.
 

@@ -206,7 +206,7 @@ covariates1 <- ClinData[, c("SEX" , "AGE")]
 
 We will use the most simple settings in this example. Please go to [Tutorial(complex)](complex_code.qmd){target="_blank"}, if you want to try more advanced settings.
 
-## Step 1: PCA/WGCNA plots {#simple_link}
+## Step 1: Data reduction of Omics variables {#simple_link}
 
 Using `TriplotGUI` package, first we perform dimension reduction, i.e. principal component analysis (PCA) on metabolomics variables.
 
@@ -237,21 +237,19 @@ reduced_Omics1$loading_plot
 reduced_Omics1$scoreloading_plot
 ```
 
-
 ::: callout-note
 Sometimes the following text will show up in your console and the figure cannot be directly run:
 
-`libpng warning: Image width is zero in IHDR` 
+`libpng warning: Image width is zero in IHDR`
 
-`libpng error: Invalid IHDR data` 
+`libpng error: Invalid IHDR data`
 
 `Warning message:`
 
 `In dev.off(which) : agg could not write to the given file\`
 
 Run `gc()` in your console to clear the memory. Then rerun the code again to view the figure.
-::: 
-
+:::
 
 We then build a TPObject based on the data reduction results. This object will be used to save information and facilitate the transfer of data through the various steps in TriplotGUI.
 
@@ -269,9 +267,9 @@ TPObject1 <- makeTPO(scores = scores,
                      variance = variance)
 ```
 
-## Step 2-3: Exposure correlations & Outcome associations
+## Step 2-3: Exposures-Omics and Omics-Outcomes associations
 
-The correlations between principal components (PCs) and food items are calculated using Pearson correlations, adjusting for confounders. We investigate associations between PC scores and risk markers adjusting for confounders using linear regression, as all food variables are numeric.
+The associations between principal components (PCs) and food items are calculated using Pearson correlations, adjusting for confounders. We investigate associations between PC scores and risk markers adjusting for confounders using linear regression, as all food variables are numeric.
 
 The PC scores are saved in the TPObject, which can be directly used in the `exposureAssociation()` function to calculate correlation coefficients and p-values with exposures (food variables), while adjusting for confounders.
 
@@ -331,7 +329,7 @@ TPObject3 <- addOutcome(TPObject = TPObject2,
 
 ```
 
-## Step 4: Visualization of Triplot
+## Step 4: Meet-in-the-middle Triplot Visualization
 
 Then we generate the Triplot. It's important to note that a Triplot can be generated from any TPObject.
 
@@ -370,9 +368,9 @@ PC2: In contrast, PC2 exhibits a smaller association with BMI and a weak inverse
 
 This interpretation highlights how different dietary exposures relate to metabolic outcomes, offering insights into potential mechanisms at play.
 
-## Step 5: Triplot with mediation
+## Step 5: Mediation analysis and visualization
 
-Mediation analysis will be performed using the conventional “product” method on our selected exposures (`"Refined grains"`, `"Red meat"`), mediators (PC1 and PC2), and the outcome of interest (`"BMI"`), adjusting for age and sex in both the exposure-mediator and mediator-outcome relationships.
+Mediation analysis will be performed using the conventional(Baron-Kenny) method on our selected exposures (`"Refined grains"`, `"Red meat"`), and the outcome of interest (`"BMI"`), using components generated from Step 1 as mediators and adjusting for age and sex in both the exposure-mediator and mediator-outcome associations.
 
 ```{r showcode_runcode_noshowoutput_6}
 #| eval: true
@@ -391,7 +389,7 @@ mediation_object3 <-
 
 ```
 
-Examine the barplot for a clearer view of the direct, indirect, and total effects for each combination of PC, exposure, and outcome.
+After mediation analysis is performed, users can select which exposure, mediator and outcome variables to use for mediation barplot visualization. Users can examine the barplot for a clearer view of the direct, indirect, and total effects for each combination of PC, exposure, and outcome.
 
 ```{r showcode_runcode_noshowoutput_7}
 #| eval: true
@@ -438,56 +436,56 @@ TPObject4 <- addMediation(TPObject = TPObject3,
 
 ```
 
-Make the triplot with mediation.
+<!-- Make the triplot with mediation. -->
 
-```{r showcode_runcode_noshowoutput_8}
-#| eval: true
-#| echo: true
-#| output: false
-#| classes: styled-output
-#| fold.plot: true
+<!-- ```{r showcode_runcode_noshowoutput_8} -->
+<!-- #| eval: true -->
+<!-- #| echo: true -->
+<!-- #| output: false -->
+<!-- #| classes: styled-output -->
+<!-- #| fold.plot: true -->
 
-TPO_plots4 <- mediationTriplot(TPObject4,
-                                     show = c("IE","TE")
-                                     )
+<!-- TPO_plots4 <- mediationTriplot(TPObject4, -->
+<!--                                      show = c("IE","TE") -->
+<!--                                      ) -->
 
-```
+<!-- ``` -->
 
-Show the mediation estimates only (indirect and total effect).
+<!-- Show the mediation estimates only (indirect and total effect). -->
 
-```{r showcode_runcode_showoutput_13}
-#| eval: true
-#| echo: true
-#| output: true
-#| classes: styled-output
-#| fold.plot: true
-#| out-width: "100%"
-TPO_plots4$mediations_plot
+<!-- ```{r showcode_runcode_showoutput_13} -->
+<!-- #| eval: true -->
+<!-- #| echo: true -->
+<!-- #| output: true -->
+<!-- #| classes: styled-output -->
+<!-- #| fold.plot: true -->
+<!-- #| out-width: "100%" -->
+<!-- TPO_plots4$mediations_plot -->
 
-```
+<!-- ``` -->
 
-::: callout-note
-In the triplot, indirect effects, which are specific to each mediator (such as PC1 or PC2), are depicted as dark green triangle points. Total effects, on the other hand, are shown as circles. It's important to note that while indirect effects are tied to particular mediators, total effects remain constant for specific exposure-outcome pairs.
-:::
+<!-- ::: callout-note -->
+<!-- In the triplot, indirect effects, which are specific to each mediator (such as PC1 or PC2), are depicted as dark green triangle points. Total effects, on the other hand, are shown as circles. It's important to note that while indirect effects are tied to particular mediators, total effects remain constant for specific exposure-outcome pairs. -->
+<!-- ::: -->
 
-Plot the triplot with mediation.
+<!-- Plot the triplot with mediation. -->
 
-```{r showcode_runcode_showoutput_14}
-#| eval: true
-#| echo: true
-#| output: true
-#| classes: styled-output
-#| fold.plot: true
-#| out-width: "100%"
-TPO_plots4$mediations_triplot
+<!-- ```{r showcode_runcode_showoutput_14} -->
+<!-- #| eval: true -->
+<!-- #| echo: true -->
+<!-- #| output: true -->
+<!-- #| classes: styled-output -->
+<!-- #| fold.plot: true -->
+<!-- #| out-width: "100%" -->
+<!-- TPO_plots4$mediations_triplot -->
 
-```
+<!-- ``` -->
 
-Based on the barplot and the triplot with mediation, we observed significant mediation effects through PC1 for the red_meat-BMI and refined_grain-BMI associations. This finding suggests that the metabolite features contributing to PC1 are likely mediating the pathway from red meat and refined grain intake to BMI changes. These results provide insight into potential metabolic mechanisms linking dietary patterns to body mass index.
+Based on the mediation barplot, we observed significant mediation effects through PC1 for the red_meat-BMI and refined_grain-BMI associations. This finding suggests that the metabolite features contributing to PC1 are likely mediating the pathway from red meat and refined grain intake to BMI changes. These results provide insight into potential metabolic mechanisms linking dietary patterns to body mass index.
 
 ## Comparative Visualization
 
-Users can easily visualize the correlations, risk estimations, and mediation results stored in the TPObject using the `checkTPO()` function provided by TriplotGUI. This function generates heatmaps for each type of analysis, offering a comprehensive and intuitive way to examine the relationships between variables. Note that you could put any TPObjects generate along the steps for heatmap visualizations.
+Users can easily visualize the exposure associations, risk estimations, and mediation results stored in the TPObject using the `checkTPO()` function provided by TriplotGUI. This function generates heatmaps for each type of analysis, offering a comprehensive and intuitive way to examine the relationships between variables. Note that you could put any TPObjects generate along the steps for heatmap visualizations.
 
 ```{r showcode_runcode_noshowoutput_9}
 #| eval: true
@@ -497,6 +495,7 @@ Users can easily visualize the correlations, risk estimations, and mediation res
 #| fold.plot: true
 
 checkTPObject4 <- checkTPO(TPObject4,
+                           mediators=c("PC1","PC2"),
                                   size=7    ## customize the size of stars
                                   )
 
@@ -540,7 +539,7 @@ checkTPObject4$med_coefficients
 
 ::: callout-note
 -   Significance is indicated as follows. One star for p\<0.05; Two stars for p\<0.01; Three stars for p\<0.001.
--   Note that in the heatmap from `checkTPbject4$med_coefficients`, only the selected exposures, mediators and outcomes that we use to do mediation on will show up. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure-outcome pair, 4 result are shown: *IE* (indirect effect), *TE* (total effect), *PM*(Proportion Mediated) and *APM*(Adjusted Proportion Mediated). Please see [Details section](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2){target="_blank"} for more information. The "BK" before the names of exposures-outcome pairs means that this mediation is using the Coventional Baron-Kenny "product" method.
+-   Note that in the heatmap from `checkTPbject4$med_coefficients`, only the selected exposures, mediators and outcomes that we use to do mediation on will show up. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure-outcome pair, 4 result are shown: *IE* (indirect effect), *TE* (total effect), *PM*(Proportion Mediated) and *APM*(Adjusted Proportion Mediated). Please see [Details section](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2){target="_blank"} for more information. The "BK" before the names of exposures-outcome pairs means that this mediation is using the Coventional Baron-Kenny "product" method. For this method, only the significant level of *IE* and *TE* is calculated and shown on the plot, but not *PM* and *APM*. 
 :::
 
 ## Data Download

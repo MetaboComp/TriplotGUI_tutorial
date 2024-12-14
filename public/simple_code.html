@@ -244,10 +244,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li>
 <a href="#code-example-of-using-triplotgui" id="toc-code-example-of-using-triplotgui" class="nav-link" data-scroll-target="#code-example-of-using-triplotgui"><span class="header-section-number">4</span> Code example of using TriplotGUI</a>
   <ul>
-<li><a href="#simple_link" id="toc-simple_link" class="nav-link" data-scroll-target="#simple_link"><span class="header-section-number">4.1</span> Step 1: PCA/WGCNA plots</a></li>
-  <li><a href="#step-2-3-exposure-correlations-outcome-associations" id="toc-step-2-3-exposure-correlations-outcome-associations" class="nav-link" data-scroll-target="#step-2-3-exposure-correlations-outcome-associations"><span class="header-section-number">4.2</span> Step 2-3: Exposure correlations &amp; Outcome associations</a></li>
-  <li><a href="#step-4-visualization-of-triplot" id="toc-step-4-visualization-of-triplot" class="nav-link" data-scroll-target="#step-4-visualization-of-triplot"><span class="header-section-number">4.3</span> Step 4: Visualization of Triplot</a></li>
-  <li><a href="#step-5-triplot-with-mediation" id="toc-step-5-triplot-with-mediation" class="nav-link" data-scroll-target="#step-5-triplot-with-mediation"><span class="header-section-number">4.4</span> Step 5: Triplot with mediation</a></li>
+<li><a href="#simple_link" id="toc-simple_link" class="nav-link" data-scroll-target="#simple_link"><span class="header-section-number">4.1</span> Step 1: Data reduction of Omics variables</a></li>
+  <li><a href="#step-2-3-exposures-omics-and-omics-outcomes-associations" id="toc-step-2-3-exposures-omics-and-omics-outcomes-associations" class="nav-link" data-scroll-target="#step-2-3-exposures-omics-and-omics-outcomes-associations"><span class="header-section-number">4.2</span> Step 2-3: Exposures-Omics and Omics-Outcomes associations</a></li>
+  <li><a href="#step-4-meet-in-the-middle-triplot-visualization" id="toc-step-4-meet-in-the-middle-triplot-visualization" class="nav-link" data-scroll-target="#step-4-meet-in-the-middle-triplot-visualization"><span class="header-section-number">4.3</span> Step 4: Meet-in-the-middle Triplot Visualization</a></li>
+  <li><a href="#step-5-mediation-analysis-and-visualization" id="toc-step-5-mediation-analysis-and-visualization" class="nav-link" data-scroll-target="#step-5-mediation-analysis-and-visualization"><span class="header-section-number">4.4</span> Step 5: Mediation analysis and visualization</a></li>
   <li><a href="#comparative-visualization" id="toc-comparative-visualization" class="nav-link" data-scroll-target="#comparative-visualization"><span class="header-section-number">4.5</span> Comparative Visualization</a></li>
   <li><a href="#data-download" id="toc-data-download" class="nav-link" data-scroll-target="#data-download"><span class="header-section-number">4.6</span> Data Download</a></li>
   </ul>
@@ -1247,7 +1247,7 @@ Note
 <span class="header-section-number">4</span> Code example of using TriplotGUI</h1>
 <p>We will use the most simple settings in this example. Please go to <a href="./complex_code.html" target="_blank">Tutorial(complex)</a>, if you want to try more advanced settings.</p>
 <section id="simple_link" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="simple_link">
-<span class="header-section-number">4.1</span> Step 1: PCA/WGCNA plots</h2>
+<span class="header-section-number">4.1</span> Step 1: Data reduction of Omics variables</h2>
 <p>Using <code>TriplotGUI</code> package, first we perform dimension reduction, i.e.&nbsp;principal component analysis (PCA) on metabolomics variables.</p>
 <div class="cell styled-output">
 <details open="" class="code-fold"><summary>Show the code</summary><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">reduced_Omics1</span> <span class="op">&lt;-</span> <span class="fu">OmicsReduction</span><span class="op">(</span>dataframe <span class="op">=</span> <span class="va">Omics1</span>,</span>
@@ -1334,9 +1334,9 @@ TPO has 0 attached correlations.
 TPO has 0 attached risks.</code></pre>
 </div>
 </div>
-</section><section id="step-2-3-exposure-correlations-outcome-associations" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="step-2-3-exposure-correlations-outcome-associations">
-<span class="header-section-number">4.2</span> Step 2-3: Exposure correlations &amp; Outcome associations</h2>
-<p>The correlations between principal components (PCs) and food items are calculated using Pearson correlations, adjusting for confounders. We investigate associations between PC scores and risk markers adjusting for confounders using linear regression, as all food variables are numeric.</p>
+</section><section id="step-2-3-exposures-omics-and-omics-outcomes-associations" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="step-2-3-exposures-omics-and-omics-outcomes-associations">
+<span class="header-section-number">4.2</span> Step 2-3: Exposures-Omics and Omics-Outcomes associations</h2>
+<p>The associations between principal components (PCs) and food items are calculated using Pearson correlations, adjusting for confounders. We investigate associations between PC scores and risk markers adjusting for confounders using linear regression, as all food variables are numeric.</p>
 <p>The PC scores are saved in the TPObject, which can be directly used in the <code>exposureAssociation()</code> function to calculate correlation coefficients and p-values with exposures (food variables), while adjusting for confounders.</p>
 <div class="cell styled-output" data-fold.output="false">
 <details open="" class="code-fold"><summary>Show the code</summary><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">Correlations_object</span> <span class="op">&lt;-</span> <span class="fu">exposureAssociation</span><span class="op">(</span>TPObject <span class="op">=</span> <span class="va">TPObject1</span>,</span>
@@ -1379,8 +1379,8 @@ TPO has 11 attached correlations.
 TPO has 5 attached risks.</code></pre>
 </div>
 </div>
-</section><section id="step-4-visualization-of-triplot" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="step-4-visualization-of-triplot">
-<span class="header-section-number">4.3</span> Step 4: Visualization of Triplot</h2>
+</section><section id="step-4-meet-in-the-middle-triplot-visualization" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="step-4-meet-in-the-middle-triplot-visualization">
+<span class="header-section-number">4.3</span> Step 4: Meet-in-the-middle Triplot Visualization</h2>
 <p>Then we generate the Triplot. It’s important to note that a Triplot can be generated from any TPObject.</p>
 <div class="cell styled-output" data-fold.output="false">
 <details open="" class="code-fold"><summary>Show the code</summary><div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">TPO_plots3</span> <span class="op">&lt;-</span> <span class="fu">TriplotGUI</span><span class="op">(</span><span class="va">TPObject3</span>, </span>
@@ -1405,9 +1405,9 @@ plot
 <p>PC1: This component shows a positive association with BMI and is correlated with high intakes of red meat and refined grains, even after adjusting for age and sex. This suggests that the metabolite features dominating PC1 may provide valuable insights into how the intake of red meat and refined grains could influence BMI.</p>
 <p>PC2: In contrast, PC2 exhibits a smaller association with BMI and a weak inverse correlation with red meat and refined grains. The metabolite features contributing significantly to PC2 may indicate a marginal beneficial effect of these dietary components, although this effect appears to be limited. This may also suggest that the features dominating PC2 may reflect metabolite patterns influenced by food, but not to a large degree associations with metabolic regulation in relation to health.</p>
 <p>This interpretation highlights how different dietary exposures relate to metabolic outcomes, offering insights into potential mechanisms at play.</p>
-</section><section id="step-5-triplot-with-mediation" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="step-5-triplot-with-mediation">
-<span class="header-section-number">4.4</span> Step 5: Triplot with mediation</h2>
-<p>Mediation analysis will be performed using the conventional “product” method on our selected exposures (<code>"Refined grains"</code>, <code>"Red meat"</code>), mediators (PC1 and PC2), and the outcome of interest (<code>"BMI"</code>), adjusting for age and sex in both the exposure-mediator and mediator-outcome relationships.</p>
+</section><section id="step-5-mediation-analysis-and-visualization" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="step-5-mediation-analysis-and-visualization">
+<span class="header-section-number">4.4</span> Step 5: Mediation analysis and visualization</h2>
+<p>Mediation analysis will be performed using the conventional(Baron-Kenny) method on our selected exposures (<code>"Refined grains"</code>, <code>"Red meat"</code>), and the outcome of interest (<code>"BMI"</code>), using components generated from Step 1 as mediators and adjusting for age and sex in both the exposure-mediator and mediator-outcome associations.</p>
 <div class="cell styled-output" data-fold.output="false">
 <details open="" class="code-fold"><summary>Show the code</summary><div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mediation_object3</span> <span class="op">&lt;-</span> </span>
 <span>  <span class="fu">getMediationConventional</span> <span class="op">(</span>mediator <span class="op">=</span> <span class="va">TPObject3</span><span class="op">$</span><span class="va">scores</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span>,drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span>, </span>
@@ -1418,7 +1418,7 @@ plot
 <span>                             confounderOE <span class="op">=</span> <span class="va">covariates1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Examine the barplot for a clearer view of the direct, indirect, and total effects for each combination of PC, exposure, and outcome.</p>
+<p>After mediation analysis is performed, users can select which exposure, mediator and outcome variables to use for mediation barplot visualization. Users can examine the barplot for a clearer view of the direct, indirect, and total effects for each combination of PC, exposure, and outcome.</p>
 <div class="cell styled-output" data-fold.plot="true">
 <details open="" class="code-fold"><summary>Show the code</summary><div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mediation_plots3</span> <span class="op">&lt;-</span> <span class="fu">mediationBarplot</span><span class="op">(</span>mediationObject <span class="op">=</span> <span class="va">mediation_object3</span>,</span>
 <span>                                         cex <span class="op">=</span> <span class="fl">2</span>,</span>
@@ -1470,70 +1470,59 @@ Exposures are Refined_grains, Red_meat
 Outcomes are BMI</code></pre>
 </div>
 </div>
-<p>Make the triplot with mediation.</p>
-<div class="cell styled-output" data-fold.plot="true">
-<details open="" class="code-fold"><summary>Show the code</summary><div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">TPO_plots4</span> <span class="op">&lt;-</span> <span class="fu">mediationTriplot</span><span class="op">(</span><span class="va">TPObject4</span>,</span>
-<span>                                     show <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"IE"</span>,<span class="st">"TE"</span><span class="op">)</span></span>
-<span>                                     <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Show the mediation estimates only (indirect and total effect).</p>
-<div class="cell styled-output" data-fold.plot="true">
-<details open="" class="code-fold"><summary>Show the code</summary><div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">TPO_plots4</span><span class="op">$</span><span class="va">mediations_plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><details><summary>
-plot
-</summary><div class="cell-output-display">
-<div>
-<figure class="figure"><p><a href="simple_code_files/figure-html/showcode_runcode_showoutput_13-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="simple_code_files/figure-html/showcode_runcode_showoutput_13-1.png" class="img-fluid figure-img" style="width:100.0%"></a></p>
-</figure>
-</div>
-</div>
-</details>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In the triplot, indirect effects, which are specific to each mediator (such as PC1 or PC2), are depicted as dark green triangle points. Total effects, on the other hand, are shown as circles. It’s important to note that while indirect effects are tied to particular mediators, total effects remain constant for specific exposure-outcome pairs.</p>
-</div>
-</div>
-<p>Plot the triplot with mediation.</p>
-<div class="cell styled-output" data-fold.plot="true">
-<details open="" class="code-fold"><summary>Show the code</summary><div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">TPO_plots4</span><span class="op">$</span><span class="va">mediations_triplot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><details><summary>
-plot
-</summary><div class="cell-output-display">
-<div>
-<figure class="figure"><p><a href="simple_code_files/figure-html/showcode_runcode_showoutput_14-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="simple_code_files/figure-html/showcode_runcode_showoutput_14-1.png" class="img-fluid figure-img" style="width:100.0%"></a></p>
-</figure>
-</div>
-</div>
-</details>
-</div>
-<p>Based on the barplot and the triplot with mediation, we observed significant mediation effects through PC1 for the red_meat-BMI and refined_grain-BMI associations. This finding suggests that the metabolite features contributing to PC1 are likely mediating the pathway from red meat and refined grain intake to BMI changes. These results provide insight into potential metabolic mechanisms linking dietary patterns to body mass index.</p>
+<!-- Make the triplot with mediation. -->
+<!-- ```{r showcode_runcode_noshowoutput_8} -->
+<!-- #| eval: true -->
+<!-- #| echo: true -->
+<!-- #| output: false -->
+<!-- #| classes: styled-output -->
+<!-- #| fold.plot: true -->
+<!-- TPO_plots4 <- mediationTriplot(TPObject4, -->
+<!--                                      show = c("IE","TE") -->
+<!--                                      ) -->
+<!-- ``` -->
+<!-- Show the mediation estimates only (indirect and total effect). -->
+<!-- ```{r showcode_runcode_showoutput_13} -->
+<!-- #| eval: true -->
+<!-- #| echo: true -->
+<!-- #| output: true -->
+<!-- #| classes: styled-output -->
+<!-- #| fold.plot: true -->
+<!-- #| out-width: "100%" -->
+<!-- TPO_plots4$mediations_plot -->
+<!-- ``` -->
+<!-- ::: callout-note -->
+<!-- In the triplot, indirect effects, which are specific to each mediator (such as PC1 or PC2), are depicted as dark green triangle points. Total effects, on the other hand, are shown as circles. It's important to note that while indirect effects are tied to particular mediators, total effects remain constant for specific exposure-outcome pairs. -->
+<!-- ::: -->
+<!-- Plot the triplot with mediation. -->
+<!-- ```{r showcode_runcode_showoutput_14} -->
+<!-- #| eval: true -->
+<!-- #| echo: true -->
+<!-- #| output: true -->
+<!-- #| classes: styled-output -->
+<!-- #| fold.plot: true -->
+<!-- #| out-width: "100%" -->
+<!-- TPO_plots4$mediations_triplot -->
+<!-- ``` -->
+<p>Based on the mediation barplot, we observed significant mediation effects through PC1 for the red_meat-BMI and refined_grain-BMI associations. This finding suggests that the metabolite features contributing to PC1 are likely mediating the pathway from red meat and refined grain intake to BMI changes. These results provide insight into potential metabolic mechanisms linking dietary patterns to body mass index.</p>
 </section><section id="comparative-visualization" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="comparative-visualization">
 <span class="header-section-number">4.5</span> Comparative Visualization</h2>
-<p>Users can easily visualize the correlations, risk estimations, and mediation results stored in the TPObject using the <code>checkTPO()</code> function provided by TriplotGUI. This function generates heatmaps for each type of analysis, offering a comprehensive and intuitive way to examine the relationships between variables. Note that you could put any TPObjects generate along the steps for heatmap visualizations.</p>
+<p>Users can easily visualize the exposure associations, risk estimations, and mediation results stored in the TPObject using the <code>checkTPO()</code> function provided by TriplotGUI. This function generates heatmaps for each type of analysis, offering a comprehensive and intuitive way to examine the relationships between variables. Note that you could put any TPObjects generate along the steps for heatmap visualizations.</p>
 <div class="cell styled-output" data-fold.plot="true">
-<details open="" class="code-fold"><summary>Show the code</summary><div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">checkTPObject4</span> <span class="op">&lt;-</span> <span class="fu">checkTPO</span><span class="op">(</span><span class="va">TPObject4</span>,</span>
+<details open="" class="code-fold"><summary>Show the code</summary><div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">checkTPObject4</span> <span class="op">&lt;-</span> <span class="fu">checkTPO</span><span class="op">(</span><span class="va">TPObject4</span>,</span>
+<span>                           mediators<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"PC1"</span>,<span class="st">"PC2"</span><span class="op">)</span>,</span>
 <span>                                  size<span class="op">=</span><span class="fl">7</span>    <span class="co">## customize the size of stars</span></span>
 <span>                                  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Show heatmap for correlation coefficients and p values between PCs and exposures:</p>
 <div class="cell styled-output" data-fold.plot="true">
-<details open="" class="code-fold"><summary>Show the code</summary><div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">checkTPObject4</span><span class="op">$</span><span class="va">corr_coefficients</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Show the code</summary><div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">checkTPObject4</span><span class="op">$</span><span class="va">corr_coefficients</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><details><summary>
 plot
 </summary><div class="cell-output-display">
 <div>
-<figure class="figure"><p><a href="simple_code_files/figure-html/showcode_runcode_showoutput_15A-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="simple_code_files/figure-html/showcode_runcode_showoutput_15A-1.png" class="img-fluid figure-img" style="width:100.0%"></a></p>
+<figure class="figure"><p><a href="simple_code_files/figure-html/showcode_runcode_showoutput_15A-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="simple_code_files/figure-html/showcode_runcode_showoutput_15A-1.png" class="img-fluid figure-img" style="width:100.0%"></a></p>
 </figure>
 </div>
 </div>
@@ -1541,12 +1530,12 @@ plot
 </div>
 <p>Show heatmap for risk estimates (beta coefficients) and p values between PCs and outcomes:</p>
 <div class="cell styled-output" data-fold.plot="true">
-<details open="" class="code-fold"><summary>Show the code</summary><div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">checkTPObject4</span><span class="op">$</span><span class="va">risk_coefficients</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Show the code</summary><div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">checkTPObject4</span><span class="op">$</span><span class="va">risk_coefficients</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><details><summary>
 plot
 </summary><div class="cell-output-display">
 <div>
-<figure class="figure"><p><a href="simple_code_files/figure-html/showcode_runcode_showoutput_15B-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="simple_code_files/figure-html/showcode_runcode_showoutput_15B-1.png" class="img-fluid figure-img" width="672"></a></p>
+<figure class="figure"><p><a href="simple_code_files/figure-html/showcode_runcode_showoutput_15B-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="simple_code_files/figure-html/showcode_runcode_showoutput_15B-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -1554,12 +1543,12 @@ plot
 </div>
 <p>Show heatmap for mediation estimates and p values for indirect effect(IE), and total effect(TE), proportion mediated (PM) and adjusted proportion mediated (APM): See <a href="./workflow.html" target="_blank">Manual</a> section for more details:</p>
 <div class="cell styled-output" data-fold.plot="true">
-<details open="" class="code-fold"><summary>Show the code</summary><div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">checkTPObject4</span><span class="op">$</span><span class="va">med_coefficients</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Show the code</summary><div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">checkTPObject4</span><span class="op">$</span><span class="va">med_coefficients</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><details><summary>
 plot
 </summary><div class="cell-output-display">
 <div>
-<figure class="figure"><p><a href="simple_code_files/figure-html/showcode_runcode_showoutput_15C-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="simple_code_files/figure-html/showcode_runcode_showoutput_15C-1.png" class="img-fluid figure-img" style="width:100.0%"></a></p>
+<figure class="figure"><p><a href="simple_code_files/figure-html/showcode_runcode_showoutput_15C-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="simple_code_files/figure-html/showcode_runcode_showoutput_15C-1.png" class="img-fluid figure-img" style="width:100.0%"></a></p>
 </figure>
 </div>
 </div>
@@ -1577,7 +1566,7 @@ Note
 <div class="callout-body-container callout-body">
 <ul>
 <li>Significance is indicated as follows. One star for p&lt;0.05; Two stars for p&lt;0.01; Three stars for p&lt;0.001.</li>
-<li>Note that in the heatmap from <code>checkTPbject4$med_coefficients</code>, only the selected exposures, mediators and outcomes that we use to do mediation on will show up. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure-outcome pair, 4 result are shown: <em>IE</em> (indirect effect), <em>TE</em> (total effect), <em>PM</em>(Proportion Mediated) and <em>APM</em>(Adjusted Proportion Mediated). Please see <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2" target="_blank">Details section</a> for more information. The “BK” before the names of exposures-outcome pairs means that this mediation is using the Coventional Baron-Kenny “product” method.</li>
+<li>Note that in the heatmap from <code>checkTPbject4$med_coefficients</code>, only the selected exposures, mediators and outcomes that we use to do mediation on will show up. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure-outcome pair, 4 result are shown: <em>IE</em> (indirect effect), <em>TE</em> (total effect), <em>PM</em>(Proportion Mediated) and <em>APM</em>(Adjusted Proportion Mediated). Please see <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2" target="_blank">Details section</a> for more information. The “BK” before the names of exposures-outcome pairs means that this mediation is using the Coventional Baron-Kenny “product” method. For this method, only the significant level of <em>IE</em> and <em>TE</em> is calculated and shown on the plot, but not <em>PM</em> and <em>APM</em>.</li>
 </ul>
 </div>
 </div>
@@ -1585,7 +1574,7 @@ Note
 <span class="header-section-number">4.6</span> Data Download</h2>
 <p>To save all your output, including data, results, and visualization output as an .rda file, you can use the <code><a href="https://rdrr.io/r/base/save.html">save()</a></code> function in R.</p>
 <div class="cell styled-output">
-<details open="" class="code-fold"><summary>Show the code</summary><div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">exposure1</span>,<span class="va">Omics1</span>,<span class="va">outcome1</span>,<span class="va">covariates1</span>,</span>
+<details open="" class="code-fold"><summary>Show the code</summary><div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/save.html">save</a></span><span class="op">(</span><span class="va">exposure1</span>,<span class="va">Omics1</span>,<span class="va">outcome1</span>,<span class="va">covariates1</span>,</span>
 <span>     <span class="va">reduced_Omics1</span>,<span class="va">Correlations_object</span>,<span class="va">Risks_object</span>,</span>
 <span>     <span class="va">mediation_object3</span>,<span class="va">mediation_plots3</span>,</span>
 <span>     <span class="va">TPObject1</span>,<span class="va">TPObject2</span>,<span class="va">TPObject3</span>,<span class="va">TPObject4</span>,</span>
@@ -1799,569 +1788,568 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb51" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Tutorial(simple) - Code"</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="an">filters:</span></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co">   - lightbox</span></span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="an">lightbox:</span><span class="co"> auto</span></span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Simple demo of using TriplotGUI's code"</span></span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="an">title-block-banner:</span><span class="co"> true</span></span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="an">title-block-banner-color:</span><span class="co"> white</span></span>
-<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="an">title-block-categories:</span><span class="co"> false</span></span>
-<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="an">page-layout:</span><span class="co"> full</span></span>
-<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a><span class="co">  html: </span></span>
-<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a><span class="co">    margin-top: 0em</span></span>
-<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a><span class="co">    margin-bottom: 0em</span></span>
-<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a><span class="co">    padding-top: 0em</span></span>
-<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a><span class="co">    padding-bottom: 0em</span></span>
-<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a><span class="co">    minimal: true</span></span>
-<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a><span class="co">    smooth-scroll: true</span></span>
-<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a><span class="co">    fig-responsive: true</span></span>
-<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
-<span id="cb51-22"><a href="#cb51-22" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 5</span></span>
-<span id="cb51-23"><a href="#cb51-23" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-title: Tutorial</span></span>
-<span id="cb51-24"><a href="#cb51-24" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true  ## add number in the session or not</span></span>
-<span id="cb51-25"><a href="#cb51-25" aria-hidden="true" tabindex="-1"></a><span class="co">    number-depth: 4</span></span>
-<span id="cb51-26"><a href="#cb51-26" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb51-27"><a href="#cb51-27" aria-hidden="true" tabindex="-1"></a><span class="co">    code-summary: "Show the code"</span></span>
-<span id="cb51-28"><a href="#cb51-28" aria-hidden="true" tabindex="-1"></a><span class="co">    code-overflow: wrap</span></span>
-<span id="cb51-29"><a href="#cb51-29" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb51-30"><a href="#cb51-30" aria-hidden="true" tabindex="-1"></a><span class="co">    code-copy: true</span></span>
-<span id="cb51-31"><a href="#cb51-31" aria-hidden="true" tabindex="-1"></a><span class="co">    highlight: tango</span></span>
-<span id="cb51-32"><a href="#cb51-32" aria-hidden="true" tabindex="-1"></a><span class="co">    df-print: paged  ## kable is another option How the dataframe looks like </span></span>
-<span id="cb51-33"><a href="#cb51-33" aria-hidden="true" tabindex="-1"></a><span class="co">    standalone: false  ### specifies if all assets and libraries must be integrated into the output html file as a standalone document.</span></span>
-<span id="cb51-34"><a href="#cb51-34" aria-hidden="true" tabindex="-1"></a><span class="co">    fig-align: right</span></span>
-<span id="cb51-35"><a href="#cb51-35" aria-hidden="true" tabindex="-1"></a><span class="co">    theme:  solar</span></span>
-<span id="cb51-36"><a href="#cb51-36" aria-hidden="true" tabindex="-1"></a><span class="an">geometry:</span><span class="co"> margin=lin  </span></span>
-<span id="cb51-37"><a href="#cb51-37" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb51-38"><a href="#cb51-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-39"><a href="#cb51-39" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
-<span id="cb51-40"><a href="#cb51-40" aria-hidden="true" tabindex="-1"></a><span class="in">##This is a function that combines html and rmarkdown. It aims to generate a button that could hide output or plot (fold.output=T or fold.plot=T).</span></span>
-<span id="cb51-41"><a href="#cb51-41" aria-hidden="true" tabindex="-1"></a><span class="in">hooks = knitr::knit_hooks$get()</span></span>
-<span id="cb51-42"><a href="#cb51-42" aria-hidden="true" tabindex="-1"></a><span class="in">hook_foldable = function(type) {</span></span>
-<span id="cb51-43"><a href="#cb51-43" aria-hidden="true" tabindex="-1"></a><span class="in">  force(type)</span></span>
-<span id="cb51-44"><a href="#cb51-44" aria-hidden="true" tabindex="-1"></a><span class="in">  function(x, options) {</span></span>
-<span id="cb51-45"><a href="#cb51-45" aria-hidden="true" tabindex="-1"></a><span class="in">    res = hooks[[type]](x, options)</span></span>
-<span id="cb51-46"><a href="#cb51-46" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb51-47"><a href="#cb51-47" aria-hidden="true" tabindex="-1"></a><span class="in">    if (!isTRUE(options[[paste0("fold.", type)]])) return(res)</span></span>
-<span id="cb51-48"><a href="#cb51-48" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb51-49"><a href="#cb51-49" aria-hidden="true" tabindex="-1"></a><span class="in">    paste0(</span></span>
-<span id="cb51-50"><a href="#cb51-50" aria-hidden="true" tabindex="-1"></a><span class="in">      "&lt;details&gt;&lt;summary&gt;", type, "&lt;/summary&gt;\n\n",</span></span>
-<span id="cb51-51"><a href="#cb51-51" aria-hidden="true" tabindex="-1"></a><span class="in">      res,</span></span>
-<span id="cb51-52"><a href="#cb51-52" aria-hidden="true" tabindex="-1"></a><span class="in">      "\n\n&lt;/details&gt;"</span></span>
-<span id="cb51-53"><a href="#cb51-53" aria-hidden="true" tabindex="-1"></a><span class="in">    )</span></span>
-<span id="cb51-54"><a href="#cb51-54" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
-<span id="cb51-55"><a href="#cb51-55" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb51-56"><a href="#cb51-56" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::knit_hooks$set(</span></span>
-<span id="cb51-57"><a href="#cb51-57" aria-hidden="true" tabindex="-1"></a><span class="in">  output = hook_foldable("output"),</span></span>
-<span id="cb51-58"><a href="#cb51-58" aria-hidden="true" tabindex="-1"></a><span class="in">  plot = hook_foldable("plot")</span></span>
-<span id="cb51-59"><a href="#cb51-59" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb51-60"><a href="#cb51-60" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-61"><a href="#cb51-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-62"><a href="#cb51-62" aria-hidden="true" tabindex="-1"></a>The code at this page can be downloaded <span class="co">[</span><span class="ot">here</span><span class="co">](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Tutorial_code/CAMP_2_applying_TriplotGUI_code.R)</span>{target="_blank"}</span>
-<span id="cb51-63"><a href="#cb51-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-64"><a href="#cb51-64" aria-hidden="true" tabindex="-1"></a>Before starting, please ensure you have installed the TriplotGUI package following the <span class="co">[</span><span class="ot">Setup</span><span class="co">](installation.qmd)</span>{target="_blank" style="color:blue"} instructions.</span>
-<span id="cb51-65"><a href="#cb51-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-66"><a href="#cb51-66" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data description</span></span>
-<span id="cb51-67"><a href="#cb51-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-68"><a href="#cb51-68" aria-hidden="true" tabindex="-1"></a>The data used in this tutorial can be downloaded <span class="co">[</span><span class="ot">here</span><span class="co">](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/data/CAMP_2.rda)</span>{target="_blank"} in rda format.</span>
-<span id="cb51-69"><a href="#cb51-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-70"><a href="#cb51-70" aria-hidden="true" tabindex="-1"></a>This example utilizes ***CAMP_2***, which is a modified version of the **CAMP** data provided by the [*Triplot*](https://gitlab.com/CarlBrunius/triplot/-/blob/master/vignettes/Triplot_Tutorial.md?ref_type=heads){target="_blank"} package (Schillemans et al. 2019). The **CAMP** dataset was simulated from authentic data collected in a cross-sectional study of carbohydrate alternatives and metabolic phenotypes among young adults in China (Liu et al. 2018). The simulated ***CAMP_2*** data consists of three data frames:</span>
-<span id="cb51-71"><a href="#cb51-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-72"><a href="#cb51-72" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Clinical measurements (ClinData): Contains 14 variables, including <span class="in">`"AGE"`</span>, <span class="in">`"SEX"`</span>, <span class="in">`"BMI"`</span>, <span class="in">`"triglycerides"`</span>, <span class="in">`"total_cholesterol"`</span> <span class="in">`"HDL"`</span>(high-density lipoprotein cholesterol), <span class="in">`"LDL"`</span>(low-density lipoprotein cholesterol),, <span class="in">`"GGT"`</span>(gamma-glutamyltransferase), <span class="in">`"ALT"`</span>(alanine aminotransferase), <span class="in">`"AST"`</span>(aspartate aminotransferase), <span class="in">`"creatinine"`</span>, <span class="in">`"Urea_nitrogen"`</span>, <span class="in">`"Uric_acid"`</span>, <span class="in">`"Fasting_glucose"`</span>.</span>
-<span id="cb51-73"><a href="#cb51-73" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Plasma metabolites predictive of BMI (MetaboliteData): Comprises 20 variables</span>
-<span id="cb51-74"><a href="#cb51-74" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Dietary intake as measured by food frequency questionnaires (FoodData): Includes 11 variables: <span class="in">`"Refined_grains"`</span>, <span class="in">`"Coarse_grains"`</span>, <span class="in">`"Red_meat"`</span>, <span class="in">`"Poutry"`</span>, <span class="in">`"Seafood"`</span>, <span class="in">`"Egg"`</span>, <span class="in">`"Animal_organs"`</span>, <span class="in">`"Vegetables"`</span>, <span class="in">`"Fruits"`</span>, <span class="in">`"Potatos"`</span>, <span class="in">`"Legumes"`</span>.</span>
-<span id="cb51-75"><a href="#cb51-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-76"><a href="#cb51-76" aria-hidden="true" tabindex="-1"></a>The data frames are row-wise matched by observations and consist of 300 synthetic observations.</span>
-<span id="cb51-77"><a href="#cb51-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-78"><a href="#cb51-78" aria-hidden="true" tabindex="-1"></a>**Reference**</span>
-<span id="cb51-79"><a href="#cb51-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-80"><a href="#cb51-80" aria-hidden="true" tabindex="-1"></a>Liu X, Liao X, Gan W, et al. Inverse Relationship between Coarse Food Grain Intake and Blood Pressure among Young Chinese Adults. *Am J Hypertens*. 2019;32(4):402–408. <span class="co">[</span><span class="ot">10.1093/ajh/hpy187</span><span class="co">](https://academic.oup.com/ajh/article/32/4/402/5236579?login=true)</span>{target="_blank"}</span>
-<span id="cb51-81"><a href="#cb51-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-82"><a href="#cb51-82" aria-hidden="true" tabindex="-1"></a>Schillemans T, Shi L, Liu X, Åkesson A, Landberg R, Brunius C. Visualization and Interpretation of Multivariate Associations with Disease Risk Markers and Disease Risk-The Triplot. *Metabolites*. 2019 Jul 6;9(7):133. <span class="co">[</span><span class="ot">doi: 10.3390/metabo9070133</span><span class="co">](https://www.mdpi.com/2218-1989/9/7/133)</span>{target="_blank"}</span>
-<span id="cb51-83"><a href="#cb51-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-84"><a href="#cb51-84" aria-hidden="true" tabindex="-1"></a><span class="fu"># Research question</span></span>
-<span id="cb51-85"><a href="#cb51-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-86"><a href="#cb51-86" aria-hidden="true" tabindex="-1"></a>We aim to assess the relationship between diet, metabolic profiles, and risk factors for metabolic diseases, including BMI, total cholesterol, triglycerides, HDL, and LDL. In this context, we assume that metabolites act as mediators, facilitating the effect of dietary exposures on these risk factors.</span>
-<span id="cb51-87"><a href="#cb51-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-88"><a href="#cb51-88" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data exploration</span></span>
-<span id="cb51-89"><a href="#cb51-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-90"><a href="#cb51-90" aria-hidden="true" tabindex="-1"></a>***CAMP_2*** is loaded in the R environment upon running <span class="in">`library(TriplotGUI)`</span>. Let's begin with some data exploration to understand the structure and contents of the dataset:</span>
-<span id="cb51-91"><a href="#cb51-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-92"><a href="#cb51-92" aria-hidden="true" tabindex="-1"></a><span class="in">```{r noshowcode_runcode_noshowoutput_1}</span></span>
-<span id="cb51-93"><a href="#cb51-93" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-94"><a href="#cb51-94" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
-<span id="cb51-95"><a href="#cb51-95" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
-<span id="cb51-96"><a href="#cb51-96" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-97"><a href="#cb51-97" aria-hidden="true" tabindex="-1"></a><span class="in">library(TriplotGUI)</span></span>
-<span id="cb51-98"><a href="#cb51-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-99"><a href="#cb51-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-100"><a href="#cb51-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-101"><a href="#cb51-101" aria-hidden="true" tabindex="-1"></a><span class="fu">## Check CAMP_2</span></span>
-<span id="cb51-102"><a href="#cb51-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-103"><a href="#cb51-103" aria-hidden="true" tabindex="-1"></a>Check the ***CAMP_2*** list:</span>
-<span id="cb51-104"><a href="#cb51-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-105"><a href="#cb51-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_1}</span></span>
-<span id="cb51-106"><a href="#cb51-106" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-107"><a href="#cb51-107" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-108"><a href="#cb51-108" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
-<span id="cb51-109"><a href="#cb51-109" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-110"><a href="#cb51-110" aria-hidden="true" tabindex="-1"></a><span class="in">class(CAMP_2)</span></span>
-<span id="cb51-111"><a href="#cb51-111" aria-hidden="true" tabindex="-1"></a><span class="in">names(CAMP_2)</span></span>
-<span id="cb51-112"><a href="#cb51-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-113"><a href="#cb51-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-114"><a href="#cb51-114" aria-hidden="true" tabindex="-1"></a><span class="fu">## Check datasets</span></span>
-<span id="cb51-115"><a href="#cb51-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-116"><a href="#cb51-116" aria-hidden="true" tabindex="-1"></a>Check the names of variables in each data:</span>
-<span id="cb51-117"><a href="#cb51-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-118"><a href="#cb51-118" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_2}</span></span>
-<span id="cb51-119"><a href="#cb51-119" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-120"><a href="#cb51-120" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-121"><a href="#cb51-121" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
-<span id="cb51-122"><a href="#cb51-122" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-123"><a href="#cb51-123" aria-hidden="true" tabindex="-1"></a><span class="in">colnames(CAMP_2$ClinData)</span></span>
-<span id="cb51-124"><a href="#cb51-124" aria-hidden="true" tabindex="-1"></a><span class="in">colnames(CAMP_2$MetaboliteData)</span></span>
-<span id="cb51-125"><a href="#cb51-125" aria-hidden="true" tabindex="-1"></a><span class="in">colnames(CAMP_2$FoodData)</span></span>
-<span id="cb51-126"><a href="#cb51-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-127"><a href="#cb51-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-128"><a href="#cb51-128" aria-hidden="true" tabindex="-1"></a><span class="fu">## Check variables' class</span></span>
-<span id="cb51-129"><a href="#cb51-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-130"><a href="#cb51-130" aria-hidden="true" tabindex="-1"></a>We then transform the data to dataframe format and use TriplotGUI's <span class="in">`checkdata()`</span> function to examine the classes of variables.</span>
-<span id="cb51-131"><a href="#cb51-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-132"><a href="#cb51-132" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_1}</span></span>
-<span id="cb51-133"><a href="#cb51-133" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-134"><a href="#cb51-134" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-135"><a href="#cb51-135" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
-<span id="cb51-136"><a href="#cb51-136" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-137"><a href="#cb51-137" aria-hidden="true" tabindex="-1"></a><span class="in">ClinData&lt;-as.data.frame(CAMP_2$ClinData)</span></span>
-<span id="cb51-138"><a href="#cb51-138" aria-hidden="true" tabindex="-1"></a><span class="in">MetaboliteData&lt;-as.data.frame(CAMP_2$MetaboliteData)</span></span>
-<span id="cb51-139"><a href="#cb51-139" aria-hidden="true" tabindex="-1"></a><span class="in">FoodData&lt;-as.data.frame(CAMP_2$FoodData)</span></span>
-<span id="cb51-140"><a href="#cb51-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-141"><a href="#cb51-141" aria-hidden="true" tabindex="-1"></a><span class="in">ClinData_check&lt;-checkdata(ClinData)</span></span>
-<span id="cb51-142"><a href="#cb51-142" aria-hidden="true" tabindex="-1"></a><span class="in">MetaboliteData_check&lt;-checkdata(MetaboliteData)</span></span>
-<span id="cb51-143"><a href="#cb51-143" aria-hidden="true" tabindex="-1"></a><span class="in">FoodData_check&lt;-checkdata(FoodData)</span></span>
-<span id="cb51-144"><a href="#cb51-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-145"><a href="#cb51-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-146"><a href="#cb51-146" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_3}</span></span>
-<span id="cb51-147"><a href="#cb51-147" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-148"><a href="#cb51-148" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-149"><a href="#cb51-149" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
-<span id="cb51-150"><a href="#cb51-150" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-151"><a href="#cb51-151" aria-hidden="true" tabindex="-1"></a><span class="in">ClinData_check$class_summary_statistics</span></span>
-<span id="cb51-152"><a href="#cb51-152" aria-hidden="true" tabindex="-1"></a><span class="in">MetaboliteData_check$class_summary_statistics</span></span>
-<span id="cb51-153"><a href="#cb51-153" aria-hidden="true" tabindex="-1"></a><span class="in">FoodData_check$class_summary_statistics</span></span>
-<span id="cb51-154"><a href="#cb51-154" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-155"><a href="#cb51-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-156"><a href="#cb51-156" aria-hidden="true" tabindex="-1"></a><span class="fu">## Check sanities for variables</span></span>
-<span id="cb51-157"><a href="#cb51-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-158"><a href="#cb51-158" aria-hidden="true" tabindex="-1"></a>To check for missing (NA) or abnormal values (e.g., NaN, negative values, infinite values, blank values) in each variable, you can use the <span class="in">`checkdata()`</span> function. This function generates a summary table for each data frame, showing the number of observations containing NA, NaN, zero, negative, infinite (Inf), and blank values, along with their percentages.</span>
-<span id="cb51-159"><a href="#cb51-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-160"><a href="#cb51-160" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_1_1}</span></span>
-<span id="cb51-161"><a href="#cb51-161" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-162"><a href="#cb51-162" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-163"><a href="#cb51-163" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
-<span id="cb51-164"><a href="#cb51-164" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-165"><a href="#cb51-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-166"><a href="#cb51-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-167"><a href="#cb51-167" aria-hidden="true" tabindex="-1"></a><span class="in">if (!require(kableExtra)) {</span></span>
-<span id="cb51-168"><a href="#cb51-168" aria-hidden="true" tabindex="-1"></a><span class="in">  install.packages("kableExtra")  # Install the package if it's not available.</span></span>
-<span id="cb51-169"><a href="#cb51-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-170"><a href="#cb51-170" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb51-171"><a href="#cb51-171" aria-hidden="true" tabindex="-1"></a><span class="in">library(kableExtra)             # Load it after installation.'</span></span>
-<span id="cb51-172"><a href="#cb51-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-173"><a href="#cb51-173" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-174"><a href="#cb51-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-175"><a href="#cb51-175" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_4}</span></span>
-<span id="cb51-176"><a href="#cb51-176" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-177"><a href="#cb51-177" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-178"><a href="#cb51-178" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
-<span id="cb51-179"><a href="#cb51-179" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-180"><a href="#cb51-180" aria-hidden="true" tabindex="-1"></a><span class="in">kable(ClinData_check$everycolumn)</span></span>
-<span id="cb51-181"><a href="#cb51-181" aria-hidden="true" tabindex="-1"></a><span class="in">kable(MetaboliteData_check$everycolumn)</span></span>
-<span id="cb51-182"><a href="#cb51-182" aria-hidden="true" tabindex="-1"></a><span class="in">kable(FoodData_check$everycolumn)</span></span>
-<span id="cb51-183"><a href="#cb51-183" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-184"><a href="#cb51-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-185"><a href="#cb51-185" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb51-186"><a href="#cb51-186" aria-hidden="true" tabindex="-1"></a>You shall only continue to use the data when the class of variables are correct and the missing or abnormal values in the variable are properly handled.</span>
-<span id="cb51-187"><a href="#cb51-187" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb51-188"><a href="#cb51-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-189"><a href="#cb51-189" aria-hidden="true" tabindex="-1"></a><span class="fu">## Build data for analysis</span></span>
-<span id="cb51-190"><a href="#cb51-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-191"><a href="#cb51-191" aria-hidden="true" tabindex="-1"></a>We treat food variables as our exposures and BMI, triglycerides, total_cholesterol, HDL and LDL as outcomes. We want to explore their relationships through the metabolomics data, using metabolites as assumed mediators. Sex and age are used as potential confounders for exposure-mediator and mediator-outcome association.</span>
-<span id="cb51-192"><a href="#cb51-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-193"><a href="#cb51-193" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_5}</span></span>
-<span id="cb51-194"><a href="#cb51-194" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-195"><a href="#cb51-195" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-196"><a href="#cb51-196" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
-<span id="cb51-197"><a href="#cb51-197" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-198"><a href="#cb51-198" aria-hidden="true" tabindex="-1"></a><span class="in">exposure1 &lt;- FoodData</span></span>
-<span id="cb51-199"><a href="#cb51-199" aria-hidden="true" tabindex="-1"></a><span class="in">Omics1 &lt;- MetaboliteData</span></span>
-<span id="cb51-200"><a href="#cb51-200" aria-hidden="true" tabindex="-1"></a><span class="in">outcome1 &lt;- ClinData[, c("BMI", "triglycerides", "total_cholesterol", "HDL", "LDL")]</span></span>
-<span id="cb51-201"><a href="#cb51-201" aria-hidden="true" tabindex="-1"></a><span class="in">covariates1 &lt;- ClinData[, c("SEX" , "AGE")]</span></span>
-<span id="cb51-202"><a href="#cb51-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-203"><a href="#cb51-203" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-204"><a href="#cb51-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-205"><a href="#cb51-205" aria-hidden="true" tabindex="-1"></a><span class="fu"># Code example of using TriplotGUI</span></span>
-<span id="cb51-206"><a href="#cb51-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-207"><a href="#cb51-207" aria-hidden="true" tabindex="-1"></a>We will use the most simple settings in this example. Please go to <span class="co">[</span><span class="ot">Tutorial(complex)</span><span class="co">](complex_code.qmd)</span>{target="_blank"}, if you want to try more advanced settings.</span>
-<span id="cb51-208"><a href="#cb51-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-209"><a href="#cb51-209" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 1: PCA/WGCNA plots {#simple_link}</span></span>
-<span id="cb51-210"><a href="#cb51-210" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-211"><a href="#cb51-211" aria-hidden="true" tabindex="-1"></a>Using <span class="in">`TriplotGUI`</span> package, first we perform dimension reduction, i.e. principal component analysis (PCA) on metabolomics variables.</span>
-<span id="cb51-212"><a href="#cb51-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-213"><a href="#cb51-213" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_2}</span></span>
-<span id="cb51-214"><a href="#cb51-214" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-215"><a href="#cb51-215" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-216"><a href="#cb51-216" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
-<span id="cb51-217"><a href="#cb51-217" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-218"><a href="#cb51-218" aria-hidden="true" tabindex="-1"></a><span class="in">reduced_Omics1 &lt;- OmicsReduction(dataframe = Omics1,</span></span>
-<span id="cb51-219"><a href="#cb51-219" aria-hidden="true" tabindex="-1"></a><span class="in">                                   pcNum = 5,</span></span>
-<span id="cb51-220"><a href="#cb51-220" aria-hidden="true" tabindex="-1"></a><span class="in">                                   option = "PCA",</span></span>
-<span id="cb51-221"><a href="#cb51-221" aria-hidden="true" tabindex="-1"></a><span class="in">                                   loadingsName = TRUE)</span></span>
-<span id="cb51-222"><a href="#cb51-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-223"><a href="#cb51-223" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-224"><a href="#cb51-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-225"><a href="#cb51-225" aria-hidden="true" tabindex="-1"></a>You can view scree plot, score plot, loading plot and biplot at this stage.</span>
-<span id="cb51-226"><a href="#cb51-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-227"><a href="#cb51-227" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_6}</span></span>
-<span id="cb51-228"><a href="#cb51-228" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-229"><a href="#cb51-229" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-230"><a href="#cb51-230" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
-<span id="cb51-231"><a href="#cb51-231" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-232"><a href="#cb51-232" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
-<span id="cb51-233"><a href="#cb51-233" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-width: "100%"</span></span>
-<span id="cb51-234"><a href="#cb51-234" aria-hidden="true" tabindex="-1"></a><span class="in">reduced_Omics1$scree_plot</span></span>
-<span id="cb51-235"><a href="#cb51-235" aria-hidden="true" tabindex="-1"></a><span class="in">reduced_Omics1$score_plot</span></span>
-<span id="cb51-236"><a href="#cb51-236" aria-hidden="true" tabindex="-1"></a><span class="in">reduced_Omics1$loading_plot</span></span>
-<span id="cb51-237"><a href="#cb51-237" aria-hidden="true" tabindex="-1"></a><span class="in">reduced_Omics1$scoreloading_plot</span></span>
-<span id="cb51-238"><a href="#cb51-238" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-239"><a href="#cb51-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-240"><a href="#cb51-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-241"><a href="#cb51-241" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb51-242"><a href="#cb51-242" aria-hidden="true" tabindex="-1"></a>Sometimes the following text will show up in your console and the figure cannot be directly run:</span>
-<span id="cb51-243"><a href="#cb51-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-244"><a href="#cb51-244" aria-hidden="true" tabindex="-1"></a><span class="in">`libpng warning: Image width is zero in IHDR`</span> </span>
-<span id="cb51-245"><a href="#cb51-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-246"><a href="#cb51-246" aria-hidden="true" tabindex="-1"></a><span class="in">`libpng error: Invalid IHDR data`</span> </span>
-<span id="cb51-247"><a href="#cb51-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-248"><a href="#cb51-248" aria-hidden="true" tabindex="-1"></a><span class="in">`Warning message:`</span></span>
-<span id="cb51-249"><a href="#cb51-249" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-250"><a href="#cb51-250" aria-hidden="true" tabindex="-1"></a><span class="in">`In dev.off(which) : agg could not write to the given file\`</span></span>
-<span id="cb51-251"><a href="#cb51-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-252"><a href="#cb51-252" aria-hidden="true" tabindex="-1"></a>Run <span class="in">`gc()`</span> in your console to clear the memory. Then rerun the code again to view the figure.</span>
-<span id="cb51-253"><a href="#cb51-253" aria-hidden="true" tabindex="-1"></a>::: </span>
-<span id="cb51-254"><a href="#cb51-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-255"><a href="#cb51-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-256"><a href="#cb51-256" aria-hidden="true" tabindex="-1"></a>We then build a TPObject based on the data reduction results. This object will be used to save information and facilitate the transfer of data through the various steps in TriplotGUI.</span>
-<span id="cb51-257"><a href="#cb51-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-258"><a href="#cb51-258" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_7}</span></span>
-<span id="cb51-259"><a href="#cb51-259" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-260"><a href="#cb51-260" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-261"><a href="#cb51-261" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
-<span id="cb51-262"><a href="#cb51-262" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-263"><a href="#cb51-263" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.output: false</span></span>
-<span id="cb51-264"><a href="#cb51-264" aria-hidden="true" tabindex="-1"></a><span class="in">scores &lt;- reduced_Omics1$object$scores</span></span>
-<span id="cb51-265"><a href="#cb51-265" aria-hidden="true" tabindex="-1"></a><span class="in">loadings &lt;- reduced_Omics1$object$loadings</span></span>
-<span id="cb51-266"><a href="#cb51-266" aria-hidden="true" tabindex="-1"></a><span class="in">variance &lt;- reduced_Omics1$object$variance</span></span>
-<span id="cb51-267"><a href="#cb51-267" aria-hidden="true" tabindex="-1"></a><span class="in">TPObject1 &lt;- makeTPO(scores = scores,</span></span>
-<span id="cb51-268"><a href="#cb51-268" aria-hidden="true" tabindex="-1"></a><span class="in">                     loadings = loadings,</span></span>
-<span id="cb51-269"><a href="#cb51-269" aria-hidden="true" tabindex="-1"></a><span class="in">                     variance = variance)</span></span>
-<span id="cb51-270"><a href="#cb51-270" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-271"><a href="#cb51-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-272"><a href="#cb51-272" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 2-3: Exposure correlations &amp; Outcome associations</span></span>
-<span id="cb51-273"><a href="#cb51-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-274"><a href="#cb51-274" aria-hidden="true" tabindex="-1"></a>The correlations between principal components (PCs) and food items are calculated using Pearson correlations, adjusting for confounders. We investigate associations between PC scores and risk markers adjusting for confounders using linear regression, as all food variables are numeric.</span>
-<span id="cb51-275"><a href="#cb51-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-276"><a href="#cb51-276" aria-hidden="true" tabindex="-1"></a>The PC scores are saved in the TPObject, which can be directly used in the <span class="in">`exposureAssociation()`</span> function to calculate correlation coefficients and p-values with exposures (food variables), while adjusting for confounders.</span>
-<span id="cb51-277"><a href="#cb51-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-278"><a href="#cb51-278" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_3}</span></span>
-<span id="cb51-279"><a href="#cb51-279" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-280"><a href="#cb51-280" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-281"><a href="#cb51-281" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
-<span id="cb51-282"><a href="#cb51-282" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-283"><a href="#cb51-283" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.output: false</span></span>
-<span id="cb51-284"><a href="#cb51-284" aria-hidden="true" tabindex="-1"></a><span class="in">Correlations_object &lt;- exposureAssociation(TPObject = TPObject1,</span></span>
-<span id="cb51-285"><a href="#cb51-285" aria-hidden="true" tabindex="-1"></a><span class="in">                                exposure = exposure1,</span></span>
-<span id="cb51-286"><a href="#cb51-286" aria-hidden="true" tabindex="-1"></a><span class="in">                                confounder = covariates1,</span></span>
-<span id="cb51-287"><a href="#cb51-287" aria-hidden="true" tabindex="-1"></a><span class="in">                                method = "pearson")</span></span>
-<span id="cb51-288"><a href="#cb51-288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-289"><a href="#cb51-289" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-290"><a href="#cb51-290" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-291"><a href="#cb51-291" aria-hidden="true" tabindex="-1"></a>The correlation results are then added to the TPObject.</span>
-<span id="cb51-292"><a href="#cb51-292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-293"><a href="#cb51-293" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_8}</span></span>
-<span id="cb51-294"><a href="#cb51-294" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-295"><a href="#cb51-295" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-296"><a href="#cb51-296" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
-<span id="cb51-297"><a href="#cb51-297" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-298"><a href="#cb51-298" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.output: false</span></span>
-<span id="cb51-299"><a href="#cb51-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-300"><a href="#cb51-300" aria-hidden="true" tabindex="-1"></a><span class="in">TPObject2 &lt;- addExposure(TPObject = TPObject1,</span></span>
-<span id="cb51-301"><a href="#cb51-301" aria-hidden="true" tabindex="-1"></a><span class="in">                     corrEstimate = Correlations_object$cor_estimate,</span></span>
-<span id="cb51-302"><a href="#cb51-302" aria-hidden="true" tabindex="-1"></a><span class="in">                     corrPvalue = Correlations_object$cor_pvalue)</span></span>
-<span id="cb51-303"><a href="#cb51-303" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-304"><a href="#cb51-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-305"><a href="#cb51-305" aria-hidden="true" tabindex="-1"></a>Similarly, we calculate risk estimates (beta coefficients from linear regression) and p-values using the PC scores saved in the TPObject and the outcome variables. This is done using the <span class="in">`outcomeAssociation()`</span> function, which also adjusts for confounders.</span>
-<span id="cb51-306"><a href="#cb51-306" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-307"><a href="#cb51-307" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_4}</span></span>
-<span id="cb51-308"><a href="#cb51-308" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-309"><a href="#cb51-309" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-310"><a href="#cb51-310" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
-<span id="cb51-311"><a href="#cb51-311" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-312"><a href="#cb51-312" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.output: false</span></span>
-<span id="cb51-313"><a href="#cb51-313" aria-hidden="true" tabindex="-1"></a><span class="in">Risks_object &lt;- outcomeAssociation(TPObject = TPObject2,</span></span>
-<span id="cb51-314"><a href="#cb51-314" aria-hidden="true" tabindex="-1"></a><span class="in">                               outcome = outcome1,</span></span>
-<span id="cb51-315"><a href="#cb51-315" aria-hidden="true" tabindex="-1"></a><span class="in">                               confounder = covariates1)</span></span>
-<span id="cb51-316"><a href="#cb51-316" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-317"><a href="#cb51-317" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-318"><a href="#cb51-318" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-319"><a href="#cb51-319" aria-hidden="true" tabindex="-1"></a>The risk estimate results are then added to the TPObject.</span>
-<span id="cb51-320"><a href="#cb51-320" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-321"><a href="#cb51-321" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_9}</span></span>
-<span id="cb51-322"><a href="#cb51-322" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-323"><a href="#cb51-323" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-324"><a href="#cb51-324" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
-<span id="cb51-325"><a href="#cb51-325" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-326"><a href="#cb51-326" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.output: false</span></span>
-<span id="cb51-327"><a href="#cb51-327" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-328"><a href="#cb51-328" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-329"><a href="#cb51-329" aria-hidden="true" tabindex="-1"></a><span class="in">TPObject3 &lt;- addOutcome(TPObject = TPObject2, </span></span>
-<span id="cb51-330"><a href="#cb51-330" aria-hidden="true" tabindex="-1"></a><span class="in">                     Risk = Risks_object)</span></span>
-<span id="cb51-331"><a href="#cb51-331" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-332"><a href="#cb51-332" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-333"><a href="#cb51-333" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-334"><a href="#cb51-334" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 4: Visualization of Triplot</span></span>
-<span id="cb51-335"><a href="#cb51-335" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-336"><a href="#cb51-336" aria-hidden="true" tabindex="-1"></a>Then we generate the Triplot. It's important to note that a Triplot can be generated from any TPObject.</span>
-<span id="cb51-337"><a href="#cb51-337" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-338"><a href="#cb51-338" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_5}</span></span>
-<span id="cb51-339"><a href="#cb51-339" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-340"><a href="#cb51-340" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-341"><a href="#cb51-341" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
-<span id="cb51-342"><a href="#cb51-342" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-343"><a href="#cb51-343" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.output: false</span></span>
-<span id="cb51-344"><a href="#cb51-344" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-345"><a href="#cb51-345" aria-hidden="true" tabindex="-1"></a><span class="in">TPO_plots3 &lt;- TriplotGUI(TPObject3, </span></span>
-<span id="cb51-346"><a href="#cb51-346" aria-hidden="true" tabindex="-1"></a><span class="in">                              riskOR = FALSE) #risks is shown as coeffcients, not odds ratio</span></span>
-<span id="cb51-347"><a href="#cb51-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-348"><a href="#cb51-348" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-349"><a href="#cb51-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-350"><a href="#cb51-350" aria-hidden="true" tabindex="-1"></a>Plot the triplot</span>
-<span id="cb51-351"><a href="#cb51-351" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-352"><a href="#cb51-352" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_10}</span></span>
-<span id="cb51-353"><a href="#cb51-353" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-354"><a href="#cb51-354" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-355"><a href="#cb51-355" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
-<span id="cb51-356"><a href="#cb51-356" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-357"><a href="#cb51-357" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
-<span id="cb51-358"><a href="#cb51-358" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-width: "100%"</span></span>
-<span id="cb51-359"><a href="#cb51-359" aria-hidden="true" tabindex="-1"></a><span class="in">TPO_plots3$triplot</span></span>
-<span id="cb51-360"><a href="#cb51-360" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-361"><a href="#cb51-361" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-362"><a href="#cb51-362" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-363"><a href="#cb51-363" aria-hidden="true" tabindex="-1"></a>In the triplot, black arrows represent loadings of Omics variables, forming patterns in different components (axes). Blue circle points show exposure correlations with the components, while red square points indicate outcome associations with the components.</span>
-<span id="cb51-364"><a href="#cb51-364" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-365"><a href="#cb51-365" aria-hidden="true" tabindex="-1"></a>For interpretation, let’s focus on Principal Component 1 (PC1) and Principal Component 2 (PC2), using the exposures <span class="in">`"Refined grains"`</span>, <span class="in">`"Red meat"`</span>, and the outcome <span class="in">`"BMI"`</span> as examples:</span>
-<span id="cb51-366"><a href="#cb51-366" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-367"><a href="#cb51-367" aria-hidden="true" tabindex="-1"></a>PC1: This component shows a positive association with BMI and is correlated with high intakes of red meat and refined grains, even after adjusting for age and sex. This suggests that the metabolite features dominating PC1 may provide valuable insights into how the intake of red meat and refined grains could influence BMI.</span>
-<span id="cb51-368"><a href="#cb51-368" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-369"><a href="#cb51-369" aria-hidden="true" tabindex="-1"></a>PC2: In contrast, PC2 exhibits a smaller association with BMI and a weak inverse correlation with red meat and refined grains. The metabolite features contributing significantly to PC2 may indicate a marginal beneficial effect of these dietary components, although this effect appears to be limited. This may also suggest that the features dominating PC2 may reflect metabolite patterns influenced by food, but not to a large degree associations with metabolic regulation in relation to health.</span>
-<span id="cb51-370"><a href="#cb51-370" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-371"><a href="#cb51-371" aria-hidden="true" tabindex="-1"></a>This interpretation highlights how different dietary exposures relate to metabolic outcomes, offering insights into potential mechanisms at play.</span>
-<span id="cb51-372"><a href="#cb51-372" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-373"><a href="#cb51-373" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 5: Triplot with mediation</span></span>
-<span id="cb51-374"><a href="#cb51-374" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-375"><a href="#cb51-375" aria-hidden="true" tabindex="-1"></a>Mediation analysis will be performed using the conventional “product” method on our selected exposures (<span class="in">`"Refined grains"`</span>, <span class="in">`"Red meat"`</span>), mediators (PC1 and PC2), and the outcome of interest (<span class="in">`"BMI"`</span>), adjusting for age and sex in both the exposure-mediator and mediator-outcome relationships.</span>
-<span id="cb51-376"><a href="#cb51-376" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-377"><a href="#cb51-377" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_6}</span></span>
-<span id="cb51-378"><a href="#cb51-378" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-379"><a href="#cb51-379" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-380"><a href="#cb51-380" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
-<span id="cb51-381"><a href="#cb51-381" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-382"><a href="#cb51-382" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.output: false</span></span>
-<span id="cb51-383"><a href="#cb51-383" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-384"><a href="#cb51-384" aria-hidden="true" tabindex="-1"></a><span class="in">mediation_object3 &lt;- </span></span>
-<span id="cb51-385"><a href="#cb51-385" aria-hidden="true" tabindex="-1"></a><span class="in">  getMediationConventional (mediator = TPObject3$scores[,c(1:2),drop = FALSE], </span></span>
-<span id="cb51-386"><a href="#cb51-386" aria-hidden="true" tabindex="-1"></a><span class="in">                             # Specfiying at least 2 components so that there can be a 2-dimensional plot</span></span>
-<span id="cb51-387"><a href="#cb51-387" aria-hidden="true" tabindex="-1"></a><span class="in">                             exposure = exposure1[,c("Refined_grains","Red_meat"),drop = FALSE],</span></span>
-<span id="cb51-388"><a href="#cb51-388" aria-hidden="true" tabindex="-1"></a><span class="in">                             outcome = outcome1[,"BMI",drop = FALSE],</span></span>
-<span id="cb51-389"><a href="#cb51-389" aria-hidden="true" tabindex="-1"></a><span class="in">                             confounderME = covariates1,</span></span>
-<span id="cb51-390"><a href="#cb51-390" aria-hidden="true" tabindex="-1"></a><span class="in">                             confounderOE = covariates1)</span></span>
-<span id="cb51-391"><a href="#cb51-391" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-392"><a href="#cb51-392" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-393"><a href="#cb51-393" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-394"><a href="#cb51-394" aria-hidden="true" tabindex="-1"></a>Examine the barplot for a clearer view of the direct, indirect, and total effects for each combination of PC, exposure, and outcome.</span>
-<span id="cb51-395"><a href="#cb51-395" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-396"><a href="#cb51-396" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_7}</span></span>
-<span id="cb51-397"><a href="#cb51-397" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-398"><a href="#cb51-398" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-399"><a href="#cb51-399" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
-<span id="cb51-400"><a href="#cb51-400" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-401"><a href="#cb51-401" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
-<span id="cb51-402"><a href="#cb51-402" aria-hidden="true" tabindex="-1"></a><span class="in">mediation_plots3 &lt;- mediationBarplot(mediationObject = mediation_object3,</span></span>
-<span id="cb51-403"><a href="#cb51-403" aria-hidden="true" tabindex="-1"></a><span class="in">                                         cex = 2,</span></span>
-<span id="cb51-404"><a href="#cb51-404" aria-hidden="true" tabindex="-1"></a><span class="in">                                         # size of the text</span></span>
-<span id="cb51-405"><a href="#cb51-405" aria-hidden="true" tabindex="-1"></a><span class="in">                                         by_row = "one_column")</span></span>
-<span id="cb51-406"><a href="#cb51-406" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-407"><a href="#cb51-407" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-408"><a href="#cb51-408" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-409"><a href="#cb51-409" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_11}</span></span>
-<span id="cb51-410"><a href="#cb51-410" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-411"><a href="#cb51-411" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-412"><a href="#cb51-412" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
-<span id="cb51-413"><a href="#cb51-413" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-414"><a href="#cb51-414" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
-<span id="cb51-415"><a href="#cb51-415" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-width: "100%"</span></span>
-<span id="cb51-416"><a href="#cb51-416" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-height: "200%"</span></span>
-<span id="cb51-417"><a href="#cb51-417" aria-hidden="true" tabindex="-1"></a><span class="in">mediation_plots3</span></span>
-<span id="cb51-418"><a href="#cb51-418" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-419"><a href="#cb51-419" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-420"><a href="#cb51-420" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb51-421"><a href="#cb51-421" aria-hidden="true" tabindex="-1"></a>The barplot displays direct, indirect, and total effects for each exposure-mediator-outcome combination, providing a convenient tool to assess the direction and magnitude of mediation estimates.</span>
-<span id="cb51-422"><a href="#cb51-422" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-423"><a href="#cb51-423" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Color coding indicates significance and direction: red represents significant positive effects (p<span class="sc">\&lt;</span>0.05), blue represents significant negative effects (p<span class="sc">\&lt;</span>0.05), and grey represents insignificant effects.</span>
-<span id="cb51-424"><a href="#cb51-424" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Significance levels are denoted by stars: one star for p<span class="sc">\&lt;</span>0.05, two stars for p<span class="sc">\&lt;</span>0.01, and three stars for p<span class="sc">\&lt;</span>0.001.</span>
-<span id="cb51-425"><a href="#cb51-425" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb51-426"><a href="#cb51-426" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-427"><a href="#cb51-427" aria-hidden="true" tabindex="-1"></a>The mediation results are then added to the TPObject.</span>
-<span id="cb51-428"><a href="#cb51-428" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-429"><a href="#cb51-429" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_12}</span></span>
-<span id="cb51-430"><a href="#cb51-430" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-431"><a href="#cb51-431" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-432"><a href="#cb51-432" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
-<span id="cb51-433"><a href="#cb51-433" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-434"><a href="#cb51-434" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
-<span id="cb51-435"><a href="#cb51-435" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-436"><a href="#cb51-436" aria-hidden="true" tabindex="-1"></a><span class="in">TPObject4 &lt;- addMediation(TPObject = TPObject3, </span></span>
-<span id="cb51-437"><a href="#cb51-437" aria-hidden="true" tabindex="-1"></a><span class="in">                           mediationObject = mediation_object3)</span></span>
-<span id="cb51-438"><a href="#cb51-438" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-439"><a href="#cb51-439" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-440"><a href="#cb51-440" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-441"><a href="#cb51-441" aria-hidden="true" tabindex="-1"></a>Make the triplot with mediation.</span>
-<span id="cb51-442"><a href="#cb51-442" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-443"><a href="#cb51-443" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_8}</span></span>
-<span id="cb51-444"><a href="#cb51-444" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-445"><a href="#cb51-445" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-446"><a href="#cb51-446" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
-<span id="cb51-447"><a href="#cb51-447" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-448"><a href="#cb51-448" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
-<span id="cb51-449"><a href="#cb51-449" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-450"><a href="#cb51-450" aria-hidden="true" tabindex="-1"></a><span class="in">TPO_plots4 &lt;- mediationTriplot(TPObject4,</span></span>
-<span id="cb51-451"><a href="#cb51-451" aria-hidden="true" tabindex="-1"></a><span class="in">                                     show = c("IE","TE")</span></span>
-<span id="cb51-452"><a href="#cb51-452" aria-hidden="true" tabindex="-1"></a><span class="in">                                     )</span></span>
-<span id="cb51-453"><a href="#cb51-453" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-454"><a href="#cb51-454" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-455"><a href="#cb51-455" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-456"><a href="#cb51-456" aria-hidden="true" tabindex="-1"></a>Show the mediation estimates only (indirect and total effect).</span>
-<span id="cb51-457"><a href="#cb51-457" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-458"><a href="#cb51-458" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_13}</span></span>
-<span id="cb51-459"><a href="#cb51-459" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-460"><a href="#cb51-460" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-461"><a href="#cb51-461" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
-<span id="cb51-462"><a href="#cb51-462" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-463"><a href="#cb51-463" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
-<span id="cb51-464"><a href="#cb51-464" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-width: "100%"</span></span>
-<span id="cb51-465"><a href="#cb51-465" aria-hidden="true" tabindex="-1"></a><span class="in">TPO_plots4$mediations_plot</span></span>
-<span id="cb51-466"><a href="#cb51-466" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-467"><a href="#cb51-467" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-468"><a href="#cb51-468" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-469"><a href="#cb51-469" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb51-470"><a href="#cb51-470" aria-hidden="true" tabindex="-1"></a>In the triplot, indirect effects, which are specific to each mediator (such as PC1 or PC2), are depicted as dark green triangle points. Total effects, on the other hand, are shown as circles. It's important to note that while indirect effects are tied to particular mediators, total effects remain constant for specific exposure-outcome pairs.</span>
-<span id="cb51-471"><a href="#cb51-471" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb51-472"><a href="#cb51-472" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-473"><a href="#cb51-473" aria-hidden="true" tabindex="-1"></a>Plot the triplot with mediation.</span>
-<span id="cb51-474"><a href="#cb51-474" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-475"><a href="#cb51-475" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_14}</span></span>
-<span id="cb51-476"><a href="#cb51-476" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-477"><a href="#cb51-477" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-478"><a href="#cb51-478" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
-<span id="cb51-479"><a href="#cb51-479" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-480"><a href="#cb51-480" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
-<span id="cb51-481"><a href="#cb51-481" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-width: "100%"</span></span>
-<span id="cb51-482"><a href="#cb51-482" aria-hidden="true" tabindex="-1"></a><span class="in">TPO_plots4$mediations_triplot</span></span>
-<span id="cb51-483"><a href="#cb51-483" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-484"><a href="#cb51-484" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-485"><a href="#cb51-485" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-486"><a href="#cb51-486" aria-hidden="true" tabindex="-1"></a>Based on the barplot and the triplot with mediation, we observed significant mediation effects through PC1 for the red_meat-BMI and refined_grain-BMI associations. This finding suggests that the metabolite features contributing to PC1 are likely mediating the pathway from red meat and refined grain intake to BMI changes. These results provide insight into potential metabolic mechanisms linking dietary patterns to body mass index.</span>
-<span id="cb51-487"><a href="#cb51-487" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-488"><a href="#cb51-488" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comparative Visualization</span></span>
-<span id="cb51-489"><a href="#cb51-489" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-490"><a href="#cb51-490" aria-hidden="true" tabindex="-1"></a>Users can easily visualize the correlations, risk estimations, and mediation results stored in the TPObject using the <span class="in">`checkTPO()`</span> function provided by TriplotGUI. This function generates heatmaps for each type of analysis, offering a comprehensive and intuitive way to examine the relationships between variables. Note that you could put any TPObjects generate along the steps for heatmap visualizations.</span>
-<span id="cb51-491"><a href="#cb51-491" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-492"><a href="#cb51-492" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_9}</span></span>
-<span id="cb51-493"><a href="#cb51-493" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-494"><a href="#cb51-494" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-495"><a href="#cb51-495" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
-<span id="cb51-496"><a href="#cb51-496" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-497"><a href="#cb51-497" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
-<span id="cb51-498"><a href="#cb51-498" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-499"><a href="#cb51-499" aria-hidden="true" tabindex="-1"></a><span class="in">checkTPObject4 &lt;- checkTPO(TPObject4,</span></span>
-<span id="cb51-500"><a href="#cb51-500" aria-hidden="true" tabindex="-1"></a><span class="in">                                  size=7    ## customize the size of stars</span></span>
-<span id="cb51-501"><a href="#cb51-501" aria-hidden="true" tabindex="-1"></a><span class="in">                                  )</span></span>
-<span id="cb51-502"><a href="#cb51-502" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-503"><a href="#cb51-503" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-504"><a href="#cb51-504" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-505"><a href="#cb51-505" aria-hidden="true" tabindex="-1"></a>Show heatmap for correlation coefficients and p values between PCs and exposures:</span>
-<span id="cb51-506"><a href="#cb51-506" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-507"><a href="#cb51-507" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_15A}</span></span>
-<span id="cb51-508"><a href="#cb51-508" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-509"><a href="#cb51-509" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-510"><a href="#cb51-510" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
-<span id="cb51-511"><a href="#cb51-511" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-512"><a href="#cb51-512" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
-<span id="cb51-513"><a href="#cb51-513" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-width: "100%"</span></span>
-<span id="cb51-514"><a href="#cb51-514" aria-hidden="true" tabindex="-1"></a><span class="in">checkTPObject4$corr_coefficients</span></span>
-<span id="cb51-515"><a href="#cb51-515" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-516"><a href="#cb51-516" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-517"><a href="#cb51-517" aria-hidden="true" tabindex="-1"></a>Show heatmap for risk estimates (beta coefficients) and p values between PCs and outcomes:</span>
-<span id="cb51-518"><a href="#cb51-518" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-519"><a href="#cb51-519" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_15B}</span></span>
-<span id="cb51-520"><a href="#cb51-520" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-521"><a href="#cb51-521" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-522"><a href="#cb51-522" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
-<span id="cb51-523"><a href="#cb51-523" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-524"><a href="#cb51-524" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
-<span id="cb51-525"><a href="#cb51-525" aria-hidden="true" tabindex="-1"></a><span class="in">checkTPObject4$risk_coefficients</span></span>
-<span id="cb51-526"><a href="#cb51-526" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-527"><a href="#cb51-527" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-528"><a href="#cb51-528" aria-hidden="true" tabindex="-1"></a>Show heatmap for mediation estimates and p values for indirect effect(IE), and total effect(TE), proportion mediated (PM) and adjusted proportion mediated (APM): See <span class="co">[</span><span class="ot">Manual</span><span class="co">](workflow.qmd)</span>{target="_blank"} section for more details:</span>
-<span id="cb51-529"><a href="#cb51-529" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-530"><a href="#cb51-530" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_15C}</span></span>
-<span id="cb51-531"><a href="#cb51-531" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb51-532"><a href="#cb51-532" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-533"><a href="#cb51-533" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
-<span id="cb51-534"><a href="#cb51-534" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-535"><a href="#cb51-535" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
-<span id="cb51-536"><a href="#cb51-536" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-width: "100%"</span></span>
-<span id="cb51-537"><a href="#cb51-537" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-538"><a href="#cb51-538" aria-hidden="true" tabindex="-1"></a><span class="in">checkTPObject4$med_coefficients</span></span>
-<span id="cb51-539"><a href="#cb51-539" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-540"><a href="#cb51-540" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-541"><a href="#cb51-541" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb51-542"><a href="#cb51-542" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Significance is indicated as follows. One star for p<span class="sc">\&lt;</span>0.05; Two stars for p<span class="sc">\&lt;</span>0.01; Three stars for p<span class="sc">\&lt;</span>0.001.</span>
-<span id="cb51-543"><a href="#cb51-543" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Note that in the heatmap from <span class="in">`checkTPbject4$med_coefficients`</span>, only the selected exposures, mediators and outcomes that we use to do mediation on will show up. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure-outcome pair, 4 result are shown: *IE* (indirect effect), *TE* (total effect), *PM*(Proportion Mediated) and *APM*(Adjusted Proportion Mediated). Please see <span class="co">[</span><span class="ot">Details section</span><span class="co">](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2)</span>{target="_blank"} for more information. The "BK" before the names of exposures-outcome pairs means that this mediation is using the Coventional Baron-Kenny "product" method.</span>
-<span id="cb51-544"><a href="#cb51-544" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb51-545"><a href="#cb51-545" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-546"><a href="#cb51-546" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Download</span></span>
-<span id="cb51-547"><a href="#cb51-547" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-548"><a href="#cb51-548" aria-hidden="true" tabindex="-1"></a>To save all your output, including data, results, and visualization output as an .rda file, you can use the <span class="in">`save()`</span> function in R.</span>
-<span id="cb51-549"><a href="#cb51-549" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-550"><a href="#cb51-550" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_noruncode_noshowoutput_1}</span></span>
-<span id="cb51-551"><a href="#cb51-551" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
-<span id="cb51-552"><a href="#cb51-552" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb51-553"><a href="#cb51-553" aria-hidden="true" tabindex="-1"></a><span class="in">#| warning: false</span></span>
-<span id="cb51-554"><a href="#cb51-554" aria-hidden="true" tabindex="-1"></a><span class="in">#| error: true</span></span>
-<span id="cb51-555"><a href="#cb51-555" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb51-556"><a href="#cb51-556" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-557"><a href="#cb51-557" aria-hidden="true" tabindex="-1"></a><span class="in">save(exposure1,Omics1,outcome1,covariates1,</span></span>
-<span id="cb51-558"><a href="#cb51-558" aria-hidden="true" tabindex="-1"></a><span class="in">     reduced_Omics1,Correlations_object,Risks_object,</span></span>
-<span id="cb51-559"><a href="#cb51-559" aria-hidden="true" tabindex="-1"></a><span class="in">     mediation_object3,mediation_plots3,</span></span>
-<span id="cb51-560"><a href="#cb51-560" aria-hidden="true" tabindex="-1"></a><span class="in">     TPObject1,TPObject2,TPObject3,TPObject4,</span></span>
-<span id="cb51-561"><a href="#cb51-561" aria-hidden="true" tabindex="-1"></a><span class="in">     checkTPObject4,</span></span>
-<span id="cb51-562"><a href="#cb51-562" aria-hidden="true" tabindex="-1"></a><span class="in">     "Tutorial_simple_output.rda")</span></span>
-<span id="cb51-563"><a href="#cb51-563" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb48" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Tutorial(simple) - Code"</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="an">filters:</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co">   - lightbox</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="an">lightbox:</span><span class="co"> auto</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Simple demo of using TriplotGUI's code"</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="an">title-block-banner:</span><span class="co"> true</span></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="an">title-block-banner-color:</span><span class="co"> white</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="an">title-block-categories:</span><span class="co"> false</span></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a><span class="an">page-layout:</span><span class="co"> full</span></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a><span class="co">  html: </span></span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a><span class="co">    margin-top: 0em</span></span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a><span class="co">    margin-bottom: 0em</span></span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a><span class="co">    padding-top: 0em</span></span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a><span class="co">    padding-bottom: 0em</span></span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a><span class="co">    minimal: true</span></span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a><span class="co">    smooth-scroll: true</span></span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a><span class="co">    fig-responsive: true</span></span>
+<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
+<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 5</span></span>
+<span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-title: Tutorial</span></span>
+<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true  ## add number in the session or not</span></span>
+<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a><span class="co">    number-depth: 4</span></span>
+<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb48-27"><a href="#cb48-27" aria-hidden="true" tabindex="-1"></a><span class="co">    code-summary: "Show the code"</span></span>
+<span id="cb48-28"><a href="#cb48-28" aria-hidden="true" tabindex="-1"></a><span class="co">    code-overflow: wrap</span></span>
+<span id="cb48-29"><a href="#cb48-29" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb48-30"><a href="#cb48-30" aria-hidden="true" tabindex="-1"></a><span class="co">    code-copy: true</span></span>
+<span id="cb48-31"><a href="#cb48-31" aria-hidden="true" tabindex="-1"></a><span class="co">    highlight: tango</span></span>
+<span id="cb48-32"><a href="#cb48-32" aria-hidden="true" tabindex="-1"></a><span class="co">    df-print: paged  ## kable is another option How the dataframe looks like </span></span>
+<span id="cb48-33"><a href="#cb48-33" aria-hidden="true" tabindex="-1"></a><span class="co">    standalone: false  ### specifies if all assets and libraries must be integrated into the output html file as a standalone document.</span></span>
+<span id="cb48-34"><a href="#cb48-34" aria-hidden="true" tabindex="-1"></a><span class="co">    fig-align: right</span></span>
+<span id="cb48-35"><a href="#cb48-35" aria-hidden="true" tabindex="-1"></a><span class="co">    theme:  solar</span></span>
+<span id="cb48-36"><a href="#cb48-36" aria-hidden="true" tabindex="-1"></a><span class="an">geometry:</span><span class="co"> margin=lin  </span></span>
+<span id="cb48-37"><a href="#cb48-37" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb48-38"><a href="#cb48-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-39"><a href="#cb48-39" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb48-40"><a href="#cb48-40" aria-hidden="true" tabindex="-1"></a><span class="in">##This is a function that combines html and rmarkdown. It aims to generate a button that could hide output or plot (fold.output=T or fold.plot=T).</span></span>
+<span id="cb48-41"><a href="#cb48-41" aria-hidden="true" tabindex="-1"></a><span class="in">hooks = knitr::knit_hooks$get()</span></span>
+<span id="cb48-42"><a href="#cb48-42" aria-hidden="true" tabindex="-1"></a><span class="in">hook_foldable = function(type) {</span></span>
+<span id="cb48-43"><a href="#cb48-43" aria-hidden="true" tabindex="-1"></a><span class="in">  force(type)</span></span>
+<span id="cb48-44"><a href="#cb48-44" aria-hidden="true" tabindex="-1"></a><span class="in">  function(x, options) {</span></span>
+<span id="cb48-45"><a href="#cb48-45" aria-hidden="true" tabindex="-1"></a><span class="in">    res = hooks[[type]](x, options)</span></span>
+<span id="cb48-46"><a href="#cb48-46" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb48-47"><a href="#cb48-47" aria-hidden="true" tabindex="-1"></a><span class="in">    if (!isTRUE(options[[paste0("fold.", type)]])) return(res)</span></span>
+<span id="cb48-48"><a href="#cb48-48" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb48-49"><a href="#cb48-49" aria-hidden="true" tabindex="-1"></a><span class="in">    paste0(</span></span>
+<span id="cb48-50"><a href="#cb48-50" aria-hidden="true" tabindex="-1"></a><span class="in">      "&lt;details&gt;&lt;summary&gt;", type, "&lt;/summary&gt;\n\n",</span></span>
+<span id="cb48-51"><a href="#cb48-51" aria-hidden="true" tabindex="-1"></a><span class="in">      res,</span></span>
+<span id="cb48-52"><a href="#cb48-52" aria-hidden="true" tabindex="-1"></a><span class="in">      "\n\n&lt;/details&gt;"</span></span>
+<span id="cb48-53"><a href="#cb48-53" aria-hidden="true" tabindex="-1"></a><span class="in">    )</span></span>
+<span id="cb48-54"><a href="#cb48-54" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb48-55"><a href="#cb48-55" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb48-56"><a href="#cb48-56" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::knit_hooks$set(</span></span>
+<span id="cb48-57"><a href="#cb48-57" aria-hidden="true" tabindex="-1"></a><span class="in">  output = hook_foldable("output"),</span></span>
+<span id="cb48-58"><a href="#cb48-58" aria-hidden="true" tabindex="-1"></a><span class="in">  plot = hook_foldable("plot")</span></span>
+<span id="cb48-59"><a href="#cb48-59" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb48-60"><a href="#cb48-60" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-61"><a href="#cb48-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-62"><a href="#cb48-62" aria-hidden="true" tabindex="-1"></a>The code at this page can be downloaded <span class="co">[</span><span class="ot">here</span><span class="co">](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Tutorial_code/CAMP_2_applying_TriplotGUI_code.R)</span>{target="_blank"}</span>
+<span id="cb48-63"><a href="#cb48-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-64"><a href="#cb48-64" aria-hidden="true" tabindex="-1"></a>Before starting, please ensure you have installed the TriplotGUI package following the <span class="co">[</span><span class="ot">Setup</span><span class="co">](installation.qmd)</span>{target="_blank" style="color:blue"} instructions.</span>
+<span id="cb48-65"><a href="#cb48-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-66"><a href="#cb48-66" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data description</span></span>
+<span id="cb48-67"><a href="#cb48-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-68"><a href="#cb48-68" aria-hidden="true" tabindex="-1"></a>The data used in this tutorial can be downloaded <span class="co">[</span><span class="ot">here</span><span class="co">](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/data/CAMP_2.rda)</span>{target="_blank"} in rda format.</span>
+<span id="cb48-69"><a href="#cb48-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-70"><a href="#cb48-70" aria-hidden="true" tabindex="-1"></a>This example utilizes ***CAMP_2***, which is a modified version of the **CAMP** data provided by the [*Triplot*](https://gitlab.com/CarlBrunius/triplot/-/blob/master/vignettes/Triplot_Tutorial.md?ref_type=heads){target="_blank"} package (Schillemans et al. 2019). The **CAMP** dataset was simulated from authentic data collected in a cross-sectional study of carbohydrate alternatives and metabolic phenotypes among young adults in China (Liu et al. 2018). The simulated ***CAMP_2*** data consists of three data frames:</span>
+<span id="cb48-71"><a href="#cb48-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-72"><a href="#cb48-72" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Clinical measurements (ClinData): Contains 14 variables, including <span class="in">`"AGE"`</span>, <span class="in">`"SEX"`</span>, <span class="in">`"BMI"`</span>, <span class="in">`"triglycerides"`</span>, <span class="in">`"total_cholesterol"`</span> <span class="in">`"HDL"`</span>(high-density lipoprotein cholesterol), <span class="in">`"LDL"`</span>(low-density lipoprotein cholesterol),, <span class="in">`"GGT"`</span>(gamma-glutamyltransferase), <span class="in">`"ALT"`</span>(alanine aminotransferase), <span class="in">`"AST"`</span>(aspartate aminotransferase), <span class="in">`"creatinine"`</span>, <span class="in">`"Urea_nitrogen"`</span>, <span class="in">`"Uric_acid"`</span>, <span class="in">`"Fasting_glucose"`</span>.</span>
+<span id="cb48-73"><a href="#cb48-73" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Plasma metabolites predictive of BMI (MetaboliteData): Comprises 20 variables</span>
+<span id="cb48-74"><a href="#cb48-74" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Dietary intake as measured by food frequency questionnaires (FoodData): Includes 11 variables: <span class="in">`"Refined_grains"`</span>, <span class="in">`"Coarse_grains"`</span>, <span class="in">`"Red_meat"`</span>, <span class="in">`"Poutry"`</span>, <span class="in">`"Seafood"`</span>, <span class="in">`"Egg"`</span>, <span class="in">`"Animal_organs"`</span>, <span class="in">`"Vegetables"`</span>, <span class="in">`"Fruits"`</span>, <span class="in">`"Potatos"`</span>, <span class="in">`"Legumes"`</span>.</span>
+<span id="cb48-75"><a href="#cb48-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-76"><a href="#cb48-76" aria-hidden="true" tabindex="-1"></a>The data frames are row-wise matched by observations and consist of 300 synthetic observations.</span>
+<span id="cb48-77"><a href="#cb48-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-78"><a href="#cb48-78" aria-hidden="true" tabindex="-1"></a>**Reference**</span>
+<span id="cb48-79"><a href="#cb48-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-80"><a href="#cb48-80" aria-hidden="true" tabindex="-1"></a>Liu X, Liao X, Gan W, et al. Inverse Relationship between Coarse Food Grain Intake and Blood Pressure among Young Chinese Adults. *Am J Hypertens*. 2019;32(4):402–408. <span class="co">[</span><span class="ot">10.1093/ajh/hpy187</span><span class="co">](https://academic.oup.com/ajh/article/32/4/402/5236579?login=true)</span>{target="_blank"}</span>
+<span id="cb48-81"><a href="#cb48-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-82"><a href="#cb48-82" aria-hidden="true" tabindex="-1"></a>Schillemans T, Shi L, Liu X, Åkesson A, Landberg R, Brunius C. Visualization and Interpretation of Multivariate Associations with Disease Risk Markers and Disease Risk-The Triplot. *Metabolites*. 2019 Jul 6;9(7):133. <span class="co">[</span><span class="ot">doi: 10.3390/metabo9070133</span><span class="co">](https://www.mdpi.com/2218-1989/9/7/133)</span>{target="_blank"}</span>
+<span id="cb48-83"><a href="#cb48-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-84"><a href="#cb48-84" aria-hidden="true" tabindex="-1"></a><span class="fu"># Research question</span></span>
+<span id="cb48-85"><a href="#cb48-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-86"><a href="#cb48-86" aria-hidden="true" tabindex="-1"></a>We aim to assess the relationship between diet, metabolic profiles, and risk factors for metabolic diseases, including BMI, total cholesterol, triglycerides, HDL, and LDL. In this context, we assume that metabolites act as mediators, facilitating the effect of dietary exposures on these risk factors.</span>
+<span id="cb48-87"><a href="#cb48-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-88"><a href="#cb48-88" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data exploration</span></span>
+<span id="cb48-89"><a href="#cb48-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-90"><a href="#cb48-90" aria-hidden="true" tabindex="-1"></a>***CAMP_2*** is loaded in the R environment upon running <span class="in">`library(TriplotGUI)`</span>. Let's begin with some data exploration to understand the structure and contents of the dataset:</span>
+<span id="cb48-91"><a href="#cb48-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-92"><a href="#cb48-92" aria-hidden="true" tabindex="-1"></a><span class="in">```{r noshowcode_runcode_noshowoutput_1}</span></span>
+<span id="cb48-93"><a href="#cb48-93" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-94"><a href="#cb48-94" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
+<span id="cb48-95"><a href="#cb48-95" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
+<span id="cb48-96"><a href="#cb48-96" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-97"><a href="#cb48-97" aria-hidden="true" tabindex="-1"></a><span class="in">library(TriplotGUI)</span></span>
+<span id="cb48-98"><a href="#cb48-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-99"><a href="#cb48-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-100"><a href="#cb48-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-101"><a href="#cb48-101" aria-hidden="true" tabindex="-1"></a><span class="fu">## Check CAMP_2</span></span>
+<span id="cb48-102"><a href="#cb48-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-103"><a href="#cb48-103" aria-hidden="true" tabindex="-1"></a>Check the ***CAMP_2*** list:</span>
+<span id="cb48-104"><a href="#cb48-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-105"><a href="#cb48-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_1}</span></span>
+<span id="cb48-106"><a href="#cb48-106" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-107"><a href="#cb48-107" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-108"><a href="#cb48-108" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
+<span id="cb48-109"><a href="#cb48-109" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-110"><a href="#cb48-110" aria-hidden="true" tabindex="-1"></a><span class="in">class(CAMP_2)</span></span>
+<span id="cb48-111"><a href="#cb48-111" aria-hidden="true" tabindex="-1"></a><span class="in">names(CAMP_2)</span></span>
+<span id="cb48-112"><a href="#cb48-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-113"><a href="#cb48-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-114"><a href="#cb48-114" aria-hidden="true" tabindex="-1"></a><span class="fu">## Check datasets</span></span>
+<span id="cb48-115"><a href="#cb48-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-116"><a href="#cb48-116" aria-hidden="true" tabindex="-1"></a>Check the names of variables in each data:</span>
+<span id="cb48-117"><a href="#cb48-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-118"><a href="#cb48-118" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_2}</span></span>
+<span id="cb48-119"><a href="#cb48-119" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-120"><a href="#cb48-120" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-121"><a href="#cb48-121" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
+<span id="cb48-122"><a href="#cb48-122" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-123"><a href="#cb48-123" aria-hidden="true" tabindex="-1"></a><span class="in">colnames(CAMP_2$ClinData)</span></span>
+<span id="cb48-124"><a href="#cb48-124" aria-hidden="true" tabindex="-1"></a><span class="in">colnames(CAMP_2$MetaboliteData)</span></span>
+<span id="cb48-125"><a href="#cb48-125" aria-hidden="true" tabindex="-1"></a><span class="in">colnames(CAMP_2$FoodData)</span></span>
+<span id="cb48-126"><a href="#cb48-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-127"><a href="#cb48-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-128"><a href="#cb48-128" aria-hidden="true" tabindex="-1"></a><span class="fu">## Check variables' class</span></span>
+<span id="cb48-129"><a href="#cb48-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-130"><a href="#cb48-130" aria-hidden="true" tabindex="-1"></a>We then transform the data to dataframe format and use TriplotGUI's <span class="in">`checkdata()`</span> function to examine the classes of variables.</span>
+<span id="cb48-131"><a href="#cb48-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-132"><a href="#cb48-132" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_1}</span></span>
+<span id="cb48-133"><a href="#cb48-133" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-134"><a href="#cb48-134" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-135"><a href="#cb48-135" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
+<span id="cb48-136"><a href="#cb48-136" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-137"><a href="#cb48-137" aria-hidden="true" tabindex="-1"></a><span class="in">ClinData&lt;-as.data.frame(CAMP_2$ClinData)</span></span>
+<span id="cb48-138"><a href="#cb48-138" aria-hidden="true" tabindex="-1"></a><span class="in">MetaboliteData&lt;-as.data.frame(CAMP_2$MetaboliteData)</span></span>
+<span id="cb48-139"><a href="#cb48-139" aria-hidden="true" tabindex="-1"></a><span class="in">FoodData&lt;-as.data.frame(CAMP_2$FoodData)</span></span>
+<span id="cb48-140"><a href="#cb48-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-141"><a href="#cb48-141" aria-hidden="true" tabindex="-1"></a><span class="in">ClinData_check&lt;-checkdata(ClinData)</span></span>
+<span id="cb48-142"><a href="#cb48-142" aria-hidden="true" tabindex="-1"></a><span class="in">MetaboliteData_check&lt;-checkdata(MetaboliteData)</span></span>
+<span id="cb48-143"><a href="#cb48-143" aria-hidden="true" tabindex="-1"></a><span class="in">FoodData_check&lt;-checkdata(FoodData)</span></span>
+<span id="cb48-144"><a href="#cb48-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-145"><a href="#cb48-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-146"><a href="#cb48-146" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_3}</span></span>
+<span id="cb48-147"><a href="#cb48-147" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-148"><a href="#cb48-148" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-149"><a href="#cb48-149" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
+<span id="cb48-150"><a href="#cb48-150" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-151"><a href="#cb48-151" aria-hidden="true" tabindex="-1"></a><span class="in">ClinData_check$class_summary_statistics</span></span>
+<span id="cb48-152"><a href="#cb48-152" aria-hidden="true" tabindex="-1"></a><span class="in">MetaboliteData_check$class_summary_statistics</span></span>
+<span id="cb48-153"><a href="#cb48-153" aria-hidden="true" tabindex="-1"></a><span class="in">FoodData_check$class_summary_statistics</span></span>
+<span id="cb48-154"><a href="#cb48-154" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-155"><a href="#cb48-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-156"><a href="#cb48-156" aria-hidden="true" tabindex="-1"></a><span class="fu">## Check sanities for variables</span></span>
+<span id="cb48-157"><a href="#cb48-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-158"><a href="#cb48-158" aria-hidden="true" tabindex="-1"></a>To check for missing (NA) or abnormal values (e.g., NaN, negative values, infinite values, blank values) in each variable, you can use the <span class="in">`checkdata()`</span> function. This function generates a summary table for each data frame, showing the number of observations containing NA, NaN, zero, negative, infinite (Inf), and blank values, along with their percentages.</span>
+<span id="cb48-159"><a href="#cb48-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-160"><a href="#cb48-160" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_1_1}</span></span>
+<span id="cb48-161"><a href="#cb48-161" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-162"><a href="#cb48-162" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-163"><a href="#cb48-163" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
+<span id="cb48-164"><a href="#cb48-164" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-165"><a href="#cb48-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-166"><a href="#cb48-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-167"><a href="#cb48-167" aria-hidden="true" tabindex="-1"></a><span class="in">if (!require(kableExtra)) {</span></span>
+<span id="cb48-168"><a href="#cb48-168" aria-hidden="true" tabindex="-1"></a><span class="in">  install.packages("kableExtra")  # Install the package if it's not available.</span></span>
+<span id="cb48-169"><a href="#cb48-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-170"><a href="#cb48-170" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb48-171"><a href="#cb48-171" aria-hidden="true" tabindex="-1"></a><span class="in">library(kableExtra)             # Load it after installation.'</span></span>
+<span id="cb48-172"><a href="#cb48-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-173"><a href="#cb48-173" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-174"><a href="#cb48-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-175"><a href="#cb48-175" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_4}</span></span>
+<span id="cb48-176"><a href="#cb48-176" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-177"><a href="#cb48-177" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-178"><a href="#cb48-178" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
+<span id="cb48-179"><a href="#cb48-179" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-180"><a href="#cb48-180" aria-hidden="true" tabindex="-1"></a><span class="in">kable(ClinData_check$everycolumn)</span></span>
+<span id="cb48-181"><a href="#cb48-181" aria-hidden="true" tabindex="-1"></a><span class="in">kable(MetaboliteData_check$everycolumn)</span></span>
+<span id="cb48-182"><a href="#cb48-182" aria-hidden="true" tabindex="-1"></a><span class="in">kable(FoodData_check$everycolumn)</span></span>
+<span id="cb48-183"><a href="#cb48-183" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-184"><a href="#cb48-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-185"><a href="#cb48-185" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb48-186"><a href="#cb48-186" aria-hidden="true" tabindex="-1"></a>You shall only continue to use the data when the class of variables are correct and the missing or abnormal values in the variable are properly handled.</span>
+<span id="cb48-187"><a href="#cb48-187" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-188"><a href="#cb48-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-189"><a href="#cb48-189" aria-hidden="true" tabindex="-1"></a><span class="fu">## Build data for analysis</span></span>
+<span id="cb48-190"><a href="#cb48-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-191"><a href="#cb48-191" aria-hidden="true" tabindex="-1"></a>We treat food variables as our exposures and BMI, triglycerides, total_cholesterol, HDL and LDL as outcomes. We want to explore their relationships through the metabolomics data, using metabolites as assumed mediators. Sex and age are used as potential confounders for exposure-mediator and mediator-outcome association.</span>
+<span id="cb48-192"><a href="#cb48-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-193"><a href="#cb48-193" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_5}</span></span>
+<span id="cb48-194"><a href="#cb48-194" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-195"><a href="#cb48-195" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-196"><a href="#cb48-196" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
+<span id="cb48-197"><a href="#cb48-197" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-198"><a href="#cb48-198" aria-hidden="true" tabindex="-1"></a><span class="in">exposure1 &lt;- FoodData</span></span>
+<span id="cb48-199"><a href="#cb48-199" aria-hidden="true" tabindex="-1"></a><span class="in">Omics1 &lt;- MetaboliteData</span></span>
+<span id="cb48-200"><a href="#cb48-200" aria-hidden="true" tabindex="-1"></a><span class="in">outcome1 &lt;- ClinData[, c("BMI", "triglycerides", "total_cholesterol", "HDL", "LDL")]</span></span>
+<span id="cb48-201"><a href="#cb48-201" aria-hidden="true" tabindex="-1"></a><span class="in">covariates1 &lt;- ClinData[, c("SEX" , "AGE")]</span></span>
+<span id="cb48-202"><a href="#cb48-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-203"><a href="#cb48-203" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-204"><a href="#cb48-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-205"><a href="#cb48-205" aria-hidden="true" tabindex="-1"></a><span class="fu"># Code example of using TriplotGUI</span></span>
+<span id="cb48-206"><a href="#cb48-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-207"><a href="#cb48-207" aria-hidden="true" tabindex="-1"></a>We will use the most simple settings in this example. Please go to <span class="co">[</span><span class="ot">Tutorial(complex)</span><span class="co">](complex_code.qmd)</span>{target="_blank"}, if you want to try more advanced settings.</span>
+<span id="cb48-208"><a href="#cb48-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-209"><a href="#cb48-209" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 1: Data reduction of Omics variables {#simple_link}</span></span>
+<span id="cb48-210"><a href="#cb48-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-211"><a href="#cb48-211" aria-hidden="true" tabindex="-1"></a>Using <span class="in">`TriplotGUI`</span> package, first we perform dimension reduction, i.e. principal component analysis (PCA) on metabolomics variables.</span>
+<span id="cb48-212"><a href="#cb48-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-213"><a href="#cb48-213" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_2}</span></span>
+<span id="cb48-214"><a href="#cb48-214" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-215"><a href="#cb48-215" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-216"><a href="#cb48-216" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
+<span id="cb48-217"><a href="#cb48-217" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-218"><a href="#cb48-218" aria-hidden="true" tabindex="-1"></a><span class="in">reduced_Omics1 &lt;- OmicsReduction(dataframe = Omics1,</span></span>
+<span id="cb48-219"><a href="#cb48-219" aria-hidden="true" tabindex="-1"></a><span class="in">                                   pcNum = 5,</span></span>
+<span id="cb48-220"><a href="#cb48-220" aria-hidden="true" tabindex="-1"></a><span class="in">                                   option = "PCA",</span></span>
+<span id="cb48-221"><a href="#cb48-221" aria-hidden="true" tabindex="-1"></a><span class="in">                                   loadingsName = TRUE)</span></span>
+<span id="cb48-222"><a href="#cb48-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-223"><a href="#cb48-223" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-224"><a href="#cb48-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-225"><a href="#cb48-225" aria-hidden="true" tabindex="-1"></a>You can view scree plot, score plot, loading plot and biplot at this stage.</span>
+<span id="cb48-226"><a href="#cb48-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-227"><a href="#cb48-227" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_6}</span></span>
+<span id="cb48-228"><a href="#cb48-228" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-229"><a href="#cb48-229" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-230"><a href="#cb48-230" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
+<span id="cb48-231"><a href="#cb48-231" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-232"><a href="#cb48-232" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
+<span id="cb48-233"><a href="#cb48-233" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-width: "100%"</span></span>
+<span id="cb48-234"><a href="#cb48-234" aria-hidden="true" tabindex="-1"></a><span class="in">reduced_Omics1$scree_plot</span></span>
+<span id="cb48-235"><a href="#cb48-235" aria-hidden="true" tabindex="-1"></a><span class="in">reduced_Omics1$score_plot</span></span>
+<span id="cb48-236"><a href="#cb48-236" aria-hidden="true" tabindex="-1"></a><span class="in">reduced_Omics1$loading_plot</span></span>
+<span id="cb48-237"><a href="#cb48-237" aria-hidden="true" tabindex="-1"></a><span class="in">reduced_Omics1$scoreloading_plot</span></span>
+<span id="cb48-238"><a href="#cb48-238" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-239"><a href="#cb48-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-240"><a href="#cb48-240" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb48-241"><a href="#cb48-241" aria-hidden="true" tabindex="-1"></a>Sometimes the following text will show up in your console and the figure cannot be directly run:</span>
+<span id="cb48-242"><a href="#cb48-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-243"><a href="#cb48-243" aria-hidden="true" tabindex="-1"></a><span class="in">`libpng warning: Image width is zero in IHDR`</span></span>
+<span id="cb48-244"><a href="#cb48-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-245"><a href="#cb48-245" aria-hidden="true" tabindex="-1"></a><span class="in">`libpng error: Invalid IHDR data`</span></span>
+<span id="cb48-246"><a href="#cb48-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-247"><a href="#cb48-247" aria-hidden="true" tabindex="-1"></a><span class="in">`Warning message:`</span></span>
+<span id="cb48-248"><a href="#cb48-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-249"><a href="#cb48-249" aria-hidden="true" tabindex="-1"></a><span class="in">`In dev.off(which) : agg could not write to the given file\`</span></span>
+<span id="cb48-250"><a href="#cb48-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-251"><a href="#cb48-251" aria-hidden="true" tabindex="-1"></a>Run <span class="in">`gc()`</span> in your console to clear the memory. Then rerun the code again to view the figure.</span>
+<span id="cb48-252"><a href="#cb48-252" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-253"><a href="#cb48-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-254"><a href="#cb48-254" aria-hidden="true" tabindex="-1"></a>We then build a TPObject based on the data reduction results. This object will be used to save information and facilitate the transfer of data through the various steps in TriplotGUI.</span>
+<span id="cb48-255"><a href="#cb48-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-256"><a href="#cb48-256" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_7}</span></span>
+<span id="cb48-257"><a href="#cb48-257" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-258"><a href="#cb48-258" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-259"><a href="#cb48-259" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
+<span id="cb48-260"><a href="#cb48-260" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-261"><a href="#cb48-261" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.output: false</span></span>
+<span id="cb48-262"><a href="#cb48-262" aria-hidden="true" tabindex="-1"></a><span class="in">scores &lt;- reduced_Omics1$object$scores</span></span>
+<span id="cb48-263"><a href="#cb48-263" aria-hidden="true" tabindex="-1"></a><span class="in">loadings &lt;- reduced_Omics1$object$loadings</span></span>
+<span id="cb48-264"><a href="#cb48-264" aria-hidden="true" tabindex="-1"></a><span class="in">variance &lt;- reduced_Omics1$object$variance</span></span>
+<span id="cb48-265"><a href="#cb48-265" aria-hidden="true" tabindex="-1"></a><span class="in">TPObject1 &lt;- makeTPO(scores = scores,</span></span>
+<span id="cb48-266"><a href="#cb48-266" aria-hidden="true" tabindex="-1"></a><span class="in">                     loadings = loadings,</span></span>
+<span id="cb48-267"><a href="#cb48-267" aria-hidden="true" tabindex="-1"></a><span class="in">                     variance = variance)</span></span>
+<span id="cb48-268"><a href="#cb48-268" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-269"><a href="#cb48-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-270"><a href="#cb48-270" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 2-3: Exposures-Omics and Omics-Outcomes associations</span></span>
+<span id="cb48-271"><a href="#cb48-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-272"><a href="#cb48-272" aria-hidden="true" tabindex="-1"></a>The associations between principal components (PCs) and food items are calculated using Pearson correlations, adjusting for confounders. We investigate associations between PC scores and risk markers adjusting for confounders using linear regression, as all food variables are numeric.</span>
+<span id="cb48-273"><a href="#cb48-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-274"><a href="#cb48-274" aria-hidden="true" tabindex="-1"></a>The PC scores are saved in the TPObject, which can be directly used in the <span class="in">`exposureAssociation()`</span> function to calculate correlation coefficients and p-values with exposures (food variables), while adjusting for confounders.</span>
+<span id="cb48-275"><a href="#cb48-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-276"><a href="#cb48-276" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_3}</span></span>
+<span id="cb48-277"><a href="#cb48-277" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-278"><a href="#cb48-278" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-279"><a href="#cb48-279" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
+<span id="cb48-280"><a href="#cb48-280" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-281"><a href="#cb48-281" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.output: false</span></span>
+<span id="cb48-282"><a href="#cb48-282" aria-hidden="true" tabindex="-1"></a><span class="in">Correlations_object &lt;- exposureAssociation(TPObject = TPObject1,</span></span>
+<span id="cb48-283"><a href="#cb48-283" aria-hidden="true" tabindex="-1"></a><span class="in">                                exposure = exposure1,</span></span>
+<span id="cb48-284"><a href="#cb48-284" aria-hidden="true" tabindex="-1"></a><span class="in">                                confounder = covariates1,</span></span>
+<span id="cb48-285"><a href="#cb48-285" aria-hidden="true" tabindex="-1"></a><span class="in">                                method = "pearson")</span></span>
+<span id="cb48-286"><a href="#cb48-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-287"><a href="#cb48-287" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-288"><a href="#cb48-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-289"><a href="#cb48-289" aria-hidden="true" tabindex="-1"></a>The correlation results are then added to the TPObject.</span>
+<span id="cb48-290"><a href="#cb48-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-291"><a href="#cb48-291" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_8}</span></span>
+<span id="cb48-292"><a href="#cb48-292" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-293"><a href="#cb48-293" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-294"><a href="#cb48-294" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
+<span id="cb48-295"><a href="#cb48-295" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-296"><a href="#cb48-296" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.output: false</span></span>
+<span id="cb48-297"><a href="#cb48-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-298"><a href="#cb48-298" aria-hidden="true" tabindex="-1"></a><span class="in">TPObject2 &lt;- addExposure(TPObject = TPObject1,</span></span>
+<span id="cb48-299"><a href="#cb48-299" aria-hidden="true" tabindex="-1"></a><span class="in">                     corrEstimate = Correlations_object$cor_estimate,</span></span>
+<span id="cb48-300"><a href="#cb48-300" aria-hidden="true" tabindex="-1"></a><span class="in">                     corrPvalue = Correlations_object$cor_pvalue)</span></span>
+<span id="cb48-301"><a href="#cb48-301" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-302"><a href="#cb48-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-303"><a href="#cb48-303" aria-hidden="true" tabindex="-1"></a>Similarly, we calculate risk estimates (beta coefficients from linear regression) and p-values using the PC scores saved in the TPObject and the outcome variables. This is done using the <span class="in">`outcomeAssociation()`</span> function, which also adjusts for confounders.</span>
+<span id="cb48-304"><a href="#cb48-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-305"><a href="#cb48-305" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_4}</span></span>
+<span id="cb48-306"><a href="#cb48-306" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-307"><a href="#cb48-307" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-308"><a href="#cb48-308" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
+<span id="cb48-309"><a href="#cb48-309" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-310"><a href="#cb48-310" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.output: false</span></span>
+<span id="cb48-311"><a href="#cb48-311" aria-hidden="true" tabindex="-1"></a><span class="in">Risks_object &lt;- outcomeAssociation(TPObject = TPObject2,</span></span>
+<span id="cb48-312"><a href="#cb48-312" aria-hidden="true" tabindex="-1"></a><span class="in">                               outcome = outcome1,</span></span>
+<span id="cb48-313"><a href="#cb48-313" aria-hidden="true" tabindex="-1"></a><span class="in">                               confounder = covariates1)</span></span>
+<span id="cb48-314"><a href="#cb48-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-315"><a href="#cb48-315" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-316"><a href="#cb48-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-317"><a href="#cb48-317" aria-hidden="true" tabindex="-1"></a>The risk estimate results are then added to the TPObject.</span>
+<span id="cb48-318"><a href="#cb48-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-319"><a href="#cb48-319" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_9}</span></span>
+<span id="cb48-320"><a href="#cb48-320" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-321"><a href="#cb48-321" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-322"><a href="#cb48-322" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
+<span id="cb48-323"><a href="#cb48-323" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-324"><a href="#cb48-324" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.output: false</span></span>
+<span id="cb48-325"><a href="#cb48-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-326"><a href="#cb48-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-327"><a href="#cb48-327" aria-hidden="true" tabindex="-1"></a><span class="in">TPObject3 &lt;- addOutcome(TPObject = TPObject2, </span></span>
+<span id="cb48-328"><a href="#cb48-328" aria-hidden="true" tabindex="-1"></a><span class="in">                     Risk = Risks_object)</span></span>
+<span id="cb48-329"><a href="#cb48-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-330"><a href="#cb48-330" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-331"><a href="#cb48-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-332"><a href="#cb48-332" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 4: Meet-in-the-middle Triplot Visualization</span></span>
+<span id="cb48-333"><a href="#cb48-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-334"><a href="#cb48-334" aria-hidden="true" tabindex="-1"></a>Then we generate the Triplot. It's important to note that a Triplot can be generated from any TPObject.</span>
+<span id="cb48-335"><a href="#cb48-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-336"><a href="#cb48-336" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_5}</span></span>
+<span id="cb48-337"><a href="#cb48-337" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-338"><a href="#cb48-338" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-339"><a href="#cb48-339" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
+<span id="cb48-340"><a href="#cb48-340" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-341"><a href="#cb48-341" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.output: false</span></span>
+<span id="cb48-342"><a href="#cb48-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-343"><a href="#cb48-343" aria-hidden="true" tabindex="-1"></a><span class="in">TPO_plots3 &lt;- TriplotGUI(TPObject3, </span></span>
+<span id="cb48-344"><a href="#cb48-344" aria-hidden="true" tabindex="-1"></a><span class="in">                              riskOR = FALSE) #risks is shown as coeffcients, not odds ratio</span></span>
+<span id="cb48-345"><a href="#cb48-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-346"><a href="#cb48-346" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-347"><a href="#cb48-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-348"><a href="#cb48-348" aria-hidden="true" tabindex="-1"></a>Plot the triplot</span>
+<span id="cb48-349"><a href="#cb48-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-350"><a href="#cb48-350" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_10}</span></span>
+<span id="cb48-351"><a href="#cb48-351" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-352"><a href="#cb48-352" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-353"><a href="#cb48-353" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
+<span id="cb48-354"><a href="#cb48-354" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-355"><a href="#cb48-355" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
+<span id="cb48-356"><a href="#cb48-356" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-width: "100%"</span></span>
+<span id="cb48-357"><a href="#cb48-357" aria-hidden="true" tabindex="-1"></a><span class="in">TPO_plots3$triplot</span></span>
+<span id="cb48-358"><a href="#cb48-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-359"><a href="#cb48-359" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-360"><a href="#cb48-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-361"><a href="#cb48-361" aria-hidden="true" tabindex="-1"></a>In the triplot, black arrows represent loadings of Omics variables, forming patterns in different components (axes). Blue circle points show exposure correlations with the components, while red square points indicate outcome associations with the components.</span>
+<span id="cb48-362"><a href="#cb48-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-363"><a href="#cb48-363" aria-hidden="true" tabindex="-1"></a>For interpretation, let’s focus on Principal Component 1 (PC1) and Principal Component 2 (PC2), using the exposures <span class="in">`"Refined grains"`</span>, <span class="in">`"Red meat"`</span>, and the outcome <span class="in">`"BMI"`</span> as examples:</span>
+<span id="cb48-364"><a href="#cb48-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-365"><a href="#cb48-365" aria-hidden="true" tabindex="-1"></a>PC1: This component shows a positive association with BMI and is correlated with high intakes of red meat and refined grains, even after adjusting for age and sex. This suggests that the metabolite features dominating PC1 may provide valuable insights into how the intake of red meat and refined grains could influence BMI.</span>
+<span id="cb48-366"><a href="#cb48-366" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-367"><a href="#cb48-367" aria-hidden="true" tabindex="-1"></a>PC2: In contrast, PC2 exhibits a smaller association with BMI and a weak inverse correlation with red meat and refined grains. The metabolite features contributing significantly to PC2 may indicate a marginal beneficial effect of these dietary components, although this effect appears to be limited. This may also suggest that the features dominating PC2 may reflect metabolite patterns influenced by food, but not to a large degree associations with metabolic regulation in relation to health.</span>
+<span id="cb48-368"><a href="#cb48-368" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-369"><a href="#cb48-369" aria-hidden="true" tabindex="-1"></a>This interpretation highlights how different dietary exposures relate to metabolic outcomes, offering insights into potential mechanisms at play.</span>
+<span id="cb48-370"><a href="#cb48-370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-371"><a href="#cb48-371" aria-hidden="true" tabindex="-1"></a><span class="fu">## Step 5: Mediation analysis and visualization</span></span>
+<span id="cb48-372"><a href="#cb48-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-373"><a href="#cb48-373" aria-hidden="true" tabindex="-1"></a>Mediation analysis will be performed using the conventional(Baron-Kenny) method on our selected exposures (<span class="in">`"Refined grains"`</span>, <span class="in">`"Red meat"`</span>), and the outcome of interest (<span class="in">`"BMI"`</span>), using components generated from Step 1 as mediators and adjusting for age and sex in both the exposure-mediator and mediator-outcome associations.</span>
+<span id="cb48-374"><a href="#cb48-374" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-375"><a href="#cb48-375" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_6}</span></span>
+<span id="cb48-376"><a href="#cb48-376" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-377"><a href="#cb48-377" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-378"><a href="#cb48-378" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
+<span id="cb48-379"><a href="#cb48-379" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-380"><a href="#cb48-380" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.output: false</span></span>
+<span id="cb48-381"><a href="#cb48-381" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-382"><a href="#cb48-382" aria-hidden="true" tabindex="-1"></a><span class="in">mediation_object3 &lt;- </span></span>
+<span id="cb48-383"><a href="#cb48-383" aria-hidden="true" tabindex="-1"></a><span class="in">  getMediationConventional (mediator = TPObject3$scores[,c(1:2),drop = FALSE], </span></span>
+<span id="cb48-384"><a href="#cb48-384" aria-hidden="true" tabindex="-1"></a><span class="in">                             # Specfiying at least 2 components so that there can be a 2-dimensional plot</span></span>
+<span id="cb48-385"><a href="#cb48-385" aria-hidden="true" tabindex="-1"></a><span class="in">                             exposure = exposure1[,c("Refined_grains","Red_meat"),drop = FALSE],</span></span>
+<span id="cb48-386"><a href="#cb48-386" aria-hidden="true" tabindex="-1"></a><span class="in">                             outcome = outcome1[,"BMI",drop = FALSE],</span></span>
+<span id="cb48-387"><a href="#cb48-387" aria-hidden="true" tabindex="-1"></a><span class="in">                             confounderME = covariates1,</span></span>
+<span id="cb48-388"><a href="#cb48-388" aria-hidden="true" tabindex="-1"></a><span class="in">                             confounderOE = covariates1)</span></span>
+<span id="cb48-389"><a href="#cb48-389" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-390"><a href="#cb48-390" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-391"><a href="#cb48-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-392"><a href="#cb48-392" aria-hidden="true" tabindex="-1"></a>After mediation analysis is performed, users can select which exposure, mediator and outcome variables to use for mediation barplot visualization. Users can examine the barplot for a clearer view of the direct, indirect, and total effects for each combination of PC, exposure, and outcome.</span>
+<span id="cb48-393"><a href="#cb48-393" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-394"><a href="#cb48-394" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_7}</span></span>
+<span id="cb48-395"><a href="#cb48-395" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-396"><a href="#cb48-396" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-397"><a href="#cb48-397" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
+<span id="cb48-398"><a href="#cb48-398" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-399"><a href="#cb48-399" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
+<span id="cb48-400"><a href="#cb48-400" aria-hidden="true" tabindex="-1"></a><span class="in">mediation_plots3 &lt;- mediationBarplot(mediationObject = mediation_object3,</span></span>
+<span id="cb48-401"><a href="#cb48-401" aria-hidden="true" tabindex="-1"></a><span class="in">                                         cex = 2,</span></span>
+<span id="cb48-402"><a href="#cb48-402" aria-hidden="true" tabindex="-1"></a><span class="in">                                         # size of the text</span></span>
+<span id="cb48-403"><a href="#cb48-403" aria-hidden="true" tabindex="-1"></a><span class="in">                                         by_row = "one_column")</span></span>
+<span id="cb48-404"><a href="#cb48-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-405"><a href="#cb48-405" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-406"><a href="#cb48-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-407"><a href="#cb48-407" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_11}</span></span>
+<span id="cb48-408"><a href="#cb48-408" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-409"><a href="#cb48-409" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-410"><a href="#cb48-410" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
+<span id="cb48-411"><a href="#cb48-411" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-412"><a href="#cb48-412" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
+<span id="cb48-413"><a href="#cb48-413" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-width: "100%"</span></span>
+<span id="cb48-414"><a href="#cb48-414" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-height: "200%"</span></span>
+<span id="cb48-415"><a href="#cb48-415" aria-hidden="true" tabindex="-1"></a><span class="in">mediation_plots3</span></span>
+<span id="cb48-416"><a href="#cb48-416" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-417"><a href="#cb48-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-418"><a href="#cb48-418" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb48-419"><a href="#cb48-419" aria-hidden="true" tabindex="-1"></a>The barplot displays direct, indirect, and total effects for each exposure-mediator-outcome combination, providing a convenient tool to assess the direction and magnitude of mediation estimates.</span>
+<span id="cb48-420"><a href="#cb48-420" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-421"><a href="#cb48-421" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Color coding indicates significance and direction: red represents significant positive effects (p<span class="sc">\&lt;</span>0.05), blue represents significant negative effects (p<span class="sc">\&lt;</span>0.05), and grey represents insignificant effects.</span>
+<span id="cb48-422"><a href="#cb48-422" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Significance levels are denoted by stars: one star for p<span class="sc">\&lt;</span>0.05, two stars for p<span class="sc">\&lt;</span>0.01, and three stars for p<span class="sc">\&lt;</span>0.001.</span>
+<span id="cb48-423"><a href="#cb48-423" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-424"><a href="#cb48-424" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-425"><a href="#cb48-425" aria-hidden="true" tabindex="-1"></a>The mediation results are then added to the TPObject.</span>
+<span id="cb48-426"><a href="#cb48-426" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-427"><a href="#cb48-427" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_12}</span></span>
+<span id="cb48-428"><a href="#cb48-428" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-429"><a href="#cb48-429" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-430"><a href="#cb48-430" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
+<span id="cb48-431"><a href="#cb48-431" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-432"><a href="#cb48-432" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
+<span id="cb48-433"><a href="#cb48-433" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-434"><a href="#cb48-434" aria-hidden="true" tabindex="-1"></a><span class="in">TPObject4 &lt;- addMediation(TPObject = TPObject3, </span></span>
+<span id="cb48-435"><a href="#cb48-435" aria-hidden="true" tabindex="-1"></a><span class="in">                           mediationObject = mediation_object3)</span></span>
+<span id="cb48-436"><a href="#cb48-436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-437"><a href="#cb48-437" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-438"><a href="#cb48-438" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-439"><a href="#cb48-439" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Make the triplot with mediation. --&gt;</span></span>
+<span id="cb48-440"><a href="#cb48-440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-441"><a href="#cb48-441" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_noshowoutput_8} --&gt;</span></span>
+<span id="cb48-442"><a href="#cb48-442" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
+<span id="cb48-443"><a href="#cb48-443" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
+<span id="cb48-444"><a href="#cb48-444" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: false --&gt;</span></span>
+<span id="cb48-445"><a href="#cb48-445" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
+<span id="cb48-446"><a href="#cb48-446" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
+<span id="cb48-447"><a href="#cb48-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-448"><a href="#cb48-448" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- TPO_plots4 &lt;- mediationTriplot(TPObject4, --&gt;</span></span>
+<span id="cb48-449"><a href="#cb48-449" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--                                      show = c("IE","TE") --&gt;</span></span>
+<span id="cb48-450"><a href="#cb48-450" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--                                      ) --&gt;</span></span>
+<span id="cb48-451"><a href="#cb48-451" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-452"><a href="#cb48-452" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
+<span id="cb48-453"><a href="#cb48-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-454"><a href="#cb48-454" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Show the mediation estimates only (indirect and total effect). --&gt;</span></span>
+<span id="cb48-455"><a href="#cb48-455" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-456"><a href="#cb48-456" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_showoutput_13} --&gt;</span></span>
+<span id="cb48-457"><a href="#cb48-457" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
+<span id="cb48-458"><a href="#cb48-458" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
+<span id="cb48-459"><a href="#cb48-459" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: true --&gt;</span></span>
+<span id="cb48-460"><a href="#cb48-460" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
+<span id="cb48-461"><a href="#cb48-461" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
+<span id="cb48-462"><a href="#cb48-462" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| out-width: "100%" --&gt;</span></span>
+<span id="cb48-463"><a href="#cb48-463" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- TPO_plots4$mediations_plot --&gt;</span></span>
+<span id="cb48-464"><a href="#cb48-464" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-465"><a href="#cb48-465" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
+<span id="cb48-466"><a href="#cb48-466" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-467"><a href="#cb48-467" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ::: callout-note --&gt;</span></span>
+<span id="cb48-468"><a href="#cb48-468" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- In the triplot, indirect effects, which are specific to each mediator (such as PC1 or PC2), are depicted as dark green triangle points. Total effects, on the other hand, are shown as circles. It's important to note that while indirect effects are tied to particular mediators, total effects remain constant for specific exposure-outcome pairs. --&gt;</span></span>
+<span id="cb48-469"><a href="#cb48-469" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ::: --&gt;</span></span>
+<span id="cb48-470"><a href="#cb48-470" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-471"><a href="#cb48-471" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Plot the triplot with mediation. --&gt;</span></span>
+<span id="cb48-472"><a href="#cb48-472" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-473"><a href="#cb48-473" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_showoutput_14} --&gt;</span></span>
+<span id="cb48-474"><a href="#cb48-474" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
+<span id="cb48-475"><a href="#cb48-475" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
+<span id="cb48-476"><a href="#cb48-476" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: true --&gt;</span></span>
+<span id="cb48-477"><a href="#cb48-477" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
+<span id="cb48-478"><a href="#cb48-478" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
+<span id="cb48-479"><a href="#cb48-479" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| out-width: "100%" --&gt;</span></span>
+<span id="cb48-480"><a href="#cb48-480" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- TPO_plots4$mediations_triplot --&gt;</span></span>
+<span id="cb48-481"><a href="#cb48-481" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-482"><a href="#cb48-482" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
+<span id="cb48-483"><a href="#cb48-483" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-484"><a href="#cb48-484" aria-hidden="true" tabindex="-1"></a>Based on the mediation barplot, we observed significant mediation effects through PC1 for the red_meat-BMI and refined_grain-BMI associations. This finding suggests that the metabolite features contributing to PC1 are likely mediating the pathway from red meat and refined grain intake to BMI changes. These results provide insight into potential metabolic mechanisms linking dietary patterns to body mass index.</span>
+<span id="cb48-485"><a href="#cb48-485" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-486"><a href="#cb48-486" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comparative Visualization</span></span>
+<span id="cb48-487"><a href="#cb48-487" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-488"><a href="#cb48-488" aria-hidden="true" tabindex="-1"></a>Users can easily visualize the exposure associations, risk estimations, and mediation results stored in the TPObject using the <span class="in">`checkTPO()`</span> function provided by TriplotGUI. This function generates heatmaps for each type of analysis, offering a comprehensive and intuitive way to examine the relationships between variables. Note that you could put any TPObjects generate along the steps for heatmap visualizations.</span>
+<span id="cb48-489"><a href="#cb48-489" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-490"><a href="#cb48-490" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_9}</span></span>
+<span id="cb48-491"><a href="#cb48-491" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-492"><a href="#cb48-492" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-493"><a href="#cb48-493" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
+<span id="cb48-494"><a href="#cb48-494" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-495"><a href="#cb48-495" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
+<span id="cb48-496"><a href="#cb48-496" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-497"><a href="#cb48-497" aria-hidden="true" tabindex="-1"></a><span class="in">checkTPObject4 &lt;- checkTPO(TPObject4,</span></span>
+<span id="cb48-498"><a href="#cb48-498" aria-hidden="true" tabindex="-1"></a><span class="in">                           mediators=c("PC1","PC2"),</span></span>
+<span id="cb48-499"><a href="#cb48-499" aria-hidden="true" tabindex="-1"></a><span class="in">                                  size=7    ## customize the size of stars</span></span>
+<span id="cb48-500"><a href="#cb48-500" aria-hidden="true" tabindex="-1"></a><span class="in">                                  )</span></span>
+<span id="cb48-501"><a href="#cb48-501" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-502"><a href="#cb48-502" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-503"><a href="#cb48-503" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-504"><a href="#cb48-504" aria-hidden="true" tabindex="-1"></a>Show heatmap for correlation coefficients and p values between PCs and exposures:</span>
+<span id="cb48-505"><a href="#cb48-505" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-506"><a href="#cb48-506" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_15A}</span></span>
+<span id="cb48-507"><a href="#cb48-507" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-508"><a href="#cb48-508" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-509"><a href="#cb48-509" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
+<span id="cb48-510"><a href="#cb48-510" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-511"><a href="#cb48-511" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
+<span id="cb48-512"><a href="#cb48-512" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-width: "100%"</span></span>
+<span id="cb48-513"><a href="#cb48-513" aria-hidden="true" tabindex="-1"></a><span class="in">checkTPObject4$corr_coefficients</span></span>
+<span id="cb48-514"><a href="#cb48-514" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-515"><a href="#cb48-515" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-516"><a href="#cb48-516" aria-hidden="true" tabindex="-1"></a>Show heatmap for risk estimates (beta coefficients) and p values between PCs and outcomes:</span>
+<span id="cb48-517"><a href="#cb48-517" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-518"><a href="#cb48-518" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_15B}</span></span>
+<span id="cb48-519"><a href="#cb48-519" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-520"><a href="#cb48-520" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-521"><a href="#cb48-521" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
+<span id="cb48-522"><a href="#cb48-522" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-523"><a href="#cb48-523" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
+<span id="cb48-524"><a href="#cb48-524" aria-hidden="true" tabindex="-1"></a><span class="in">checkTPObject4$risk_coefficients</span></span>
+<span id="cb48-525"><a href="#cb48-525" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-526"><a href="#cb48-526" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-527"><a href="#cb48-527" aria-hidden="true" tabindex="-1"></a>Show heatmap for mediation estimates and p values for indirect effect(IE), and total effect(TE), proportion mediated (PM) and adjusted proportion mediated (APM): See <span class="co">[</span><span class="ot">Manual</span><span class="co">](workflow.qmd)</span>{target="_blank"} section for more details:</span>
+<span id="cb48-528"><a href="#cb48-528" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-529"><a href="#cb48-529" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_15C}</span></span>
+<span id="cb48-530"><a href="#cb48-530" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb48-531"><a href="#cb48-531" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-532"><a href="#cb48-532" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
+<span id="cb48-533"><a href="#cb48-533" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-534"><a href="#cb48-534" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
+<span id="cb48-535"><a href="#cb48-535" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-width: "100%"</span></span>
+<span id="cb48-536"><a href="#cb48-536" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-537"><a href="#cb48-537" aria-hidden="true" tabindex="-1"></a><span class="in">checkTPObject4$med_coefficients</span></span>
+<span id="cb48-538"><a href="#cb48-538" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-539"><a href="#cb48-539" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-540"><a href="#cb48-540" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb48-541"><a href="#cb48-541" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Significance is indicated as follows. One star for p<span class="sc">\&lt;</span>0.05; Two stars for p<span class="sc">\&lt;</span>0.01; Three stars for p<span class="sc">\&lt;</span>0.001.</span>
+<span id="cb48-542"><a href="#cb48-542" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Note that in the heatmap from <span class="in">`checkTPbject4$med_coefficients`</span>, only the selected exposures, mediators and outcomes that we use to do mediation on will show up. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure-outcome pair, 4 result are shown: *IE* (indirect effect), *TE* (total effect), *PM*(Proportion Mediated) and *APM*(Adjusted Proportion Mediated). Please see [Details section](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2){target="_blank"} for more information. The "BK" before the names of exposures-outcome pairs means that this mediation is using the Coventional Baron-Kenny "product" method. For this method, only the significant level of *IE* and *TE* is calculated and shown on the plot, but not *PM* and *APM*. </span>
+<span id="cb48-543"><a href="#cb48-543" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb48-544"><a href="#cb48-544" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-545"><a href="#cb48-545" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Download</span></span>
+<span id="cb48-546"><a href="#cb48-546" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-547"><a href="#cb48-547" aria-hidden="true" tabindex="-1"></a>To save all your output, including data, results, and visualization output as an .rda file, you can use the <span class="in">`save()`</span> function in R.</span>
+<span id="cb48-548"><a href="#cb48-548" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-549"><a href="#cb48-549" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_noruncode_noshowoutput_1}</span></span>
+<span id="cb48-550"><a href="#cb48-550" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
+<span id="cb48-551"><a href="#cb48-551" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb48-552"><a href="#cb48-552" aria-hidden="true" tabindex="-1"></a><span class="in">#| warning: false</span></span>
+<span id="cb48-553"><a href="#cb48-553" aria-hidden="true" tabindex="-1"></a><span class="in">#| error: true</span></span>
+<span id="cb48-554"><a href="#cb48-554" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb48-555"><a href="#cb48-555" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-556"><a href="#cb48-556" aria-hidden="true" tabindex="-1"></a><span class="in">save(exposure1,Omics1,outcome1,covariates1,</span></span>
+<span id="cb48-557"><a href="#cb48-557" aria-hidden="true" tabindex="-1"></a><span class="in">     reduced_Omics1,Correlations_object,Risks_object,</span></span>
+<span id="cb48-558"><a href="#cb48-558" aria-hidden="true" tabindex="-1"></a><span class="in">     mediation_object3,mediation_plots3,</span></span>
+<span id="cb48-559"><a href="#cb48-559" aria-hidden="true" tabindex="-1"></a><span class="in">     TPObject1,TPObject2,TPObject3,TPObject4,</span></span>
+<span id="cb48-560"><a href="#cb48-560" aria-hidden="true" tabindex="-1"></a><span class="in">     checkTPObject4,</span></span>
+<span id="cb48-561"><a href="#cb48-561" aria-hidden="true" tabindex="-1"></a><span class="in">     "Tutorial_simple_output.rda")</span></span>
+<span id="cb48-562"><a href="#cb48-562" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
@@ -2375,7 +2363,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <p><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></p>
 </div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom"});
+</footer><script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","loop":false,"openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
