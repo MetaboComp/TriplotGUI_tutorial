@@ -272,7 +272,7 @@ ul.task-list li input[type="checkbox"] {
 </ul></section><section id="step-2-3-exposures-omics-and-omics-outcomes-associations" class="level2"><h2 class="anchored" data-anchor-id="step-2-3-exposures-omics-and-omics-outcomes-associations">Step 2-3: Exposures-Omics and Omics-Outcomes associations</h2>
 <p>Next, proceed to upload the exposures, outcomes, and covariates data in Steps 2 and 3 of the interface.</p>
 <p><a href="img/simple_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/simple_2.png" class="img-fluid"></a></p>
-<p>Once you have uploaded these datasets, you can view the correlation coefficients in Step 2 and the risk estimates in Step 3. To refresh the visualizations and see the updated plots, simply click on the <strong><em>Refresh Plot</em></strong> button. This will allow you to analyze the relationships between your exposures, outcomes, and covariates effectively.</p>
+<p>Once you have uploaded these datasets, you can view the correlation coefficients in Step 2 and the risk estimates in Step 3. To refresh the visualizations and see the updated plots, simply click on the <strong><em>Refresh Plot</em></strong> button. This will allow you to analyze the relationships between your exposures, outcomes, and covariates effectively. Confounder adjustment was selected as <em>Yes</em> in <strong><em>Confounder adjustment</em></strong> in the “Data analysis settings”.</p>
 <p><a href="img/simple_2_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="img/simple_2_1.png" class="img-fluid"></a></p>
 </section><section id="step-4-meet-in-the-middle-triplot-visualization" class="level2"><h2 class="anchored" data-anchor-id="step-4-meet-in-the-middle-triplot-visualization">Step 4: Meet-in-the-middle Triplot Visualization</h2>
 <p>In Step 4 of the interface, you can view and download the triplot by clicking <strong><em>Refresh Plot</em></strong> The left-side panel allows you to make adjustments to the plot as needed.</p>
@@ -287,12 +287,13 @@ ul.task-list li input[type="checkbox"] {
 </section><section id="step-5-mediation-analysis-and-visualization" class="level2"><h2 class="anchored" data-anchor-id="step-5-mediation-analysis-and-visualization">Step 5: Mediation analysis and visualization</h2>
 <div class="columns">
 <div class="column" style="width: 40%">
-<p><a href="img/simple_4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="img/simple_4.png" class="img-fluid"></a></p>
+<p>Mediation analysis will be performed using the conventional(Baron-Kenny) method on our selected exposures (<code>"Refined grains"</code>, <code>"Red meat"</code>), and the outcome of interest (<code>"BMI"</code>), using components generated from Step 1 as mediators and adjusting for age and sex in both the exposure-mediator and mediator-outcome associations.</p>
+<p>After mediation analysis is performed, users can select which exposure, mediator and outcome variables to use for mediation barplot visualization.</p>
 </div><div class="column" style="width: 5%">
 
 </div><div class="column" style="width: 45%">
-<p>Mediation analysis will be performed using the conventional “product” method on our selected exposures (<code>"Refined grains"</code>, <code>"Red meat"</code>), mediators (PC1 and PC2), and the outcome of interest (<code>"BMI"</code>), adjusting for age and sex in both the exposure-mediator and mediator-outcome relationships.</p>
 <!-- Mediation analysis is then performed using the conventional "product" method on our selected exposures (i.e. `"Refined grains"`, `"Red meat"`), mediators (i.e. PC1 and PC2) and the selected outcome (i.e. `"BMI"`) of interest, adjusting for age and sex for both exposure-mediator and mediator-outcome relationship -->
+<p><a href="img/simple_4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="img/simple_4.png" class="img-fluid"></a></p>
 <p><a href="img/simple_4_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="img/simple_4_1.png" class="img-fluid"></a></p>
 </div>
 </div>
@@ -307,12 +308,12 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Please note that you need to click <strong><em>Do Mediation</em></strong> to initiate the mediation analysis.</li>
-<li>By default, only proportion mediated is visualized. You could go to the “Visualization setting” to select <strong><em>Mediation estimate or proportion</em></strong> as <em>Estimate</em> to show the indirect effect or total effect in the triplot with mediation.</li>
+<li>Please note that you need to click <strong><em>Do Mediation</em></strong> to initiate the mediation analysis. <!-- -   By default, only proportion mediated is visualized. You could go to the "Visualization setting" to select ***Mediation estimate or proportion*** as *Estimate* to show the indirect effect or total effect in the triplot with mediation. -->
+</li>
 </ul>
 </div>
 </div>
-<p>In Step 5B of the interface, you can view bar plots that display the direct, indirect, and total effects for each exposure-mediator-outcome combination. This tool conveniently illustrates the direction and magnitude of mediation estimates.</p>
+<p>In Step 5 of the interface, you can view barplots that display the direct, indirect, and total effects for each exposure-mediator-outcome combination. This tool conveniently illustrates the direction and magnitude of mediation estimates.</p>
 <p><a href="img/simple_4_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="img/simple_4_2.png" class="img-fluid"></a></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -331,9 +332,9 @@ Note
 </ul>
 </div>
 </div>
-<p>Based on the barplot and the triplot with mediation, we observed significant mediation effects through PC1 for the red_meat-BMI and refined_grain-BMI associations. This finding suggests that the metabolite features contributing to PC1 are likely mediating the pathway from red meat and refined grain intake to BMI changes. These results provide insight into potential metabolic mechanisms linking dietary patterns to body mass index.</p>
+<p>Based on the mediation barplot, we observed significant mediation effects through PC1 for the red_meat-BMI and refined_grain-BMI associations. This finding suggests that the metabolite features contributing to PC1 are likely mediating the pathway from red meat and refined grain intake to BMI changes. These results provide insight into potential metabolic mechanisms linking dietary patterns to body mass index.</p>
 </section><section id="comparative-visualization" class="level2"><h2 class="anchored" data-anchor-id="comparative-visualization">Comparative Visualization</h2>
-<p>Users can check the heatmaps of correlations, risk estimations, and mediation results in Step 5A of the interface. To focus specifically on the results relevant to PC1 and PC2, you can remove other principal components in the “Visualization Settings.” This will streamline the analysis, allowing for a clearer interpretation of the relationships involving these two components.</p>
+<p>Users can check the heatmaps of exposure associations, risk estimations, and mediation results in Comparative Visualization of the interface. To focus specifically on the results relevant to PC1 and PC2, you can remove other principal components in the “Visualization Settings.” This will streamline the analysis, allowing for a clearer interpretation of the relationships involving these two components.</p>
 <p><a href="img/simple_5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="img/simple_5.png" class="img-fluid"></a></p>
 <p><a href="img/simple_5_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="img/simple_5_1.png" class="img-fluid"></a></p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -349,7 +350,7 @@ Note
 <ul>
 <li>Significance is indicated as follows. One star for p&lt;0.05; Two stars for p&lt;0.01; Three stars for p&lt;0.001.</li>
 <li>The first two plots, correlation coefficients with exposures and risk estimates of outcomes will show all the exposure and outcome variables that are not removed from visualization.</li>
-<li>Note that only the selected exposures, mediators and outcomes that we use to do mediation on will show up in the mediation results. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure-outcome pair, 4 result are shown: <em>IE</em> (indirect effect), <em>TE</em> (total effect), <em>PM</em>(Proportion Mediated) and <em>APM</em>(Adjusted Proportion Mediated). Please see <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2" target="_blank">Details section</a> for more information. The “BK” before the names of exposures-outcome pairs means that this mediation is using the Coventional Baron-Kenny “product” method.</li>
+<li>Note that only the selected exposures, mediators and outcomes that we use to do mediation on will show up in the mediation results. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure-outcome pair, 4 result are shown: <em>IE</em> (indirect effect), <em>TE</em> (total effect), <em>PM</em>(Proportion Mediated) and <em>APM</em>(Adjusted Proportion Mediated). Please see <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2" target="_blank">Details section</a> for more information. The “BK” before the names of exposures-outcome pairs means that this mediation is using the Conventional Baron-Kenny “product” method. For this method, only the significant level of <em>IE</em> and <em>TE</em> is calculated and shown on the plot, but not <em>PM</em> and <em>APM</em>.</li>
 </ul>
 </div>
 </div>
@@ -458,7 +459,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <p><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></p>
 </div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","loop":false,"descPosition":"bottom"});
+</footer><script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","loop":false,"descPosition":"bottom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

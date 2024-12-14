@@ -372,10 +372,10 @@ TPObject1 <- makeTPO(scores = scores,
 
 ## Step 2-3: Exposure-Omics and Omics-Outcome associations
 
-The correlations between modules and food items and the associations between modules and risk markers can be then calculated, with confounders adjusted. Note that it is possible for users to skip code regarding correlations or risk association, if their interests focus on only outcome associations or exposure correlations with Omics variables.
+The associations between modules and food items and the associations between modules and risk markers can be then calculated, with confounders adjusted. Note that it is possible for users to skip code regarding exposure association or risk association, if their interests focus on only outcome associations or exposure associations with Omics variables.
 
 
-The modules information saved in the TPObject can be directly utilized in the `exposureAssociation()` function. This function calculates correlation coefficients and p-values between the modules and exposures (food variables and diet scores), while adjusting for specified confounders.
+The modules information saved in the TPObject can be directly utilized in the `exposureAssociation()` function. This function calculates exposure associations coefficients and p-values between the modules and exposures (food variables and diet scores), while adjusting for specified confounders.
 
 
 
@@ -620,10 +620,39 @@ mediation_plots3
 ::: callout-note
 The barplot displays direct, indirect, and total effects for each exposure-mediator-outcome combination, offering a convenient tool to assess the direction and magnitude of mediation estimates.
 
--   Color coding enhances interpretation: red indicates significant positive effects (p<0.05), blue shows significant negative effects (p<0.05), and grey represents insignificant effects.
+-   Color coding enhances interpretation: red indicates significant positive effects (p<0.05), cyan shows significant negative effects (p<0.05), and grey represents insignificant effects.
 -   Significance levels are denoted by stars: one star for p<0.05, two stars for p<0.01, and three stars for p<0.001.
 
 :::
+
+We will make an example interpretation of the mediation barplot using BSDS as exposure, turquoise module as mediator (the module on the x axis in the triplot in step 4) and BMI as outcome. 
+
+In the shown mediation barplot, we can observe the direction and magnitude of the indirect effect and proportion mediated. We observed that with all effects significant, indirect effect is negative, direct and total effect is positive. The negative indirect effect is consistent with the its visualization in the triplot, i.e, the turquiose module on the x axis associative with BSDS positively and with BMI negatively.
+
+However, the figure also shows that BSDS is positively associated with BMI through a larger direct effect. This seems counterintuitive but this could be due to a true direct effect or indirect effect mediated by other modules.
+
+Based on the mediation barplot, we've also observed significant proportion mediated with for BSDS-turquiose module-BMI mediations, suggesting a robust mediation effect.
+
+
+<!-- To visualize the adjusted proportion mediated (APM) and add layers of correlation and risk estimates, use the following settings. -->
+
+
+
+::: callout-note
+
+<!-- By observing this figure, we can see the direction and magnitude of adjusted proportion mediated (APM) for the two mediators across all exposures and outcomes. The positioning of the points is similar to what we observed for the proportion mediated (PM). -->
+
+-   Notably, the APM for BSDS (Baltic Sea Diet Score) as the exposure and T2D (Type 2 Diabetes) as the outcome is smaller than their corresponding PM (considering the abosolute value). This difference occurs because the indirect and direct effects for this mediation pathway are in opposite directions. This opposition leads to a smaller total effect and consequently a larger PM (considering the abosolute value). However, the APM is not affected by the directionality of the direct and indirect effects, providing a more stable measure of mediation.
+
+<!-- -   No confidence intervals are shown for APM. This is because APM values cannot be directly calculated from the mediation analysis in the `mediation` R package, unlike the proportion mediated (PM). -->
+
+-   The APM is always smaller than 1, even when direct and indirect effects are in opposite directions. This is due to the calculation method of APM, which uses the sum of the absolute values of indirect and direct effects as the denominator. $$APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{|IE|+|DE|}\cdot\frac{IE+DE}{|IE+DE|}$$
+:::
+
+
+
+To further explore the indirect, direct, and total effects of different combinations of mediations, you can run more mediation analysis at Step 5 in the TriplotGUI interface .
+
 
 Add the mediation result from `getMediationCounterfactual()` into the TPObject.
 
@@ -639,228 +668,228 @@ TPObject4 <- addMediation(TPObject = TPObject3,
 
 ```
 
-To create the triplot with mediation, use the provided function with its default arguments. This will generate a visualization that incorporates the mediation analysis results into the triplot framework. You can adjust these arguments as needed to customize the appearance and content of the triplot.
+<!-- To create the triplot with mediation, use the provided function with its default arguments. This will generate a visualization that incorporates the mediation analysis results into the triplot framework. You can adjust these arguments as needed to customize the appearance and content of the triplot. -->
 
-```{r showcode_runcode_noshowoutput_8}
-#| eval: true
-#| echo: true
-#| output: false
-#| classes: styled-output
-#| fold.plot: true
+<!-- ```{r showcode_runcode_noshowoutput_8} -->
+<!-- #| eval: true -->
+<!-- #| echo: true -->
+<!-- #| output: false -->
+<!-- #| classes: styled-output -->
+<!-- #| fold.plot: true -->
 
-TPO_plots4 <-
-  mediationTriplot(
-    TPObject4,
-    show = c("APM","PM"),
-    ##Which mediation estimate to show
-    firstPC = 1,
-    ##The first PC to map
-    secondPC = 2,
-    ##The second PC to map
-    plotMed = TRUE,
-    ##Whether to plot mediation estimates (TRUE; default) or suppress them (FALSE)
-    plotCorr = TRUE,
-    ##Whether to plot correlations (TRUE; default) or suppress them (FALSE)
-    plotRisk = TRUE,
-    ##Whether to plot risk estimates (TRUE; default) or suppress them (FALSE)
-    ###############################################
-    ##For correlations
-    colCorr = "blue",
-    ##Color vector for correlations
-    pchCorr = 16,
-    ##Plotting character for correlations
-    corrLim = NULL,
-    ##Plot range for correlations
-    corrLabels = TRUE,
-    ##Add labels on exposures
-    ###############################################
-    ##For risks
-    colRisk = "red",
-    ##Color vector for risk estimates
-    pchRisk = 15,
-    ##Plotting character for risk estimates
-    riskLim = NULL,
-    ##Plot range for risks
-    whiskerPercentageRisk = 0.1,
-    ##whisker length is how many percentage of confidence interval
-    riskLabels = TRUE,
-    ##Add labels on outcomes
-    riskOR = TRUE,
-    #plot the risk estimates as odds ratio
-    ###############################################
-    ##For mediations
-    colmed = "darkgreen",
-    ##Color vector for mediation estimates
-    pchmed = 17,
-    ##Plotting character for mediation estimates
-    medLim = NULL,
-    ##Plot range for mediations
-    whiskerPercentageMediation= 0.1,
-    ##whisker length is how many percentage of confidence interval
-    medLabels = TRUE,
-    ##Add labels on mediation estimates
-    #########################################
-    
-    size = 3
-    # the size of points ont he plot
-  )
+<!-- TPO_plots4 <- -->
+<!--   mediationTriplot( -->
+<!--     TPObject4, -->
+<!--     show = c("APM","PM"), -->
+<!--     ##Which mediation estimate to show -->
+<!--     firstPC = 1, -->
+<!--     ##The first PC to map -->
+<!--     secondPC = 2, -->
+<!--     ##The second PC to map -->
+<!--     plotMed = TRUE, -->
+<!--     ##Whether to plot mediation estimates (TRUE; default) or suppress them (FALSE) -->
+<!--     plotCorr = TRUE, -->
+<!--     ##Whether to plot correlations (TRUE; default) or suppress them (FALSE) -->
+<!--     plotRisk = TRUE, -->
+<!--     ##Whether to plot risk estimates (TRUE; default) or suppress them (FALSE) -->
+<!--     ############################################### -->
+<!--     ##For correlations -->
+<!--     colCorr = "blue", -->
+<!--     ##Color vector for correlations -->
+<!--     pchCorr = 16, -->
+<!--     ##Plotting character for correlations -->
+<!--     corrLim = NULL, -->
+<!--     ##Plot range for correlations -->
+<!--     corrLabels = TRUE, -->
+<!--     ##Add labels on exposures -->
+<!--     ############################################### -->
+<!--     ##For risks -->
+<!--     colRisk = "red", -->
+<!--     ##Color vector for risk estimates -->
+<!--     pchRisk = 15, -->
+<!--     ##Plotting character for risk estimates -->
+<!--     riskLim = NULL, -->
+<!--     ##Plot range for risks -->
+<!--     whiskerPercentageRisk = 0.1, -->
+<!--     ##whisker length is how many percentage of confidence interval -->
+<!--     riskLabels = TRUE, -->
+<!--     ##Add labels on outcomes -->
+<!--     riskOR = TRUE, -->
+<!--     #plot the risk estimates as odds ratio -->
+<!--     ############################################### -->
+<!--     ##For mediations -->
+<!--     colmed = "darkgreen", -->
+<!--     ##Color vector for mediation estimates -->
+<!--     pchmed = 17, -->
+<!--     ##Plotting character for mediation estimates -->
+<!--     medLim = NULL, -->
+<!--     ##Plot range for mediations -->
+<!--     whiskerPercentageMediation= 0.1, -->
+<!--     ##whisker length is how many percentage of confidence interval -->
+<!--     medLabels = TRUE, -->
+<!--     ##Add labels on mediation estimates -->
+<!--     ######################################### -->
 
-```
+<!--     size = 3 -->
+<!--     # the size of points ont he plot -->
+<!--   ) -->
 
-Only showing the mediation results.
+<!-- ``` -->
 
-```{r showcode_runcode_showoutput_13}
-#| eval: true
-#| echo: true
-#| output: true
-#| classes: styled-output
-#| fold.plot: true
-#| out-width: "100%"
-TPO_plots4$mediations_plot
+<!-- Only showing the mediation results. -->
 
-```
+<!-- ```{r showcode_runcode_showoutput_13} -->
+<!-- #| eval: true -->
+<!-- #| echo: true -->
+<!-- #| output: true -->
+<!-- #| classes: styled-output -->
+<!-- #| fold.plot: true -->
+<!-- #| out-width: "100%" -->
+<!-- TPO_plots4$mediations_plot -->
 
-The `mediationTriplot()` function displays only the proportion mediated (PM) and adjusted proportion mediated (APM) as dark green triangle points due to the specified `show = c("PM", "APM")` argument.
+<!-- ``` -->
 
-To reduce visual clutter, you can separate these by running the function twice: once with `show = c("PM")` and once with `show = c("APM")`. 
+<!-- The `mediationTriplot()` function displays only the proportion mediated (PM) and adjusted proportion mediated (APM) as dark green triangle points due to the specified `show = c("PM", "APM")` argument. -->
 
-```{r showcode_runcode_noshowoutput_8A}
-#| eval: true
-#| echo: true
-#| output: false
-#| classes: styled-output
-#| fold.plot: true
+<!-- To reduce visual clutter, you can separate these by running the function twice: once with `show = c("PM")` and once with `show = c("APM")`.  -->
 
-TPO_plots4 <-
-  mediationTriplot(
-    TPObject4,
-    show = c("PM")
-  )
-```
+<!-- ```{r showcode_runcode_noshowoutput_8A} -->
+<!-- #| eval: true -->
+<!-- #| echo: true -->
+<!-- #| output: false -->
+<!-- #| classes: styled-output -->
+<!-- #| fold.plot: true -->
 
-```{r showcode_runcode_showoutput_13B}
-#| eval: true
-#| echo: true
-#| output: true
-#| classes: styled-output
-#| fold.plot: true
-#| out-width: "100%"
-TPO_plots4$mediations_plot
+<!-- TPO_plots4 <- -->
+<!--   mediationTriplot( -->
+<!--     TPObject4, -->
+<!--     show = c("PM") -->
+<!--   ) -->
+<!-- ``` -->
 
-```
+<!-- ```{r showcode_runcode_showoutput_13B} -->
+<!-- #| eval: true -->
+<!-- #| echo: true -->
+<!-- #| output: true -->
+<!-- #| classes: styled-output -->
+<!-- #| fold.plot: true -->
+<!-- #| out-width: "100%" -->
+<!-- TPO_plots4$mediations_plot -->
 
-
-Four green triangles are displayed on the figure. Their x and y coordiates represent the eight combinations of exposures, mediators and outcomes.
-
--   exposure=BSDS, mediator= module 1, outcome=BMI
--   exposure=BSDS, mediator= module 2, outcome=BMI
--   exposure=Hamburger, mediator= module 1, outcome=BMI
--   exposure=Hamburger, mediator= module 2, outcome=BMI
--   exposure=BSDS, mediator= module 1, outcome=T2D
--   exposure=BSDS, mediator= module 2, outcome=T2D
--   exposure=Hamburger, mediator= module 1, outcome=T2D
--   exposure=Hamburger, mediator= module 2, outcome=T2D
-
-We can see from the confidence intervals that some PM values are not significant, with large intervals pushing triangle points towards the origin. To better examine these points and their dimensions, we zoom in by adjusting the limit of the proportion mediated. Setting `"medLim = 2.5"` restricts the plot's range from -2.5 to 2.5, allowing for a closer inspection of the points and their relationships within this more focused area
+<!-- ``` -->
 
 
+<!-- Four green triangles are displayed on the figure. Their x and y coordiates represent the eight combinations of exposures, mediators and outcomes. -->
 
-```{r showcode_runcode_noshowoutput_8B}
-#| eval: true
-#| echo: true
-#| output: false
-#| classes: styled-output
-#| fold.plot: true
+<!-- -   exposure=BSDS, mediator= module 1, outcome=BMI -->
+<!-- -   exposure=BSDS, mediator= module 2, outcome=BMI -->
+<!-- -   exposure=Hamburger, mediator= module 1, outcome=BMI -->
+<!-- -   exposure=Hamburger, mediator= module 2, outcome=BMI -->
+<!-- -   exposure=BSDS, mediator= module 1, outcome=T2D -->
+<!-- -   exposure=BSDS, mediator= module 2, outcome=T2D -->
+<!-- -   exposure=Hamburger, mediator= module 1, outcome=T2D -->
+<!-- -   exposure=Hamburger, mediator= module 2, outcome=T2D -->
 
-TPO_plots4 <-
-  mediationTriplot(
-    TPObject4,
-    show = c("PM"),
-    medLim = 2.5
-  )
-
-```
-
-```{r showcode_runcode_showoutput_13D}
-#| eval: true
-#| echo: true
-#| output: true
-#| classes: styled-output
-#| fold.plot: true
-#| out-width: "100%"
-TPO_plots4$mediations_plot
-
-```
-
-::: callout-note
--   Confidence intervals are automatically removed from the figure if they fall outside the set limits. 
--   In certain mediations, the direct and indirect effects may have opposite directions. This can result in a proportion mediated (PM) greater than 1. This occurs because the total effect might be smaller than the indirect effect.
-:::
+<!-- We can see from the confidence intervals that some PM values are not significant, with large intervals pushing triangle points towards the origin. To better examine these points and their dimensions, we zoom in by adjusting the limit of the proportion mediated. Setting `"medLim = 2.5"` restricts the plot's range from -2.5 to 2.5, allowing for a closer inspection of the points and their relationships within this more focused area -->
 
 
-Based on the figure showing the mediation analysis results, we can observe the direction and magnitude of proportion mediated for the 2 mediators (module 1 and 2), all the exposures and outcomes. Based on the confidence interval, we also observed that the PM for BSDS-module 1-BMI and BSDS-module 2-BMI mediation is significant.
+
+<!-- ```{r showcode_runcode_noshowoutput_8B} -->
+<!-- #| eval: true -->
+<!-- #| echo: true -->
+<!-- #| output: false -->
+<!-- #| classes: styled-output -->
+<!-- #| fold.plot: true -->
+
+<!-- TPO_plots4 <- -->
+<!--   mediationTriplot( -->
+<!--     TPObject4, -->
+<!--     show = c("PM"), -->
+<!--     medLim = 2.5 -->
+<!--   ) -->
+
+<!-- ``` -->
+
+<!-- ```{r showcode_runcode_showoutput_13D} -->
+<!-- #| eval: true -->
+<!-- #| echo: true -->
+<!-- #| output: true -->
+<!-- #| classes: styled-output -->
+<!-- #| fold.plot: true -->
+<!-- #| out-width: "100%" -->
+<!-- TPO_plots4$mediations_plot -->
+
+<!-- ``` -->
+
+<!-- ::: callout-note -->
+<!-- -   Confidence intervals are automatically removed from the figure if they fall outside the set limits.  -->
+<!-- -   In certain mediations, the direct and indirect effects may have opposite directions. This can result in a proportion mediated (PM) greater than 1. This occurs because the total effect might be smaller than the indirect effect. -->
+<!-- ::: -->
 
 
-To further examine the mediation results, we look at the adjusted proportion mediated (APM):
+<!-- Based on the figure showing the mediation analysis results, we can observe the direction and magnitude of proportion mediated for the 2 mediators (module 1 and 2), all the exposures and outcomes. Based on the confidence interval, we also observed that the PM for BSDS-module 1-BMI and BSDS-module 2-BMI mediation is significant. -->
 
-```{r showcode_runcode_noshowoutput_8C}
-#| eval: true
-#| echo: true
-#| output: false
-#| classes: styled-output
-#| fold.plot: true
 
-TPO_plots4 <-
-  mediationTriplot(
-    TPObject4,
-    show = c("APM")
-  )
+<!-- To further examine the mediation results, we look at the adjusted proportion mediated (APM): -->
 
-```
+<!-- ```{r showcode_runcode_noshowoutput_8C} -->
+<!-- #| eval: true -->
+<!-- #| echo: true -->
+<!-- #| output: false -->
+<!-- #| classes: styled-output -->
+<!-- #| fold.plot: true -->
 
-```{r showcode_runcode_showoutput_13F}
-#| eval: true
-#| echo: true
-#| output: true
-#| classes: styled-output
-#| fold.plot: true
-#| out-width: "100%"
-TPO_plots4$mediations_plot
+<!-- TPO_plots4 <- -->
+<!--   mediationTriplot( -->
+<!--     TPObject4, -->
+<!--     show = c("APM") -->
+<!--   ) -->
 
-```
+<!-- ``` -->
 
-By observing this figure, we can see the direction and magnitude of adjusted proportion mediated (APM) for the two mediators across all exposures and outcomes. The positioning of the points is similar to what we observed for the proportion mediated (PM).
+<!-- ```{r showcode_runcode_showoutput_13F} -->
+<!-- #| eval: true -->
+<!-- #| echo: true -->
+<!-- #| output: true -->
+<!-- #| classes: styled-output -->
+<!-- #| fold.plot: true -->
+<!-- #| out-width: "100%" -->
+<!-- TPO_plots4$mediations_plot -->
 
-Notably, the APM for BSDS (Baltic Sea Diet Score) as the exposure and T2D (Type 2 Diabetes) as the outcome is smaller than their corresponding PM. This difference occurs because the indirect and direct effects for this mediation pathway are of similar size but in opposite directions. This opposition leads to a smaller total effect and consequently a larger PM. However, the APM is not affected by the directionality of the direct and indirect effects, providing a more stable measure of mediation.
+<!-- ``` -->
 
-::: callout-note
--   No confidence intervals are shown for APM. This is because APM values cannot be directly calculated from the mediation analysis in the `mediation` R package, unlike the proportion mediated (PM).
+<!-- By observing this figure, we can see the direction and magnitude of adjusted proportion mediated (APM) for the two mediators across all exposures and outcomes. The positioning of the points is similar to what we observed for the proportion mediated (PM). -->
 
--   The APM is always smaller than 1, even when direct and indirect effects are in opposite directions. This is due to the calculation method of APM, which uses the sum of the absolute values of indirect and direct effects as the denominator. $$APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{|IE|+|DE|}\cdot\frac{IE+DE}{|IE+DE|}$$
-:::
+<!-- Notably, the APM for BSDS (Baltic Sea Diet Score) as the exposure and T2D (Type 2 Diabetes) as the outcome is smaller than their corresponding PM. This difference occurs because the indirect and direct effects for this mediation pathway are of similar size but in opposite directions. This opposition leads to a smaller total effect and consequently a larger PM. However, the APM is not affected by the directionality of the direct and indirect effects, providing a more stable measure of mediation. -->
 
-::: callout-note
+<!-- ::: callout-note -->
+<!-- -   No confidence intervals are shown for APM. This is because APM values cannot be directly calculated from the mediation analysis in the `mediation` R package, unlike the proportion mediated (PM). -->
 
-Specifying `show = c("PM", "APM", "IE", "TE")` in the `mediationTriplot()` function would display all estimates, including indirect effect (IE) and total effect (TE). However, this is not recommended as it can overcrowd the plot, making it difficult to interpret. 
+<!-- -   The APM is always smaller than 1, even when direct and indirect effects are in opposite directions. This is due to the calculation method of APM, which uses the sum of the absolute values of indirect and direct effects as the denominator. $$APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{|IE|+|DE|}\cdot\frac{IE+DE}{|IE+DE|}$$ -->
+<!-- ::: -->
 
-For a clearer visualization, it's better to view IE and TE separately. The [Tutorial(simple)](simple_code.qmd){target="_blank"} section provides examples of plots showing `"IE"` and `"TE"`, offering a more manageable and interpretable view of these mediation components.
+<!-- ::: callout-note -->
 
-:::
+<!-- Specifying `show = c("PM", "APM", "IE", "TE")` in the `mediationTriplot()` function would display all estimates, including indirect effect (IE) and total effect (TE). However, this is not recommended as it can overcrowd the plot, making it difficult to interpret.  -->
 
-Plot the triplot with mediation,
+<!-- For a clearer visualization, it's better to view IE and TE separately. The [Tutorial(simple)](simple_code.qmd){target="_blank"} section provides examples of plots showing `"IE"` and `"TE"`, offering a more manageable and interpretable view of these mediation components. -->
 
-```{r showcode_runcode_showoutput_14}
-#| eval: true
-#| echo: true
-#| output: true
-#| classes: styled-output
-#| fold.plot: true
-#| out-width: "100%"
-TPO_plots4$mediations_triplot
+<!-- ::: -->
 
-```
+<!-- Plot the triplot with mediation, -->
 
-Based on the barplot and the triplot with mediation, we’ve observed significant proportion mediated for BSDS-module 1/2-BMI mediations. Further exploration on indirect, direct and total effect of the mediation analysis could be explored by playing around the `show` argument in the `mediationTriplot()` function. We will not go into details here.
+<!-- ```{r showcode_runcode_showoutput_14} -->
+<!-- #| eval: true -->
+<!-- #| echo: true -->
+<!-- #| output: true -->
+<!-- #| classes: styled-output -->
+<!-- #| fold.plot: true -->
+<!-- #| out-width: "100%" -->
+<!-- TPO_plots4$mediations_triplot -->
+
+<!-- ``` -->
+
+<!-- Based on the barplot and the triplot with mediation, we’ve observed significant proportion mediated for BSDS-module 1/2-BMI mediations. Further exploration on indirect, direct and total effect of the mediation analysis could be explored by playing around the `show` argument in the `mediationTriplot()` function. We will not go into details here. -->
 
 ## Comparative Visualization
 

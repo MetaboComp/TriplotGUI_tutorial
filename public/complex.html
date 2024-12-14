@@ -228,8 +228,6 @@ window.Quarto = {
   <li><a href="#step-2-3-exposures-omics-and-omics-outcomes-associations" id="toc-step-2-3-exposures-omics-and-omics-outcomes-associations" class="nav-link" data-scroll-target="#step-2-3-exposures-omics-and-omics-outcomes-associations">Step 2-3: Exposures-Omics and Omics-Outcomes associations</a></li>
   <li><a href="#step-4-meet-in-the-middle-triplot-visualization" id="toc-step-4-meet-in-the-middle-triplot-visualization" class="nav-link" data-scroll-target="#step-4-meet-in-the-middle-triplot-visualization">Step 4: Meet-in-the-middle Triplot Visualization</a></li>
   <li><a href="#step-5-mediation-analysis-and-visualization" id="toc-step-5-mediation-analysis-and-visualization" class="nav-link" data-scroll-target="#step-5-mediation-analysis-and-visualization">Step 5: Mediation analysis and visualization</a></li>
-  <li><a href="#comparative-visualization" id="toc-comparative-visualization" class="nav-link" data-scroll-target="#comparative-visualization">Comparative Visualization</a></li>
-  <li><a href="#data-download" id="toc-data-download" class="nav-link" data-scroll-target="#data-download">Data download</a></li>
   </ul>
 </li>
   </ul><div class="toc-actions"><ul><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/edit/main/complex.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/blob/main/complex.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -393,7 +391,7 @@ Note
 <p><a href="img/complex_2_6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="img/complex_2_6.png" class="img-fluid"></a></p>
 </div>
 </div>
-<p>Change your “Data analysis settings” and “Visulization settings” as shown in the figure below.</p>
+<p>Change your “Data analysis settings” and “Visulization settings” as shown in the figure below. Multinomial regression is applied to categorical outcomes (i.e., <code>"BMI_cat"</code>), giving n-1 estimates. Logistic regression is used for binary outcomes (i.e., <code>"T2D"</code>), and linear regression for continuous ones (i.e., <code>"BMI"</code>). Confounders are adjusted for all analysis. Pairing variable is ignored when multinomial regression is selected.</p>
 <div class="columns">
 <div class="column" style="width: 45%">
 <p><a href="img/complex_2_7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="img/complex_2_7.png" class="img-fluid"></a></p>
@@ -480,7 +478,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In the counterfactual mediation analysis, contrast values of treatment and controls for each exposure needs to be specified. For each individual, the analysis considers what would happen if they received the treatment versus if they received the control. In brief, the algorithm uses these contrast values to calculate the potential outcomes under each scenario to estimate the direct and indirect effects. For a detailed explanation please refer to <a href="https://www.jstatsoft.org/article/view/v059i05" target="_blank">this paper</a> of the <code>mediation</code> R package.</p>
+<p>In the counterfactual mediation analysis, contrast values of treatment and controls for each exposure needs to be specified. For each individual, the analysis considers what would happen if they received the treatment (usually what is assumed as good for health) versus if they received the control (usually what is assumed not as good for health). In brief, the algorithm uses these contrast values to calculate the potential outcomes under each scenario to estimate the direct and indirect effects. For a detailed explanation please refer to <a href="https://www.jstatsoft.org/article/view/v059i05" target="_blank">this paper</a> of the <code>mediation</code> R package.</p>
 <p>If an exposure variable is continuous (numeric variable), it is recommended that the treatment and control contrast values are chosen between the range of the exposure variable. If an exposure variable is categorical (factor variable), the treatment and control contrast values should be chosen from the levels of the exposure variable.</p>
 </div>
 </div>
@@ -507,30 +505,22 @@ Note
 </ul>
 </div>
 </div>
-<p>You can explore the “Visualization settings” to customize how your plot is displayed. Start by selecting to show only the proportion mediated (PM). This will help you focus on the mediation effects in your analysis.</p>
-<p>Additionally, adjust the limits of the plot to enhance visibility. By fine-tuning these settings, you can ensure that the points representing your mediation results are more clearly visible, allowing for better interpretation and understanding of the data. Note that the confidence interval that beyond the limits of the plot will not be displayed on the plot.</p>
+<!-- Start by selecting to show only the proportion mediated (PM). This will help you focus on the mediation effects in your analysis. --><!-- Additionally, adjust the limits of the plot to enhance visibility. By fine-tuning these settings, you can ensure that the points representing your mediation results are more clearly visible, allowing for better interpretation and understanding of the data. Note that the confidence interval that beyond the limits of the plot will not be displayed on the plot. -->
 </div>
 <div class="columns">
 <div class="column" style="width: 40%">
+<p>You can use the “Visualization settings” to customize what exposure, mediator and outcome you want to display. The figure on the right using BSDS as exposure, turquoise module as mediator (the module on the x axis in the triplot in step 4) and BMI as outcome. We will explain its mediation barlot as an example of its interpretation.</p>
+</div><div class="column" style="width: 5%">
+
+</div><div class="column" style="width: 45%">
 <p><a href="img/complex_4_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="img/complex_4_2.png" class="img-fluid"></a></p>
-</div><div class="column" style="width: 5%">
-
-</div><div class="column" style="width: 45%">
+</div>
+<p>In the step 5 of the TriplotGUI interface, you can view barplots that display the direct, indirect, and total effects for each exposure-mediator-outcome combination. These barplots offer a convenient visual tool to check the direction and magnitude of mediation estimates.</p>
 <p><a href="img/complex_4_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="img/complex_4_3.png" class="img-fluid"></a></p>
-</div>
-<p>Four green triangles are displayed on the figure. Their x and y coordiates represent the eight combinations of exposures, mediators and outcomes.</p>
-<ul>
-<li>exposure=BSDS, mediator= module 1, outcome=BMI</li>
-<li>exposure=BSDS, mediator= module 2, outcome=BMI</li>
-<li>exposure=Hamburger, mediator= module 1, outcome=BMI</li>
-<li>exposure=Hamburger, mediator= module 2, outcome=BMI</li>
-<li>exposure=BSDS, mediator= module 1, outcome=T2D</li>
-<li>exposure=BSDS, mediator= module 2, outcome=T2D</li>
-<li>exposure=Hamburger, mediator= module 1, outcome=T2D</li>
-<li>exposure=Hamburger, mediator= module 2, outcome=T2D</li>
-</ul>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
+<!-- Four green triangles are displayed on the figure. Their x and y coordiates represent the eight combinations of exposures, mediators and outcomes. --><!-- -   exposure=BSDS, mediator= module 1, outcome=BMI --><!-- -   exposure=BSDS, mediator= module 2, outcome=BMI --><!-- -   exposure=Hamburger, mediator= module 1, outcome=BMI --><!-- -   exposure=Hamburger, mediator= module 2, outcome=BMI --><!-- -   exposure=BSDS, mediator= module 1, outcome=T2D --><!-- -   exposure=BSDS, mediator= module 2, outcome=T2D --><!-- -   exposure=Hamburger, mediator= module 1, outcome=T2D --><!-- -   exposure=Hamburger, mediator= module 2, outcome=T2D --><!-- ::: callout-note --><!-- -   Confidence intervals are automatically removed from the figure if they fall outside the set limits.  --><!-- -   In certain mediations, the direct and indirect effects may have opposite directions. This can result in a proportion mediated (PM) greater than 1. This occurs because the total effect might be smaller than the indirect effect. --><!-- ::: --><p>In the shown mediation barplot, we can observe the direction and magnitude of the indirect effect and proportion mediated. We observed that with all effects significant, indirect effect is negative, direct and total effect is positive. The negative indirect effect is consistent with the its visualization in the triplot, i.e, the turquiose module on the x axis associative with BSDS positively and with BMI negatively.</p>
+<p>However, the figure also shows that BSDS is positively associated with BMI through a larger direct effect. This seems counterintuitive but this could be due to a true direct effect or indirect effect mediated by other modules.</p>
+<p>Based on the mediation barplot, we’ve also observed significant proportion mediated with for BSDS-turquiose module-BMI mediations, suggesting a robust mediation effect.</p>
+<!-- To visualize the adjusted proportion mediated (APM) and add layers of correlation and risk estimates, use the following settings. --><div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -540,48 +530,21 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<!-- By observing this figure, we can see the direction and magnitude of adjusted proportion mediated (APM) for the two mediators across all exposures and outcomes. The positioning of the points is similar to what we observed for the proportion mediated (PM). -->
 <ul>
-<li>Confidence intervals are automatically removed from the figure if they fall outside the set limits.</li>
-<li>In certain mediations, the direct and indirect effects may have opposite directions. This can result in a proportion mediated (PM) greater than 1. This occurs because the total effect might be smaller than the indirect effect.</li>
+<li>Notably, the APM for BSDS (Baltic Sea Diet Score) as the exposure and T2D (Type 2 Diabetes) as the outcome is smaller than their corresponding PM (considering the abosolute value). This difference occurs because the indirect and direct effects for this mediation pathway are in opposite directions. This opposition leads to a smaller total effect and consequently a larger PM (considering the abosolute value). However, the APM is not affected by the directionality of the direct and indirect effects, providing a more stable measure of mediation.</li>
+</ul>
+<!-- -   No confidence intervals are shown for APM. This is because APM values cannot be directly calculated from the mediation analysis in the `mediation` R package, unlike the proportion mediated (PM). --><ul>
+<li>The APM is always smaller than 1, even when direct and indirect effects are in opposite directions. This is due to the calculation method of APM, which uses the sum of the absolute values of indirect and direct effects as the denominator. <span class="math display">\[APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{|IE|+|DE|}\cdot\frac{IE+DE}{|IE+DE|}\]</span>
+</li>
 </ul>
 </div>
 </div>
-<p>Based on the figure showing the mediation analysis results, we can observe the direction and magnitude of proportion mediated for the 2 mediators (module 1 and 2), all the exposures and outcomes. Based on the confidence interval, we also observed that the PM for BSDS-module 1-BMI and BSDS-module 2-BMI mediation is significant.</p>
-<div class="columns">
-<p>To visualize the adjusted proportion mediated (APM) and add layers of correlation and risk estimates, use the following settings.</p>
-<div class="column" style="width: 40%">
-<p><a href="img/complex_4_4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="img/complex_4_4.png" class="img-fluid"></a></p>
-</div><div class="column" style="width: 5%">
-
-</div><div class="column" style="width: 45%">
-<p><a href="img/complex_4_5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="img/complex_4_5.png" class="img-fluid"></a></p>
-</div>
-</div>
-<p>By observing this figure, we can see the direction and magnitude of adjusted proportion mediated (APM) for the two mediators across all exposures and outcomes. The positioning of the points is similar to what we observed for the proportion mediated (PM).</p>
-<p>Notably, the APM for BSDS (Baltic Sea Diet Score) as the exposure and T2D (Type 2 Diabetes) as the outcome is smaller than their corresponding PM. This difference occurs because the indirect and direct effects for this mediation pathway are of similar size but in opposite directions. This opposition leads to a smaller total effect and consequently a larger PM. However, the APM is not affected by the directionality of the direct and indirect effects, providing a more stable measure of mediation.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><p>No confidence intervals are shown for APM. This is because APM values cannot be directly calculated from the mediation analysis in the <code>mediation</code> R package, unlike the proportion mediated (PM).</p></li>
-<li><p>The APM is always smaller than 1, even when direct and indirect effects are in opposite directions. This is due to the calculation method of APM, which uses the sum of the absolute values of indirect and direct effects as the denominator. <span class="math display">\[APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{|IE|+|DE|}\cdot\frac{IE+DE}{|IE+DE|}\]</span></p></li>
-</ul>
-</div>
-</div>
-<p>In step 5B of the TriplotGUI interface, you can view barplots that display the direct, indirect, and total effects for each exposure-mediator-outcome combination. These barplots offer a convenient visual tool to check the direction and magnitude of mediation estimates.</p>
-<p><a href="img/complex_4_6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="img/complex_4_6.png" class="img-fluid"></a></p>
-<p>Based on the barplot and the triplot with mediation, we’ve observed significant proportion mediated for BSDS-module 1/2-BMI mediations. To further explore the indirect, direct, and total effects of different combinations of mediations, you can return to Step 5A in the TriplotGUI interface to run more mediation analysis.</p>
-</section><section id="comparative-visualization" class="level2"><h2 class="anchored" data-anchor-id="comparative-visualization">Comparative Visualization</h2>
+<p>To further explore the indirect, direct, and total effects of different combinations of mediations, you can run more mediation analysis at Step 5 in the TriplotGUI interface .</p>
+<section id="comparative-visualization" class="level2"><h2 class="anchored" data-anchor-id="comparative-visualization">Comparative Visualization</h2>
 <p>Users can examine the heatmaps of correlations, risk estimations, and mediation results in the TriplotGUI interface. To focus on specific aspects of interest, navigate to the “Visualization settings” section and remove unwanted mediators, exposures, or outcomes. This customization allows users to display only the correlation, risk estimation, and mediation results they find most relevant.</p>
-<p><a href="img/complex_5_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="img/complex_5_1.png" class="img-fluid"></a></p>
-<p><a href="img/complex_5_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="img/complex_5_2.png" class="img-fluid"></a></p>
+<p><a href="img/complex_5_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="img/complex_5_1.png" class="img-fluid"></a></p>
+<p><a href="img/complex_5_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="img/complex_5_2.png" class="img-fluid"></a></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -604,6 +567,8 @@ Note
 <p><img src="img/complex_6_1.png" class="img-fluid"><img src="img/complex_6_2.png" class="img-fluid"></p>
 
 
+</section>
+</div>
 </section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -704,7 +669,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <p><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></p>
 </div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","loop":false,"closeEffect":"zoom"});
+</footer><script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","selector":".lightbox","openEffect":"zoom","closeEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
