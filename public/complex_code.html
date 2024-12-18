@@ -1906,9 +1906,11 @@ Note
 <div class="callout-body-container callout-body">
 <!-- By observing this figure, we can see the direction and magnitude of adjusted proportion mediated (APM) for the two mediators across all exposures and outcomes. The positioning of the points is similar to what we observed for the proportion mediated (PM). -->
 <p><span class="math display">\[PM=\frac{IE}{IE+DE}\]</span></p>
-<p><span class="math display">\[APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{|IE|+|DE|}\cdot\frac{IE+DE}{|IE+DE|}\]</span> - Notably, the APM for BSDS (Baltic Sea Diet Score) as the exposure and T2D (Type 2 Diabetes) as the outcome is smaller than their corresponding PM (considering the abosolute value). This difference occurs because the indirect and direct effects for this mediation pathway are in opposite directions. This opposition leads to a smaller total effect and consequently a larger PM (considering the abosolute value). However, the APM is not affected by the directionality of the direct and indirect effects, providing a more stable measure of mediation.</p>
-<!-- -   No confidence intervals are shown for APM. This is because APM values cannot be directly calculated from the mediation analysis in the `mediation` R package, unlike the proportion mediated (PM). -->
+<p><span class="math display">\[APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{|IE|+|DE|}\cdot\frac{IE+DE}{|IE+DE|}\]</span></p>
 <ul>
+<li>Notably, the APM for BSDS (Baltic Sea Diet Score) as the exposure and T2D (Type 2 Diabetes) as the outcome is smaller than their corresponding PM (considering the abosolute value). This difference occurs because the indirect and direct effects for this mediation pathway are in opposite directions. This opposition leads to a smaller total effect and consequently a larger PM (considering the abosolute value). However, the APM is not affected by the directionality of the direct and indirect effects, providing a more stable measure of mediation.</li>
+</ul>
+<!-- -   No confidence intervals are shown for APM. This is because APM values cannot be directly calculated from the mediation analysis in the `mediation` R package, unlike the proportion mediated (PM). --><ul>
 <li>The APM is always smaller than 1, even when direct and indirect effects are in opposite directions. This is due to the calculation method of APM, which uses the sum of the absolute values of indirect and direct effects as the denominator.</li>
 </ul>
 </div>
@@ -2197,7 +2199,6 @@ Note
 <span>     <span class="st">"Tutorial_complex_output.rda"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>0</p>
 
 
 <!-- -->
@@ -3030,492 +3031,492 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb49-624"><a href="#cb49-624" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-625"><a href="#cb49-625" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
 <span id="cb49-626"><a href="#cb49-626" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- By observing this figure, we can see the direction and magnitude of adjusted proportion mediated (APM) for the two mediators across all exposures and outcomes. The positioning of the points is similar to what we observed for the proportion mediated (PM). --&gt;</span></span>
-<span id="cb49-627"><a href="#cb49-627" aria-hidden="true" tabindex="-1"></a>$$PM=\frac{IE}{IE+DE}$$</span>
-<span id="cb49-628"><a href="#cb49-628" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-629"><a href="#cb49-629" aria-hidden="true" tabindex="-1"></a>$$APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{|IE|+|DE|}\cdot\frac{IE+DE}{|IE+DE|}$$</span>
-<span id="cb49-630"><a href="#cb49-630" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Notably, the APM for BSDS (Baltic Sea Diet Score) as the exposure and T2D (Type 2 Diabetes) as the outcome is smaller than their corresponding PM (considering the abosolute value). This difference occurs because the indirect and direct effects for this mediation pathway are in opposite directions. This opposition leads to a smaller total effect and consequently a larger PM (considering the abosolute value). However, the APM is not affected by the directionality of the direct and indirect effects, providing a more stable measure of mediation.</span>
+<span id="cb49-627"><a href="#cb49-627" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-628"><a href="#cb49-628" aria-hidden="true" tabindex="-1"></a>$$PM=\frac{IE}{IE+DE}$$</span>
+<span id="cb49-629"><a href="#cb49-629" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-630"><a href="#cb49-630" aria-hidden="true" tabindex="-1"></a>$$APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{|IE|+|DE|}\cdot\frac{IE+DE}{|IE+DE|}$$</span>
 <span id="cb49-631"><a href="#cb49-631" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-632"><a href="#cb49-632" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   No confidence intervals are shown for APM. This is because APM values cannot be directly calculated from the mediation analysis in the `mediation` R package, unlike the proportion mediated (PM). --&gt;</span></span>
+<span id="cb49-632"><a href="#cb49-632" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Notably, the APM for BSDS (Baltic Sea Diet Score) as the exposure and T2D (Type 2 Diabetes) as the outcome is smaller than their corresponding PM (considering the abosolute value). This difference occurs because the indirect and direct effects for this mediation pathway are in opposite directions. This opposition leads to a smaller total effect and consequently a larger PM (considering the abosolute value). However, the APM is not affected by the directionality of the direct and indirect effects, providing a more stable measure of mediation.</span>
 <span id="cb49-633"><a href="#cb49-633" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-634"><a href="#cb49-634" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The APM is always smaller than 1, even when direct and indirect effects are in opposite directions. This is due to the calculation method of APM, which uses the sum of the absolute values of indirect and direct effects as the denominator. </span>
-<span id="cb49-635"><a href="#cb49-635" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb49-636"><a href="#cb49-636" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-637"><a href="#cb49-637" aria-hidden="true" tabindex="-1"></a>To further explore the indirect, direct, and total effects of different combinations of mediations, you can run more mediation analysis at Step 5 in the TriplotGUI interface .</span>
+<span id="cb49-634"><a href="#cb49-634" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   No confidence intervals are shown for APM. This is because APM values cannot be directly calculated from the mediation analysis in the `mediation` R package, unlike the proportion mediated (PM). --&gt;</span></span>
+<span id="cb49-635"><a href="#cb49-635" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-636"><a href="#cb49-636" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The APM is always smaller than 1, even when direct and indirect effects are in opposite directions. This is due to the calculation method of APM, which uses the sum of the absolute values of indirect and direct effects as the denominator. </span>
+<span id="cb49-637"><a href="#cb49-637" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb49-638"><a href="#cb49-638" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-639"><a href="#cb49-639" aria-hidden="true" tabindex="-1"></a>Add the mediation result from <span class="in">`getMediationCounterfactual()`</span> into the TPObject.</span>
+<span id="cb49-639"><a href="#cb49-639" aria-hidden="true" tabindex="-1"></a>To further explore the indirect, direct, and total effects of different combinations of mediations, you can run more mediation analysis at Step 5 in the TriplotGUI interface .</span>
 <span id="cb49-640"><a href="#cb49-640" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-641"><a href="#cb49-641" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_12}</span></span>
-<span id="cb49-642"><a href="#cb49-642" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb49-643"><a href="#cb49-643" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb49-644"><a href="#cb49-644" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
-<span id="cb49-645"><a href="#cb49-645" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb49-646"><a href="#cb49-646" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
-<span id="cb49-647"><a href="#cb49-647" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-648"><a href="#cb49-648" aria-hidden="true" tabindex="-1"></a><span class="in">TPObject4 &lt;- addMediation(TPObject = TPObject3, </span></span>
-<span id="cb49-649"><a href="#cb49-649" aria-hidden="true" tabindex="-1"></a><span class="in">                          mediationObject = mediation_object3)</span></span>
-<span id="cb49-650"><a href="#cb49-650" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-651"><a href="#cb49-651" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-641"><a href="#cb49-641" aria-hidden="true" tabindex="-1"></a>Add the mediation result from <span class="in">`getMediationCounterfactual()`</span> into the TPObject.</span>
+<span id="cb49-642"><a href="#cb49-642" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-643"><a href="#cb49-643" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_12}</span></span>
+<span id="cb49-644"><a href="#cb49-644" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb49-645"><a href="#cb49-645" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb49-646"><a href="#cb49-646" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
+<span id="cb49-647"><a href="#cb49-647" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb49-648"><a href="#cb49-648" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
+<span id="cb49-649"><a href="#cb49-649" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-650"><a href="#cb49-650" aria-hidden="true" tabindex="-1"></a><span class="in">TPObject4 &lt;- addMediation(TPObject = TPObject3, </span></span>
+<span id="cb49-651"><a href="#cb49-651" aria-hidden="true" tabindex="-1"></a><span class="in">                          mediationObject = mediation_object3)</span></span>
 <span id="cb49-652"><a href="#cb49-652" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-653"><a href="#cb49-653" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- To create the triplot with mediation, use the provided function with its default arguments. This will generate a visualization that incorporates the mediation analysis results into the triplot framework. You can adjust these arguments as needed to customize the appearance and content of the triplot. --&gt;</span></span>
+<span id="cb49-653"><a href="#cb49-653" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb49-654"><a href="#cb49-654" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-655"><a href="#cb49-655" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_noshowoutput_8} --&gt;</span></span>
+<span id="cb49-655"><a href="#cb49-655" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- To create the triplot with mediation, use the provided function with its default arguments. This will generate a visualization that incorporates the mediation analysis results into the triplot framework. You can adjust these arguments as needed to customize the appearance and content of the triplot. --&gt;</span></span>
 <span id="cb49-656"><a href="#cb49-656" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-657"><a href="#cb49-657" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
+<span id="cb49-657"><a href="#cb49-657" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_noshowoutput_8} --&gt;</span></span>
 <span id="cb49-658"><a href="#cb49-658" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-659"><a href="#cb49-659" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
+<span id="cb49-659"><a href="#cb49-659" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
 <span id="cb49-660"><a href="#cb49-660" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-661"><a href="#cb49-661" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: false --&gt;</span></span>
+<span id="cb49-661"><a href="#cb49-661" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
 <span id="cb49-662"><a href="#cb49-662" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-663"><a href="#cb49-663" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
+<span id="cb49-663"><a href="#cb49-663" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: false --&gt;</span></span>
 <span id="cb49-664"><a href="#cb49-664" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-665"><a href="#cb49-665" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
+<span id="cb49-665"><a href="#cb49-665" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
 <span id="cb49-666"><a href="#cb49-666" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-667"><a href="#cb49-667" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- TPO_plots4 &lt;- --&gt;</span></span>
+<span id="cb49-667"><a href="#cb49-667" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
 <span id="cb49-668"><a href="#cb49-668" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-669"><a href="#cb49-669" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   mediationTriplot( --&gt;</span></span>
+<span id="cb49-669"><a href="#cb49-669" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- TPO_plots4 &lt;- --&gt;</span></span>
 <span id="cb49-670"><a href="#cb49-670" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-671"><a href="#cb49-671" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     TPObject4, --&gt;</span></span>
+<span id="cb49-671"><a href="#cb49-671" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   mediationTriplot( --&gt;</span></span>
 <span id="cb49-672"><a href="#cb49-672" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-673"><a href="#cb49-673" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     show = c("APM","PM"), --&gt;</span></span>
+<span id="cb49-673"><a href="#cb49-673" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     TPObject4, --&gt;</span></span>
 <span id="cb49-674"><a href="#cb49-674" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-675"><a href="#cb49-675" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Which mediation estimate to show --&gt;</span></span>
+<span id="cb49-675"><a href="#cb49-675" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     show = c("APM","PM"), --&gt;</span></span>
 <span id="cb49-676"><a href="#cb49-676" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-677"><a href="#cb49-677" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     firstPC = 1, --&gt;</span></span>
+<span id="cb49-677"><a href="#cb49-677" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Which mediation estimate to show --&gt;</span></span>
 <span id="cb49-678"><a href="#cb49-678" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-679"><a href="#cb49-679" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##The first PC to map --&gt;</span></span>
+<span id="cb49-679"><a href="#cb49-679" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     firstPC = 1, --&gt;</span></span>
 <span id="cb49-680"><a href="#cb49-680" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-681"><a href="#cb49-681" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     secondPC = 2, --&gt;</span></span>
+<span id="cb49-681"><a href="#cb49-681" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##The first PC to map --&gt;</span></span>
 <span id="cb49-682"><a href="#cb49-682" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-683"><a href="#cb49-683" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##The second PC to map --&gt;</span></span>
+<span id="cb49-683"><a href="#cb49-683" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     secondPC = 2, --&gt;</span></span>
 <span id="cb49-684"><a href="#cb49-684" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-685"><a href="#cb49-685" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     plotMed = TRUE, --&gt;</span></span>
+<span id="cb49-685"><a href="#cb49-685" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##The second PC to map --&gt;</span></span>
 <span id="cb49-686"><a href="#cb49-686" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-687"><a href="#cb49-687" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Whether to plot mediation estimates (TRUE; default) or suppress them (FALSE) --&gt;</span></span>
+<span id="cb49-687"><a href="#cb49-687" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     plotMed = TRUE, --&gt;</span></span>
 <span id="cb49-688"><a href="#cb49-688" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-689"><a href="#cb49-689" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     plotCorr = TRUE, --&gt;</span></span>
+<span id="cb49-689"><a href="#cb49-689" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Whether to plot mediation estimates (TRUE; default) or suppress them (FALSE) --&gt;</span></span>
 <span id="cb49-690"><a href="#cb49-690" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-691"><a href="#cb49-691" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Whether to plot correlations (TRUE; default) or suppress them (FALSE) --&gt;</span></span>
+<span id="cb49-691"><a href="#cb49-691" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     plotCorr = TRUE, --&gt;</span></span>
 <span id="cb49-692"><a href="#cb49-692" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-693"><a href="#cb49-693" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     plotRisk = TRUE, --&gt;</span></span>
+<span id="cb49-693"><a href="#cb49-693" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Whether to plot correlations (TRUE; default) or suppress them (FALSE) --&gt;</span></span>
 <span id="cb49-694"><a href="#cb49-694" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-695"><a href="#cb49-695" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Whether to plot risk estimates (TRUE; default) or suppress them (FALSE) --&gt;</span></span>
+<span id="cb49-695"><a href="#cb49-695" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     plotRisk = TRUE, --&gt;</span></span>
 <span id="cb49-696"><a href="#cb49-696" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-697"><a href="#cb49-697" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ############################################### --&gt;</span></span>
+<span id="cb49-697"><a href="#cb49-697" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Whether to plot risk estimates (TRUE; default) or suppress them (FALSE) --&gt;</span></span>
 <span id="cb49-698"><a href="#cb49-698" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-699"><a href="#cb49-699" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##For correlations --&gt;</span></span>
+<span id="cb49-699"><a href="#cb49-699" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ############################################### --&gt;</span></span>
 <span id="cb49-700"><a href="#cb49-700" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-701"><a href="#cb49-701" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     colCorr = "blue", --&gt;</span></span>
+<span id="cb49-701"><a href="#cb49-701" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##For correlations --&gt;</span></span>
 <span id="cb49-702"><a href="#cb49-702" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-703"><a href="#cb49-703" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Color vector for correlations --&gt;</span></span>
+<span id="cb49-703"><a href="#cb49-703" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     colCorr = "blue", --&gt;</span></span>
 <span id="cb49-704"><a href="#cb49-704" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-705"><a href="#cb49-705" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     pchCorr = 16, --&gt;</span></span>
+<span id="cb49-705"><a href="#cb49-705" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Color vector for correlations --&gt;</span></span>
 <span id="cb49-706"><a href="#cb49-706" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-707"><a href="#cb49-707" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Plotting character for correlations --&gt;</span></span>
+<span id="cb49-707"><a href="#cb49-707" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     pchCorr = 16, --&gt;</span></span>
 <span id="cb49-708"><a href="#cb49-708" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-709"><a href="#cb49-709" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     corrLim = NULL, --&gt;</span></span>
+<span id="cb49-709"><a href="#cb49-709" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Plotting character for correlations --&gt;</span></span>
 <span id="cb49-710"><a href="#cb49-710" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-711"><a href="#cb49-711" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Plot range for correlations --&gt;</span></span>
+<span id="cb49-711"><a href="#cb49-711" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     corrLim = NULL, --&gt;</span></span>
 <span id="cb49-712"><a href="#cb49-712" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-713"><a href="#cb49-713" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     corrLabels = TRUE, --&gt;</span></span>
+<span id="cb49-713"><a href="#cb49-713" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Plot range for correlations --&gt;</span></span>
 <span id="cb49-714"><a href="#cb49-714" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-715"><a href="#cb49-715" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Add labels on exposures --&gt;</span></span>
+<span id="cb49-715"><a href="#cb49-715" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     corrLabels = TRUE, --&gt;</span></span>
 <span id="cb49-716"><a href="#cb49-716" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-717"><a href="#cb49-717" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ############################################### --&gt;</span></span>
+<span id="cb49-717"><a href="#cb49-717" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Add labels on exposures --&gt;</span></span>
 <span id="cb49-718"><a href="#cb49-718" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-719"><a href="#cb49-719" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##For risks --&gt;</span></span>
+<span id="cb49-719"><a href="#cb49-719" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ############################################### --&gt;</span></span>
 <span id="cb49-720"><a href="#cb49-720" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-721"><a href="#cb49-721" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     colRisk = "red", --&gt;</span></span>
+<span id="cb49-721"><a href="#cb49-721" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##For risks --&gt;</span></span>
 <span id="cb49-722"><a href="#cb49-722" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-723"><a href="#cb49-723" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Color vector for risk estimates --&gt;</span></span>
+<span id="cb49-723"><a href="#cb49-723" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     colRisk = "red", --&gt;</span></span>
 <span id="cb49-724"><a href="#cb49-724" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-725"><a href="#cb49-725" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     pchRisk = 15, --&gt;</span></span>
+<span id="cb49-725"><a href="#cb49-725" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Color vector for risk estimates --&gt;</span></span>
 <span id="cb49-726"><a href="#cb49-726" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-727"><a href="#cb49-727" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Plotting character for risk estimates --&gt;</span></span>
+<span id="cb49-727"><a href="#cb49-727" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     pchRisk = 15, --&gt;</span></span>
 <span id="cb49-728"><a href="#cb49-728" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-729"><a href="#cb49-729" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     riskLim = NULL, --&gt;</span></span>
+<span id="cb49-729"><a href="#cb49-729" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Plotting character for risk estimates --&gt;</span></span>
 <span id="cb49-730"><a href="#cb49-730" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-731"><a href="#cb49-731" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Plot range for risks --&gt;</span></span>
+<span id="cb49-731"><a href="#cb49-731" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     riskLim = NULL, --&gt;</span></span>
 <span id="cb49-732"><a href="#cb49-732" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-733"><a href="#cb49-733" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     whiskerPercentageRisk = 0.1, --&gt;</span></span>
+<span id="cb49-733"><a href="#cb49-733" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Plot range for risks --&gt;</span></span>
 <span id="cb49-734"><a href="#cb49-734" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-735"><a href="#cb49-735" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##whisker length is how many percentage of confidence interval --&gt;</span></span>
+<span id="cb49-735"><a href="#cb49-735" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     whiskerPercentageRisk = 0.1, --&gt;</span></span>
 <span id="cb49-736"><a href="#cb49-736" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-737"><a href="#cb49-737" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     riskLabels = TRUE, --&gt;</span></span>
+<span id="cb49-737"><a href="#cb49-737" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##whisker length is how many percentage of confidence interval --&gt;</span></span>
 <span id="cb49-738"><a href="#cb49-738" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-739"><a href="#cb49-739" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Add labels on outcomes --&gt;</span></span>
+<span id="cb49-739"><a href="#cb49-739" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     riskLabels = TRUE, --&gt;</span></span>
 <span id="cb49-740"><a href="#cb49-740" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-741"><a href="#cb49-741" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     riskOR = TRUE, --&gt;</span></span>
+<span id="cb49-741"><a href="#cb49-741" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Add labels on outcomes --&gt;</span></span>
 <span id="cb49-742"><a href="#cb49-742" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-743"><a href="#cb49-743" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     #plot the risk estimates as odds ratio --&gt;</span></span>
+<span id="cb49-743"><a href="#cb49-743" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     riskOR = TRUE, --&gt;</span></span>
 <span id="cb49-744"><a href="#cb49-744" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-745"><a href="#cb49-745" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ############################################### --&gt;</span></span>
+<span id="cb49-745"><a href="#cb49-745" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     #plot the risk estimates as odds ratio --&gt;</span></span>
 <span id="cb49-746"><a href="#cb49-746" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-747"><a href="#cb49-747" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##For mediations --&gt;</span></span>
+<span id="cb49-747"><a href="#cb49-747" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ############################################### --&gt;</span></span>
 <span id="cb49-748"><a href="#cb49-748" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-749"><a href="#cb49-749" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     colmed = "darkgreen", --&gt;</span></span>
+<span id="cb49-749"><a href="#cb49-749" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##For mediations --&gt;</span></span>
 <span id="cb49-750"><a href="#cb49-750" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-751"><a href="#cb49-751" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Color vector for mediation estimates --&gt;</span></span>
+<span id="cb49-751"><a href="#cb49-751" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     colmed = "darkgreen", --&gt;</span></span>
 <span id="cb49-752"><a href="#cb49-752" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-753"><a href="#cb49-753" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     pchmed = 17, --&gt;</span></span>
+<span id="cb49-753"><a href="#cb49-753" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Color vector for mediation estimates --&gt;</span></span>
 <span id="cb49-754"><a href="#cb49-754" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-755"><a href="#cb49-755" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Plotting character for mediation estimates --&gt;</span></span>
+<span id="cb49-755"><a href="#cb49-755" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     pchmed = 17, --&gt;</span></span>
 <span id="cb49-756"><a href="#cb49-756" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-757"><a href="#cb49-757" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     medLim = NULL, --&gt;</span></span>
+<span id="cb49-757"><a href="#cb49-757" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Plotting character for mediation estimates --&gt;</span></span>
 <span id="cb49-758"><a href="#cb49-758" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-759"><a href="#cb49-759" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Plot range for mediations --&gt;</span></span>
+<span id="cb49-759"><a href="#cb49-759" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     medLim = NULL, --&gt;</span></span>
 <span id="cb49-760"><a href="#cb49-760" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-761"><a href="#cb49-761" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     whiskerPercentageMediation= 0.1, --&gt;</span></span>
+<span id="cb49-761"><a href="#cb49-761" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Plot range for mediations --&gt;</span></span>
 <span id="cb49-762"><a href="#cb49-762" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-763"><a href="#cb49-763" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##whisker length is how many percentage of confidence interval --&gt;</span></span>
+<span id="cb49-763"><a href="#cb49-763" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     whiskerPercentageMediation= 0.1, --&gt;</span></span>
 <span id="cb49-764"><a href="#cb49-764" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-765"><a href="#cb49-765" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     medLabels = TRUE, --&gt;</span></span>
+<span id="cb49-765"><a href="#cb49-765" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##whisker length is how many percentage of confidence interval --&gt;</span></span>
 <span id="cb49-766"><a href="#cb49-766" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-767"><a href="#cb49-767" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Add labels on mediation estimates --&gt;</span></span>
+<span id="cb49-767"><a href="#cb49-767" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     medLabels = TRUE, --&gt;</span></span>
 <span id="cb49-768"><a href="#cb49-768" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-769"><a href="#cb49-769" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ######################################### --&gt;</span></span>
+<span id="cb49-769"><a href="#cb49-769" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ##Add labels on mediation estimates --&gt;</span></span>
 <span id="cb49-770"><a href="#cb49-770" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-771"><a href="#cb49-771" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     size = 3 --&gt;</span></span>
+<span id="cb49-771"><a href="#cb49-771" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     ######################################### --&gt;</span></span>
 <span id="cb49-772"><a href="#cb49-772" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-773"><a href="#cb49-773" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     # the size of points ont he plot --&gt;</span></span>
+<span id="cb49-773"><a href="#cb49-773" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     size = 3 --&gt;</span></span>
 <span id="cb49-774"><a href="#cb49-774" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-775"><a href="#cb49-775" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   ) --&gt;</span></span>
+<span id="cb49-775"><a href="#cb49-775" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     # the size of points ont he plot --&gt;</span></span>
 <span id="cb49-776"><a href="#cb49-776" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-777"><a href="#cb49-777" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
+<span id="cb49-777"><a href="#cb49-777" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   ) --&gt;</span></span>
 <span id="cb49-778"><a href="#cb49-778" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-779"><a href="#cb49-779" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Only showing the mediation results. --&gt;</span></span>
+<span id="cb49-779"><a href="#cb49-779" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
 <span id="cb49-780"><a href="#cb49-780" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-781"><a href="#cb49-781" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_showoutput_13} --&gt;</span></span>
+<span id="cb49-781"><a href="#cb49-781" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Only showing the mediation results. --&gt;</span></span>
 <span id="cb49-782"><a href="#cb49-782" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-783"><a href="#cb49-783" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
+<span id="cb49-783"><a href="#cb49-783" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_showoutput_13} --&gt;</span></span>
 <span id="cb49-784"><a href="#cb49-784" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-785"><a href="#cb49-785" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
+<span id="cb49-785"><a href="#cb49-785" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
 <span id="cb49-786"><a href="#cb49-786" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-787"><a href="#cb49-787" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: true --&gt;</span></span>
+<span id="cb49-787"><a href="#cb49-787" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
 <span id="cb49-788"><a href="#cb49-788" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-789"><a href="#cb49-789" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
+<span id="cb49-789"><a href="#cb49-789" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: true --&gt;</span></span>
 <span id="cb49-790"><a href="#cb49-790" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-791"><a href="#cb49-791" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
+<span id="cb49-791"><a href="#cb49-791" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
 <span id="cb49-792"><a href="#cb49-792" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-793"><a href="#cb49-793" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| out-width: "100%" --&gt;</span></span>
+<span id="cb49-793"><a href="#cb49-793" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
 <span id="cb49-794"><a href="#cb49-794" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-795"><a href="#cb49-795" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- TPO_plots4$mediations_plot --&gt;</span></span>
+<span id="cb49-795"><a href="#cb49-795" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| out-width: "100%" --&gt;</span></span>
 <span id="cb49-796"><a href="#cb49-796" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-797"><a href="#cb49-797" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
+<span id="cb49-797"><a href="#cb49-797" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- TPO_plots4$mediations_plot --&gt;</span></span>
 <span id="cb49-798"><a href="#cb49-798" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-799"><a href="#cb49-799" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- The `mediationTriplot()` function displays only the proportion mediated (PM) and adjusted proportion mediated (APM) as dark green triangle points due to the specified `show = c("PM", "APM")` argument. --&gt;</span></span>
+<span id="cb49-799"><a href="#cb49-799" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
 <span id="cb49-800"><a href="#cb49-800" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-801"><a href="#cb49-801" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- To reduce visual clutter, you can separate these by running the function twice: once with `show = c("PM")` and once with `show = c("APM")`.  --&gt;</span></span>
+<span id="cb49-801"><a href="#cb49-801" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- The `mediationTriplot()` function displays only the proportion mediated (PM) and adjusted proportion mediated (APM) as dark green triangle points due to the specified `show = c("PM", "APM")` argument. --&gt;</span></span>
 <span id="cb49-802"><a href="#cb49-802" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-803"><a href="#cb49-803" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_noshowoutput_8A} --&gt;</span></span>
+<span id="cb49-803"><a href="#cb49-803" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- To reduce visual clutter, you can separate these by running the function twice: once with `show = c("PM")` and once with `show = c("APM")`.  --&gt;</span></span>
 <span id="cb49-804"><a href="#cb49-804" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-805"><a href="#cb49-805" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
+<span id="cb49-805"><a href="#cb49-805" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_noshowoutput_8A} --&gt;</span></span>
 <span id="cb49-806"><a href="#cb49-806" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-807"><a href="#cb49-807" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
+<span id="cb49-807"><a href="#cb49-807" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
 <span id="cb49-808"><a href="#cb49-808" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-809"><a href="#cb49-809" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: false --&gt;</span></span>
+<span id="cb49-809"><a href="#cb49-809" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
 <span id="cb49-810"><a href="#cb49-810" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-811"><a href="#cb49-811" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
+<span id="cb49-811"><a href="#cb49-811" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: false --&gt;</span></span>
 <span id="cb49-812"><a href="#cb49-812" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-813"><a href="#cb49-813" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
+<span id="cb49-813"><a href="#cb49-813" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
 <span id="cb49-814"><a href="#cb49-814" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-815"><a href="#cb49-815" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- TPO_plots4 &lt;- --&gt;</span></span>
+<span id="cb49-815"><a href="#cb49-815" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
 <span id="cb49-816"><a href="#cb49-816" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-817"><a href="#cb49-817" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   mediationTriplot( --&gt;</span></span>
+<span id="cb49-817"><a href="#cb49-817" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- TPO_plots4 &lt;- --&gt;</span></span>
 <span id="cb49-818"><a href="#cb49-818" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-819"><a href="#cb49-819" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     TPObject4, --&gt;</span></span>
+<span id="cb49-819"><a href="#cb49-819" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   mediationTriplot( --&gt;</span></span>
 <span id="cb49-820"><a href="#cb49-820" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-821"><a href="#cb49-821" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     show = c("PM") --&gt;</span></span>
+<span id="cb49-821"><a href="#cb49-821" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     TPObject4, --&gt;</span></span>
 <span id="cb49-822"><a href="#cb49-822" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-823"><a href="#cb49-823" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   ) --&gt;</span></span>
+<span id="cb49-823"><a href="#cb49-823" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     show = c("PM") --&gt;</span></span>
 <span id="cb49-824"><a href="#cb49-824" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-825"><a href="#cb49-825" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
+<span id="cb49-825"><a href="#cb49-825" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   ) --&gt;</span></span>
 <span id="cb49-826"><a href="#cb49-826" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-827"><a href="#cb49-827" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_showoutput_13B} --&gt;</span></span>
+<span id="cb49-827"><a href="#cb49-827" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
 <span id="cb49-828"><a href="#cb49-828" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-829"><a href="#cb49-829" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
+<span id="cb49-829"><a href="#cb49-829" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_showoutput_13B} --&gt;</span></span>
 <span id="cb49-830"><a href="#cb49-830" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-831"><a href="#cb49-831" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
+<span id="cb49-831"><a href="#cb49-831" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
 <span id="cb49-832"><a href="#cb49-832" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-833"><a href="#cb49-833" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: true --&gt;</span></span>
+<span id="cb49-833"><a href="#cb49-833" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
 <span id="cb49-834"><a href="#cb49-834" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-835"><a href="#cb49-835" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
+<span id="cb49-835"><a href="#cb49-835" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: true --&gt;</span></span>
 <span id="cb49-836"><a href="#cb49-836" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-837"><a href="#cb49-837" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
+<span id="cb49-837"><a href="#cb49-837" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
 <span id="cb49-838"><a href="#cb49-838" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-839"><a href="#cb49-839" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| out-width: "100%" --&gt;</span></span>
+<span id="cb49-839"><a href="#cb49-839" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
 <span id="cb49-840"><a href="#cb49-840" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-841"><a href="#cb49-841" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- TPO_plots4$mediations_plot --&gt;</span></span>
+<span id="cb49-841"><a href="#cb49-841" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| out-width: "100%" --&gt;</span></span>
 <span id="cb49-842"><a href="#cb49-842" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-843"><a href="#cb49-843" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
+<span id="cb49-843"><a href="#cb49-843" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- TPO_plots4$mediations_plot --&gt;</span></span>
 <span id="cb49-844"><a href="#cb49-844" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-845"><a href="#cb49-845" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Four green triangles are displayed on the figure. Their x and y coordiates represent the eight combinations of exposures, mediators and outcomes. --&gt;</span></span>
+<span id="cb49-845"><a href="#cb49-845" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
 <span id="cb49-846"><a href="#cb49-846" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-847"><a href="#cb49-847" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   exposure=BSDS, mediator= module 1, outcome=BMI --&gt;</span></span>
+<span id="cb49-847"><a href="#cb49-847" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Four green triangles are displayed on the figure. Their x and y coordiates represent the eight combinations of exposures, mediators and outcomes. --&gt;</span></span>
 <span id="cb49-848"><a href="#cb49-848" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-849"><a href="#cb49-849" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   exposure=BSDS, mediator= module 2, outcome=BMI --&gt;</span></span>
+<span id="cb49-849"><a href="#cb49-849" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   exposure=BSDS, mediator= module 1, outcome=BMI --&gt;</span></span>
 <span id="cb49-850"><a href="#cb49-850" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-851"><a href="#cb49-851" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   exposure=Hamburger, mediator= module 1, outcome=BMI --&gt;</span></span>
+<span id="cb49-851"><a href="#cb49-851" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   exposure=BSDS, mediator= module 2, outcome=BMI --&gt;</span></span>
 <span id="cb49-852"><a href="#cb49-852" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-853"><a href="#cb49-853" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   exposure=Hamburger, mediator= module 2, outcome=BMI --&gt;</span></span>
+<span id="cb49-853"><a href="#cb49-853" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   exposure=Hamburger, mediator= module 1, outcome=BMI --&gt;</span></span>
 <span id="cb49-854"><a href="#cb49-854" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-855"><a href="#cb49-855" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   exposure=BSDS, mediator= module 1, outcome=T2D --&gt;</span></span>
+<span id="cb49-855"><a href="#cb49-855" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   exposure=Hamburger, mediator= module 2, outcome=BMI --&gt;</span></span>
 <span id="cb49-856"><a href="#cb49-856" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-857"><a href="#cb49-857" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   exposure=BSDS, mediator= module 2, outcome=T2D --&gt;</span></span>
+<span id="cb49-857"><a href="#cb49-857" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   exposure=BSDS, mediator= module 1, outcome=T2D --&gt;</span></span>
 <span id="cb49-858"><a href="#cb49-858" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-859"><a href="#cb49-859" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   exposure=Hamburger, mediator= module 1, outcome=T2D --&gt;</span></span>
+<span id="cb49-859"><a href="#cb49-859" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   exposure=BSDS, mediator= module 2, outcome=T2D --&gt;</span></span>
 <span id="cb49-860"><a href="#cb49-860" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-861"><a href="#cb49-861" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   exposure=Hamburger, mediator= module 2, outcome=T2D --&gt;</span></span>
+<span id="cb49-861"><a href="#cb49-861" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   exposure=Hamburger, mediator= module 1, outcome=T2D --&gt;</span></span>
 <span id="cb49-862"><a href="#cb49-862" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-863"><a href="#cb49-863" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- We can see from the confidence intervals that some PM values are not significant, with large intervals pushing triangle points towards the origin. To better examine these points and their dimensions, we zoom in by adjusting the limit of the proportion mediated. Setting `"medLim = 2.5"` restricts the plot's range from -2.5 to 2.5, allowing for a closer inspection of the points and their relationships within this more focused area --&gt;</span></span>
+<span id="cb49-863"><a href="#cb49-863" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   exposure=Hamburger, mediator= module 2, outcome=T2D --&gt;</span></span>
 <span id="cb49-864"><a href="#cb49-864" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-865"><a href="#cb49-865" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_noshowoutput_8B} --&gt;</span></span>
+<span id="cb49-865"><a href="#cb49-865" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- We can see from the confidence intervals that some PM values are not significant, with large intervals pushing triangle points towards the origin. To better examine these points and their dimensions, we zoom in by adjusting the limit of the proportion mediated. Setting `"medLim = 2.5"` restricts the plot's range from -2.5 to 2.5, allowing for a closer inspection of the points and their relationships within this more focused area --&gt;</span></span>
 <span id="cb49-866"><a href="#cb49-866" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-867"><a href="#cb49-867" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
+<span id="cb49-867"><a href="#cb49-867" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_noshowoutput_8B} --&gt;</span></span>
 <span id="cb49-868"><a href="#cb49-868" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-869"><a href="#cb49-869" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
+<span id="cb49-869"><a href="#cb49-869" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
 <span id="cb49-870"><a href="#cb49-870" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-871"><a href="#cb49-871" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: false --&gt;</span></span>
+<span id="cb49-871"><a href="#cb49-871" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
 <span id="cb49-872"><a href="#cb49-872" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-873"><a href="#cb49-873" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
+<span id="cb49-873"><a href="#cb49-873" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: false --&gt;</span></span>
 <span id="cb49-874"><a href="#cb49-874" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-875"><a href="#cb49-875" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
+<span id="cb49-875"><a href="#cb49-875" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
 <span id="cb49-876"><a href="#cb49-876" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-877"><a href="#cb49-877" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- TPO_plots4 &lt;- --&gt;</span></span>
+<span id="cb49-877"><a href="#cb49-877" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
 <span id="cb49-878"><a href="#cb49-878" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-879"><a href="#cb49-879" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   mediationTriplot( --&gt;</span></span>
+<span id="cb49-879"><a href="#cb49-879" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- TPO_plots4 &lt;- --&gt;</span></span>
 <span id="cb49-880"><a href="#cb49-880" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-881"><a href="#cb49-881" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     TPObject4, --&gt;</span></span>
+<span id="cb49-881"><a href="#cb49-881" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   mediationTriplot( --&gt;</span></span>
 <span id="cb49-882"><a href="#cb49-882" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-883"><a href="#cb49-883" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     show = c("PM"), --&gt;</span></span>
+<span id="cb49-883"><a href="#cb49-883" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     TPObject4, --&gt;</span></span>
 <span id="cb49-884"><a href="#cb49-884" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-885"><a href="#cb49-885" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     medLim = 2.5 --&gt;</span></span>
+<span id="cb49-885"><a href="#cb49-885" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     show = c("PM"), --&gt;</span></span>
 <span id="cb49-886"><a href="#cb49-886" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-887"><a href="#cb49-887" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   ) --&gt;</span></span>
+<span id="cb49-887"><a href="#cb49-887" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     medLim = 2.5 --&gt;</span></span>
 <span id="cb49-888"><a href="#cb49-888" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-889"><a href="#cb49-889" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
+<span id="cb49-889"><a href="#cb49-889" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   ) --&gt;</span></span>
 <span id="cb49-890"><a href="#cb49-890" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-891"><a href="#cb49-891" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_showoutput_13D} --&gt;</span></span>
+<span id="cb49-891"><a href="#cb49-891" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
 <span id="cb49-892"><a href="#cb49-892" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-893"><a href="#cb49-893" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
+<span id="cb49-893"><a href="#cb49-893" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_showoutput_13D} --&gt;</span></span>
 <span id="cb49-894"><a href="#cb49-894" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-895"><a href="#cb49-895" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
+<span id="cb49-895"><a href="#cb49-895" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
 <span id="cb49-896"><a href="#cb49-896" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-897"><a href="#cb49-897" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: true --&gt;</span></span>
+<span id="cb49-897"><a href="#cb49-897" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
 <span id="cb49-898"><a href="#cb49-898" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-899"><a href="#cb49-899" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
+<span id="cb49-899"><a href="#cb49-899" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: true --&gt;</span></span>
 <span id="cb49-900"><a href="#cb49-900" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-901"><a href="#cb49-901" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
+<span id="cb49-901"><a href="#cb49-901" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
 <span id="cb49-902"><a href="#cb49-902" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-903"><a href="#cb49-903" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| out-width: "100%" --&gt;</span></span>
+<span id="cb49-903"><a href="#cb49-903" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
 <span id="cb49-904"><a href="#cb49-904" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-905"><a href="#cb49-905" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- TPO_plots4$mediations_plot --&gt;</span></span>
+<span id="cb49-905"><a href="#cb49-905" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| out-width: "100%" --&gt;</span></span>
 <span id="cb49-906"><a href="#cb49-906" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-907"><a href="#cb49-907" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
+<span id="cb49-907"><a href="#cb49-907" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- TPO_plots4$mediations_plot --&gt;</span></span>
 <span id="cb49-908"><a href="#cb49-908" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-909"><a href="#cb49-909" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ::: callout-note --&gt;</span></span>
+<span id="cb49-909"><a href="#cb49-909" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
 <span id="cb49-910"><a href="#cb49-910" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-911"><a href="#cb49-911" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   Confidence intervals are automatically removed from the figure if they fall outside the set limits.  --&gt;</span></span>
+<span id="cb49-911"><a href="#cb49-911" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ::: callout-note --&gt;</span></span>
 <span id="cb49-912"><a href="#cb49-912" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-913"><a href="#cb49-913" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   In certain mediations, the direct and indirect effects may have opposite directions. This can result in a proportion mediated (PM) greater than 1. This occurs because the total effect might be smaller than the indirect effect. --&gt;</span></span>
+<span id="cb49-913"><a href="#cb49-913" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   Confidence intervals are automatically removed from the figure if they fall outside the set limits.  --&gt;</span></span>
 <span id="cb49-914"><a href="#cb49-914" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-915"><a href="#cb49-915" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ::: --&gt;</span></span>
+<span id="cb49-915"><a href="#cb49-915" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   In certain mediations, the direct and indirect effects may have opposite directions. This can result in a proportion mediated (PM) greater than 1. This occurs because the total effect might be smaller than the indirect effect. --&gt;</span></span>
 <span id="cb49-916"><a href="#cb49-916" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-917"><a href="#cb49-917" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Based on the figure showing the mediation analysis results, we can observe the direction and magnitude of proportion mediated for the 2 mediators (module 1 and 2), all the exposures and outcomes. Based on the confidence interval, we also observed that the PM for BSDS-module 1-BMI and BSDS-module 2-BMI mediation is significant. --&gt;</span></span>
+<span id="cb49-917"><a href="#cb49-917" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ::: --&gt;</span></span>
 <span id="cb49-918"><a href="#cb49-918" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-919"><a href="#cb49-919" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- To further examine the mediation results, we look at the adjusted proportion mediated (APM): --&gt;</span></span>
+<span id="cb49-919"><a href="#cb49-919" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Based on the figure showing the mediation analysis results, we can observe the direction and magnitude of proportion mediated for the 2 mediators (module 1 and 2), all the exposures and outcomes. Based on the confidence interval, we also observed that the PM for BSDS-module 1-BMI and BSDS-module 2-BMI mediation is significant. --&gt;</span></span>
 <span id="cb49-920"><a href="#cb49-920" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-921"><a href="#cb49-921" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_noshowoutput_8C} --&gt;</span></span>
+<span id="cb49-921"><a href="#cb49-921" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- To further examine the mediation results, we look at the adjusted proportion mediated (APM): --&gt;</span></span>
 <span id="cb49-922"><a href="#cb49-922" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-923"><a href="#cb49-923" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
+<span id="cb49-923"><a href="#cb49-923" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_noshowoutput_8C} --&gt;</span></span>
 <span id="cb49-924"><a href="#cb49-924" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-925"><a href="#cb49-925" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
+<span id="cb49-925"><a href="#cb49-925" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
 <span id="cb49-926"><a href="#cb49-926" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-927"><a href="#cb49-927" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: false --&gt;</span></span>
+<span id="cb49-927"><a href="#cb49-927" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
 <span id="cb49-928"><a href="#cb49-928" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-929"><a href="#cb49-929" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
+<span id="cb49-929"><a href="#cb49-929" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: false --&gt;</span></span>
 <span id="cb49-930"><a href="#cb49-930" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-931"><a href="#cb49-931" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
+<span id="cb49-931"><a href="#cb49-931" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
 <span id="cb49-932"><a href="#cb49-932" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-933"><a href="#cb49-933" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- TPO_plots4 &lt;- --&gt;</span></span>
+<span id="cb49-933"><a href="#cb49-933" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
 <span id="cb49-934"><a href="#cb49-934" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-935"><a href="#cb49-935" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   mediationTriplot( --&gt;</span></span>
+<span id="cb49-935"><a href="#cb49-935" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- TPO_plots4 &lt;- --&gt;</span></span>
 <span id="cb49-936"><a href="#cb49-936" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-937"><a href="#cb49-937" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     TPObject4, --&gt;</span></span>
+<span id="cb49-937"><a href="#cb49-937" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   mediationTriplot( --&gt;</span></span>
 <span id="cb49-938"><a href="#cb49-938" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-939"><a href="#cb49-939" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     show = c("APM") --&gt;</span></span>
+<span id="cb49-939"><a href="#cb49-939" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     TPObject4, --&gt;</span></span>
 <span id="cb49-940"><a href="#cb49-940" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-941"><a href="#cb49-941" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   ) --&gt;</span></span>
+<span id="cb49-941"><a href="#cb49-941" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--     show = c("APM") --&gt;</span></span>
 <span id="cb49-942"><a href="#cb49-942" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-943"><a href="#cb49-943" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
+<span id="cb49-943"><a href="#cb49-943" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--   ) --&gt;</span></span>
 <span id="cb49-944"><a href="#cb49-944" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-945"><a href="#cb49-945" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_showoutput_13F} --&gt;</span></span>
+<span id="cb49-945"><a href="#cb49-945" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
 <span id="cb49-946"><a href="#cb49-946" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-947"><a href="#cb49-947" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
+<span id="cb49-947"><a href="#cb49-947" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_showoutput_13F} --&gt;</span></span>
 <span id="cb49-948"><a href="#cb49-948" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-949"><a href="#cb49-949" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
+<span id="cb49-949"><a href="#cb49-949" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
 <span id="cb49-950"><a href="#cb49-950" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-951"><a href="#cb49-951" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: true --&gt;</span></span>
+<span id="cb49-951"><a href="#cb49-951" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
 <span id="cb49-952"><a href="#cb49-952" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-953"><a href="#cb49-953" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
+<span id="cb49-953"><a href="#cb49-953" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: true --&gt;</span></span>
 <span id="cb49-954"><a href="#cb49-954" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-955"><a href="#cb49-955" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
+<span id="cb49-955"><a href="#cb49-955" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
 <span id="cb49-956"><a href="#cb49-956" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-957"><a href="#cb49-957" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| out-width: "100%" --&gt;</span></span>
+<span id="cb49-957"><a href="#cb49-957" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
 <span id="cb49-958"><a href="#cb49-958" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-959"><a href="#cb49-959" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- TPO_plots4$mediations_plot --&gt;</span></span>
+<span id="cb49-959"><a href="#cb49-959" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| out-width: "100%" --&gt;</span></span>
 <span id="cb49-960"><a href="#cb49-960" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-961"><a href="#cb49-961" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
+<span id="cb49-961"><a href="#cb49-961" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- TPO_plots4$mediations_plot --&gt;</span></span>
 <span id="cb49-962"><a href="#cb49-962" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-963"><a href="#cb49-963" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- By observing this figure, we can see the direction and magnitude of adjusted proportion mediated (APM) for the two mediators across all exposures and outcomes. The positioning of the points is similar to what we observed for the proportion mediated (PM). --&gt;</span></span>
+<span id="cb49-963"><a href="#cb49-963" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
 <span id="cb49-964"><a href="#cb49-964" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-965"><a href="#cb49-965" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Notably, the APM for BSDS (Baltic Sea Diet Score) as the exposure and T2D (Type 2 Diabetes) as the outcome is smaller than their corresponding PM. This difference occurs because the indirect and direct effects for this mediation pathway are of similar size but in opposite directions. This opposition leads to a smaller total effect and consequently a larger PM. However, the APM is not affected by the directionality of the direct and indirect effects, providing a more stable measure of mediation. --&gt;</span></span>
+<span id="cb49-965"><a href="#cb49-965" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- By observing this figure, we can see the direction and magnitude of adjusted proportion mediated (APM) for the two mediators across all exposures and outcomes. The positioning of the points is similar to what we observed for the proportion mediated (PM). --&gt;</span></span>
 <span id="cb49-966"><a href="#cb49-966" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-967"><a href="#cb49-967" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ::: callout-note --&gt;</span></span>
+<span id="cb49-967"><a href="#cb49-967" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Notably, the APM for BSDS (Baltic Sea Diet Score) as the exposure and T2D (Type 2 Diabetes) as the outcome is smaller than their corresponding PM. This difference occurs because the indirect and direct effects for this mediation pathway are of similar size but in opposite directions. This opposition leads to a smaller total effect and consequently a larger PM. However, the APM is not affected by the directionality of the direct and indirect effects, providing a more stable measure of mediation. --&gt;</span></span>
 <span id="cb49-968"><a href="#cb49-968" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-969"><a href="#cb49-969" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   No confidence intervals are shown for APM. This is because APM values cannot be directly calculated from the mediation analysis in the `mediation` R package, unlike the proportion mediated (PM). --&gt;</span></span>
+<span id="cb49-969"><a href="#cb49-969" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ::: callout-note --&gt;</span></span>
 <span id="cb49-970"><a href="#cb49-970" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-971"><a href="#cb49-971" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   The APM is always smaller than 1, even when direct and indirect effects are in opposite directions. This is due to the calculation method of APM, which uses the sum of the absolute values of indirect and direct effects as the denominator. $$APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{|IE|+|DE|}\cdot\frac{IE+DE}{|IE+DE|}$$ --&gt;</span></span>
+<span id="cb49-971"><a href="#cb49-971" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   No confidence intervals are shown for APM. This is because APM values cannot be directly calculated from the mediation analysis in the `mediation` R package, unlike the proportion mediated (PM). --&gt;</span></span>
 <span id="cb49-972"><a href="#cb49-972" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-973"><a href="#cb49-973" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ::: --&gt;</span></span>
+<span id="cb49-973"><a href="#cb49-973" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- -   The APM is always smaller than 1, even when direct and indirect effects are in opposite directions. This is due to the calculation method of APM, which uses the sum of the absolute values of indirect and direct effects as the denominator. $$APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{|IE|+|DE|}\cdot\frac{IE+DE}{|IE+DE|}$$ --&gt;</span></span>
 <span id="cb49-974"><a href="#cb49-974" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-975"><a href="#cb49-975" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ::: callout-note --&gt;</span></span>
+<span id="cb49-975"><a href="#cb49-975" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ::: --&gt;</span></span>
 <span id="cb49-976"><a href="#cb49-976" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-977"><a href="#cb49-977" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Specifying `show = c("PM", "APM", "IE", "TE")` in the `mediationTriplot()` function would display all estimates, including indirect effect (IE) and total effect (TE). However, this is not recommended as it can overcrowd the plot, making it difficult to interpret.  --&gt;</span></span>
+<span id="cb49-977"><a href="#cb49-977" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ::: callout-note --&gt;</span></span>
 <span id="cb49-978"><a href="#cb49-978" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-979"><a href="#cb49-979" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- For a clearer visualization, it's better to view IE and TE separately. The [Tutorial(simple)](simple_code.qmd){target="_blank"} section provides examples of plots showing `"IE"` and `"TE"`, offering a more manageable and interpretable view of these mediation components. --&gt;</span></span>
+<span id="cb49-979"><a href="#cb49-979" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Specifying `show = c("PM", "APM", "IE", "TE")` in the `mediationTriplot()` function would display all estimates, including indirect effect (IE) and total effect (TE). However, this is not recommended as it can overcrowd the plot, making it difficult to interpret.  --&gt;</span></span>
 <span id="cb49-980"><a href="#cb49-980" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-981"><a href="#cb49-981" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ::: --&gt;</span></span>
+<span id="cb49-981"><a href="#cb49-981" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- For a clearer visualization, it's better to view IE and TE separately. The [Tutorial(simple)](simple_code.qmd){target="_blank"} section provides examples of plots showing `"IE"` and `"TE"`, offering a more manageable and interpretable view of these mediation components. --&gt;</span></span>
 <span id="cb49-982"><a href="#cb49-982" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-983"><a href="#cb49-983" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Plot the triplot with mediation, --&gt;</span></span>
+<span id="cb49-983"><a href="#cb49-983" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ::: --&gt;</span></span>
 <span id="cb49-984"><a href="#cb49-984" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-985"><a href="#cb49-985" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_showoutput_14} --&gt;</span></span>
+<span id="cb49-985"><a href="#cb49-985" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Plot the triplot with mediation, --&gt;</span></span>
 <span id="cb49-986"><a href="#cb49-986" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-987"><a href="#cb49-987" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
+<span id="cb49-987"><a href="#cb49-987" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_showoutput_14} --&gt;</span></span>
 <span id="cb49-988"><a href="#cb49-988" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-989"><a href="#cb49-989" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
+<span id="cb49-989"><a href="#cb49-989" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
 <span id="cb49-990"><a href="#cb49-990" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-991"><a href="#cb49-991" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: true --&gt;</span></span>
+<span id="cb49-991"><a href="#cb49-991" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
 <span id="cb49-992"><a href="#cb49-992" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-993"><a href="#cb49-993" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
+<span id="cb49-993"><a href="#cb49-993" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: true --&gt;</span></span>
 <span id="cb49-994"><a href="#cb49-994" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-995"><a href="#cb49-995" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
+<span id="cb49-995"><a href="#cb49-995" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
 <span id="cb49-996"><a href="#cb49-996" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-997"><a href="#cb49-997" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| out-width: "100%" --&gt;</span></span>
+<span id="cb49-997"><a href="#cb49-997" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
 <span id="cb49-998"><a href="#cb49-998" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-999"><a href="#cb49-999" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- TPO_plots4$mediations_triplot --&gt;</span></span>
+<span id="cb49-999"><a href="#cb49-999" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| out-width: "100%" --&gt;</span></span>
 <span id="cb49-1000"><a href="#cb49-1000" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1001"><a href="#cb49-1001" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
+<span id="cb49-1001"><a href="#cb49-1001" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- TPO_plots4$mediations_triplot --&gt;</span></span>
 <span id="cb49-1002"><a href="#cb49-1002" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1003"><a href="#cb49-1003" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Based on the barplot and the triplot with mediation, we’ve observed significant proportion mediated for BSDS-module 1/2-BMI mediations. Further exploration on indirect, direct and total effect of the mediation analysis could be explored by playing around the `show` argument in the `mediationTriplot()` function. We will not go into details here. --&gt;</span></span>
+<span id="cb49-1003"><a href="#cb49-1003" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
 <span id="cb49-1004"><a href="#cb49-1004" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1005"><a href="#cb49-1005" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comparative Visualization</span></span>
+<span id="cb49-1005"><a href="#cb49-1005" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Based on the barplot and the triplot with mediation, we’ve observed significant proportion mediated for BSDS-module 1/2-BMI mediations. Further exploration on indirect, direct and total effect of the mediation analysis could be explored by playing around the `show` argument in the `mediationTriplot()` function. We will not go into details here. --&gt;</span></span>
 <span id="cb49-1006"><a href="#cb49-1006" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1007"><a href="#cb49-1007" aria-hidden="true" tabindex="-1"></a>The <span class="in">`checkTPO()`</span> function in TriplotGUI allows users to generate heatmaps from the TPObject to visualize correlations, risk estimations, and mediation results.</span>
+<span id="cb49-1007"><a href="#cb49-1007" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comparative Visualization</span></span>
 <span id="cb49-1008"><a href="#cb49-1008" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1009"><a href="#cb49-1009" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_9}</span></span>
-<span id="cb49-1010"><a href="#cb49-1010" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb49-1011"><a href="#cb49-1011" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb49-1012"><a href="#cb49-1012" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
-<span id="cb49-1013"><a href="#cb49-1013" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb49-1014"><a href="#cb49-1014" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
-<span id="cb49-1015"><a href="#cb49-1015" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1016"><a href="#cb49-1016" aria-hidden="true" tabindex="-1"></a><span class="in">checkTPObject4 &lt;- checkTPO(TPObject4,</span></span>
-<span id="cb49-1017"><a href="#cb49-1017" aria-hidden="true" tabindex="-1"></a><span class="in">                                  mediatorEstimates = c("IE","TE","PM","APM"),</span></span>
-<span id="cb49-1018"><a href="#cb49-1018" aria-hidden="true" tabindex="-1"></a><span class="in">                                  ## What type of mediation estimate or proportion mediated to show on the heatmap</span></span>
-<span id="cb49-1019"><a href="#cb49-1019" aria-hidden="true" tabindex="-1"></a><span class="in">                                  mediators = c("module1", "module2"),</span></span>
-<span id="cb49-1020"><a href="#cb49-1020" aria-hidden="true" tabindex="-1"></a><span class="in">                                  ## What mediators (principal component) you want to show</span></span>
-<span id="cb49-1021"><a href="#cb49-1021" aria-hidden="true" tabindex="-1"></a><span class="in">                                  exposures = c("Hamburger","BSDS"),</span></span>
-<span id="cb49-1022"><a href="#cb49-1022" aria-hidden="true" tabindex="-1"></a><span class="in">                                  ## What exposure variables you want to show</span></span>
-<span id="cb49-1023"><a href="#cb49-1023" aria-hidden="true" tabindex="-1"></a><span class="in">                                  outcomes = c("T2D","BMI")</span></span>
-<span id="cb49-1024"><a href="#cb49-1024" aria-hidden="true" tabindex="-1"></a><span class="in">                                  ## What outcome variables you want to show</span></span>
-<span id="cb49-1025"><a href="#cb49-1025" aria-hidden="true" tabindex="-1"></a><span class="in">                                  )</span></span>
-<span id="cb49-1026"><a href="#cb49-1026" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1027"><a href="#cb49-1027" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-1009"><a href="#cb49-1009" aria-hidden="true" tabindex="-1"></a>The <span class="in">`checkTPO()`</span> function in TriplotGUI allows users to generate heatmaps from the TPObject to visualize correlations, risk estimations, and mediation results.</span>
+<span id="cb49-1010"><a href="#cb49-1010" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-1011"><a href="#cb49-1011" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_noshowoutput_9}</span></span>
+<span id="cb49-1012"><a href="#cb49-1012" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb49-1013"><a href="#cb49-1013" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb49-1014"><a href="#cb49-1014" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: false</span></span>
+<span id="cb49-1015"><a href="#cb49-1015" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb49-1016"><a href="#cb49-1016" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
+<span id="cb49-1017"><a href="#cb49-1017" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-1018"><a href="#cb49-1018" aria-hidden="true" tabindex="-1"></a><span class="in">checkTPObject4 &lt;- checkTPO(TPObject4,</span></span>
+<span id="cb49-1019"><a href="#cb49-1019" aria-hidden="true" tabindex="-1"></a><span class="in">                                  mediatorEstimates = c("IE","TE","PM","APM"),</span></span>
+<span id="cb49-1020"><a href="#cb49-1020" aria-hidden="true" tabindex="-1"></a><span class="in">                                  ## What type of mediation estimate or proportion mediated to show on the heatmap</span></span>
+<span id="cb49-1021"><a href="#cb49-1021" aria-hidden="true" tabindex="-1"></a><span class="in">                                  mediators = c("module1", "module2"),</span></span>
+<span id="cb49-1022"><a href="#cb49-1022" aria-hidden="true" tabindex="-1"></a><span class="in">                                  ## What mediators (principal component) you want to show</span></span>
+<span id="cb49-1023"><a href="#cb49-1023" aria-hidden="true" tabindex="-1"></a><span class="in">                                  exposures = c("Hamburger","BSDS"),</span></span>
+<span id="cb49-1024"><a href="#cb49-1024" aria-hidden="true" tabindex="-1"></a><span class="in">                                  ## What exposure variables you want to show</span></span>
+<span id="cb49-1025"><a href="#cb49-1025" aria-hidden="true" tabindex="-1"></a><span class="in">                                  outcomes = c("T2D","BMI")</span></span>
+<span id="cb49-1026"><a href="#cb49-1026" aria-hidden="true" tabindex="-1"></a><span class="in">                                  ## What outcome variables you want to show</span></span>
+<span id="cb49-1027"><a href="#cb49-1027" aria-hidden="true" tabindex="-1"></a><span class="in">                                  )</span></span>
 <span id="cb49-1028"><a href="#cb49-1028" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1029"><a href="#cb49-1029" aria-hidden="true" tabindex="-1"></a>Correlation coefficients and p values between modules and exposures:</span>
+<span id="cb49-1029"><a href="#cb49-1029" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb49-1030"><a href="#cb49-1030" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1031"><a href="#cb49-1031" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_15A}</span></span>
-<span id="cb49-1032"><a href="#cb49-1032" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb49-1033"><a href="#cb49-1033" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb49-1034"><a href="#cb49-1034" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
-<span id="cb49-1035"><a href="#cb49-1035" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb49-1036"><a href="#cb49-1036" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
-<span id="cb49-1037"><a href="#cb49-1037" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-width: "100%"</span></span>
-<span id="cb49-1038"><a href="#cb49-1038" aria-hidden="true" tabindex="-1"></a><span class="in">checkTPObject4$corr_coefficients</span></span>
-<span id="cb49-1039"><a href="#cb49-1039" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1040"><a href="#cb49-1040" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-1031"><a href="#cb49-1031" aria-hidden="true" tabindex="-1"></a>Correlation coefficients and p values between modules and exposures:</span>
+<span id="cb49-1032"><a href="#cb49-1032" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-1033"><a href="#cb49-1033" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_15A}</span></span>
+<span id="cb49-1034"><a href="#cb49-1034" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb49-1035"><a href="#cb49-1035" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb49-1036"><a href="#cb49-1036" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
+<span id="cb49-1037"><a href="#cb49-1037" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb49-1038"><a href="#cb49-1038" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
+<span id="cb49-1039"><a href="#cb49-1039" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-width: "100%"</span></span>
+<span id="cb49-1040"><a href="#cb49-1040" aria-hidden="true" tabindex="-1"></a><span class="in">checkTPObject4$corr_coefficients</span></span>
 <span id="cb49-1041"><a href="#cb49-1041" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1042"><a href="#cb49-1042" aria-hidden="true" tabindex="-1"></a>Risk estimates(beta coefficients) and p values between modules and outcomes:</span>
+<span id="cb49-1042"><a href="#cb49-1042" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb49-1043"><a href="#cb49-1043" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1044"><a href="#cb49-1044" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_15B}</span></span>
-<span id="cb49-1045"><a href="#cb49-1045" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb49-1046"><a href="#cb49-1046" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb49-1047"><a href="#cb49-1047" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
-<span id="cb49-1048"><a href="#cb49-1048" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb49-1049"><a href="#cb49-1049" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
-<span id="cb49-1050"><a href="#cb49-1050" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-width: "100%"</span></span>
-<span id="cb49-1051"><a href="#cb49-1051" aria-hidden="true" tabindex="-1"></a><span class="in">checkTPObject4$risk_coefficients</span></span>
-<span id="cb49-1052"><a href="#cb49-1052" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb49-1053"><a href="#cb49-1053" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1054"><a href="#cb49-1054" aria-hidden="true" tabindex="-1"></a>Mediation estimates and p values for indirect effect(IE) and total effect(TE), proportion mediated(PM) and adjusted proportion mediated(APM): Read <span class="co">[</span><span class="ot">Manual</span><span class="co">](workflow.qmd)</span>{target="_blank"} for more details:</span>
+<span id="cb49-1044"><a href="#cb49-1044" aria-hidden="true" tabindex="-1"></a>Risk estimates(beta coefficients) and p values between modules and outcomes:</span>
+<span id="cb49-1045"><a href="#cb49-1045" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-1046"><a href="#cb49-1046" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_15B}</span></span>
+<span id="cb49-1047"><a href="#cb49-1047" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb49-1048"><a href="#cb49-1048" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb49-1049"><a href="#cb49-1049" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
+<span id="cb49-1050"><a href="#cb49-1050" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb49-1051"><a href="#cb49-1051" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
+<span id="cb49-1052"><a href="#cb49-1052" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-width: "100%"</span></span>
+<span id="cb49-1053"><a href="#cb49-1053" aria-hidden="true" tabindex="-1"></a><span class="in">checkTPObject4$risk_coefficients</span></span>
+<span id="cb49-1054"><a href="#cb49-1054" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb49-1055"><a href="#cb49-1055" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1056"><a href="#cb49-1056" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_15C}</span></span>
-<span id="cb49-1057"><a href="#cb49-1057" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
-<span id="cb49-1058"><a href="#cb49-1058" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb49-1059"><a href="#cb49-1059" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
-<span id="cb49-1060"><a href="#cb49-1060" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb49-1061"><a href="#cb49-1061" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
-<span id="cb49-1062"><a href="#cb49-1062" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-width: "100%"</span></span>
-<span id="cb49-1063"><a href="#cb49-1063" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1064"><a href="#cb49-1064" aria-hidden="true" tabindex="-1"></a><span class="in">checkTPObject4$med_coefficients</span></span>
-<span id="cb49-1065"><a href="#cb49-1065" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb49-1066"><a href="#cb49-1066" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1067"><a href="#cb49-1067" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- You could also View the three plots aboved combinedly. --&gt;</span></span>
+<span id="cb49-1056"><a href="#cb49-1056" aria-hidden="true" tabindex="-1"></a>Mediation estimates and p values for indirect effect(IE) and total effect(TE), proportion mediated(PM) and adjusted proportion mediated(APM): Read <span class="co">[</span><span class="ot">Manual</span><span class="co">](workflow.qmd)</span>{target="_blank"} for more details:</span>
+<span id="cb49-1057"><a href="#cb49-1057" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-1058"><a href="#cb49-1058" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_runcode_showoutput_15C}</span></span>
+<span id="cb49-1059"><a href="#cb49-1059" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: true</span></span>
+<span id="cb49-1060"><a href="#cb49-1060" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb49-1061"><a href="#cb49-1061" aria-hidden="true" tabindex="-1"></a><span class="in">#| output: true</span></span>
+<span id="cb49-1062"><a href="#cb49-1062" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb49-1063"><a href="#cb49-1063" aria-hidden="true" tabindex="-1"></a><span class="in">#| fold.plot: true</span></span>
+<span id="cb49-1064"><a href="#cb49-1064" aria-hidden="true" tabindex="-1"></a><span class="in">#| out-width: "100%"</span></span>
+<span id="cb49-1065"><a href="#cb49-1065" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-1066"><a href="#cb49-1066" aria-hidden="true" tabindex="-1"></a><span class="in">checkTPObject4$med_coefficients</span></span>
+<span id="cb49-1067"><a href="#cb49-1067" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb49-1068"><a href="#cb49-1068" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1069"><a href="#cb49-1069" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_showoutput_15D} --&gt;</span></span>
+<span id="cb49-1069"><a href="#cb49-1069" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- You could also View the three plots aboved combinedly. --&gt;</span></span>
 <span id="cb49-1070"><a href="#cb49-1070" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1071"><a href="#cb49-1071" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
+<span id="cb49-1071"><a href="#cb49-1071" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ```{r showcode_runcode_showoutput_15D} --&gt;</span></span>
 <span id="cb49-1072"><a href="#cb49-1072" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1073"><a href="#cb49-1073" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
+<span id="cb49-1073"><a href="#cb49-1073" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| eval: true --&gt;</span></span>
 <span id="cb49-1074"><a href="#cb49-1074" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1075"><a href="#cb49-1075" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: true --&gt;</span></span>
+<span id="cb49-1075"><a href="#cb49-1075" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| echo: true --&gt;</span></span>
 <span id="cb49-1076"><a href="#cb49-1076" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1077"><a href="#cb49-1077" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
+<span id="cb49-1077"><a href="#cb49-1077" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| output: true --&gt;</span></span>
 <span id="cb49-1078"><a href="#cb49-1078" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1079"><a href="#cb49-1079" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
+<span id="cb49-1079"><a href="#cb49-1079" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| classes: styled-output --&gt;</span></span>
 <span id="cb49-1080"><a href="#cb49-1080" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1081"><a href="#cb49-1081" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| out-width: "100%" --&gt;</span></span>
+<span id="cb49-1081"><a href="#cb49-1081" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| fold.plot: true --&gt;</span></span>
 <span id="cb49-1082"><a href="#cb49-1082" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1083"><a href="#cb49-1083" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- checkTPObject4$corr_risk_med_coefficients --&gt;</span></span>
+<span id="cb49-1083"><a href="#cb49-1083" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #| out-width: "100%" --&gt;</span></span>
 <span id="cb49-1084"><a href="#cb49-1084" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1085"><a href="#cb49-1085" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
+<span id="cb49-1085"><a href="#cb49-1085" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- checkTPObject4$corr_risk_med_coefficients --&gt;</span></span>
 <span id="cb49-1086"><a href="#cb49-1086" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1087"><a href="#cb49-1087" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb49-1088"><a href="#cb49-1088" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Significance is indicated as follows. One star for p<span class="sc">\&lt;</span>0.05; Two stars for p<span class="sc">\&lt;</span>0.01; Three stars for p<span class="sc">\&lt;</span>0.001.</span>
-<span id="cb49-1089"><a href="#cb49-1089" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The first two plots, correlation coefficients with exposures and risk estimates of outcomes will show all the exposure and outcome variables that are not removed from visualization.</span>
-<span id="cb49-1090"><a href="#cb49-1090" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Note that in the plot of <span class="in">`checkTPbject4$med_coefficients`</span>, nly the selected exposures, mediators and outcomes that we use to do mediation on will show up in the mediation results. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure-outcome pair, 4 results are shown: *IE* (indirect effect), *TE* (total effect), *PM*(Proportion Mediated) and *APM*(Adjusted Proportion Mediated). Please read <span class="co">[</span><span class="ot">Manual</span><span class="co">](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2)</span>{target="_blank"} for more information. The "CF" before the names of exposures-outcome pairs means that this mediation is using the Counterfactual method.</span>
-<span id="cb49-1091"><a href="#cb49-1091" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb49-1092"><a href="#cb49-1092" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1093"><a href="#cb49-1093" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data download</span></span>
+<span id="cb49-1087"><a href="#cb49-1087" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ``` --&gt;</span></span>
+<span id="cb49-1088"><a href="#cb49-1088" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-1089"><a href="#cb49-1089" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb49-1090"><a href="#cb49-1090" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Significance is indicated as follows. One star for p<span class="sc">\&lt;</span>0.05; Two stars for p<span class="sc">\&lt;</span>0.01; Three stars for p<span class="sc">\&lt;</span>0.001.</span>
+<span id="cb49-1091"><a href="#cb49-1091" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The first two plots, correlation coefficients with exposures and risk estimates of outcomes will show all the exposure and outcome variables that are not removed from visualization.</span>
+<span id="cb49-1092"><a href="#cb49-1092" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Note that in the plot of <span class="in">`checkTPbject4$med_coefficients`</span>, nly the selected exposures, mediators and outcomes that we use to do mediation on will show up in the mediation results. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure-outcome pair, 4 results are shown: *IE* (indirect effect), *TE* (total effect), *PM*(Proportion Mediated) and *APM*(Adjusted Proportion Mediated). Please read <span class="co">[</span><span class="ot">Manual</span><span class="co">](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2)</span>{target="_blank"} for more information. The "CF" before the names of exposures-outcome pairs means that this mediation is using the Counterfactual method.</span>
+<span id="cb49-1093"><a href="#cb49-1093" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb49-1094"><a href="#cb49-1094" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1095"><a href="#cb49-1095" aria-hidden="true" tabindex="-1"></a>To save all your output, including data, results, and visualization output as an .rda file, you can use the <span class="in">`save()`</span> function as an rda file.</span>
+<span id="cb49-1095"><a href="#cb49-1095" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data download</span></span>
 <span id="cb49-1096"><a href="#cb49-1096" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1097"><a href="#cb49-1097" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_noruncode_noshowoutput_1}</span></span>
-<span id="cb49-1098"><a href="#cb49-1098" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
-<span id="cb49-1099"><a href="#cb49-1099" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
-<span id="cb49-1100"><a href="#cb49-1100" aria-hidden="true" tabindex="-1"></a><span class="in">#| warning: false</span></span>
-<span id="cb49-1101"><a href="#cb49-1101" aria-hidden="true" tabindex="-1"></a><span class="in">#| error: true</span></span>
-<span id="cb49-1102"><a href="#cb49-1102" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
-<span id="cb49-1103"><a href="#cb49-1103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1104"><a href="#cb49-1104" aria-hidden="true" tabindex="-1"></a><span class="in">save(exposure2,Omics2,outcome2,covariates2,auxilariy2,</span></span>
-<span id="cb49-1105"><a href="#cb49-1105" aria-hidden="true" tabindex="-1"></a><span class="in">     reduced_Omics2,Correlations_object,Risks_object,</span></span>
-<span id="cb49-1106"><a href="#cb49-1106" aria-hidden="true" tabindex="-1"></a><span class="in">     mediation_object3,mediation_plots3,</span></span>
-<span id="cb49-1107"><a href="#cb49-1107" aria-hidden="true" tabindex="-1"></a><span class="in">     TPObject1,TPObject2,TPObject3,TPObject4,</span></span>
-<span id="cb49-1108"><a href="#cb49-1108" aria-hidden="true" tabindex="-1"></a><span class="in">     checkTPObject4,</span></span>
-<span id="cb49-1109"><a href="#cb49-1109" aria-hidden="true" tabindex="-1"></a><span class="in">     "Tutorial_complex_output.rda")</span></span>
-<span id="cb49-1110"><a href="#cb49-1110" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb49-1111"><a href="#cb49-1111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-1112"><a href="#cb49-1112" aria-hidden="true" tabindex="-1"></a>0</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb49-1097"><a href="#cb49-1097" aria-hidden="true" tabindex="-1"></a>To save all your output, including data, results, and visualization output as an .rda file, you can use the <span class="in">`save()`</span> function as an rda file.</span>
+<span id="cb49-1098"><a href="#cb49-1098" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-1099"><a href="#cb49-1099" aria-hidden="true" tabindex="-1"></a><span class="in">```{r showcode_noruncode_noshowoutput_1}</span></span>
+<span id="cb49-1100"><a href="#cb49-1100" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
+<span id="cb49-1101"><a href="#cb49-1101" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: true</span></span>
+<span id="cb49-1102"><a href="#cb49-1102" aria-hidden="true" tabindex="-1"></a><span class="in">#| warning: false</span></span>
+<span id="cb49-1103"><a href="#cb49-1103" aria-hidden="true" tabindex="-1"></a><span class="in">#| error: true</span></span>
+<span id="cb49-1104"><a href="#cb49-1104" aria-hidden="true" tabindex="-1"></a><span class="in">#| classes: styled-output</span></span>
+<span id="cb49-1105"><a href="#cb49-1105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-1106"><a href="#cb49-1106" aria-hidden="true" tabindex="-1"></a><span class="in">save(exposure2,Omics2,outcome2,covariates2,auxilariy2,</span></span>
+<span id="cb49-1107"><a href="#cb49-1107" aria-hidden="true" tabindex="-1"></a><span class="in">     reduced_Omics2,Correlations_object,Risks_object,</span></span>
+<span id="cb49-1108"><a href="#cb49-1108" aria-hidden="true" tabindex="-1"></a><span class="in">     mediation_object3,mediation_plots3,</span></span>
+<span id="cb49-1109"><a href="#cb49-1109" aria-hidden="true" tabindex="-1"></a><span class="in">     TPObject1,TPObject2,TPObject3,TPObject4,</span></span>
+<span id="cb49-1110"><a href="#cb49-1110" aria-hidden="true" tabindex="-1"></a><span class="in">     checkTPObject4,</span></span>
+<span id="cb49-1111"><a href="#cb49-1111" aria-hidden="true" tabindex="-1"></a><span class="in">     "Tutorial_complex_output.rda")</span></span>
+<span id="cb49-1112"><a href="#cb49-1112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
@@ -3529,7 +3530,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <p><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></p>
 </div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"openEffect":"zoom","selector":".lightbox","descPosition":"bottom"});
+</footer><script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

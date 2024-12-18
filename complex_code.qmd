@@ -624,9 +624,11 @@ Based on the mediation barplot, we've also observed significant proportion media
 
 ::: callout-note
 <!-- By observing this figure, we can see the direction and magnitude of adjusted proportion mediated (APM) for the two mediators across all exposures and outcomes. The positioning of the points is similar to what we observed for the proportion mediated (PM). -->
+
 $$PM=\frac{IE}{IE+DE}$$
 
 $$APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{|IE|+|DE|}\cdot\frac{IE+DE}{|IE+DE|}$$
+
 -   Notably, the APM for BSDS (Baltic Sea Diet Score) as the exposure and T2D (Type 2 Diabetes) as the outcome is smaller than their corresponding PM (considering the abosolute value). This difference occurs because the indirect and direct effects for this mediation pathway are in opposite directions. This opposition leads to a smaller total effect and consequently a larger PM (considering the abosolute value). However, the APM is not affected by the directionality of the direct and indirect effects, providing a more stable measure of mediation.
 
 <!-- -   No confidence intervals are shown for APM. This is because APM values cannot be directly calculated from the mediation analysis in the `mediation` R package, unlike the proportion mediated (PM). -->
@@ -1109,4 +1111,3 @@ save(exposure2,Omics2,outcome2,covariates2,auxilariy2,
      "Tutorial_complex_output.rda")
 ```
 
-0
