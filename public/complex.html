@@ -228,6 +228,8 @@ window.Quarto = {
   <li><a href="#step-2-3-exposures-omics-and-omics-outcomes-associations" id="toc-step-2-3-exposures-omics-and-omics-outcomes-associations" class="nav-link" data-scroll-target="#step-2-3-exposures-omics-and-omics-outcomes-associations">Step 2-3: Exposures-Omics and Omics-Outcomes associations</a></li>
   <li><a href="#step-4-meet-in-the-middle-triplot-visualization" id="toc-step-4-meet-in-the-middle-triplot-visualization" class="nav-link" data-scroll-target="#step-4-meet-in-the-middle-triplot-visualization">Step 4: Meet-in-the-middle Triplot Visualization</a></li>
   <li><a href="#step-5-mediation-analysis-and-visualization" id="toc-step-5-mediation-analysis-and-visualization" class="nav-link" data-scroll-target="#step-5-mediation-analysis-and-visualization">Step 5: Mediation analysis and visualization</a></li>
+  <li><a href="#comparative-visualization" id="toc-comparative-visualization" class="nav-link" data-scroll-target="#comparative-visualization">Comparative Visualization</a></li>
+  <li><a href="#data-download" id="toc-data-download" class="nav-link" data-scroll-target="#data-download">Data download</a></li>
   </ul>
 </li>
   </ul><div class="toc-actions"><ul><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/edit/main/complex.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/blob/main/complex.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -490,6 +492,7 @@ Note
 </div><div class="column" style="width: 45%">
 <p><a href="img/complex_4_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="img/complex_4_1.png" class="img-fluid"></a></p>
 </div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -505,8 +508,8 @@ Note
 </ul>
 </div>
 </div>
-<!-- Start by selecting to show only the proportion mediated (PM). This will help you focus on the mediation effects in your analysis. --><!-- Additionally, adjust the limits of the plot to enhance visibility. By fine-tuning these settings, you can ensure that the points representing your mediation results are more clearly visible, allowing for better interpretation and understanding of the data. Note that the confidence interval that beyond the limits of the plot will not be displayed on the plot. -->
-</div>
+<!-- Start by selecting to show only the proportion mediated (PM). This will help you focus on the mediation effects in your analysis. -->
+<!-- Additionally, adjust the limits of the plot to enhance visibility. By fine-tuning these settings, you can ensure that the points representing your mediation results are more clearly visible, allowing for better interpretation and understanding of the data. Note that the confidence interval that beyond the limits of the plot will not be displayed on the plot. -->
 <div class="columns">
 <div class="column" style="width: 40%">
 <p>You can use the “Visualization settings” to customize what exposure, mediator and outcome you want to display. The figure on the right using BSDS as exposure, turquoise module as mediator (the module on the x axis in the triplot in step 4) and BMI as outcome. We will explain its mediation barlot as an example of its interpretation.</p>
@@ -515,12 +518,27 @@ Note
 </div><div class="column" style="width: 45%">
 <p><a href="img/complex_4_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="img/complex_4_2.png" class="img-fluid"></a></p>
 </div>
+</div>
 <p>In the step 5 of the TriplotGUI interface, you can view barplots that display the direct, indirect, and total effects for each exposure-mediator-outcome combination. These barplots offer a convenient visual tool to check the direction and magnitude of mediation estimates.</p>
 <p><a href="img/complex_4_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="img/complex_4_3.png" class="img-fluid"></a></p>
-<!-- Four green triangles are displayed on the figure. Their x and y coordiates represent the eight combinations of exposures, mediators and outcomes. --><!-- -   exposure=BSDS, mediator= module 1, outcome=BMI --><!-- -   exposure=BSDS, mediator= module 2, outcome=BMI --><!-- -   exposure=Hamburger, mediator= module 1, outcome=BMI --><!-- -   exposure=Hamburger, mediator= module 2, outcome=BMI --><!-- -   exposure=BSDS, mediator= module 1, outcome=T2D --><!-- -   exposure=BSDS, mediator= module 2, outcome=T2D --><!-- -   exposure=Hamburger, mediator= module 1, outcome=T2D --><!-- -   exposure=Hamburger, mediator= module 2, outcome=T2D --><!-- ::: callout-note --><!-- -   Confidence intervals are automatically removed from the figure if they fall outside the set limits.  --><!-- -   In certain mediations, the direct and indirect effects may have opposite directions. This can result in a proportion mediated (PM) greater than 1. This occurs because the total effect might be smaller than the indirect effect. --><!-- ::: --><p>In the shown mediation barplot, we can observe the direction and magnitude of the indirect effect and proportion mediated. We observed that with all effects significant, indirect effect is negative, direct and total effect is positive. The negative indirect effect is consistent with the its visualization in the triplot, i.e, the turquiose module on the x axis associative with BSDS positively and with BMI negatively.</p>
+<!-- Four green triangles are displayed on the figure. Their x and y coordiates represent the eight combinations of exposures, mediators and outcomes. -->
+<!-- -   exposure=BSDS, mediator= module 1, outcome=BMI -->
+<!-- -   exposure=BSDS, mediator= module 2, outcome=BMI -->
+<!-- -   exposure=Hamburger, mediator= module 1, outcome=BMI -->
+<!-- -   exposure=Hamburger, mediator= module 2, outcome=BMI -->
+<!-- -   exposure=BSDS, mediator= module 1, outcome=T2D -->
+<!-- -   exposure=BSDS, mediator= module 2, outcome=T2D -->
+<!-- -   exposure=Hamburger, mediator= module 1, outcome=T2D -->
+<!-- -   exposure=Hamburger, mediator= module 2, outcome=T2D -->
+<!-- ::: callout-note -->
+<!-- -   Confidence intervals are automatically removed from the figure if they fall outside the set limits.  -->
+<!-- -   In certain mediations, the direct and indirect effects may have opposite directions. This can result in a proportion mediated (PM) greater than 1. This occurs because the total effect might be smaller than the indirect effect. -->
+<!-- ::: -->
+<p>In the shown mediation barplot, we can observe the direction and magnitude of the indirect effect and proportion mediated. We observed that with all effects significant, indirect effect is negative, direct and total effect is positive. The negative indirect effect is consistent with the its visualization in the triplot, i.e, the turquiose module on the x axis associative with BSDS positively and with BMI negatively.</p>
 <p>However, the figure also shows that BSDS is positively associated with BMI through a larger direct effect. This seems counterintuitive but this could be due to a true direct effect or indirect effect mediated by other modules.</p>
 <p>Based on the mediation barplot, we’ve also observed significant proportion mediated with for BSDS-turquiose module-BMI mediations, suggesting a robust mediation effect.</p>
-<!-- To visualize the adjusted proportion mediated (APM) and add layers of correlation and risk estimates, use the following settings. --><div class="callout callout-style-default callout-note callout-titled">
+<!-- To visualize the adjusted proportion mediated (APM) and add layers of correlation and risk estimates, use the following settings. -->
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -541,7 +559,7 @@ Note
 </div>
 </div>
 <p>To further explore the indirect, direct, and total effects of different combinations of mediations, you can run more mediation analysis at Step 5 in the TriplotGUI interface .</p>
-<section id="comparative-visualization" class="level2"><h2 class="anchored" data-anchor-id="comparative-visualization">Comparative Visualization</h2>
+</section><section id="comparative-visualization" class="level2"><h2 class="anchored" data-anchor-id="comparative-visualization">Comparative Visualization</h2>
 <p>Users can examine the heatmaps of correlations, risk estimations, and mediation results in the TriplotGUI interface. To focus on specific aspects of interest, navigate to the “Visualization settings” section and remove unwanted mediators, exposures, or outcomes. This customization allows users to display only the correlation, risk estimation, and mediation results they find most relevant.</p>
 <p><a href="img/complex_5_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="img/complex_5_1.png" class="img-fluid"></a></p>
 <p><a href="img/complex_5_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="img/complex_5_2.png" class="img-fluid"></a></p>
@@ -567,8 +585,6 @@ Note
 <p><img src="img/complex_6_1.png" class="img-fluid"><img src="img/complex_6_2.png" class="img-fluid"></p>
 
 
-</section>
-</div>
 </section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -669,7 +685,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <p><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></p>
 </div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","selector":".lightbox","openEffect":"zoom","closeEffect":"zoom"});
+</footer><script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","descPosition":"bottom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

@@ -21,8 +21,8 @@ format:
     toc-location: right
     toc-depth: 5
     toc-title: Tutorial
-    number-sections: true  ## add number in the session or not
-    number-depth: 4
+    #number-sections: true  ## add number in the session or not
+    #number-depth: 4
     code-fold: show
     code-summary: "Show the code"
     code-overflow: wrap

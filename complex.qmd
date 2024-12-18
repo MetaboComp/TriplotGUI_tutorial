@@ -295,9 +295,9 @@ If an exposure variable is continuous (numeric variable), it is recommended that
 :::
 
 ::: columns
+
 ::: {.column style="width: 40%"}
 Use the following settings for your data analysis in TriplotGUI. Mediation analysis is then performed using the counterfactual method on the our selected exposures, mediators and our selected outcomes, adjusting for covariates for both exposure-mediator and mediator-outcome relationship.
-
 
 :::
 
@@ -307,6 +307,10 @@ Use the following settings for your data analysis in TriplotGUI. Mediation analy
 ::: {.column style="width: 45%"}
 ![](img/complex_4_1.png)
 :::
+
+:::
+
+
 
 ::: callout-note
 -   Note that you need to click ***Do mediation*** to start running the mediation analysis.
@@ -318,7 +322,6 @@ Use the following settings for your data analysis in TriplotGUI. Mediation analy
 
 <!-- Additionally, adjust the limits of the plot to enhance visibility. By fine-tuning these settings, you can ensure that the points representing your mediation results are more clearly visible, allowing for better interpretation and understanding of the data. Note that the confidence interval that beyond the limits of the plot will not be displayed on the plot. -->
 
-:::
 
 ::: columns
 ::: {.column style="width: 40%"}
@@ -332,6 +335,8 @@ You can use the "Visualization settings" to customize what exposure, mediator an
 
 ::: {.column style="width: 45%"}
 ![](img/complex_4_2.png)
+:::
+
 :::
 
 In the step 5 of the TriplotGUI interface, you can view barplots that display the direct, indirect, and total effects for each exposure-mediator-outcome combination. These barplots offer a convenient visual tool to check the direction and magnitude of mediation estimates.

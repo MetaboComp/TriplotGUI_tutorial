@@ -157,34 +157,27 @@ This interpretation highlights how different dietary exposures relate to metabol
 Mediation analysis will be performed using the conventional(Baron-Kenny) method on our selected exposures (`"Refined grains"`, `"Red meat"`), and the outcome of interest (`"BMI"`), using components generated from Step 1 as mediators and adjusting for age and sex in both the exposure-mediator and mediator-outcome associations.
 
 After mediation analysis is performed, users can select which exposure, mediator and outcome variables to use for mediation barplot visualization.
-
 :::
 
 ::: {.column style="width: 5%"}
 :::
 
 ::: {.column style="width: 45%"}
-
-
 <!-- Mediation analysis is then performed using the conventional "product" method on our selected exposures (i.e. `"Refined grains"`, `"Red meat"`), mediators (i.e. PC1 and PC2) and the selected outcome (i.e. `"BMI"`) of interest, adjusting for age and sex for both exposure-mediator and mediator-outcome relationship -->
 
 ![](img/simple_4.png)
 
 ![](img/simple_4_1.png)
-
 :::
 ::::::
 
 ::: callout-note
--   Please note that you need to click ***Do Mediation*** to initiate the mediation analysis.
-<!-- -   By default, only proportion mediated is visualized. You could go to the "Visualization setting" to select ***Mediation estimate or proportion*** as *Estimate* to show the indirect effect or total effect in the triplot with mediation. -->
+-   Please note that you need to click ***Do Mediation*** to initiate the mediation analysis. <!-- -   By default, only proportion mediated is visualized. You could go to the "Visualization setting" to select ***Mediation estimate or proportion*** as *Estimate* to show the indirect effect or total effect in the triplot with mediation. -->
 :::
 
 In Step 5 of the interface, you can view barplots that display the direct, indirect, and total effects for each exposure-mediator-outcome combination. This tool conveniently illustrates the direction and magnitude of mediation estimates.
 
 ![](img/simple_4_2.png)
-
-
 
 ::: callout-note
 The barplot displays direct, indirect, and total effects for each exposure-mediator-outcome combination, providing a convenient tool to assess the direction and magnitude of mediation estimates.
@@ -206,7 +199,7 @@ Users can check the heatmaps of exposure associations, risk estimations, and med
 ::: callout-note
 -   Significance is indicated as follows. One star for p\<0.05; Two stars for p\<0.01; Three stars for p\<0.001.
 -   The first two plots, correlation coefficients with exposures and risk estimates of outcomes will show all the exposure and outcome variables that are not removed from visualization.
--   Note that only the selected exposures, mediators and outcomes that we use to do mediation on will show up in the mediation results. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure-outcome pair, 4 result are shown: *IE* (indirect effect), *TE* (total effect), *PM*(Proportion Mediated) and *APM*(Adjusted Proportion Mediated). Please see [Details section](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2){target="_blank"} for more information. The "BK" before the names of exposures-outcome pairs means that this mediation is using the Conventional Baron-Kenny "product" method. For this method, only the significant level of *IE* and *TE* is calculated and shown on the plot, but not *PM* and *APM*. 
+-   Note that only the selected exposures, mediators and outcomes that we use to do mediation on will show up in the mediation results. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure-outcome pair, 4 result are shown: *IE* (indirect effect), *TE* (total effect), *PM*(Proportion Mediated) and *APM*(Adjusted Proportion Mediated). Please see [Details section](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2){target="_blank"} for more information. The "BK" before the names of exposures-outcome pairs means that this mediation is using the Conventional Baron-Kenny "product" method. For this method, only the significant level of *IE* and *TE* is calculated and shown on the plot, but not *PM* and *APM*.
 :::
 
 ## Data download
