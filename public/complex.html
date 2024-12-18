@@ -464,7 +464,7 @@ Note
 </ul>
 </li>
 <li><p>Adjusting for <code>"Age"</code>, <code>"Gender"</code>, <code>"Smoking"</code>, <code>"Education"</code> and <code>"FastingGlucose"</code>, the first module (on x-axis) correlates positively with generally healthy food (e.g.&nbsp;<code>"fruits"</code>, <code>"vegatables"</code>) and food index (e.g.&nbsp;<code>"BSDS"</code>) and negatively with unhealthy food (e.g.&nbsp;<code>"Hamburger"</code>, <code>"pizza"</code>). It also reversely associated with <code>"T2D"</code> and <code>"BMI"</code>. From the result from <code>"BMI_cat"</code>, this components also reversely associated with being obese.</p></li>
-<li><p>Adjusting for <code>"Age"</code>, <code>"Gender"</code>, <code>"Smoking"</code>, <code>"Education"</code> and <code>"FastingGlucose"</code>, the second module (on y-axis) associated positively with generally healthy food (e.g.&nbsp;<code>"fruits"</code>, <code>"vegatables"</code>) and food index (e.g.&nbsp;<code>"BSDS"</code>) and negatively with unhealthy food (e.g.&nbsp;<code>"Hamburger"</code>, <code>"pizza"</code>). However, the module correlates also positively with <code>"T2D"</code>,<code>"BMI"</code>, <em>obese</em>, <em>overweight</em> and negatively associated with <em>underweight</em>.</p></li>
+<li><p>Adjusting for <code>"Age"</code>, <code>"Gender"</code>, <code>"Smoking"</code>, <code>"Education"</code> and <code>"FastingGlucose"</code>, the second module (on y-axis) associated positively with generally healthy food (e.g.&nbsp;<code>"fruits"</code>, <code>"vegatables"</code>) and food index (e.g.&nbsp;<code>"BSDS"</code>) and negatively with unhealthy food (e.g.&nbsp;<code>"Hamburger"</code>, <code>"pizza"</code>). However, the module associates also positively with <code>"T2D"</code>,<code>"BMI"</code>, <em>obese</em>, <em>overweight</em> and negatively associated with <em>underweight</em>.</p></li>
 </ul>
 <p>Based on what we summarized above, the two modules may be associated with a overall healthy eating pattern. And in this healthy eating pattern, the first module is associated more with the beneficial effect on health and the second module represents the adverse health effect.</p>
 </section><section id="step-5-mediation-analysis-and-visualization" class="level2"><h2 class="anchored" data-anchor-id="step-5-mediation-analysis-and-visualization">Step 5: Mediation analysis and visualization</h2>
@@ -512,7 +512,7 @@ Note
 <!-- Additionally, adjust the limits of the plot to enhance visibility. By fine-tuning these settings, you can ensure that the points representing your mediation results are more clearly visible, allowing for better interpretation and understanding of the data. Note that the confidence interval that beyond the limits of the plot will not be displayed on the plot. -->
 <div class="columns">
 <div class="column" style="width: 40%">
-<p>You can use the “Visualization settings” to customize what exposure, mediator and outcome you want to display. The figure on the right using BSDS as exposure, turquoise module as mediator (the module on the x axis in the triplot in step 4) and BMI as outcome. We will explain its mediation barlot as an example of its interpretation.</p>
+<p>You can use the “Visualization settings” to customize what exposure, mediator and outcome you want to display. The figure on the right using BSDS as exposure, module1 as mediator (the module on the x axis in the triplot in step 4) and BMI as outcome. We will explain its mediation barlot as an example of its interpretation.</p>
 </div><div class="column" style="width: 5%">
 
 </div><div class="column" style="width: 45%">
@@ -534,9 +534,9 @@ Note
 <!-- -   Confidence intervals are automatically removed from the figure if they fall outside the set limits.  -->
 <!-- -   In certain mediations, the direct and indirect effects may have opposite directions. This can result in a proportion mediated (PM) greater than 1. This occurs because the total effect might be smaller than the indirect effect. -->
 <!-- ::: -->
-<p>In the shown mediation barplot, we can observe the direction and magnitude of the indirect effect and proportion mediated. We observed that with all effects significant, indirect effect is negative, direct and total effect is positive. The negative indirect effect is consistent with the its visualization in the triplot, i.e, the turquiose module on the x axis associative with BSDS positively and with BMI negatively.</p>
+<p>In the shown mediation barplot, we can observe the direction and magnitude of the indirect effect and proportion mediated. We observed that with all effects significant, indirect effect is negative, direct and total effect is positive. The negative indirect effect is consistent with the its visualization in the triplot, i.e, the module1 on the x axis associative with BSDS positively and with BMI negatively.</p>
 <p>However, the figure also shows that BSDS is positively associated with BMI through a larger direct effect. This seems counterintuitive but this could be due to a true direct effect or indirect effect mediated by other modules.</p>
-<p>Based on the mediation barplot, we’ve also observed significant proportion mediated with for BSDS-turquiose module-BMI mediations, suggesting a robust mediation effect.</p>
+<p>Based on the mediation barplot, we’ve also observed significant proportion mediated with for BSDS-module1-BMI mediations, suggesting a robust mediation effect.</p>
 <!-- To visualize the adjusted proportion mediated (APM) and add layers of correlation and risk estimates, use the following settings. -->
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -549,12 +549,13 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <!-- By observing this figure, we can see the direction and magnitude of adjusted proportion mediated (APM) for the two mediators across all exposures and outcomes. The positioning of the points is similar to what we observed for the proportion mediated (PM). -->
+<p><span class="math display">\[PM=\frac{IE}{IE+DE}\]</span></p>
+<p><span class="math display">\[APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{|IE|+|DE|}\cdot\frac{IE+DE}{|IE+DE|}\]</span></p>
 <ul>
 <li>Notably, the APM for BSDS (Baltic Sea Diet Score) as the exposure and T2D (Type 2 Diabetes) as the outcome is smaller than their corresponding PM (considering the abosolute value). This difference occurs because the indirect and direct effects for this mediation pathway are in opposite directions. This opposition leads to a smaller total effect and consequently a larger PM (considering the abosolute value). However, the APM is not affected by the directionality of the direct and indirect effects, providing a more stable measure of mediation.</li>
 </ul>
 <!-- -   No confidence intervals are shown for APM. This is because APM values cannot be directly calculated from the mediation analysis in the `mediation` R package, unlike the proportion mediated (PM). --><ul>
-<li>The APM is always smaller than 1, even when direct and indirect effects are in opposite directions. This is due to the calculation method of APM, which uses the sum of the absolute values of indirect and direct effects as the denominator. <span class="math display">\[APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{|IE|+|DE|}\cdot\frac{IE+DE}{|IE+DE|}\]</span>
-</li>
+<li>The APM is always smaller than 1, even when direct and indirect effects are in opposite directions. This is due to the calculation method of APM, which uses the sum of the absolute values of indirect and direct effects as the denominator.</li>
 </ul>
 </div>
 </div>
@@ -685,7 +686,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <p><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></p>
 </div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","descPosition":"bottom"});
+</footer><script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
