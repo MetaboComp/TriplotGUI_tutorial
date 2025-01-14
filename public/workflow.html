@@ -659,7 +659,7 @@ Note
 <span class="header-section-number">3.3.1</span> Basics</h3>
 <ol type="1">
 <li>
-<strong><em>log(risk)</em></strong>: Users choose between beta coefficients or odds ratios for risk estimations. Options are <em>Yes(useful for odds ratio)</em> or <em>No(useful for beta coefficient)</em>. Default is <em>No(useful for beta coefficient)</em>.</li>
+<strong><em>exp(risk)</em></strong>: Users choose between beta coefficients or odds ratios for risk estimations. Options are <em>Yes(useful for odds ratio)</em> or <em>No(useful for beta coefficient)</em>. Default is <em>No(useful for beta coefficient)</em>.</li>
 </ol></section><section id="more-6" class="level3" data-number="3.3.2"><h3 data-number="3.3.2" class="anchored" data-anchor-id="more-6">
 <span class="header-section-number">3.3.2</span> More</h3>
 <ol type="1">
@@ -712,7 +712,7 @@ Note
 <li><p><strong><em>Loading cut</em></strong>: Loadings below the value will not show up on the plot.</p></li>
 <li><p><strong><em>Plot Scores</em></strong>: This option determines whether the scores will be plotted on the visualization. The default is <em>No</em>.</p></li>
 <li><p><strong><em>Whisker length</em></strong>: Sets the whisker length of confidence intervals. Default is <em>0.1</em>.</p></li>
-<li><p><strong><em>log(risk)</em></strong>: Users choose between beta coefficients or odds ratios for risk estimations. Options are <em>Yes(useful for odds ratio)</em> or <em>No(useful for beta coefficient)</em>. Default is <em>No(useful for beta coefficient)</em>.</p></li>
+<li><p><strong><em>exp(risk)</em></strong>: Users choose between beta coefficients or odds ratios for risk estimations. Options are <em>Yes(useful for odds ratio)</em> or <em>No(useful for beta coefficient)</em>. Default is <em>No(useful for beta coefficient)</em>.</p></li>
 </ol></section><section id="triplot" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="triplot">
 <span class="header-section-number">4.2</span> Triplot</h2>
 <p>The <span style="color:green">green box</span> represents visualization outputs. With Omics data from Step 1 and exposure or outcome data uploaded, clicking the <strong><em>Refresh plot</em></strong> button will co-visualize the exposure associations and outcome associations with the selected components/modules. The figure can be downloaded by clicking <strong><em>Download figure</em></strong>.</p>
@@ -1427,7 +1427,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-335"><a href="#cb1-335" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-336"><a href="#cb1-336" aria-hidden="true" tabindex="-1"></a><span class="fu">### Basics</span></span>
 <span id="cb1-337"><a href="#cb1-337" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-338"><a href="#cb1-338" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***log(risk)***: Users choose between beta coefficients or odds ratios for risk estimations. Options are *Yes(useful for odds ratio)* or *No(useful for beta coefficient)*. Default is *No(useful for beta coefficient)*.</span>
+<span id="cb1-338"><a href="#cb1-338" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>***exp(risk)***: Users choose between beta coefficients or odds ratios for risk estimations. Options are *Yes(useful for odds ratio)* or *No(useful for beta coefficient)*. Default is *No(useful for beta coefficient)*.</span>
 <span id="cb1-339"><a href="#cb1-339" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-340"><a href="#cb1-340" aria-hidden="true" tabindex="-1"></a><span class="fu">### More</span></span>
 <span id="cb1-341"><a href="#cb1-341" aria-hidden="true" tabindex="-1"></a></span>
@@ -1489,7 +1489,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-397"><a href="#cb1-397" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-398"><a href="#cb1-398" aria-hidden="true" tabindex="-1"></a><span class="ss">8.  </span>***Whisker length***: Sets the whisker length of confidence intervals. Default is *0.1*.</span>
 <span id="cb1-399"><a href="#cb1-399" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-400"><a href="#cb1-400" aria-hidden="true" tabindex="-1"></a><span class="ss">9.  </span>***log(risk)***: Users choose between beta coefficients or odds ratios for risk estimations. Options are *Yes(useful for odds ratio)* or *No(useful for beta coefficient)*. Default is *No(useful for beta coefficient)*.</span>
+<span id="cb1-400"><a href="#cb1-400" aria-hidden="true" tabindex="-1"></a><span class="ss">9.  </span>***exp(risk)***: Users choose between beta coefficients or odds ratios for risk estimations. Options are *Yes(useful for odds ratio)* or *No(useful for beta coefficient)*. Default is *No(useful for beta coefficient)*.</span>
 <span id="cb1-401"><a href="#cb1-401" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-402"><a href="#cb1-402" aria-hidden="true" tabindex="-1"></a><span class="fu">## Triplot</span></span>
 <span id="cb1-403"><a href="#cb1-403" aria-hidden="true" tabindex="-1"></a></span>
@@ -1674,7 +1674,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <p><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></p>
 </div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","loop":false,"closeEffect":"zoom","openEffect":"zoom"});
+</footer><script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

@@ -335,7 +335,7 @@ For outcomes - components/modules associations, statistical analyses are perform
 
 ### Basics
 
-1.  ***log(risk)***: Users choose between beta coefficients or odds ratios for risk estimations. Options are *Yes(useful for odds ratio)* or *No(useful for beta coefficient)*. Default is *No(useful for beta coefficient)*.
+1.  ***exp(risk)***: Users choose between beta coefficients or odds ratios for risk estimations. Options are *Yes(useful for odds ratio)* or *No(useful for beta coefficient)*. Default is *No(useful for beta coefficient)*.
 
 ### More
 
@@ -397,7 +397,7 @@ The [orange box]{style="color:orange"} represents visualization settings that al
 
 8.  ***Whisker length***: Sets the whisker length of confidence intervals. Default is *0.1*.
 
-9.  ***log(risk)***: Users choose between beta coefficients or odds ratios for risk estimations. Options are *Yes(useful for odds ratio)* or *No(useful for beta coefficient)*. Default is *No(useful for beta coefficient)*.
+9.  ***exp(risk)***: Users choose between beta coefficients or odds ratios for risk estimations. Options are *Yes(useful for odds ratio)* or *No(useful for beta coefficient)*. Default is *No(useful for beta coefficient)*.
 
 ## Triplot
 
