@@ -1,0 +1,494 @@
+/* css styles */
+/*-- scss:defaults --*/
+
+/* From https://github.com/andrewheiss/ath-quarto/blob/main/html/ath.scss */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+
+$white:    #ffffff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #373a3c !default;
+$gray-900: #212529 !default;
+$black:    #000000 !default;
+
+$blue:    #2780e3 !default;
+$indigo:  #6610f2 !default;
+$pink:    #A52C60 !default;
+$red:     #CF4446 !default;
+$orange:  #EE6A24 !default;
+$light-orange:  #FB9E07 !default;
+$yellow:  #F6D645 !default;
+$green:   #118230 !default;
+$teal:    #068194 !default;
+$cyan:    #3093CF !default;
+
+$primary:   $teal!default;
+$secondary: $pink !default;
+$success:   $green !default;
+$info:      $cyan !default;
+$warning:   $orange !default;
+$danger:    $red !default;
+$light:     $gray-400 !default;
+
+
+
+$light-sage-green: #D1D9CE;
+$dark-sage-green: #98A08D;
+$cream: #FDFBF7;
+$dark-gray: #5A5856;
+$gray: #64605f;
+$light-gray: #949799;
+$purple: #9158A2; //#AE8BD1;
+$burnt-orange: #ad7237;
+
+
+
+$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+$font-size-sm:                $font-size-base * .875 !default;
+$font-size-lg:                $font-size-base * 1.25 !default;
+
+
+// TOC
+$toc-color: $orange;
+$toc-font-size: 0.8em;
+$toc-active-border:$green;
+
+//$headings-color: $black;
+//Have not figure out how to change toc tiltle and content font size separately;
+#TOC {
+  color:$black;    //color for the whole toc
+}
+h1 {
+  letter-spacing: 3px;
+  font-weight: 700;  //Bold font weight;
+  font-size: 1.5em;
+  color: $black;
+}
+
+.sidebar nav[role=doc-toc]>h2{
+  color: orange;
+}
+
+h2{                 //toc title is h2 title
+  letter-spacing: 3px;
+  font-weight: 700;  //Bold font weight;
+  font-size: 1.5em;
+  color: $black;
+}
+h3{
+  letter-spacing: 3px;
+  font-weight: 700;  //Bold font weight;
+  font-size: 1.5em;
+  color: $black;
+}
+h4 {
+  letter-spacing: 3px;
+  font-weight: 700;  //Bold font weight;
+  color: $black;
+}
+h5{
+  letter-spacing: 3px;
+  font-weight: 700;  //Bold font weight;
+  color: $green;
+}
+h6{
+  letter-spacing: 3px;
+  font-weight: 700;  //Bold font weight;
+  color: $orange;
+}
+
+$body-text-align:           null !default;
+$body-color:                $black !default;
+$body-bg:                   $white !default;
+
+$body-secondary-color:      $blue !default;
+$body-secondary-bg:         $yellow !default;
+
+$body-tertiary-color:       $blue !default;
+$body-tertiary-bg:          $yellow !default;
+
+$body-emphasis-color:       $black !default;
+body{
+    overscroll-behavior: none;
+    text-align: justify;
+}
+
+
+// Links
+$link-color: $blue !default;
+$link-decoration: none !default;    //When there is not hovering;
+$link-hover-color: $blue !default;
+$link-hover-decoration: underline !default;  //When there is hovering;
+
+
+
+// Footer
+$footer-bg: $black !default;   //footer{} is an element of itself bg is one of the argument;
+$footer-fg: $yellow !default;
+footer{  a {
+    text-decoration: none; /* Remove underline for links */
+    transition: color 0.1s; /* Smooth transition for color change */
+
+    &:hover {
+      color: $blue; /* Change link color on hover */
+      text-decoration: underline;
+    }
+  }
+}
+
+
+// Inline code
+$code-bg: $cream !default;
+$code-color: $green !default;
+//code chunk
+$code-block-bg: $cream !default;
+$code-block-bg-alpha: -1em;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;
+// scss-docs-end grid-breakpoints
+.code-tools-button {
+    position: relative;
+    left: 5em;
+
+    @media (max-width: map-get($grid-breakpoints, md)) {
+        left: 0;
+    }
+}
+
+// Code copy button
+$btn-code-copy-color: $orange !default;
+$btn-code-copy-color-active: $blue !default;
+
+//https://quarto.org/docs/output-formats/html-themes.html
+
+
+.navbar-brand img {             //$head logo
+  max-height: 30px; /* Adjust the size according to your preference */
+  max-width: 30px;
+}
+
+$navbar-brand-font-size: $font-size-lg !default;
+$dropdown-bg: $white;
+$dropdown-link-color: $red;
+$dropdown-link-hover-color: $blue;
+$dropdown-link-hover-bg:  $yellow;
+
+.faux-block {
+        display: block;
+        padding-bottom: 0em;
+}
+
+.topbr {
+    display: block;
+    margin-top: 1em;
+}
+
+.title {
+  font-size: 2.5rem; /* Adjust the value as needed */
+}
+.custom-subtitle {
+  font-size: 22px;
+  margin-bottom: 0.15em;
+}
+
+
+
+.custom-subtitle2 {
+  font-size: 20px;
+  font-style: italic;
+}
+
+.extra-small-text{
+  font-size: 14px;
+}
+
+.dark-gray-text{
+  color: $dark-gray;
+}
+
+.large-text {
+  font-size: 25px;
+}
+
+.center-text {
+  text-align: center;
+  left: 50%;
+}
+
+.quote-text-bg {
+  background-color: rgba(152, 160, 141, 0.3); //rgba(166, 164, 161, 0.4);
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 5px;
+  padding-left: 8px;
+  border-radius: 15px;
+  /*border-radius: 50%;*/
+}
+.greencolor{color:$green;}
+.styled-output .cell-output {
+  background-color: lightgreen;
+  border-radius: 4px;
+}
+
+
+/*----------------------------------------------------------------*/
+/*-- scss:rules --*/
+
+
+.nav-footer {
+    align-items: flex-start;  // Align all flex items to the top
+    flex-wrap: wrap;
+    border: 0 !important;
+    min-height: 2em;
+    //font-family: $footer-font-family;
+
+
+
+    // In the default Quarto template, .nav-footer-center has position: absolute
+    // turned on, which makes the div not be a flex item
+    // This changes that so that it *is* a flex item
+    .nav-footer-center {
+        text-align: center;
+        position: inherit;
+        margin-top: 0;
+
+        @media (max-width: map-get($grid-breakpoints, md)) {
+            margin-top: 0em;
+            margin-bottom: 0em;
+        }
+    }
+
+    // When the screen is medium or smaller, make each footer chunk be 100% width
+    // and centered; otherwise make them be 33% width and left/right/centerd
+    .nav-footer-left,
+    .nav-footer-right,
+    .nav-footer-center {
+        text-align: center;
+        width: 100%;
+        min-height: 2em;
+    }
+
+    @media (min-width: map-get($grid-breakpoints, md)) {
+        .nav-footer-left {
+            text-align: left;
+        }
+
+        .nav-footer-right {
+            text-align: right;
+        }
+
+        .nav-footer-left,
+        .nav-footer-right,
+        .nav-footer-center {
+            flex: 1 1 33%;
+        }
+    }
+}
+
+
+
+
+
+
+//It is needed to add media in the end ;
+
+
+
+@media screen and (max-width: 700px) {
+    .section_padding {
+        padding: 1rem 2rem 0rem 2rem;
+    }
+
+    .hero {
+      padding-top: 2rem;
+    }
+
+    .section_margin {
+        margin: 4rem;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .section_padding {
+        padding: 1rem 2rem 0rem 2rem;
+    }
+
+    .hero {
+      padding-top: 2rem;
+    }
+
+    .section_margin {
+        margin: 4rem 2rem;
+    }
+}
+
+.hero {
+    display: flex;
+    flex-direction: row;
+    z-index: 1;
+    max-width: 2000px;
+    margin: auto;
+    padding-top: 6rem;
+}
+
+.hero_content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    z-index: 7;
+    margin-right: 5rem;
+    margin: auto;
+    max-width: 700px;
+}
+
+.hero_content h1 {
+    font-weight: 800;
+    font-size: 62px;
+    line-height: 75px;
+    letter-spacing: -0.04em;
+}
+
+.hero_content p {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    color: var(--color-text);
+
+    margin-top: 1.5rem;
+}
+
+.hero_content_input {
+    z-index: 7;
+    width: 100%;
+    margin: 2rem 0 0rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.hero_content_input iframe {
+    flex: 2;
+    min-height: 53px;
+    max-height: 53px;
+    padding: 0 0rem;
+    margin: 0 !important;
+    padding:0 !important;
+    border-radius: 0px !important;
+    background-color: transparent;
+    width: 100%;
+}
+
+.hero_content_below_button span {
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    top: 0px;
+    color: white;
+    font-size: 12pt;
+    font-style: italic;
+}
+
+
+.hero_image {
+    z-index: 7;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero_image img {
+    z-index: 7;
+    width: 70%;
+    aspect-ratio: 1/1;
+    margin: auto;
+    max-width: 350px;
+    min-width: 250px;
+    border-radius: 50%;
+    box-shadow:
+    rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px,
+    rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px,
+    rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border: 3px solid white;
+}
+
+
+@media screen and (max-width: 1050px) {
+    .hero {
+        flex-direction: column;
+    }
+
+    .hero_content {
+        margin: 0 0 3rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .hero_content h1 {
+        font-size: 48px;
+        line-height: 60px;
+    }
+
+    .hero_content p{
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .hero_content_below_button span{
+      font-size: 11px;
+    }
+
+    .hero_content_input input,
+    .hero_content_input button,
+    .hero_content_input iframe{
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .hero_content h1 {
+        font-size: 36px;
+        line-height: 48px;
+    }
+
+    .hero_content p{
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    .hero_content_input input,
+    .hero_content_input button,
+    .hero_content_input iframe{
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .hero_content_below_button span{
+      font-size: 10px;
+    }
+}
+.search-input {
+  color: $orange;
+  background-color: $green; // Replace with your desired color
+}
+
+.search-input {
+  color: $red;
+  background-color: $blue; // Replace with your desired color
+}

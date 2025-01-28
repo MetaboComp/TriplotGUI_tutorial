@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Use case - User Interface – TriplotGUI </title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./img/TriplotGUI_logo_white.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": true,
+  "collapse-after": 5,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><style>html{ scroll-behavior: smooth; }</style>
+<style>
+
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: white;
+      }
+
+      .quarto-title-block .quarto-title-banner {
+        color: white;
+      }
+</style>
+<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script><link rel="stylesheet" href="styles.scss">
+</head>
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./img/TriplotGUI_logo_black.png" alt="" class="navbar-logo"></a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">TriplotGUI <i class="fa-brands fa-gitlab" aria-label="gitlab"></i></span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+<li class="nav-item">
+    <a class="nav-link" href="./introduction.html"> 
+<span class="menu-text">Introduction</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./installation.html"> 
+<span class="menu-text">Setup</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./workflow.html"> 
+<span class="menu-text">Manual</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorial(simple" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tutorial(simple)</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-tutorial(simple">
+<li>
+    <a class="dropdown-item" href="./simple.html">
+ <span class="dropdown-text">User Interface</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./simple_code.html">
+ <span class="dropdown-text">Code</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorial(complex" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tutorial(complex)</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-tutorial(complex">
+<li>
+    <a class="dropdown-item" href="./complex.html">
+ <span class="dropdown-text">User Interface</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./complex_code.html">
+ <span class="dropdown-text">Code</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item">
+    <a class="nav-link" href="./papers.html"> 
+<span class="menu-text">Papers</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About us</span></a>
+  </li>  
+</ul>
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank"> <i class="bi bi-folder-symlink" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/yingxiao-yan" target="_blank"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:yingxiao@chalmers.se"> <i class="bi bi-envelope" role="img" aria-label="email">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+</div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Use case - User Interface</h1>
+            <p class="subtitle lead">A use case example user interface in TriplotGUI</p>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page-left">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Use case</h2>
+   
+  <ul>
+<li><a href="#data-description" id="toc-data-description" class="nav-link active" data-scroll-target="#data-description">Data description</a></li>
+  <li><a href="#research-question" id="toc-research-question" class="nav-link" data-scroll-target="#research-question">Research question</a></li>
+  <li>
+<a href="#the-use-of-interface" id="toc-the-use-of-interface" class="nav-link" data-scroll-target="#the-use-of-interface">The use of interface</a>
+  <ul>
+<li><a href="#step-1-data-reduction-of-omics-data." id="toc-step-1-data-reduction-of-omics-data." class="nav-link" data-scroll-target="#step-1-data-reduction-of-omics-data.">Step 1: Data reduction of Omics data.</a></li>
+  <li><a href="#step-2-exposures-correlations-outcomes-associations" id="toc-step-2-exposures-correlations-outcomes-associations" class="nav-link" data-scroll-target="#step-2-exposures-correlations-outcomes-associations">Step 2: Exposures’ correlations &amp; Outcomes’ associations</a></li>
+  <li><a href="#step-3-visualization-of-triplot" id="toc-step-3-visualization-of-triplot" class="nav-link" data-scroll-target="#step-3-visualization-of-triplot">Step 3: Visualization of Triplot</a></li>
+  <li><a href="#step-4-mediation-analysis-and-visualization" id="toc-step-4-mediation-analysis-and-visualization" class="nav-link" data-scroll-target="#step-4-mediation-analysis-and-visualization">Step 4: Mediation analysis and visualization</a></li>
+  <li><a href="#comparative-visualization" id="toc-comparative-visualization" class="nav-link" data-scroll-target="#comparative-visualization">Comparative Visualization</a></li>
+  <li><a href="#data-download" id="toc-data-download" class="nav-link" data-scroll-target="#data-download">Data Download</a></li>
+  </ul>
+</li>
+  </ul><div class="toc-actions"><ul><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/edit/main/use_case.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/blob/main/use_case.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content"><p>Before starting, please make sure you have installed the TriplotGUI package following <a href="./installation.html" target="_blank">Setup</a>.</p>
+<section id="data-description" class="level1"><h1>Data description</h1>
+<p>Each dataset used in this page of tutorial can be downloaded <a href="https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Example_data" target="_blank">here</a> as a dataframe in the rds files:</p>
+<ul>
+<li>Example3_exposome.rds</li>
+<li>Example3_selected_exposure.rds</li>
+<li>Example3_Omics.rds</li>
+<li>Example3_outcome.rds</li>
+<li>Example3_covariate.rds</li>
+</ul>
+<p>The Data used for this example originates from <strong><em>ExposomeChallenge</em></strong>, which is modified from the data provided by the “the Exposome data Challenge Event” hosted by ISGlobal in April 2021 (Maitre et al, 2022). The data used by the event came from the HELIX (the Human Early Life Exposome) subcochort data base and were partially simulated. The HELIX study aims to measure and describe multiple exposures during early life (pregnancy and childhood) and associates these exposures with molecular omics signatures and child health outcomes, using 6 established logitudinal population based birth cohort studies (Maitre et al, 2018). We have selected our exposome, selected exposures, Omics data, outcomes and covariates data based on the <strong><em>ExposomeChallenge</em></strong> data following the code and data <a href="https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Tutorial_code/Data_cleaning_ExposomeChallenge.R" target="_blank">here</a>. The brief description of these data is shown as below.</p>
+<ul>
+<li><p>Example3_Omics.rds: 177 variables representing plasma metabolites. All 177 variables are continuous/numeric.</p></li>
+<li>
+<p>Example3_outcome.rds: 6 variables:</p>
+<ul>
+<li>
+<code>"asthma"</code>: Doctor diagnosed asthma (ever): A binary factor variable with 2 levels: 1 represents diagnosed and 0 represents not.<br>
+</li>
+<li>
+<code>"zBMI_cat"</code>: Body mass index categories at 6-11 years old: A categorical factor variable with 4 levels: 1: Thinness, 2: Normal, 3:Overweight, 4: Obese.</li>
+<li>
+<code>"zBMI"</code>: Body mass index z-score at 6-11 years old - Standardized on sex and age: A continuous/numeric variable.</li>
+<li>
+<code>"birth_weight"</code>: Child weight at birth (g): A continuous/numeric variable.</li>
+<li>
+<code>"IQ"</code>: Intelligence quotient at 6-11 years old - Total of correct answers at the RAVEN test: A continuous/numeric variable.</li>
+<li>
+<code>"neurobehavior"</code>: Neuro behavior - Internalizing and externalizing problems at 6-11 years old - CBCL scale: A continuous/numeric variable.</li>
+</ul>
+</li>
+<li><p>Example3_exposome.rds: containing a dataframe with 222 environmental variables (outdoor exposures, indoor air, lifestyle chemicals). All the 222 variables are continuous/numeric.</p></li>
+<li><p>Example3_selected_exposure.rds: containing a dataframe with 34 variables. These variables are selected out of the 222 environmental variables by the “MUVR2” machine learning algorithm (Yan et al, 2024) as predictive/relevant to either <code>"IQ"</code> or <code>"zBMI"</code> (Out of the 6 outcome variables, the prediction using machine learning gives convincing prediction performance for these 2 variables, but not the other 4 variables)</p></li>
+<li><p>Example3_selected_exposure_noisy.rds: containing a dataframe with 73 variables. These variables are selected out of the 222 environmental variables by the “MUVR2” machine learning algorithm as predictive/relevant to at least one out of the 6 outcome variables. However, out of the 6 outcome variables, the prediction using machine learning did not give convincing prediction performance for<code>"asthma"</code>, <code>"zBMI_cat"</code>, <code>"birth_weight"</code>, <code>"neurobehavior"</code>.</p></li>
+<li><p>Example3_covariate.rds: 13 variables that can be used as potential confounders: <code>"cohort"</code>, <code>"sex_child"</code>, <code>"yearbir_child"</code>, <code>"BMI_maternal"</code>, <code>"weight_gain_maternal"</code>, <code>"gestational_age_maternal"</code>, <code>"age_maternal"</code>, <code>"education_maternal"</code>, <code>"native_child"</code>, <code>"parity_maternal"</code>, <code>"age_child"</code>, <code>"height_child"</code>, <code>"weight_child"</code></p></li>
+</ul>
+<p>The data frames are row-wise matched by observation and consist of 1198 observations.</p>
+<p><strong>Reference</strong></p>
+<p>Yan, Y., Schillemans, T., Skantze, V., &amp; Brunius, C. (2024). Adjusting for covariates and assessing modeling fitness in machine learning using MUVR2. <em>Bioinformatics Advances</em>, vbae051. <a href="https://academic.oup.com/bioinformaticsadvances/advance-article/doi/10.1093/bioadv/vbae051/7641000" target="_blank">doi: doi.org/10.1093/bioadv/vbae051</a></p>
+<p>Maitre, L., Guimbaud, J. B., Warembourg, C., Güil-Oumrait, N., Petrone, P. M., Chadeau-Hyam, M., … &amp; Exposome Data Challenge Participant Consortium. (2022). State-of-the-art methods for exposure-health studies: results from the exposome data challenge event. <em>Environment international</em>, 168, 107422. <a href="https://pubmed.ncbi.nlm.nih.gov/36058017/" target="_blank">doi: 10.1016/j.envint.2022.107422</a></p>
+<p>Maitre, L., de Bont, J., Casas, M., Robinson, O., Aasvang, G. M., Agier, L., … &amp; Vrijheid, M. (2018). Human Early Life Exposome (HELIX) study: a European population-based exposome cohort. <em>BMJ Open</em> 8 (9), e021311. <a href="https://pubmed.ncbi.nlm.nih.gov/30206078/" target="_blank">doi: 10.1136/bmjopen-2017-021311</a></p>
+</section><section id="research-question" class="level1"><h1>Research question</h1>
+<p>In this use cases, we have used three group of exposures (1) exposome: 222 variables. (2)selected_exposure_noisy: 73 variables. (3)selected exposures: 34 variables. We use 2 variables,<code>"IQ"</code> and`“zBMI” as out outcomes and metabolomics variables as our mediator Omics data.</p>
+<p>From the information in the data description, we know that group (3) variables are the most relevant variables to <code>"IQ"</code> and`“zBMI”. Group (2) variables contains all group (3) variables and also other variable that are not relevant. Group (1) variables contain even more irrelevant variable.</p>
+<p>We want to explore if group (3) variables indeed show more relevance to the outcome variables than group (1) and (2) in <span style="color:orange">TriplotGUI</span>, and whether <span style="color:orange">TriplotGUI</span> can identify Omics patterns that may mediate the mechanism from exposures to outcomes.</p>
+</section><section id="the-use-of-interface" class="level1"><h1>The use of interface</h1>
+<p>Run <code>TriplotGUI_shiny()</code> to open your interface. We will show you an use case.</p>
+<section id="step-1-data-reduction-of-omics-data." class="level2"><h2 class="anchored" data-anchor-id="step-1-data-reduction-of-omics-data.">Step 1: Data reduction of Omics data.</h2>
+<div class="columns">
+<div class="column" style="width: 45%">
+<p>First upload the Omics data in step 1. Inspect the classes of Omics variables briefly. Use the default of “Data analysis settings”. Play around in the “Visualization settings”. Since we have 177 Omics variables, click the <strong><em>Loading labels</em></strong> to <em>No</em> so that you have a clearer view of your loadings plot. You can observed that using PCA as data analysis method, your loadings (representing omics variables) are mostly positively associated with your component 1.</p>
+</div><div class="column" style="width: 5%">
+
+</div><div class="column" style="width: 45%">
+<p><a href="img/usecase_1_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/usecase_1_1.png" class="img-fluid"></a></p>
+</div>
+</div>
+</section><section id="step-2-exposures-correlations-outcomes-associations" class="level2"><h2 class="anchored" data-anchor-id="step-2-exposures-correlations-outcomes-associations">Step 2: Exposures’ correlations &amp; Outcomes’ associations</h2>
+<p>Then upload exposures and covariate data in step 2A. Briefly inspecting variable classes. You can choose which covariate variables to adjust as you wish. In our use case example, for the sake of simplicity, we will not perform any covariate adjustment (the <strong><em>Raw or partial correlation</em></strong> is specified as <em>Raw</em> in the “Data analysis settings”)</p>
+<div class="columns">
+<div class="column" style="width: 45%">
+<p><a href="img/complex_2_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="img/complex_2_1.png" class="img-fluid"></a></p>
+</div><div class="column" style="width: 5%">
+
+</div><div class="column" style="width: 45%">
+<p><a href="img/complex_2_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="img/complex_2_2.png" class="img-fluid"></a></p>
+</div>
+</div>
+<p>Change your “Data analysis settings” as the figure below.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Select <em>One-hot-encoding</em> in <strong><em>Categorical variables</em></strong> performs one-hot-encoding to transform categorical exposures variables (i.e.&nbsp;<code>HFI</code>) with n&gt;2 classes to n binary variables. If <em>Use Original</em> is specified in <strong><em>Categorical variables</em></strong>, then the <code>HFI</code> variable is forced to be a numeric variable. This is not recommended unless you are sure that the level itself reflects the numeric value.</li>
+<li>The approaches for managing <strong><em>Missing values</em></strong> are inherited from the <em>cor</em> package for continuous exposures. Please check <a href="https://rdrr.io/r/stats/cor.html" target="_blank"><em>cor</em></a> package for more information.</li>
+</ul>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width: 45%">
+<p><a href="img/complex_2_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img/complex_2_3.png" class="img-fluid"></a></p>
+<p>You could briefly see the correlation coefficients in “Visualizations” by clicking “Refresh plot”.</p>
+</div><div class="column" style="width: 5%">
+
+</div><div class="column" style="width: 45%">
+<p><a href="img/complex_2_4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/complex_2_4.png" class="img-fluid"></a></p>
+</div>
+</div>
+<p>Then in step 2B, upload outcome and covariate data By briefly inspecting variable classes, you could notice: - In the outcome data, <code>"BMI"</code> is a numeric variable; <code>"BMI_cat"</code> and <code>"T2D"</code> are factor variables. - A variable called <code>"X"</code> exists in the covariate data. This is because the covariate data is uploaded as a csv file and the observation number may automatically be generated as a new variable when the file is read in. Remove this variable since it is not an actual covariate.</p>
+<div class="columns">
+<div class="column" style="width: 45%">
+<p><a href="img/complex_2_5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="img/complex_2_5.png" class="img-fluid"></a></p>
+</div><div class="column" style="width: 5%">
+
+</div><div class="column" style="width: 45%">
+<p><a href="img/complex_2_6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="img/complex_2_6.png" class="img-fluid"></a></p>
+</div>
+</div>
+<p>Change your “Data analysis settings” and “Visulization settings” as the figure below.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Some clarification for using multinomial regression and pairing variables:</p>
+<ul>
+<li>When a pairing variable is not provided:
+<ul>
+<li>Not performing multinomial regression means that one-hot-encoding will be performed to transform outcome’s categorical variables with n &gt; 2 classes to n binary variables. And logistic regression will be performed on the binary variables and linear regression will be performed on continuous variables.</li>
+<li>Performing multinomial regression means that multinomial regression will be performed on outcome’s categorical outcome variable with n &gt; 2 classes, which gives n-1 estimates. And logistic regression will be performed on the binary variables and linear regression will be performed on continuous variables.</li>
+</ul>
+</li>
+<li>When a pairing variable is provided:
+<ul>
+<li>Not performing multinomial regression means that one-hot-encoding will be performed on outcome’s categorical variables with n &gt; 2 classes. And then conditional logistic regression will be performed on the binary variables and linear mixed model will be performed on continuous variables, using the pairing information.</li>
+<li>Performing multinomial regression means that the pairing information will not be ignored and used (since the outcomes can have more than 2 classes), multinomial regression will be performed on outcome’s categorical variable, which gives n-1 estimates. And logistic regression will be performed on the binary variables and linear regression will be performed on continuous variables. THIS IS THE CASE IN OUR EXAMPLE.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width: 45%">
+<p><a href="img/complex_2_7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="img/complex_2_7.png" class="img-fluid"></a></p>
+</div><div class="column" style="width: 5%">
+
+</div><div class="column" style="width: 45%">
+<p>You could briefly see the risk estimate in “Visualizations” by clicking “Refresh plot”.</p>
+<p><a href="img/complex_2_8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="img/complex_2_8.png" class="img-fluid"></a></p>
+</div>
+</div>
+</section><section id="step-3-visualization-of-triplot" class="level2"><h2 class="anchored" data-anchor-id="step-3-visualization-of-triplot">Step 3: Visualization of Triplot</h2>
+<p>In step 3, by clicking “Refresh plot”, you can see and download the triplot that co-visualizing the three plots shown above. The left side panel gives you freedom of making adjustment to the plot. <img src="img/complex_3_1.png" class="img-fluid"></p>
+<p>In the triplot, blue circle points represent exposure correlations and the red square points represents outcome risk estimates with confidence interval. So what information can we get from this figure? Lets us list a few points:</p>
+<ul>
+<li>Having a brief look, the generally healthy food (e.g.&nbsp;<code>"Fruits"</code>, <code>"Vegetables"</code>) is on the first dimension of the figure and the generally unhealthy food (e.g.&nbsp;<code>"Hamburger"</code>, <code>"Sausage"</code>, <code>"Margarine"</code>) is on the third dimension of the figure. The numeric outcome <code>"BMI"</code>, binary outcome <code>"T2D"</code>, and one-hot-encoded categorical <code>"BMI_cat"</code> outcome is on the second and fourth dimension of the figure.</li>
+<li>Explanation on some variables in the plot:
+<ul>
+<li>
+<code>"HFI"</code> stands for healthy food index. A higher <code>"HFI"</code> suggests healthier diet. <code>"HFI"</code> ranges from 0 to 6. You can see that there are <em>HFI_0</em>, <em>HFI_1</em>…<em>HFI_6</em> in the figure and that is because <code>"HFI"</code> is used as a factor exposure variable in step 2 and is one-hot-encoded (´allowcategorical=F´) to the same number of binary variables as its number of levels. For example, <em>HFI_6</em> is a binary variable where individuals with <code>"HFI 6"</code> (most healthy diet people) will be labeled as 1 and the rest of individuals will be labelled as 0. <em>HFI_0</em> is a binary variable where individuals with <code>"HFI 6"</code> (most unhealthy diet people) will be labeled as 1 and the rest of individuals will be labelled as 0. <em>HFI_1</em>…<em>HFI_5</em> has limited use since it only separates the group of people with certain <code>"HFI"</code> from to the rest, which is a mixture of healthier and less healthier diet people.</li>
+<li>
+<code>"BSDS"</code> stands for Baltic Sea Diet Score ranging. A higher <code>"BSDS"</code> suggests healthier diet. <code>"BSDS"</code> is used as a numeric variable ranging from 2 to 25 in this step.</li>
+<li>
+<em>T2D_1</em> represents the odds ratio of <code>"T2D"</code>. Since <code>"T2D"</code> is a binary variable with 0(control) and 1(case) level. A logistic regression is performed on the <code>"T2D"</code>, and 0 is used as reference. That is why it shows <em>T2D_1</em> on the plot.</li>
+<li>
+<em>BMI_cat_obese</em>, <em>BMI_cat_overweight</em>,<em>BMI_cat_underweight</em> are the odds ratio generated from the multinomial regression. Since <code>"BMI_cat"</code> is a categorical outcome and multinomial regression is performed in step 2 (<code>multinomial=T</code>), normal weight is uses as a reference and odds ratio of obese, overweight and underweight is produced. (Note that the first level of the factor variable is set as the default reference, in this case it is <em>normal</em>.</li>
+</ul>
+</li>
+<li>Adjusting for <code>"Age"</code>, <code>"Gender"</code>, <code>"Smoking"</code>, <code>"Education"</code> and <code>"FastingGlucose"</code>, component from the first cluster (on x-axis) correlates positively with generally healthy food (e.g.&nbsp;<code>"fruits"</code>, <code>"vegatables"</code>) and food index (e.g.&nbsp;<code>"BSDS"</code>) and negatively with unhealthy food (e.g.&nbsp;<code>"Hamburger"</code>, <code>"pizza"</code>). It also reversely associated with <code>"T2D"</code> and <code>"BMI"</code>. From the result from <code>"BMI_cat"</code>, this components also reversely associated with being obese. This suggests that metabolite features from the first cluster may contribute to the mechanism from food to the incidence of T2D and obese</li>
+<li>Component from the second cluster (on y-axis) associated positively with generally healthy food (e.g.&nbsp;<code>"fruits"</code>, <code>"vegatables"</code>) and food index (e.g.&nbsp;<code>"BSDS"</code>) and negatively with unhealthy food (e.g.&nbsp;<code>"Hamburger"</code>, <code>"pizza"</code>). However, the component correlates also positively with <code>"T2D"</code>,<code>"BMI"</code>, obese, overweight and negatively associated with underweight. This suggests that metabolite features from the second cluster may be relevant to the mechainism of weight gain through healthy food (or a weight loss through unhealthy food)</li>
+</ul>
+<p>There are many things you could explore further in the following mediation analysis. To narrow down our focus and clearly show our examples, we select <code>"BSDS"</code> (Baltic Sea Diet Score) and <code>"Hamburger"</code> as our exposures, <code>"BMI"</code> and <code>"T2D"</code> as outcome to enter our next step.</p>
+</section><section id="step-4-mediation-analysis-and-visualization" class="level2"><h2 class="anchored" data-anchor-id="step-4-mediation-analysis-and-visualization">Step 4: Mediation analysis and visualization</h2>
+<p>This time, we perform the mediation analysis using the conterfactual/potential outcome method (the ´mediation´ package) on the our exposures (i.e.&nbsp;<code>"BSDS"</code>, <code>"Hamburger"</code>), mediators (i.e.&nbsp;the first PC of the first 2 clusters) and outcome (i.e.&nbsp;<code>"T2D"</code>, <code>"BMI"</code>) of interest, adjusting for <code>"Age"</code>, <code>"Gender"</code>, <code>"Smoking"</code>, <code>"Education"</code> and <code>"FastingGlucose"</code> for both exposure-mediator and mediator-outcome relationship.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the counterfactual mediation analysis, you need to specify contrast values of treatment and controls for each exposure. In brief, the algorithm will compare the scenarios with these 2 exposure values/levels. For my detailed explanation please refer to <a href="https://www.jstatsoft.org/article/view/v059i05" target="_blank">this paper</a> of the <code>mediation</code> R package.</p>
+<p>If an exposure variable is continuous (numeric variable), it is recommended that the 2 exposure values is chosen between the range of the exposure variable. If an exposure variable is categorical (factor variable), the 2 exposure levels should be chosen from the levels of the exposure variable.</p>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width: 40%">
+<p>Use the following settings for your data analysis. Mediation analysis is then performed using the counterfactual method on the our selected exposures, mediators and our selected outcomes, adjusting for covariates for both exposure-mediator and mediator-outcome relationship.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Note that you need to click <strong><em>Do mediation</em></strong> to start running the mediation analysis.</li>
+</ul>
+</div>
+</div>
+</div><div class="column" style="width: 5%">
+
+</div><div class="column" style="width: 45%">
+<p><a href="img/complex_4_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="img/complex_4_1.png" class="img-fluid"></a></p>
+</div>
+<p>You could then play around in the “Visualization settings” too see how you want to visualize your plot.</p>
+</div>
+<div class="columns">
+<div class="column" style="width: 40%">
+<p>You could first only show the proportion mediated(PM) and adjust the limits to make the points more visible. <img src="img/complex_4_2.png" class="img-fluid"></p>
+</div><div class="column" style="width: 5%">
+
+</div><div class="column" style="width: 45%">
+<p><img src="img/complex_4_3.png" class="img-fluid"> In the figure, even though not significant, we could see the direction and magnitude of proportion mediated for the 2 mediators, all the exposures and outcomes.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Note that some confidence intervals are automatically removed form the figure if they are not within the limit.</li>
+<li>Note that for some mediations, direct effect and indirect effects are in the opposite direction, implying possibly proportion mediated&gt;1, since total effect could smaller than indirect effect.</li>
+</ul>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width: 40%">
+<p>You then show the adjusted proportion mediated(PM) and adding the layers of correlation and risk estimates <img src="img/complex_4_4.png" class="img-fluid"></p>
+</div><div class="column" style="width: 5%">
+
+</div><div class="column" style="width: 45%">
+<p><a href="img/complex_4_5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="img/complex_4_5.png" class="img-fluid"></a></p>
+</div>
+</div>
+<p>By observing this figure, we could see the direction and magnitude of adjusted proportion mediated for the 2 mediators, all the exposures and outcomes. The position of the points is similar what we have seen for proportion mediated. Note that APM for BSDS as exposure and T2D as outcome is smaller than their PM. This is because the indirect and direct effect for this mediation is of similar size but in opposite direction. This leads to a smaller total effect and in turn larger PM, but APM will not be affected by the directionality of direct and indirect effect. ::: callout-note - No confidence interval is shown for adjusted proportion mediated, as such value can not be directly calculated from the mediation analysis.</p>
+<ul>
+<li>Note that even direct effect and indirect effects are in the opposite direction, adjusted proportion mediated is always smaller than 1, since it uses the sum of the absolute value of indirect and direct effect as denominator. <span class="math display">\[APM=\frac{IE}{|IE|+|DE|}\cdot\frac{|IE+DE|}{IE+DE}=\frac{IE}{IE+DE}\cdot\frac{|IE+DE|}{|IE|+|DE|}=\frac{IE}{IE+DE}\cdot\frac{|IE|+|DE|}{|IE+DE|}\]</span> :::</li>
+</ul>
+<p>In step 4, you can also see the barplots showed direct, indirect and total effect for each exposure-mediator-outcome combination. It is a convenient tool to check the direction and magnitude of mediation estimates.</p>
+<p><a href="img/complex_4_6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="img/complex_4_6.png" class="img-fluid"></a></p>
+</section><section id="comparative-visualization" class="level2"><h2 class="anchored" data-anchor-id="comparative-visualization">Comparative Visualization</h2>
+<p>Users can then check the heatmaps of correlations, risk estimations and mediation results at step 5. By removing other PCs, exposures or outcomes in the “Visualization settings”, users may only show correlation, risk estimation and mediation results of their interest.</p>
+<p><a href="img/complex_5_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="img/complex_5_1.png" class="img-fluid"></a></p>
+<p><a href="img/complex_5_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="img/complex_5_2.png" class="img-fluid"></a></p>
+</section><section id="data-download" class="level2"><h2 class="anchored" data-anchor-id="data-download">Data Download</h2>
+<p>Relevant data, intermediate results, can then be viewed and downloaded at step 6.</p>
+<p><img src="img/complex_6_1.png" class="img-fluid"><img src="img/complex_6_2.png" class="img-fluid"></p>
+
+
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/yingxiaoyan\.gitlab\.io\/triplotgui_tutorial\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p><span class="faux-block">© 2024 Yingxiao Yan <br> CC BY-SA 4.0</span></p>
+</div>   
+    <div class="nav-footer-center">
+<p><span class="faux-block"> <a href="https://yingxiao.shinyapps.io/triplotgui/" target="_blank">TriplotGUI</a> <br><a href="https://gitlab.com/YingxiaoYan/TriplotGUI" target="_blank">TriplotGUI Gitlab</a> </span></p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/edit/main/use_case.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/blob/main/use_case.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></p>
+</div>
+  </div>
+</footer><script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","loop":false,"descPosition":"bottom","closeEffect":"zoom"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
