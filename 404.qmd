@@ -1,8 +1,0 @@
----
-title: "404"
-filters:
-   - lightbox
-lightbox: auto
----
-
-Page not found, sorry! Try the search or navigate back to the base website.
