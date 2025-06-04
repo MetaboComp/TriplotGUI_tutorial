@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Tutorial(simple) - User Interface – TriplotGUI </title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./img/TriplotGUI_logo_white.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": true,
+  "collapse-after": 5,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><style>html{ scroll-behavior: smooth; }</style>
+<style>
+
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: white;
+      }
+
+      .quarto-title-block .quarto-title-banner {
+        color: white;
+      }
+</style>
+<link rel="stylesheet" href="styles.scss">
+</head>
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./img/TriplotGUI_logo_black.png" alt="" class="navbar-logo"></a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">TriplotGUI <i class="fa-brands fa-gitlab" aria-label="gitlab"></i></span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+<li class="nav-item">
+    <a class="nav-link" href="./introduction.html"> 
+<span class="menu-text">Introduction</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./installation.html"> 
+<span class="menu-text">Setup</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./workflow.html"> 
+<span class="menu-text">Manual</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorial(simple" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tutorial(simple)</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-tutorial(simple">
+<li>
+    <a class="dropdown-item" href="./simple.html">
+ <span class="dropdown-text">User Interface</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./simple_code.html">
+ <span class="dropdown-text">Code</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tutorial(complex" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tutorial(complex)</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-tutorial(complex">
+<li>
+    <a class="dropdown-item" href="./complex.html">
+ <span class="dropdown-text">User Interface</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./complex_code.html">
+ <span class="dropdown-text">Code</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item">
+    <a class="nav-link" href="./papers.html"> 
+<span class="menu-text">Papers</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About us</span></a>
+  </li>  
+</ul>
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank"> <i class="bi bi-folder-symlink" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/yingxiao-yan" target="_blank"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:yingxiao@chalmers.se"> <i class="bi bi-envelope" role="img" aria-label="email">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+</div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Tutorial(simple) - User Interface</h1>
+            <p class="subtitle lead">Simple demo of using user Interface in TriplotGUI</p>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page-left">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Tutorial</h2>
+   
+  <ul>
+<li><a href="#data-description" id="toc-data-description" class="nav-link active" data-scroll-target="#data-description">Data description</a></li>
+  <li><a href="#research-question" id="toc-research-question" class="nav-link" data-scroll-target="#research-question">Research question</a></li>
+  <li>
+<a href="#the-use-of-interface" id="toc-the-use-of-interface" class="nav-link" data-scroll-target="#the-use-of-interface">The use of interface</a>
+  <ul>
+<li><a href="#step-1-data-reduction-of-omics-variables" id="toc-step-1-data-reduction-of-omics-variables" class="nav-link" data-scroll-target="#step-1-data-reduction-of-omics-variables">Step 1: Data reduction of Omics variables</a></li>
+  <li><a href="#step-2-3-exposures-omics-and-omics-outcomes-associations" id="toc-step-2-3-exposures-omics-and-omics-outcomes-associations" class="nav-link" data-scroll-target="#step-2-3-exposures-omics-and-omics-outcomes-associations">Step 2-3: Exposures-Omics and Omics-Outcomes associations</a></li>
+  <li><a href="#step-4-meet-in-the-middle-triplot-visualization" id="toc-step-4-meet-in-the-middle-triplot-visualization" class="nav-link" data-scroll-target="#step-4-meet-in-the-middle-triplot-visualization">Step 4: Meet-in-the-middle Triplot Visualization</a></li>
+  <li><a href="#step-5-mediation-analysis-and-visualization" id="toc-step-5-mediation-analysis-and-visualization" class="nav-link" data-scroll-target="#step-5-mediation-analysis-and-visualization">Step 5: Mediation analysis and visualization</a></li>
+  <li><a href="#comparative-visualization" id="toc-comparative-visualization" class="nav-link" data-scroll-target="#comparative-visualization">Comparative Visualization</a></li>
+  <li><a href="#data-download" id="toc-data-download" class="nav-link" data-scroll-target="#data-download">Data download</a></li>
+  </ul>
+</li>
+  </ul><div class="toc-actions"><ul><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/edit/main/simple.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/blob/main/simple.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content"><p>Before you begin, ensure that you have access to either the <a href="https://yingxiao.shinyapps.io/triplotgui/" target="_blank">online version of TriplotGUI</a> or can use TriplotGUI as a stand-alone application on your computer following <a href="./installation.html" target="_blank" style="color:blue">Setup</a>.</p>
+<!-- Before starting, please make sure you can use the [online version of TriplotGUI](https://yingxiao.shinyapps.io/triplotgui/){target="_blank"} or can use TriplotGUI as a stand-alone application on your computer following [Setup](installation.qmd){target="_blank" style="color:blue"}. -->
+<section id="data-description" class="level1"><h1>Data description</h1>
+<p>The datasets utilized in this tutorial can be downloaded <a href="https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Example_data/Example1" target="_blank">here</a> as data frames in the following RDS files.</p>
+<ul>
+<li>Example1_exposure.rds</li>
+<li>Example1_Omics.rds</li>
+<li>Example1_outcome.rds</li>
+<li>Example1_covariate.rds</li>
+</ul>
+<p>These datasets originate from <strong><em>CAMP_2</em></strong>, a synthetic dataset derived from the original <strong>CAMP</strong> data provided by the <a href="https://gitlab.com/CarlBrunius/triplot/-/blob/master/vignettes/Triplot_Tutorial.md?ref_type=heads" target="_blank"><em>Triplot</em></a> package (Schillemans et al., 2019). The <strong>CAMP</strong> dataset itself was simulated from authentic data collected in a cross-sectional study examining carbohydrate alternatives and metabolic phenotypes among young adults in China (Liu et al., 2018).</p>
+<p>Our selection of exposures, Omics data, outcomes, and covariates is based on the <strong><em>CAMP_2</em></strong> data, as detailed in the accompanying code <a href="https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Tutorial_code/Data_cleaning_CAMP_2.R" target="_blank">here</a>. Below is a brief description of each dataset:</p>
+<!-- The Data used for this example originates from ***CAMP_2***, which is a synthetic dataset modified from the **CAMP** data provided by the [*Triplot*](https://gitlab.com/CarlBrunius/triplot/-/blob/master/vignettes/Triplot_Tutorial.md?ref_type=heads){target="_blank"} package (Schillemans et al. 2019). **CAMP** was simulated from the authentic data used in a cross-sectional study of carbonhydrate alternatives and metabolic phenotypes in Chinese young adults (Liu et al. 2018). We have selected our exposures, Omics data, outcomes and covariates based on the ***CAMP_2*** data following the code [here](https://gitlab.com/YingxiaoYan/triplotgui/-/blob/main/Tutorial_code/Data_cleaning_CAMP_2.R){target="_blank"}. The brief description of these data is shown as below. -->
+<ul>
+<li>Example1_exposure.rds: Contains 14 variables that represent dietary intake measured through food frequency questionnaires. These variables include <code>"Refined_grains"</code>, <code>"Coarse_grains"</code>, <code>"Red_meat"</code>, <code>"Poutry"</code>, <code>"Seafood"</code>, <code>"Egg"</code>, <code>"Animal_organs"</code>, <code>"Vegetables"</code>, <code>"Fruits"</code>, <code>"Potatos"</code>, <code>"Legumes"</code>. All 11 variables are continuous/numeric.</li>
+<li>Example1_Omics.rds: Comprises 20 variables that represent plasma metabolites predictive of Body Mass Index (BMI). All variables are continuous/numeric.</li>
+<li>Example1_outcome.rds: Includes 5 variables representing clinical measurements: <code>"BMI"</code>, <code>"HDL"</code>(high-density lipoprotein cholesterol), <code>"LDL"</code>(low-density lipoprotein cholesterol), <code>"triglycerides"</code> and <code>"total_cholesterol"</code>. All these variables are continuous/numeric.</li>
+<li>Example1_covariate.rds: Contains 2 variables that may serve as potential confounders:
+<ul>
+<li>
+<code>"AGE"</code>: A continuous/numeric variable.</li>
+<li>
+<code>"SEX"</code>: A factor variable with 2 levels: 1 and 2.</li>
+</ul>
+</li>
+</ul>
+<p>All datasets are row-wise matched by observation and consist of a total of 300 synthetic observations.</p>
+<p><strong>Reference</strong></p>
+<p>Liu X, Liao X, Gan W, et al.&nbsp;Inverse Relationship between Coarse Food Grain Intake and Blood Pressure among Young Chinese Adults. <em>Am J Hypertens</em>. 2019;32(4):402–408. <a href="https://academic.oup.com/ajh/article/32/4/402/5236579?login=true" target="_blank">10.1093/ajh/hpy187</a></p>
+<p>Schillemans T, Shi L, Liu X, Åkesson A, Landberg R, Brunius C. Visualization and Interpretation of Multivariate Associations with Disease Risk Markers and Disease Risk-The Triplot. <em>Metabolites</em>. 2019 Jul 6;9(7):133. <a href="https://www.mdpi.com/2218-1989/9/7/133" target="_blank">doi: 10.3390/metabo9070133</a></p>
+</section><section id="research-question" class="level1"><h1>Research question</h1>
+<p>We aim to assess the relationship between diet, metabolic profiles, and risk factors for metabolic diseases, including BMI, total cholesterol, triglycerides, HDL, and LDL. In this context, we assume that metabolites act as mediators, facilitating the effect of dietary exposures on these risk factors.</p>
+</section><section id="the-use-of-interface" class="level1"><h1>The use of interface</h1>
+<p>To demonstrate the functionality of the interface, we will provide an example on this page that corresponds to the code implementation outlined in the <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/simple_code.html#step-2" target="_blank">Code example of using TriplotGUI</a> section. This will allow you to see how the interface operates in practical terms.</p>
+<!-- Open your interface. What we will show as an example in the interface here corresponds to using code to do the same thing in the [Code example of using TriplotGUI](https://yingxiaoyan.gitlab.io/triplotgui_tutorial/simple_code.html#step-2){target="_blank"} section in this page -->
+<section id="step-1-data-reduction-of-omics-variables" class="level2"><h2 class="anchored" data-anchor-id="step-1-data-reduction-of-omics-variables">Step 1: Data reduction of Omics variables</h2>
+<div class="columns">
+<div class="column" style="width: 45%">
+<p>First, upload the Omics data in Step 1 of the interface.</p>
+<p><a href="img/simple_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/simple_1.png" class="img-fluid"></a></p>
+<p>After successfully uploading the data, a series of buttons will appear, allowing you to make modifications to the data reduction process for the Omics data.</p>
+<p><a href="img/simple_1_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="img/simple_1_1.png" class="img-fluid"></a></p>
+<p>Once the upload is complete, you can explore the visualization panel on the right side. Here, you will be able to view all the relevant plots (score, loadings, biplot, screeplot).</p>
+<p><a href="img/simple_1_1_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="img/simple_1_1_1.png" class="img-fluid"></a></p>
+</div><div class="column" style="width: 5%">
+
+</div><div class="column" style="width: 40%">
+<p><a href="img/simple_1_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="img/simple_1_2.png" class="img-fluid"></a></p>
+</div>
+</div>
+<ul>
+<li>
+<strong>Scree Plot</strong>: Assess the variance explained by each principal component.</li>
+<li>
+<strong>Score Plot</strong>: Visualize sample clustering and identify any outliers.</li>
+<li>
+<strong>Loadings Plot</strong>: Examine the contribution of each variable to the principal components.</li>
+<li>
+<strong>Biplot</strong>: Get a comprehensive view of how samples relate to each other alongside variable contributions.</li>
+</ul></section><section id="step-2-3-exposures-omics-and-omics-outcomes-associations" class="level2"><h2 class="anchored" data-anchor-id="step-2-3-exposures-omics-and-omics-outcomes-associations">Step 2-3: Exposures-Omics and Omics-Outcomes associations</h2>
+<p>Next, proceed to upload the exposures, outcomes, and covariates data in Steps 2 and 3 of the interface.</p>
+<p><a href="img/simple_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="img/simple_2.png" class="img-fluid"></a></p>
+<p>Once you have uploaded these datasets, you can view the correlation coefficients in Step 2 and the risk estimates in Step 3. To refresh the visualizations and see the updated plots, simply click on the <strong><em>Refresh Plot</em></strong> button. This will allow you to analyze the relationships between your exposures, outcomes, and covariates effectively. Confounder adjustment was selected as <em>Yes</em> in <strong><em>Confounder adjustment</em></strong> in the “Data analysis settings”.</p>
+<p><a href="img/simple_2_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="img/simple_2_1.png" class="img-fluid"></a></p>
+</section><section id="step-4-meet-in-the-middle-triplot-visualization" class="level2"><h2 class="anchored" data-anchor-id="step-4-meet-in-the-middle-triplot-visualization">Step 4: Meet-in-the-middle Triplot Visualization</h2>
+<p>In Step 4 of the interface, you can view and download the triplot by clicking <strong><em>Refresh Plot</em></strong> The left-side panel allows you to make adjustments to the plot as needed.</p>
+<p><a href="img/simple_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="img/simple_3.png" class="img-fluid"></a></p>
+<p>In the triplot, black arrows represent loadings of Omics variables, forming patterns in different components (axes). Blue circle points show exposure correlations with the components, while red square points indicate outcome associations with the components.</p>
+<p>For interpretation, let’s focus on Principal Component 1 (PC1) and Principal Component 2 (PC2), using the exposures <code>"Refined grains"</code>, <code>"Red meat"</code>, and the outcome <code>"BMI"</code> as examples:</p>
+<p>PC1: This component shows a positive association with BMI and is correlated with high intakes of red meat and refined grains, even after adjusting for age and sex. This suggests that the metabolite features dominating PC1 may provide valuable insights into how the intake of red meat and refined grains could influence BMI.</p>
+<p>PC2: In contrast, PC2 exhibits a smaller association with BMI and a weak inverse correlation with red meat and refined grains. The metabolite features contributing significantly to PC2 may indicate a marginal beneficial effect of these dietary components, although this effect appears to be limited. This may also suggest that the features dominating PC2 may reflect metabolite patterns influenced by food, but not to a large degree associations with metabolic regulation in relation to health.</p>
+<p>This interpretation highlights how different dietary exposures relate to metabolic outcomes, offering insights into potential mechanisms at play.</p>
+<!-- In the triplot, the x and y axis represents the two components selected for visualization . The black arrows represent loadings for the Omics variables, illustrating patterns across different components (axes). The blue circle points indicate coefficients from exposure correlations with the components, while the red square points represent beta coefficients from outcome associations with components. -->
+<!-- How do we interpret the figure? We use principal component 1 & 2 (PC1 & PC2), the exposures `"Refined grains"`, `"Red meat"` and the outcome `"BMI"` for the example of interpretation: PC1 positively associated with BMI and also correlated with a high intake of red meat and refined grains, adjusting for age and sex. This implies that the metabolite features that dominate PC1 are likely to provide useful information for a potential mechanism of how red meat and refrained grains intake may affect BMI. PC2, on the other hand, has a smaller association with BMI and a weak reverse correlation with red meat and refined grains. The metabolite features that have high contribution to PC2 may support the beneficial effect of red meat and refrain intake, although such effect may be marginal. -->
+</section><section id="step-5-mediation-analysis-and-visualization" class="level2"><h2 class="anchored" data-anchor-id="step-5-mediation-analysis-and-visualization">Step 5: Mediation analysis and visualization</h2>
+<div class="columns">
+<div class="column" style="width: 40%">
+<p>Mediation analysis will be performed using the conventional(Baron-Kenny) method on our selected exposures (<code>"Refined grains"</code>, <code>"Red meat"</code>), and the outcome of interest (<code>"BMI"</code>), using components (PC1-5) generated from Step 1 as mediators and adjusting for age and sex in both the exposure-mediator and mediator-outcome associations.</p>
+<p>After mediation analysis is performed, users can select which exposure, mediator and outcome variables to use for mediation barplot visualization.</p>
+</div><div class="column" style="width: 5%">
+
+</div><div class="column" style="width: 45%">
+<!-- Mediation analysis is then performed using the conventional "product" method on our selected exposures (i.e. `"Refined grains"`, `"Red meat"`), mediators (i.e. PC1 and PC2) and the selected outcome (i.e. `"BMI"`) of interest, adjusting for age and sex for both exposure-mediator and mediator-outcome relationship -->
+<p><a href="img/simple_4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="img/simple_4.png" class="img-fluid"></a></p>
+<p><a href="img/simple_4_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="img/simple_4_1.png" class="img-fluid"></a></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Please note that you need to click <strong><em>Do Mediation</em></strong> to initiate the mediation analysis. <!-- -   By default, only proportion mediated is visualized. You could go to the "Visualization setting" to select ***Mediation estimate or proportion*** as *Estimate* to show the indirect effect or total effect in the triplot with mediation. -->
+</li>
+</ul>
+</div>
+</div>
+<p>In Step 5 of the interface, you can view barplots that display the direct, indirect, and total effects for each exposure-mediator-outcome combination. This tool conveniently illustrates the direction and magnitude of mediation estimates.</p>
+<p><a href="img/simple_4_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="img/simple_4_2.png" class="img-fluid"></a></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The barplot displays direct, indirect, and total effects for each exposure-mediator-outcome combination, providing a convenient tool to assess the direction and magnitude of mediation estimates.</p>
+<ul>
+<li>Color coding indicates significance and direction: red represents significant positive effects (p&lt;0.05), blue represents significant negative effects (p&lt;0.05), and grey represents insignificant effects.</li>
+<li>Significance levels are denoted by stars: one star for p&lt;0.05, two stars for p&lt;0.01, and three stars for p&lt;0.001.</li>
+</ul>
+</div>
+</div>
+<p>Based on the mediation barplot, we observed significant mediation effects through PC1 for the red_meat-BMI and refined_grain-BMI associations. This finding suggests that the metabolite features contributing to PC1 are likely mediating the pathway from red meat and refined grain intake to BMI changes. These results provide insight into potential metabolic mechanisms linking dietary patterns to body mass index.</p>
+</section><section id="comparative-visualization" class="level2"><h2 class="anchored" data-anchor-id="comparative-visualization">Comparative Visualization</h2>
+<p>Users can check the heatmaps of exposure associations, risk estimations, and mediation results in Comparative Visualization of the interface. To focus specifically on the results relevant to PC1 and PC2, you can remove other principal components in the “Visualization Settings.” This will streamline the analysis, allowing for a clearer interpretation of the relationships involving these two components.</p>
+<p><a href="img/simple_5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="img/simple_5.png" class="img-fluid"></a></p>
+<p><a href="img/simple_5_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="img/simple_5_1.png" class="img-fluid"></a></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Significance is indicated as follows. One star for p&lt;0.05; Two stars for p&lt;0.01; Three stars for p&lt;0.001.</li>
+<li>The first two plots, correlation coefficients with exposures and risk estimates of outcomes will show all the exposure and outcome variables that are not removed from visualization.</li>
+<li>Note that only the selected exposures, mediators and outcomes that we use to do mediation on will show up in the mediation results. The rows in the heatmaps are mediators and the column represents exposure-outcome pairs. For each exposure-outcome pair, 4 result are shown: <em>IE</em> (indirect effect), <em>TE</em> (total effect), <em>PM</em>(Proportion Mediated) and <em>APM</em>(Adjusted Proportion Mediated). Please see <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/workflow.html#5.2" target="_blank">Details section</a> for more information. The “BK” before the names of exposures-outcome pairs means that this mediation is using the Conventional Baron-Kenny “product” method. For this method, only the significant level of <em>IE</em> and <em>TE</em> is calculated and shown on the plot, but not <em>PM</em> and <em>APM</em>.</li>
+</ul>
+</div>
+</div>
+</section><section id="data-download" class="level2"><h2 class="anchored" data-anchor-id="data-download">Data download</h2>
+<p>Relevant data and intermediate results can be viewed and downloaded directly from the interface.</p>
+<p><a href="img/simple_6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="img/simple_6.png" class="img-fluid"></a></p>
+
+
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/yingxiaoyan\.gitlab\.io\/triplotgui_tutorial\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p><span class="faux-block">© 2024 Yingxiao Yan <br> CC BY-SA 4.0</span></p>
+</div>   
+    <div class="nav-footer-center">
+<p><span class="faux-block"> <a href="https://yingxiao.shinyapps.io/triplotgui/" target="_blank">TriplotGUI</a> <br><a href="https://gitlab.com/YingxiaoYan/TriplotGUI" target="_blank">TriplotGUI Gitlab</a> </span></p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/edit/main/simple.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/blob/main/simple.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p><span class="faux-block cyan"> <a href="https://yingxiaoyan.gitlab.io/triplotgui_tutorial/" target="_blank">Main page of this tutorial</a> <br><a href="https://gitlab.com/YingxiaoYan/triplotgui_tutorial" target="_blank">View source of this site on GitLab</a> </span></p>
+</div>
+  </div>
+</footer><script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
