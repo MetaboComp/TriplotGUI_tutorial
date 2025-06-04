@@ -229,7 +229,7 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Background&amp;aim:</strong> Exposure- and outcome-wide studies aim to identify potential risk factors and their health effects on a broader scale. While Omics technologies have enabled linking exposome to outcomes, there’s often a lack of large-scale exploration of mediating mechanisms. This gap exists due to the high-dimensional nature of Omics data and the absence of effective tools for interpreting complex relationships. <span style="color:black">TriplotGUI</span> was developed to advance exposure-risk assessment and facilitate the interpretation of these complex associations via omics profiles.</p>
 <p><strong>Methods:</strong> TriplotGUI employs several key analytical approaches. First, Omics variables are reduced to components using methods such as Principal Component Analysis (PCA) or Weighted Correlation Network Analysis (WGCNA). These components are then associated with both exposures and outcomes through linear models. To investigate potential mediators, TriplotGUI utilizes a “meet-in-the-middle” analysis that intersects exposure-Omics and Omics-outcome associations, along with mediation analysis. The tool supports both classical (Baron-Kenny) mediation and counterfactual mediation, while also allowing for adjustment for covariates. A casual diagram that summarize TriplotGUI’s assumption is shown below,</p>
 <p><a href="img/event_chain.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="img/event_chain.png" class="img-fluid" width="1000"></a></p>
-<p><strong>Results:</strong> Among its various functionalities, TriplotGUI co-visualizes Omics variable contributions, exposure-Omics associations, omics-outcome associations, and provide visual ourput for direct and indirect effects from mediation analysis. By centering analyses around molecular data, TriplotGUI enables the simultaneous assessment of multiple exposures and outcomes. Users can conveniently perform analyses and visualizations through a <a href="https://yingxiao.shinyapps.io/triplotgui/" target="_blank">web-based version of TriplotGUI</a> or install it as a stand-alone application in RStudio, making it suitable for secure environments in compliance with GDPR. Please read the <a href="./installation.html" target="_blank" style="color:blue">Setup</a> session for more about installation.</p>
+<p><strong>Results:</strong> Among its various functionalities, TriplotGUI co-visualizes Omics variable contributions, exposure-Omics associations, omics-outcome associations, and provide visual ourput for direct and indirect effects from mediation analysis. By centering analyses around molecular data, TriplotGUI enables the simultaneous assessment of multiple exposures and outcomes. Users can conveniently perform analyses and visualizations through a <a href="https://metabocomp.shinyapps.io/triplotgui/" target="_blank">web-based version of TriplotGUI</a> or install it as a stand-alone application in RStudio, making it suitable for secure environments in compliance with GDPR. Please read the <a href="./installation.html" target="_blank" style="color:blue">Setup</a> session for more about installation.</p>
 <p>TriplotGUI has been tested using both synthetic and real-world data, particularly focusing on dietary variables as exposures. The tool has demonstrated its capability to comprehensively analyze, visualize, and interpret associations between exposures and outcomes through metabolomic profiles.</p>
 <p><strong>Conclusion:</strong> In summary, TriplotGUI offers a powerful and flexible platform for integrating exposures, omics data, and outcomes to unravel their complex relationships. Its user-friendly interface combined with comprehensive analytical capabilities makes it an invaluable tool for molecular epidemiology research, advancing our understanding of exposure-risk relationships and potential mediating mechanisms</p>
 </section>
@@ -251,7 +251,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Risk association estimates (beta coefficients or odds ratios)</li>
 </ul>
 <p><strong>Step5:</strong> Mediation analysis and visualization</p>
-<p>Performs mediation analysis on selected exposures and outcomes, using component scores as mediators.</p>
+<p>Performs mediation analysis on selected exposures and outcomes, using component/module scores or individual Omics variables as mediators.</p>
 <!-- Visualizes results alongside data from previous steps in a multi-layered 2D plot. -->
 <p>Provides mediation barplots showing the magnitude and direction of indirect, direct, and total effects for individual mediation analyses.</p>
 <p><strong>Comparative Visualization:</strong></p>
@@ -367,7 +367,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":false,"closeEffect":"zoom","openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
